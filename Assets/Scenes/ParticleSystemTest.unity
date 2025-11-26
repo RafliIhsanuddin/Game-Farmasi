@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 189170894}
   - component: {fileID: 189170893}
   m_Layer: 0
-  m_Name: 2DExplosion small
+  m_Name: 2DExploson small correct
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
