@@ -35,6 +35,30 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         Debug.Log("OnEndDrag");
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
+
+        // 🔥 Convert UI screen position → world space
+        Vector3 worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        worldPos.z = 0f;
+
+        // 🔥 Raycast untuk cari bakteri
+        RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero);
+
+        if (hit.collider != null)
+        {
+            Debug.Log("Kena: " + hit.collider.name);
+
+            // Cek apakah itu bakteri
+            if (hit.collider.CompareTag("Bacteria"))
+            {
+                Debug.Log("Obat mengenai bakteri!");
+
+                // Panggil script bakteri misalnya TakeDamage()
+                hit.collider.GetComponent<Bacteria>().TakeDamage();
+
+                // Obat hilang setelah digunakan
+                Destroy(gameObject);
+            }
+        }
     }
 
 
@@ -45,6 +69,6 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnDrop(PointerEventData eventData)
     {
-        
+        Debug.Log("OnDrop");
     }
 }
