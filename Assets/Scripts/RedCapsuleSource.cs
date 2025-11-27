@@ -3,44 +3,31 @@ using UnityEngine.EventSystems;
 
 public class RedCapsuleSource : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [SerializeField] private GameObject redCapsulePrefab; // prefab red capsule biasa
-
     private Canvas canvas;
-    private RectTransform rectTransform;
+    [SerializeField] private GameObject obatPrefab;
+    private GameObject currentObat;
 
-    private GameObject spawnedCapsule;
-
-    private void Awake()
+    private void Start()
     {
-        rectTransform = GetComponent<RectTransform>();
         canvas = GameObject.Find("CanvasLv3").GetComponent<Canvas>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        // Spawn prefab saat mulai drag
-        if (spawnedCapsule == null)
-        {
-            spawnedCapsule = Instantiate(redCapsulePrefab, canvas.transform);
-
-            // Set posisi clone sama dengan source
-            RectTransform cloneRect = spawnedCapsule.GetComponent<RectTransform>();
-            cloneRect.anchoredPosition = rectTransform.anchoredPosition;
-            cloneRect.localScale = rectTransform.localScale;
-        }
+        currentObat = Instantiate(obatPrefab, transform.parent);
+        currentObat.transform.SetAsLastSibling();
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (spawnedCapsule != null)
-        {
-            RectTransform cloneRect = spawnedCapsule.GetComponent<RectTransform>();
-            cloneRect.anchoredPosition += eventData.delta / canvas.scaleFactor;
-        }
+        if (currentObat == null) return;
+
+        RectTransform rect = currentObat.GetComponent<RectTransform>();
+        rect.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        spawnedCapsule = null; // reset agar bisa spawn lagi di drag berikutnya
+        currentObat = null;
     }
 }

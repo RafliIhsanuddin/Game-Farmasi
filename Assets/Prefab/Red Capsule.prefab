@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7297128072937980166}
   - component: {fileID: 3962841013160606248}
-  - component: {fileID: 799096637679264189}
   - component: {fileID: 4511843173907332279}
   - component: {fileID: 261044718595439118}
+  - component: {fileID: 1784477300955945243}
   m_Layer: 5
   m_Name: Red Capsule
   m_TagString: Untagged
@@ -47,18 +47,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8172215508758751601}
   m_CullTransparentMesh: 1
---- !u!114 &799096637679264189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8172215508758751601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae866fffca71fea44886b2f44f6df9b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4511843173907332279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,3 +89,39 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!58 &1784477300955945243
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8172215508758751601}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.014770508, y: -0.00009918213}
+  m_Radius: 64.17615
