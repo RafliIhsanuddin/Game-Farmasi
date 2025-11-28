@@ -10,6 +10,7 @@ public class SpawnPointSlot : MonoBehaviour
     {
         occupied = true;
         currentBacteria = bacteria;
+        currentBacteria = bacteria;
     }
 
     // Tandai titik ini kosong kembali

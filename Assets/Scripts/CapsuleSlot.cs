@@ -36,7 +36,8 @@ public class CapsuleSlot : MonoBehaviour
 
     private void BuyPlant()
     {
-        
+        Debug.Log("CapsuleSlot clicked! Buying plant: " + capsuleObject.name);
+        gms.BuyPlant(capsuleObject, capsuleSprite);
     }
 
     public Image icon;
