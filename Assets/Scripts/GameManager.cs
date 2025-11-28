@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
                 newCapsule.transform.SetParent(currentTile.transform);
                 currentTile.hasCapsule = true;
 
-                Debug.Log("Planted capsule on tile: " + currentTile.name);
+                //Debug.Log("Planted capsule on tile: " + currentTile.name);
 
                 Destroy(previewInstance);
                 previewInstance = null;

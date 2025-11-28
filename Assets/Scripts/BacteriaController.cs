@@ -2,42 +2,36 @@ using UnityEngine;
 
 public class BacteriaController : MonoBehaviour
 {
+
     public float speed = 1.5f;
-    public float health = 3f;
 
     [HideInInspector] public SpawnPointSlot spawnPoint;
-
-    private bool isDead = false;
+    [SerializeField] private GameObject BacteriaGreen;
+    [SerializeField] private GameObject BacteriaRed;
+    [SerializeField] private GameObject hitParticleEffect; // prefab efek partikel
 
     private void FixedUpdate()
     {
-        if (isDead) return;
         transform.position -= new Vector3(speed, 0, 0);
     }
 
-    public void TakeDamage(float damage = 1f)
+    public void Hit()
     {
-        if (isDead) return;
+        Debug.Log($"[BacteriaController] {name} terkena serangan CapsuleRed pada posisi {transform.position}");
 
-        health -= damage;
-        if (health <= 0)
+        if (BacteriaGreen != null)
+            BacteriaGreen.SetActive(false);
+        if (BacteriaRed != null)
+            BacteriaRed.SetActive(false);
+
+        if (hitParticleEffect != null)
         {
-            Die();
-        }
-    }
-
-    private void Die()
-    {
-        if (isDead) return;
-        isDead = true;
-
-        // Kosongkan slot spawn point asalnya
-        if (spawnPoint != null)
-        {
-            spawnPoint.ClearOccupied();
-            Debug.Log($"[Bacteria] Slot {spawnPoint.name} dikosongkan kembali.");
+            GameObject effect = Instantiate(hitParticleEffect, transform.position, Quaternion.identity);
+            Destroy(effect, 3f);
+            Debug.Log($"[BacteriaController] Efek partikel ditampilkan untuk {name}");
         }
 
-        Destroy(gameObject);
+        Debug.Log($"[BacteriaController] {name} akan dihapus dalam 3 detik");
+        Destroy(gameObject, 3f);
     }
 }
