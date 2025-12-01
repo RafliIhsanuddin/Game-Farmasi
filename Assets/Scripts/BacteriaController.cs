@@ -27,19 +27,22 @@ public class BacteriaController : MonoBehaviour
         if (hitParticleEffect != null)
         {
             GameObject effect = Instantiate(hitParticleEffect, transform.position, Quaternion.identity);
-            Destroy(effect, 3f);
-            if (spawnPoint != null)
-            {
-                spawnPoint.ClearOccupied();
-            }
+            effect.SetActive(true); // pastikan aktif
+
+            ParticleSystem ps = effect.GetComponent<ParticleSystem>();
+            if (ps != null)
+                ps.Play(); // manual trigger
+
+            Destroy(effect, 3f); // hapus efek setelah 3 detik
             Debug.Log($"[BacteriaController] Efek partikel ditampilkan untuk {name}");
         }
 
-        Debug.Log($"[BacteriaController] {name} akan dihapus dalam 3 detik");
-        Destroy(gameObject, 3f);
         if (spawnPoint != null)
         {
             spawnPoint.ClearOccupied();
         }
+
+        Debug.Log($"[BacteriaController] {name} akan dihapus dalam 3 detik");
+        Destroy(gameObject, 3f);
     }
 }
