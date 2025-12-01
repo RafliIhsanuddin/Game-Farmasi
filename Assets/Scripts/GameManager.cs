@@ -3,12 +3,12 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [Header("Capsule Data")]
-    public GameObject currentCapsule;       // prefab kapsul asli
-    public Sprite currentCapsuleSprite;     // sprite kapsul
-    private GameObject previewInstance;     // instance preview dinamis
+    public GameObject currentCapsule;       // Prefab kapsul asli yang dipilih player
+    public Sprite currentCapsuleSprite;     // Sprite kapsul untuk UI/preview
+    private GameObject previewInstance;     // Dinamis preview instance kapsul
 
     [Header("Tile References")]
-    public Transform tiles; // parent semua tile
+    public Transform tiles; // Parent dari semua tile
     public LayerMask tileMask;
 
     private Camera mainCam;
@@ -25,27 +25,23 @@ public class GameManager : MonoBehaviour
         currentCapsule = capsule;
         currentCapsuleSprite = sprite;
 
-        // Hapus preview lama (kalau masih ada)
+        // Hapus preview sebelumnya
         if (previewInstance != null)
             Destroy(previewInstance);
 
-        // Buat preview baru dari prefab kapsul yang sama
+        // Buat preview kapsul untuk mengikuti kursor
         previewInstance = Instantiate(currentCapsule);
         previewInstance.name = "Preview_" + capsule.name;
 
-        // Bikin transparan supaya terlihat beda dari kapsul asli
         var sr = previewInstance.GetComponent<SpriteRenderer>();
         if (sr != null)
-            sr.color = new Color(1f, 1f, 1f, 0.5f);
+            sr.color = new Color(1f, 1f, 1f, 0.5f); // transparan
 
-        // Pastikan tidak interaktif
         var collider = previewInstance.GetComponent<Collider2D>();
         if (collider != null)
-            collider.enabled = false;
+            collider.enabled = false; // tidak boleh interaktif
 
         previewInstance.SetActive(false);
-
-        Debug.Log("Capsule selected: " + capsule.name + " (dynamic preview created)");
     }
 
     void Update()
@@ -78,15 +74,24 @@ public class GameManager : MonoBehaviour
                 currentTile = null;
             }
 
-            // Klik kiri untuk menanam kapsul
+            // Klik kiri untuk menanam capsules
             if (Input.GetMouseButtonDown(0) && currentTile && !currentTile.hasCapsule)
             {
                 GameObject newCapsule = Instantiate(currentCapsule, currentTile.transform.position, Quaternion.identity);
                 newCapsule.transform.SetParent(currentTile.transform);
+
+                // Set data tile
                 currentTile.hasCapsule = true;
+                currentTile.currentCapsule = newCapsule;
 
-                //Debug.Log("Planted capsule on tile: " + currentTile.name);
+                // Beri referensi tile ke kapsul
+                CapsuleRed capsuleScript = newCapsule.GetComponent<CapsuleRed>();
+                if (capsuleScript != null)
+                {
+                    capsuleScript.ownerTile = currentTile;
+                }
 
+                // Reset sistem setelah menanam
                 Destroy(previewInstance);
                 previewInstance = null;
                 currentCapsule = null;

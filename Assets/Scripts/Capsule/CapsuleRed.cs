@@ -2,22 +2,22 @@ using UnityEngine;
 
 public class CapsuleRed : MonoBehaviour
 {
+    public Tile ownerTile; // ini yang GameManager isi setelah spawn kapsul
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log($"CapsuleRed trigger dengan: {collision.name} [Layer: {LayerMask.LayerToName(collision.gameObject.layer)}]");
-
         if (collision.TryGetComponent<BacteriaController>(out BacteriaController bacteria))
         {
-            Debug.Log($"[CapsuleRed] Mengenai bakteri: {bacteria.name} pada posisi {transform.position}");
-
-            // Serang bakteri
             bacteria.Hit();
 
-            // Hancurkan kapsul
-            Destroy(gameObject);
+            // beri tahu tile bahwa kapsul hilang
+            if (ownerTile != null)
+            {
+                ownerTile.hasCapsule = false;
+                ownerTile.currentCapsule = null;
+            }
 
-            Debug.Log($"[CapsuleRed] CapsuleRed ({name}) hancur setelah mengenai bakteri {bacteria.name}");
+            Destroy(gameObject);
         }
     }
-    
 }
