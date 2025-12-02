@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,13 @@ public class GameManager : MonoBehaviour
 
     private Camera mainCam;
     private Tile currentTile;
+
+    public int suns;
+    
+    public TextMeshProUGUI sunsText;
+
+
+    public LayerMask AtomLayer;
 
     void Start()
     {
@@ -46,15 +54,23 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        
+        sunsText.text = suns.ToString();
+        
+        Vector3 mouseWorld = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorld.z = 0f;
+        
+        
+        
+        HandleAtomClick(mouseWorld);
+        
+        
         if (currentCapsule == null)
         {
             if (previewInstance != null)
                 previewInstance.SetActive(false);
             return;
         }
-
-        Vector3 mouseWorld = mainCam.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorld.z = 0f;
 
         RaycastHit2D hit = Physics2D.Raycast(mouseWorld, Vector2.zero, Mathf.Infinity, tileMask);
 
@@ -104,6 +120,37 @@ public class GameManager : MonoBehaviour
             if (previewInstance != null)
                 previewInstance.SetActive(false);
             currentTile = null;
+        }
+
+
+       
+
+    }
+    
+    
+    private void HandleAtomClick(Vector3 mouseWorld)
+    {
+        // gambar garis ray di Scene view biar bisa kelihatan arah klik
+        Debug.DrawRay(mouseWorld, Vector3.forward * 10f, Color.yellow, 1f);
+        //Debug.Log("Raycast fired from mouseWorld: " + mouseWorld);
+
+        // cek apakah tombol kiri ditekan
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Mouse click detected, checking raycast...");
+
+            RaycastHit2D atomHit = Physics2D.Raycast(mouseWorld, Vector2.zero, Mathf.Infinity, AtomLayer);
+
+            if (atomHit.collider != null)
+            {
+                Debug.Log("✅ Raycast HIT object: " + atomHit.collider.name + " on layer: " + LayerMask.LayerToName(atomHit.collider.gameObject.layer));
+                Destroy(atomHit.collider.gameObject);
+                Debug.Log("💥 Atom destroyed by GameManager!");
+            }
+            else
+            {
+                Debug.Log("❌ Raycast missed! No collider found on AtomLayer.");
+            }
         }
     }
     

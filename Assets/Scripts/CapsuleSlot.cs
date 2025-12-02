@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,10 @@ public class CapsuleSlot : MonoBehaviour
     public Sprite capsuleSprite;
 
     public GameObject capsuleObject;
+
+    public int Price;
+    
+    public TextMeshProUGUI priceText;
 
     private GameManager gms;
 
@@ -23,6 +28,7 @@ public class CapsuleSlot : MonoBehaviour
         {
             icon.enabled = true;
             icon.sprite = capsuleSprite;
+            priceText.text = Price.ToString();
         }
         else
         {
