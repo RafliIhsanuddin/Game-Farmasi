@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,6 +22,12 @@ public class GameManager : MonoBehaviour
 
 
     public LayerMask AtomLayer;
+    
+    [Header("Target References")]
+    public Transform atomValueTarget;
+    
+    [Header("Atom Settings")]
+    [SerializeField] private float atomMoveSpeed = 6f;
 
     void Start()
     {
@@ -130,27 +137,43 @@ public class GameManager : MonoBehaviour
     
     private void HandleAtomClick(Vector3 mouseWorld)
     {
-        // gambar garis ray di Scene view biar bisa kelihatan arah klik
-        Debug.DrawRay(mouseWorld, Vector3.forward * 10f, Color.yellow, 1f);
-        //Debug.Log("Raycast fired from mouseWorld: " + mouseWorld);
-
-        // cek apakah tombol kiri ditekan
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Mouse click detected, checking raycast...");
-
             RaycastHit2D atomHit = Physics2D.Raycast(mouseWorld, Vector2.zero, Mathf.Infinity, AtomLayer);
-
             if (atomHit.collider != null)
             {
-                Debug.Log("✅ Raycast HIT object: " + atomHit.collider.name + " on layer: " + LayerMask.LayerToName(atomHit.collider.gameObject.layer));
-                Destroy(atomHit.collider.gameObject);
-                Debug.Log("💥 Atom destroyed by GameManager!");
+                GameObject atom = atomHit.collider.gameObject;
+                Debug.Log("Atom clicked: " + atom.name);
+
+                if (atomValueTarget != null)
+                {
+                    StartCoroutine(MoveAtomToTargetAndDestroy(atom, atomValueTarget.position));
+                }
+                else
+                {
+                    Debug.LogWarning("Atom Value target belum di-assign!");
+                    Destroy(atom);
+                }
             }
-            else
-            {
-                Debug.Log("❌ Raycast missed! No collider found on AtomLayer.");
-            }
+        }
+    }
+    
+    
+    private IEnumerator MoveAtomToTargetAndDestroy(GameObject atom, Vector3 targetPos)
+    {
+        while (atom != null && Vector3.Distance(atom.transform.position, targetPos) > 0.05f)
+        {
+            atom.transform.position = Vector3.MoveTowards(atom.transform.position, targetPos, atomMoveSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        if (atom != null)
+        {
+            Destroy(atom);
+            int[] possibleValues = { 10, 20, 30 };
+            int randomValue = possibleValues[Random.Range(0, possibleValues.Length)];
+            suns += randomValue;
+            Debug.Log("Atom reached Atom Value and destroyed! + " + randomValue);
         }
     }
     

@@ -18,6 +18,6 @@ public class AtomSpawner : MonoBehaviour
     private void SpawnAtom()
     {
         Instantiate(atomPrefab);
-        Invoke("SpawnAtom", Random.Range(5, 10));
+        Invoke("SpawnAtom", Random.Range(5, 7));
     }
 }
