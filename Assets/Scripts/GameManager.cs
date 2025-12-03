@@ -15,10 +15,14 @@ public class GameManager : MonoBehaviour
 
     private Camera mainCam;
     private Tile currentTile;
+    
+    
 
     [Header("Suns Data")]
     public int suns;
     public TextMeshProUGUI sunsText;
+    
+    private int selectedPrice;
 
     [Header("Atom Settings")]
     public LayerMask AtomLayer;
@@ -92,22 +96,30 @@ public class GameManager : MonoBehaviour
             // Klik kiri untuk menanam capsule
             if (Input.GetMouseButtonDown(0) && currentTile && !currentTile.hasCapsule)
             {
-                GameObject newCapsule = Instantiate(currentCapsule, currentTile.transform.position, Quaternion.identity);
-                newCapsule.transform.SetParent(currentTile.transform);
+                if (suns >= selectedPrice)
+                {
+                    // Kurangi suns baru saat menanam
+                    suns -= selectedPrice;
 
-                // Tandai tile sudah terisi kapsul
-                currentTile.hasCapsule = true;
-                currentTile.currentCapsule = newCapsule;
+                    // Tanam kapsul
+                    GameObject newCapsule = Instantiate(currentCapsule, currentTile.transform.position, Quaternion.identity);
+                    newCapsule.transform.SetParent(currentTile.transform);
 
-                // 🔥 BAGIAN PENTING: deteksi tipe kapsul dan isi ownerTile
-                AssignOwnerTileToCapsule(newCapsule, currentTile);
+                    // Tandai tile sudah berisi kapsul
+                    currentTile.hasCapsule = true;
+                    currentTile.currentCapsule = newCapsule;
 
-                // Reset sistem setelah menanam
-                Destroy(previewInstance);
-                previewInstance = null;
-                currentCapsule = null;
-                currentCapsuleSprite = null;
-                currentTile = null;
+                    AssignOwnerTileToCapsule(newCapsule, currentTile);
+
+                    // Reset pilihan setelah menanam
+                    CancelSelection();
+
+                    Debug.Log($"[GameManager] Capsule planted! -{selectedPrice} suns");
+                }
+                else
+                {
+                    Debug.LogWarning("[GameManager] Suns tidak cukup untuk menanam kapsul ini!");
+                }
             }
         }
         else
@@ -117,6 +129,45 @@ public class GameManager : MonoBehaviour
             currentTile = null;
         }
     }
+    
+    
+    
+    public void SelectPlant(GameObject capsule, Sprite sprite, int price)
+    {
+        currentCapsule = capsule;
+        currentCapsuleSprite = sprite;
+        selectedPrice = price;
+
+        // Hapus preview sebelumnya
+        if (previewInstance != null)
+            Destroy(previewInstance);
+
+        // Buat preview transparan
+        previewInstance = Instantiate(currentCapsule);
+        previewInstance.name = "Preview_" + capsule.name;
+
+        var sr = previewInstance.GetComponent<SpriteRenderer>();
+        if (sr != null)
+            sr.color = new Color(1f, 1f, 1f, 0.5f);
+
+        var collider = previewInstance.GetComponent<Collider2D>();
+        if (collider != null)
+            collider.enabled = false;
+
+        previewInstance.SetActive(false);
+    }
+    
+    
+    public void CancelSelection()
+    {
+        if (previewInstance != null)
+            Destroy(previewInstance);
+        previewInstance = null;
+        currentCapsule = null;
+        currentCapsuleSprite = null;
+        selectedPrice = 0;
+    }
+    
 
     /// <summary>
     /// Mengecek tipe kapsul (Merah, Biru, Kuning) lalu set ownerTile-nya.

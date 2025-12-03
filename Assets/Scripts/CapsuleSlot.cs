@@ -6,55 +6,53 @@ using UnityEngine.UI;
 public class CapsuleSlot : MonoBehaviour
 {
 
-    public Sprite capsuleSprite;
-
-    public GameObject capsuleObject;
-
-    public int Price;
+    [Header("Slot Data")]
+        public Sprite capsuleSprite;
+        public GameObject capsuleObject;
+        public int Price;
     
-    public TextMeshProUGUI priceText;
-
-    private GameManager gms;
-
-    private void Start()
-    {
-        gms = GameObject.Find("GameManager").GetComponent<GameManager>();
-        GetComponent<Button>().onClick.AddListener(BuyPlant);
-    }
-
-    private void OnValidate()
-    {
-        if (capsuleSprite)
+        [Header("UI References")]
+        public TextMeshProUGUI priceText;
+        public Image icon;
+    
+        private GameManager gms;
+    
+        private void Start()
         {
-            icon.enabled = true;
-            icon.sprite = capsuleSprite;
-            priceText.text = Price.ToString();
+            gms = GameObject.Find("GameManager").GetComponent<GameManager>();
+            GetComponent<Button>().onClick.AddListener(SelectPlant);
         }
-        else
+    
+        private void OnValidate()
         {
-            icon.enabled = false;
+            if (capsuleSprite)
+            {
+                icon.enabled = true;
+                icon.sprite = capsuleSprite;
+                priceText.text = Price.ToString();
+            }
+            else
+            {
+                icon.enabled = false;
+            }
         }
-    }
     
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    
-
-    private void BuyPlant()
-    {
-        if (gms.suns >= Price && !gms.currentCapsule)
+        /// <summary>
+        /// Saat slot diklik, hanya memilih kapsul (tanpa mengurangi suns)
+        /// </summary>
+        private void SelectPlant()
         {
-            gms.suns -= Price;
-            Debug.Log("CapsuleSlot clicked! Buying plant: " + capsuleObject.name);
-            gms.BuyPlant(capsuleObject, capsuleSprite);
+            if (gms.currentCapsule == capsuleObject)
+            {
+                // Jika klik ulang slot yang sama → batal pilih
+                gms.CancelSelection();
+                Debug.Log("Selection canceled for: " + capsuleObject.name);
+            }
+            else
+            {
+                // Pilih kapsul baru (tanpa potong suns)
+                gms.SelectPlant(capsuleObject, capsuleSprite, Price);
+                Debug.Log("CapsuleSlot selected: " + capsuleObject.name);
+            }
         }
-    }
-
-    public Image icon;
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
