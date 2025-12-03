@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class CapsuleRed : MonoBehaviour
+public class CapsuleBlue : MonoBehaviour
 {
     public Tile ownerTile; // ini yang GameManager isi setelah spawn kapsul
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<BacteriaControllerGreen>(out BacteriaControllerGreen bacteria))
+        if (collision.TryGetComponent<BacteriaControllerRed>(out BacteriaControllerRed bacteria))
         {
             bacteria.Hit();
 
@@ -18,8 +18,9 @@ public class CapsuleRed : MonoBehaviour
             }
 
             Destroy(gameObject);
-        }else if (collision.GetComponent<BacteriaControllerRed>() != null ||
-                  collision.GetComponent<BacteriaControllerPurple>() != null)
+        }
+        else if (collision.GetComponent<BacteriaControllerGreen>() != null ||
+                 collision.GetComponent<BacteriaControllerPurple>() != null)
         {
             if (ownerTile != null)
             {

@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.4472952, g: 1, b: 0, a: 1}
+      maxColor: {r: 0.5803922, g: 0.3372549, b: 0.7058824, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4845,7 +4845,7 @@ GameObject:
   - component: {fileID: 5262063120037184359}
   - component: {fileID: 1676298199714473859}
   m_Layer: 0
-  m_Name: 2DExploson vfx correct
+  m_Name: 2DExplosonVfxPurple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9892,7 +9892,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.4472952, g: 1, b: 0, a: 1}
+      maxColor: {r: 0.5803922, g: 0.3372549, b: 0.7058824, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -14846,7 +14846,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.4472952, g: 1, b: 0, a: 1}
+      maxColor: {r: 0.5803922, g: 0.3372549, b: 0.7058824, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

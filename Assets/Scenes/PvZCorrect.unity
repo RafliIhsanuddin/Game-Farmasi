@@ -27204,7 +27204,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   atomValueTarget: {fileID: 986185476}
-  atomMoveSpeed: 6
+  atomMoveSpeed: 50
 --- !u!4 &1731094546
 Transform:
   m_ObjectHideFlags: 0
@@ -34352,13 +34352,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c02678ccb2711ab4fb977e75ed6e798f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bacteriaPrefab: {fileID: 651651127768002935, guid: ec637613767e3bb4ab24c26fd772724e, type: 3}
+  bacteriaPrefabs:
+  - {fileID: 8047555124695432323, guid: 4c2dfa9a9859bdd44a1720cb88bb52f7, type: 3}
+  - {fileID: 8709541256312501482, guid: 2f2f040ab11cf3a47b61b447552cc0aa, type: 3}
+  - {fileID: 7638793912796795254, guid: fb85a64c47ae62542a6a32174cd6f115, type: 3}
   spawnPoints:
   - {fileID: 1411708659}
   - {fileID: 189643910}
   - {fileID: 1494768030}
   - {fileID: 1163710783}
   - {fileID: 345597427}
+  bacteriaControllers:
+  - {fileID: 3269798988024013709, guid: 4c2dfa9a9859bdd44a1720cb88bb52f7, type: 3}
+  - {fileID: 9023435097424916416, guid: 2f2f040ab11cf3a47b61b447552cc0aa, type: 3}
+  - {fileID: 1481644942928449343, guid: fb85a64c47ae62542a6a32174cd6f115, type: 3}
   firstSpawnDelay: 2
   repeatRate: 5
 --- !u!1 &2033125940
@@ -40726,6 +40733,67 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1001 &4024433513968218502
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1031255141768007128, guid: fb85a64c47ae62542a6a32174cd6f115, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031255141768007128, guid: fb85a64c47ae62542a6a32174cd6f115, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031255141768007128, guid: fb85a64c47ae62542a6a32174cd6f115, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.049396522
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031255141768007128, guid: fb85a64c47ae62542a6a32174cd6f115, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031255141768007128, guid: fb85a64c47ae62542a6a32174cd6f115, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031255141768007128, guid: fb85a64c47ae62542a6a32174cd6f115, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031255141768007128, guid: fb85a64c47ae62542a6a32174cd6f115, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031255141768007128, guid: fb85a64c47ae62542a6a32174cd6f115, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031255141768007128, guid: fb85a64c47ae62542a6a32174cd6f115, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031255141768007128, guid: fb85a64c47ae62542a6a32174cd6f115, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7638793912796795254, guid: fb85a64c47ae62542a6a32174cd6f115, type: 3}
+      propertyPath: m_Name
+      value: Bacteria Purple
+      objectReference: {fileID: 0}
+    - target: {fileID: 7638793912796795254, guid: fb85a64c47ae62542a6a32174cd6f115, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fb85a64c47ae62542a6a32174cd6f115, type: 3}
 --- !u!114 &4385067639714439403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55481,6 +55549,7 @@ SceneRoots:
   - {fileID: 390590014}
   - {fileID: 470130522}
   - {fileID: 1731094546}
+  - {fileID: 4024433513968218502}
   - {fileID: 43441619276762245}
   - {fileID: 1592296465}
   - {fileID: 2033125942}
