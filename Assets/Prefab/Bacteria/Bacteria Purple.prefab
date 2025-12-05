@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 1031255141768007128}
   - component: {fileID: 1481644942928449343}
   - component: {fileID: 5383541019202680011}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bacteria Purple
   m_TagString: Untagged
   m_Icon: {fileID: 0}

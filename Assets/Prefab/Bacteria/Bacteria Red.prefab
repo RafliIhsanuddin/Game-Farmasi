@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 4148080238873993844}
   - component: {fileID: 9023435097424916416}
   - component: {fileID: 1001178241137328324}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bacteria Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}

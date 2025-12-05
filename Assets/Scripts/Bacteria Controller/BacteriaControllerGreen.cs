@@ -7,15 +7,23 @@ public class BacteriaControllerGreen : MonoBehaviour
     [HideInInspector] public SpawnPointSlot spawnPoint;
     [SerializeField] private GameObject BacteriaGreen;
     [SerializeField] private GameObject hitParticleEffect; // prefab efek partikel
+    
+    private bool isHit = false;
 
     private void FixedUpdate()
     {
+        
+        if (isHit) return;
+        
         transform.position -= new Vector3(speed, 0, 0);
     }
 
     public void Hit()
     {
         Debug.Log($"[BacteriaControllerGreen] {name} terkena serangan CapsuleRed pada posisi {transform.position}");
+
+        isHit = true;
+        speed = 0;
 
         if (BacteriaGreen != null)
             BacteriaGreen.SetActive(false);

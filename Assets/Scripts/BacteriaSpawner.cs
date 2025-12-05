@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class BacteriaSpawner : MonoBehaviour
 {
@@ -16,13 +17,29 @@ public class BacteriaSpawner : MonoBehaviour
     public float firstSpawnDelay = 2f;
     public float repeatRate = 5f;
 
+    public int BacteriaMax;
+
+    public int BacteriaSpawned;
+
+
+    public Slider progressBar;
+
     void Start()
     {
         InvokeRepeating(nameof(SpawnBacteria), firstSpawnDelay, repeatRate);
+        
+        progressBar.maxValue = BacteriaMax;
+    }
+
+    private void Update()
+    {
+        progressBar.value = BacteriaSpawned;
     }
 
     void SpawnBacteria()
     {
+        if (BacteriaSpawned >= BacteriaMax)
+            return;
         // Cari titik kosong
         List<SpawnPointSlot> emptyPoints = new List<SpawnPointSlot>();
         foreach (var point in spawnPoints)
@@ -67,6 +84,8 @@ public class BacteriaSpawner : MonoBehaviour
         }
 
         selected.SetOccupied(newBacteria);
+        BacteriaSpawned++; // Tambah jumlah bakteri yang berhasil di-spawn
+        Debug.Log($"[Spawner] Total bakteri yang telah di-spawn: {BacteriaSpawned}/{BacteriaMax}");
         //Debug.Log($"[Spawner] Spawn {chosenPrefab.name} di {selected.name}");
     }
 
