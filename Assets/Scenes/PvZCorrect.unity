@@ -7171,7 +7171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -7862,7 +7862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -18775,6 +18775,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1027275885
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1027275887}
+  - component: {fileID: 1027275886}
+  m_Layer: 0
+  m_Name: WaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1027275886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027275885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f978e37b6578d2343a52c5b863f10257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelGoals: 140000001e000000
+  enemiesPerWave: 140000001e000000
+  flagContainer: {fileID: 1942895426}
+  flagPrefab: {fileID: 8785165802296183215, guid: 84bee79144f2b9849a8c0597de3dd722, type: 3}
+  levelProgress: {fileID: 1183394060}
+  spawner: {fileID: 2001866867}
+--- !u!4 &1027275887
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027275885}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1053.7289, y: 23.463919, z: -0.7857448}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1080514869
 GameObject:
   m_ObjectHideFlags: 0
@@ -19727,7 +19777,7 @@ GameObject:
   - component: {fileID: 1183394059}
   - component: {fileID: 1183394060}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Level Progress Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29243,7 +29293,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1731094546}
   - component: {fileID: 1731094545}
-  - component: {fileID: 1731094547}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -29291,22 +29340,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1731094547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1731094544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f978e37b6578d2343a52c5b863f10257, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelGoals: 
-  flagContainer: {fileID: 0}
-  flagPrefab: {fileID: 0}
-  levelProgress: {fileID: 0}
 --- !u!1 &1735344622
 GameObject:
   m_ObjectHideFlags: 0
@@ -36753,14 +36786,7 @@ MonoBehaviour:
   - {fileID: 1494768030}
   - {fileID: 1163710783}
   - {fileID: 345597427}
-  bacteriaControllers:
-  - {fileID: 3269798988024013709, guid: 4c2dfa9a9859bdd44a1720cb88bb52f7, type: 3}
-  - {fileID: 9023435097424916416, guid: 2f2f040ab11cf3a47b61b447552cc0aa, type: 3}
-  - {fileID: 1481644942928449343, guid: fb85a64c47ae62542a6a32174cd6f115, type: 3}
-  firstSpawnDelay: 2
-  repeatRate: 5
-  BacteriaMax: 30
-  BacteriaSpawned: 0
+  spawnDelay: 1.5
   progressBar: {fileID: 1183394060}
 --- !u!1 &2033125940
 GameObject:
@@ -58034,3 +58060,4 @@ SceneRoots:
   - {fileID: 986185476}
   - {fileID: 1706124135}
   - {fileID: 1680809548}
+  - {fileID: 1027275887}

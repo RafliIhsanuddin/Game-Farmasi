@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.UI;
+using System.Collections;
 
 public class BacteriaSpawner : MonoBehaviour
 {
@@ -9,44 +9,59 @@ public class BacteriaSpawner : MonoBehaviour
     public List<GameObject> bacteriaPrefabs = new List<GameObject>();
     public List<SpawnPointSlot> spawnPoints = new List<SpawnPointSlot>();
 
-    [Header("Controller Scripts")]
-    [SerializeField] private List<MonoBehaviour> bacteriaControllers = new List<MonoBehaviour>();
-    // Isi daftar ini di Inspector: drag skrip seperti BacteriaControllerGreen, Red, Purple, dll.
-
     [Header("Spawn Timing")]
-    public float firstSpawnDelay = 2f;
-    public float repeatRate = 5f;
+    public float spawnDelay = 1.5f;
 
-    public int BacteriaMax;
+    [Header("UI Progress")]
+    public UnityEngine.UI.Slider progressBar;
 
-    public int BacteriaSpawned;
+    private int bacteriaToSpawn;
+    private int bacteriaSpawned;
+    private bool isSpawning = false;
 
+    // 🔔 Event callback ke WaveManager
+    public System.Action OnWaveSpawnComplete;
 
-    public Slider progressBar;
-
-    void Start()
+    void Update()
     {
-        InvokeRepeating(nameof(SpawnBacteria), firstSpawnDelay, repeatRate);
-        
-        progressBar.maxValue = BacteriaMax;
+        if (progressBar != null)
+            progressBar.value = bacteriaSpawned;
     }
 
-    private void Update()
+    public void StartWave(int amount)
     {
-        progressBar.value = BacteriaSpawned;
+        if (isSpawning) return;
+
+        bacteriaToSpawn = amount;
+        bacteriaSpawned = 0;
+        if (progressBar != null)
+            progressBar.maxValue = bacteriaToSpawn;
+
+        StartCoroutine(SpawnWaveCoroutine());
     }
 
-    void SpawnBacteria()
+    private IEnumerator SpawnWaveCoroutine()
     {
-        if (BacteriaSpawned >= BacteriaMax)
-            return;
-        // Cari titik kosong
+        isSpawning = true;
+
+        while (bacteriaSpawned < bacteriaToSpawn)
+        {
+            SpawnSingleBacteria();
+            bacteriaSpawned++;
+            yield return new WaitForSeconds(spawnDelay);
+        }
+
+        isSpawning = false;
+        Debug.Log("[Spawner] Wave selesai di-spawn semua bakteri!");
+        OnWaveSpawnComplete?.Invoke(); // 🔔 Beri tahu WaveManager
+    }
+
+    private void SpawnSingleBacteria()
+    {
         List<SpawnPointSlot> emptyPoints = new List<SpawnPointSlot>();
         foreach (var point in spawnPoints)
-        {
             if (!point.occupied)
                 emptyPoints.Add(point);
-        }
 
         if (emptyPoints.Count == 0)
         {
@@ -55,38 +70,12 @@ public class BacteriaSpawner : MonoBehaviour
         }
 
         SpawnPointSlot selected = emptyPoints[Random.Range(0, emptyPoints.Count)];
+        GameObject prefab = bacteriaPrefabs[Random.Range(0, bacteriaPrefabs.Count)];
 
-        if (bacteriaPrefabs.Count == 0)
-        {
-            Debug.LogWarning("[Spawner] Tidak ada prefab bakteri di daftar!");
-            return;
-        }
-
-        GameObject chosenPrefab = bacteriaPrefabs[Random.Range(0, bacteriaPrefabs.Count)];
-        GameObject newBacteria = Instantiate(chosenPrefab, selected.transform.position, Quaternion.identity);
-
-        // Coba hubungkan ke semua skrip yang kamu isi di Inspector
-        foreach (var script in bacteriaControllers)
-        {
-            if (script == null) continue;
-
-            System.Type scriptType = script.GetType();
-            var component = newBacteria.GetComponent(scriptType);
-            if (component != null)
-            {
-                // kalau skrip punya field public/serialized "spawnPoint"
-                var field = scriptType.GetField("spawnPoint");
-                if (field != null)
-                    field.SetValue(component, selected);
-
-                Debug.Log($"[Spawner] Menghubungkan {scriptType.Name} ke {newBacteria.name}");
-            }
-        }
-
+        GameObject newBacteria = Instantiate(prefab, selected.transform.position, Quaternion.identity);
         selected.SetOccupied(newBacteria);
-        BacteriaSpawned++; // Tambah jumlah bakteri yang berhasil di-spawn
-        Debug.Log($"[Spawner] Total bakteri yang telah di-spawn: {BacteriaSpawned}/{BacteriaMax}");
-        //Debug.Log($"[Spawner] Spawn {chosenPrefab.name} di {selected.name}");
+
+        Debug.Log($"[Spawner] Spawn {newBacteria.name} di {selected.name}");
     }
 
 }

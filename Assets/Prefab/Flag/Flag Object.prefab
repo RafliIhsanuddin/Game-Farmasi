@@ -58,6 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1077780975a16194085146db912bf877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultSprite: {fileID: 1005522391507471117, guid: a1f68850d04861e43b027e14925cf587, type: 3}
   expandedSprite: {fileID: -1053402599708406542, guid: 9542c2ee379f9af43b40c5ef754823bf, type: 3}
 --- !u!114 &228806087977057873
 MonoBehaviour:

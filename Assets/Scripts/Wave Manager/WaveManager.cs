@@ -7,65 +7,115 @@ public class WaveManager : MonoBehaviour
 {
 
     [Header("Wave Configuration")]
-    public List<int> levelGoals; // contoh: [10, 25, 40]
+    public List<int> levelGoals;      // total kill untuk tiap wave
+    public List<int> enemiesPerWave;  // jumlah musuh yang muncul per wave
     public Transform flagContainer;
     public GameObject flagPrefab;
     public Slider levelProgress;
 
+    [Header("Spawner Reference")]
+    public BacteriaSpawner spawner;
+
     [Header("Runtime Data")]
-    public static int currentBacteriaKilled = 0;
-
-    private int nextGoalIndex = 0;
+    private int nextWaveIndex = 0;
+    private int totalToKillThisWave;
+    private int currentAliveEnemies;
+    private int totalKillsAllWaves;
     private Dictionary<int, FlagsManager> goalFlags = new Dictionary<int, FlagsManager>();
-
-    void Awake()
-    {
-        goalFlags = new Dictionary<int, FlagsManager>();
-    }
 
     void Start()
     {
-        // Buat flag untuk setiap goal
-        foreach (int goal in levelGoals)
+        goalFlags.Clear();
+
+        // Buat flag untuk setiap wave
+        for (int i = 0; i < levelGoals.Count; i++)
         {
             GameObject flagObj = Instantiate(flagPrefab, flagContainer);
             FlagsManager flag = flagObj.GetComponent<FlagsManager>();
-            goalFlags.Add(goal, flag);
+            goalFlags.Add(levelGoals[i], flag);
         }
 
-        if (levelProgress != null)
-            levelProgress.maxValue = levelGoals[levelGoals.Count - 1];
+        levelProgress.maxValue = levelGoals[levelGoals.Count - 1];
+        totalKillsAllWaves = 0;
 
-        nextGoalIndex = 0;
-        Debug.Log("[WaveManager] Flags initialized for each wave goal.");
+        // 🔗 Daftarkan event callback dari Spawner
+        spawner.OnWaveSpawnComplete += OnWaveSpawned;
+
+        // Mulai wave pertama
+        StartWave(0);
     }
 
     void Update()
     {
-        if (levelProgress != null)
-            levelProgress.value = currentBacteriaKilled;
+        levelProgress.value = totalKillsAllWaves;
+    }
 
-        if (nextGoalIndex < levelGoals.Count &&
-            currentBacteriaKilled >= levelGoals[nextGoalIndex])
+    private void StartWave(int waveIndex)
+    {
+        if (spawner == null)
         {
-            int reachedGoal = levelGoals[nextGoalIndex];
-            goalFlags[reachedGoal].Expand();
+            Debug.LogWarning("[WaveManager] Spawner belum di-assign!");
+            return;
+        }
 
-            Debug.Log($"[WaveManager] Wave goal reached: {reachedGoal} kills");
+        if (waveIndex >= enemiesPerWave.Count)
+        {
+            Debug.Log("[WaveManager] Tidak ada data enemiesPerWave untuk index ini!");
+            return;
+        }
 
-            nextGoalIndex++;
-            if (nextGoalIndex >= levelGoals.Count)
+        int amount = enemiesPerWave[waveIndex];
+        totalToKillThisWave = amount;
+        currentAliveEnemies = amount;
+
+        Debug.Log($"[WaveManager] Memulai Wave {waveIndex + 1} dengan {amount} bakteri!");
+        spawner.StartWave(amount);
+    }
+
+    // 🔔 Dipanggil ketika semua musuh di wave sudah di-spawn
+    private void OnWaveSpawned()
+    {
+        Debug.Log("[WaveManager] Semua bakteri di wave ini sudah di-spawn sepenuhnya.");
+    }
+
+    // Dipanggil dari GameManager ketika bakteri mati
+    public void RegisterKill()
+    {
+        totalKillsAllWaves++;
+        currentAliveEnemies--;
+
+        Debug.Log($"[WaveManager] Kill {totalKillsAllWaves}/{levelGoals[levelGoals.Count - 1]} | Alive: {currentAliveEnemies}");
+
+        // Cek flag progres wave
+        foreach (var goal in levelGoals)
+        {
+            if (totalKillsAllWaves == goal)
             {
-                Debug.Log("[WaveManager] All waves completed!");
+                goalFlags[goal].Expand();
+                Debug.Log($"[WaveManager] Flag untuk wave dengan goal {goal} aktif!");
             }
+        }
+
+        // Jika semua musuh wave ini sudah mati
+        if (currentAliveEnemies <= 0)
+        {
+            Debug.Log($"[WaveManager] Wave {nextWaveIndex + 1} selesai!");
+            NextWave();
         }
     }
 
-    // Fungsi ini dipanggil dari GameManager setiap kali bakteri mati
-    public void RegisterKill()
+    private void NextWave()
     {
-        currentBacteriaKilled++;
-        Debug.Log($"[WaveManager] Current kills: {currentBacteriaKilled}");
+        nextWaveIndex++;
+
+        if (nextWaveIndex < enemiesPerWave.Count)
+        {
+            StartWave(nextWaveIndex);
+        }
+        else
+        {
+            Debug.Log("[WaveManager] Semua wave selesai!");
+        }
     }
     
 }
