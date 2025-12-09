@@ -20,13 +20,31 @@ public class FlagsManager : MonoBehaviour
 
     public void Expand()
     {
-        if (flagImage == null || expandedSprite == null || isExpanded)
-            return;
+        Debug.Log("[FlagsManager] Expand() dipanggil!");
 
+        if (flagImage == null)
+        {
+            Debug.LogWarning("[FlagsManager] ❌ flagImage belum di-assign atau tidak ditemukan!");
+            return;
+        }
+        if (expandedSprite == null)
+        {
+            Debug.LogWarning("[FlagsManager] ❌ expandedSprite belum diisi di Inspector!");
+            return;
+        }
+        if (isExpanded)
+        {
+            Debug.LogWarning("[FlagsManager] ⚠️ Bendera sudah expanded sebelumnya, abaikan.");
+            return;
+        }
+
+        // Ganti sprite
         flagImage.sprite = expandedSprite;
         flagImage.SetNativeSize();
         isExpanded = true;
-        Debug.Log("[FlagsManager] Flag expanded!");
+
+        // Log perubahan visual
+        Debug.Log($"[FlagsManager] ✅ Flag berhasil diubah! Sprite baru: {flagImage.sprite.name}");
     }
     
     

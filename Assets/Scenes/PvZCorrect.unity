@@ -18436,9 +18436,9 @@ RectTransform:
   - {fileID: 1767849607}
   - {fileID: 1548649237}
   - {fileID: 1183394059}
-  - {fileID: 1083282208}
   - {fileID: 1987501431}
   - {fileID: 240800554}
+  - {fileID: 1083282208}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -36787,6 +36787,7 @@ MonoBehaviour:
   - {fileID: 1163710783}
   - {fileID: 345597427}
   spawnDelay: 1.5
+  spawnMode: 1
   progressBar: {fileID: 1183394060}
 --- !u!1 &2033125940
 GameObject:

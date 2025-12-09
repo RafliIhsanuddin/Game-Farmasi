@@ -12,18 +12,27 @@ public class BacteriaSpawner : MonoBehaviour
     [Header("Spawn Timing")]
     public float spawnDelay = 1.5f;
 
-    [Header("UI Progress")]
-    public UnityEngine.UI.Slider progressBar;
+    [Header("Spawn Mode")]
+    [SerializeField] private SpawnMode spawnMode = SpawnMode.SinglePerLine; // dropdown di Inspector
+
+    [Header("UI Progress (optional)")]
+    public UnityEngine.UI.Slider progressBar; // hanya untuk progress spawn, bukan level
 
     private int bacteriaToSpawn;
     private int bacteriaSpawned;
     private bool isSpawning = false;
 
-    // 🔔 Event callback ke WaveManager
     public System.Action OnWaveSpawnComplete;
+
+    public enum SpawnMode
+    {
+        SinglePerLine,
+        MultiPerLine
+    }
 
     void Update()
     {
+        // optional: bar spawner hanya menunjukkan jumlah musuh yang di-SPAWN
         if (progressBar != null)
             progressBar.value = bacteriaSpawned;
     }
@@ -34,6 +43,7 @@ public class BacteriaSpawner : MonoBehaviour
 
         bacteriaToSpawn = amount;
         bacteriaSpawned = 0;
+
         if (progressBar != null)
             progressBar.maxValue = bacteriaToSpawn;
 
@@ -46,36 +56,61 @@ public class BacteriaSpawner : MonoBehaviour
 
         while (bacteriaSpawned < bacteriaToSpawn)
         {
-            SpawnSingleBacteria();
-            bacteriaSpawned++;
+            bool success = SpawnBacteriaAccordingToMode();
+
+            if (success)
+                bacteriaSpawned++;
+
             yield return new WaitForSeconds(spawnDelay);
         }
 
         isSpawning = false;
         Debug.Log("[Spawner] Wave selesai di-spawn semua bakteri!");
-        OnWaveSpawnComplete?.Invoke(); // 🔔 Beri tahu WaveManager
+        OnWaveSpawnComplete?.Invoke();
     }
 
-    private void SpawnSingleBacteria()
+    private bool SpawnBacteriaAccordingToMode()
     {
-        List<SpawnPointSlot> emptyPoints = new List<SpawnPointSlot>();
-        foreach (var point in spawnPoints)
-            if (!point.occupied)
-                emptyPoints.Add(point);
+        List<SpawnPointSlot> candidates = new List<SpawnPointSlot>();
 
-        if (emptyPoints.Count == 0)
+        foreach (var point in spawnPoints)
         {
-            Debug.Log("[Spawner] Semua titik penuh!");
-            return;
+            if (spawnMode == SpawnMode.SinglePerLine)
+            {
+                if (!point.occupied)
+                    candidates.Add(point);
+            }
+            else // MultiPerLine: abaikan occupied
+            {
+                candidates.Add(point);
+            }
         }
 
-        SpawnPointSlot selected = emptyPoints[Random.Range(0, emptyPoints.Count)];
+        if (candidates.Count == 0)
+        {
+            Debug.Log("[Spawner] Semua line penuh (mode SinglePerLine).");
+            return false;
+        }
+
+        SpawnPointSlot selected = candidates[Random.Range(0, candidates.Count)];
         GameObject prefab = bacteriaPrefabs[Random.Range(0, bacteriaPrefabs.Count)];
-
         GameObject newBacteria = Instantiate(prefab, selected.transform.position, Quaternion.identity);
-        selected.SetOccupied(newBacteria);
 
-        Debug.Log($"[Spawner] Spawn {newBacteria.name} di {selected.name}");
+        // Assign spawnPoint agar bisa ClearOccupied saat mati
+        var green = newBacteria.GetComponent<BacteriaControllerGreen>();
+        if (green != null) green.spawnPoint = selected;
+
+        var purple = newBacteria.GetComponent<BacteriaControllerPurple>();
+        if (purple != null) purple.spawnPoint = selected;
+
+        var red = newBacteria.GetComponent<BacteriaControllerRed>();
+        if (red != null) red.spawnPoint = selected;
+
+        if (spawnMode == SpawnMode.SinglePerLine)
+            selected.SetOccupied(newBacteria);
+
+        Debug.Log($"[Spawner] Spawn {newBacteria.name} di {selected.name} | Mode: {spawnMode}");
+        return true;
     }
 
 }

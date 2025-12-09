@@ -7,8 +7,8 @@ public class WaveManager : MonoBehaviour
 {
 
     [Header("Wave Configuration")]
-    public List<int> levelGoals;      // total kill untuk tiap wave
-    public List<int> enemiesPerWave;  // jumlah musuh yang muncul per wave
+    public List<int> levelGoals;
+    public List<int> enemiesPerWave;
     public Transform flagContainer;
     public GameObject flagPrefab;
     public Slider levelProgress;
@@ -27,7 +27,7 @@ public class WaveManager : MonoBehaviour
     {
         goalFlags.Clear();
 
-        // Buat flag untuk setiap wave
+        // buat flag untuk tiap goal
         for (int i = 0; i < levelGoals.Count; i++)
         {
             GameObject flagObj = Instantiate(flagPrefab, flagContainer);
@@ -35,20 +35,21 @@ public class WaveManager : MonoBehaviour
             goalFlags.Add(levelGoals[i], flag);
         }
 
+        // reset progress awal
         levelProgress.maxValue = levelGoals[levelGoals.Count - 1];
+        levelProgress.value = 0f;
         totalKillsAllWaves = 0;
 
-        // 🔗 Daftarkan event callback dari Spawner
-        spawner.OnWaveSpawnComplete += OnWaveSpawned;
+        // callback dari spawner
+        if (spawner != null)
+            spawner.OnWaveSpawnComplete += OnWaveSpawned;
 
-        // Mulai wave pertama
+        // mulai wave pertama
         StartWave(0);
     }
 
-    void Update()
-    {
-        levelProgress.value = totalKillsAllWaves;
-    }
+    // ❌ Hapus Update() karena tidak perlu update tiap frame
+    // levelProgress sekarang diperbarui HANYA ketika musuh mati
 
     private void StartWave(int waveIndex)
     {
@@ -72,13 +73,12 @@ public class WaveManager : MonoBehaviour
         spawner.StartWave(amount);
     }
 
-    // 🔔 Dipanggil ketika semua musuh di wave sudah di-spawn
     private void OnWaveSpawned()
     {
         Debug.Log("[WaveManager] Semua bakteri di wave ini sudah di-spawn sepenuhnya.");
     }
 
-    // Dipanggil dari GameManager ketika bakteri mati
+    // dipanggil dari BacteriaController ketika bakteri mati
     public void RegisterKill()
     {
         totalKillsAllWaves++;
@@ -86,7 +86,9 @@ public class WaveManager : MonoBehaviour
 
         Debug.Log($"[WaveManager] Kill {totalKillsAllWaves}/{levelGoals[levelGoals.Count - 1]} | Alive: {currentAliveEnemies}");
 
-        // Cek flag progres wave
+        // 🔥 progress hanya naik di sini
+        UpdateProgress();
+
         foreach (var goal in levelGoals)
         {
             if (totalKillsAllWaves == goal)
@@ -96,12 +98,17 @@ public class WaveManager : MonoBehaviour
             }
         }
 
-        // Jika semua musuh wave ini sudah mati
         if (currentAliveEnemies <= 0)
         {
             Debug.Log($"[WaveManager] Wave {nextWaveIndex + 1} selesai!");
             NextWave();
         }
+    }
+
+    private void UpdateProgress()
+    {
+        if (levelProgress != null)
+            levelProgress.value = totalKillsAllWaves;
     }
 
     private void NextWave()
