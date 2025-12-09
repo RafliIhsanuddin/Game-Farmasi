@@ -17,8 +17,6 @@ public class BacteriaSpawner : MonoBehaviour
     [Header("Spawn Mode")]
     [SerializeField] private SpawnMode spawnMode = SpawnMode.SinglePerLine;
 
-    [Header("UI Progress (optional)")]
-    public UnityEngine.UI.Slider progressBar;
 
     private int bacteriaToSpawn;
     private int bacteriaSpawned;
@@ -31,9 +29,7 @@ public class BacteriaSpawner : MonoBehaviour
         SinglePerLine,
         MultiPerLine
     }
-
     
-
     public void StartWave(int amount)
     {
         if (isSpawning) return;
@@ -43,8 +39,7 @@ public class BacteriaSpawner : MonoBehaviour
 
         spawnDelay = (spawnMode == SpawnMode.SinglePerLine) ? spawnDelaySinglePerLine : spawnDelayMultiPerLine;
 
-        if (progressBar != null)
-            progressBar.maxValue = bacteriaToSpawn;
+        
 
         StartCoroutine(SpawnWaveCoroutine());
     }

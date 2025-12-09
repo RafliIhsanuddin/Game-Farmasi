@@ -27,6 +27,9 @@ public class BacteriaControllerRed : MonoBehaviour
 
     public void Hit()
     {
+        
+        if (isHit) return;     // guard di baris pertama
+        
         Debug.Log($"[BacteriaControllerRed] {name} terkena serangan CapsuleBlue pada posisi {transform.position}");
         
         isHit = true;
