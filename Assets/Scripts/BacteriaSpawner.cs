@@ -10,13 +10,15 @@ public class BacteriaSpawner : MonoBehaviour
     public List<SpawnPointSlot> spawnPoints = new List<SpawnPointSlot>();
 
     [Header("Spawn Timing")]
-    public float spawnDelay = 1.5f;
+    [SerializeField] private float spawnDelaySinglePerLine = 1.5f;
+    [SerializeField] private float spawnDelayMultiPerLine = 1.0f;
+    private float spawnDelay;
 
     [Header("Spawn Mode")]
-    [SerializeField] private SpawnMode spawnMode = SpawnMode.SinglePerLine; // dropdown di Inspector
+    [SerializeField] private SpawnMode spawnMode = SpawnMode.SinglePerLine;
 
     [Header("UI Progress (optional)")]
-    public UnityEngine.UI.Slider progressBar; // hanya untuk progress spawn, bukan level
+    public UnityEngine.UI.Slider progressBar;
 
     private int bacteriaToSpawn;
     private int bacteriaSpawned;
@@ -30,12 +32,7 @@ public class BacteriaSpawner : MonoBehaviour
         MultiPerLine
     }
 
-    void Update()
-    {
-        // optional: bar spawner hanya menunjukkan jumlah musuh yang di-SPAWN
-        if (progressBar != null)
-            progressBar.value = bacteriaSpawned;
-    }
+    
 
     public void StartWave(int amount)
     {
@@ -43,6 +40,8 @@ public class BacteriaSpawner : MonoBehaviour
 
         bacteriaToSpawn = amount;
         bacteriaSpawned = 0;
+
+        spawnDelay = (spawnMode == SpawnMode.SinglePerLine) ? spawnDelaySinglePerLine : spawnDelayMultiPerLine;
 
         if (progressBar != null)
             progressBar.maxValue = bacteriaToSpawn;
@@ -80,7 +79,7 @@ public class BacteriaSpawner : MonoBehaviour
                 if (!point.occupied)
                     candidates.Add(point);
             }
-            else // MultiPerLine: abaikan occupied
+            else
             {
                 candidates.Add(point);
             }
@@ -96,7 +95,7 @@ public class BacteriaSpawner : MonoBehaviour
         GameObject prefab = bacteriaPrefabs[Random.Range(0, bacteriaPrefabs.Count)];
         GameObject newBacteria = Instantiate(prefab, selected.transform.position, Quaternion.identity);
 
-        // Assign spawnPoint agar bisa ClearOccupied saat mati
+        // Set spawnPoint agar nanti bisa ClearOccupied saat mati
         var green = newBacteria.GetComponent<BacteriaControllerGreen>();
         if (green != null) green.spawnPoint = selected;
 

@@ -36786,8 +36786,9 @@ MonoBehaviour:
   - {fileID: 1494768030}
   - {fileID: 1163710783}
   - {fileID: 345597427}
-  spawnDelay: 1.5
-  spawnMode: 1
+  spawnDelaySinglePerLine: 1.5
+  spawnDelayMultiPerLine: 3
+  spawnMode: 0
   progressBar: {fileID: 1183394060}
 --- !u!1 &2033125940
 GameObject:

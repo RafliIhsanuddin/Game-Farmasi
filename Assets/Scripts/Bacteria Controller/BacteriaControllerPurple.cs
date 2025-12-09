@@ -9,6 +9,12 @@ public class BacteriaControllerPurple : MonoBehaviour
     [SerializeField] private GameObject hitParticleEffect; // prefab efek partikel
     
     private bool isHit = false;
+    private Collider2D myCollider;
+
+    private void Awake()
+    {
+        myCollider = GetComponent<Collider2D>();
+    }
 
     private void FixedUpdate()
     {
@@ -24,6 +30,12 @@ public class BacteriaControllerPurple : MonoBehaviour
         
         isHit = true;
         speed = 0;
+        
+        if (myCollider != null)
+        {
+            myCollider.enabled = false;
+            Debug.Log($"[BacteriaControllerPurple] Collider dinonaktifkan untuk {name}");
+        }
 
         if (BacteriaPurple != null)
             BacteriaPurple.SetActive(false);
@@ -45,6 +57,10 @@ public class BacteriaControllerPurple : MonoBehaviour
         {
             spawnPoint.ClearOccupied();
         }
+        
+        var manager = FindFirstObjectByType<WaveManager>();
+        if (manager != null)
+            manager.RegisterKill();
 
         Debug.Log($"[BacteriaControllerPurple] {name} akan dihapus dalam 3 detik");
         Destroy(gameObject, 3f);

@@ -27,7 +27,6 @@ public class WaveManager : MonoBehaviour
     {
         goalFlags.Clear();
 
-        // buat flag untuk tiap goal
         for (int i = 0; i < levelGoals.Count; i++)
         {
             GameObject flagObj = Instantiate(flagPrefab, flagContainer);
@@ -35,29 +34,21 @@ public class WaveManager : MonoBehaviour
             goalFlags.Add(levelGoals[i], flag);
         }
 
-        // reset progress awal
         levelProgress.maxValue = levelGoals[levelGoals.Count - 1];
         levelProgress.value = 0f;
         totalKillsAllWaves = 0;
 
-        // callback dari spawner
         if (spawner != null)
             spawner.OnWaveSpawnComplete += OnWaveSpawned;
+        else
+            Debug.LogWarning("[WaveManager] Spawner belum di-assign!");
 
-        // mulai wave pertama
         StartWave(0);
     }
 
-    // ❌ Hapus Update() karena tidak perlu update tiap frame
-    // levelProgress sekarang diperbarui HANYA ketika musuh mati
-
     private void StartWave(int waveIndex)
     {
-        if (spawner == null)
-        {
-            Debug.LogWarning("[WaveManager] Spawner belum di-assign!");
-            return;
-        }
+        if (spawner == null) return;
 
         if (waveIndex >= enemiesPerWave.Count)
         {
@@ -78,23 +69,22 @@ public class WaveManager : MonoBehaviour
         Debug.Log("[WaveManager] Semua bakteri di wave ini sudah di-spawn sepenuhnya.");
     }
 
-    // dipanggil dari BacteriaController ketika bakteri mati
+    // 🔥 Dipanggil dari BacteriaController saat bakteri mati
     public void RegisterKill()
     {
         totalKillsAllWaves++;
         currentAliveEnemies--;
 
-        Debug.Log($"[WaveManager] Kill {totalKillsAllWaves}/{levelGoals[levelGoals.Count - 1]} | Alive: {currentAliveEnemies}");
-
-        // 🔥 progress hanya naik di sini
         UpdateProgress();
+
+        Debug.Log($"[WaveManager] Kill {totalKillsAllWaves}/{levelGoals[levelGoals.Count - 1]} | Alive: {currentAliveEnemies}");
 
         foreach (var goal in levelGoals)
         {
             if (totalKillsAllWaves == goal)
             {
                 goalFlags[goal].Expand();
-                Debug.Log($"[WaveManager] Flag untuk wave dengan goal {goal} aktif!");
+                Debug.Log($"[WaveManager] Flag untuk goal {goal} aktif!");
             }
         }
 
