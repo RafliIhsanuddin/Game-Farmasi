@@ -3,21 +3,30 @@ using UnityEngine;
 public class AtomSpawner : MonoBehaviour
 {
     public GameObject atomPrefab;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public WaveManager waveManager; // 🔹 referensi ke WaveManager di Inspector
+
+    private bool isSpawning = true;
+
     void Start()
     {
-        SpawnAtom();
-    }
+        if (waveManager != null)
+            waveManager.OnLevelComplete += StopSpawning; // 🔹 subscribe event
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SpawnAtom();
     }
 
     private void SpawnAtom()
     {
+        if (!isSpawning) return; // 🔹 hentikan spawn bila wave sudah selesai
+
         Instantiate(atomPrefab);
-        Invoke("SpawnAtom", Random.Range(1, 3));
+        Invoke(nameof(SpawnAtom), Random.Range(1, 3));
+    }
+
+    private void StopSpawning()
+    {
+        isSpawning = false;
+        CancelInvoke(nameof(SpawnAtom)); // 🔹 hentikan semua Invoke yang tersisa
+        Debug.Log("[AtomSpawner] Spawn atom dihentikan karena semua wave selesai.");
     }
 }

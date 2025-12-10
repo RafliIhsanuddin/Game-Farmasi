@@ -7,13 +7,12 @@ public class WaveManager : MonoBehaviour
 {
 
     [Header("Wave Configuration")]
-    public List<int> levelGoals;          // contoh: [5,10,20] (wajib urut naik)
-    public List<int> enemiesPerWave;      // contoh: [5,5,10]
+    public List<int> levelGoals;
+    public List<int> enemiesPerWave;
 
     [Header("UI")]
     public Slider levelProgress;
-    [Tooltip("Container untuk meletakkan ikon Flag di atas slider (RectTransform di atas slider).")]
-    public RectTransform flagContainer;   
+    public RectTransform flagContainer;
     public GameObject flagPrefab;
 
     [Header("Spawner")]
@@ -28,23 +27,22 @@ public class WaveManager : MonoBehaviour
     private Dictionary<int, FlagsManager> goalToFlag = new Dictionary<int, FlagsManager>();
     private HashSet<int> triggeredGoals = new HashSet<int>();
 
+    // 🔹 Tambahan event publik untuk notifikasi ke spawner lain
+    public System.Action OnLevelComplete;
+
     void Start()
     {
-        // 1) hitung total musuh level
         totalEnemiesInLevel = 0;
         foreach (var n in enemiesPerWave) totalEnemiesInLevel += n;
 
-        // 2) setup slider (jangan ditulis oleh skrip lain!)
         levelProgress.maxValue = totalEnemiesInLevel;
         levelProgress.value = 0;
 
-        // 3) buat & POSISIKAN flag secara proporsional di atas slider
         SetupFlags();
 
-        // 4) subscribe event spawner
-        if (spawner != null) spawner.OnWaveSpawnComplete += OnWaveSpawned;
+        if (spawner != null)
+            spawner.OnWaveSpawnComplete += OnWaveSpawned;
 
-        // 5) mulai wave pertama
         StartWave(0);
     }
 
@@ -52,31 +50,33 @@ public class WaveManager : MonoBehaviour
     {
         goalToFlag.Clear();
 
-        // validasi: goal terakhir sebaiknya == total musuh
         if (levelGoals.Count == 0 || levelGoals[levelGoals.Count - 1] != totalEnemiesInLevel)
             Debug.LogWarning("[WaveManager] Saran: levelGoals terakhir sebaiknya sama dengan total musuh level.");
 
         for (int i = 0; i < levelGoals.Count; i++)
         {
             int goal = levelGoals[i];
-
             GameObject flagObj = Instantiate(flagPrefab, flagContainer);
             var fm = flagObj.GetComponent<FlagsManager>();
             goalToFlag[goal] = fm;
 
-            // --- POSISI PROPORSIONAL ---
-            // t = progress relatif (0..1)
             float t = Mathf.Clamp01((float)goal / totalEnemiesInLevel);
             var rt = flagObj.GetComponent<RectTransform>();
             rt.anchorMin = new Vector2(t, 0.5f);
             rt.anchorMax = new Vector2(t, 0.5f);
-            rt.anchoredPosition = Vector2.zero; // tepat di titik t
+            rt.anchoredPosition = Vector2.zero;
         }
     }
 
     private void StartWave(int waveIndex)
     {
-        if (waveIndex >= enemiesPerWave.Count) { Debug.Log("[WaveManager] Semua wave selesai."); return; }
+        if (waveIndex >= enemiesPerWave.Count)
+        {
+            Debug.Log("[WaveManager] Semua wave selesai.");
+            OnLevelComplete?.Invoke(); // 🔹 Panggil event ketika level selesai
+            return;
+        }
+
         int amount = enemiesPerWave[waveIndex];
         currentAliveEnemies = amount;
 
@@ -86,20 +86,16 @@ public class WaveManager : MonoBehaviour
 
     private void OnWaveSpawned()
     {
-        // info saja
         Debug.Log("[WaveManager] Wave ini selesai DI-SPAWN (belum tentu mati).");
     }
 
-    // Dipanggil bakteri saat mati
     public void RegisterKill()
     {
         totalKills++;
         currentAliveEnemies--;
 
-        // update bar
         levelProgress.value = totalKills;
 
-        // TRIGGER FLAG kalau fill sudah MENCAPAI / MELEWATI goal
         for (int i = 0; i < levelGoals.Count; i++)
         {
             int g = levelGoals[i];
@@ -114,8 +110,13 @@ public class WaveManager : MonoBehaviour
         if (currentAliveEnemies <= 0)
         {
             currentWaveIndex++;
-            if (currentWaveIndex < enemiesPerWave.Count) StartWave(currentWaveIndex);
-            else Debug.Log("[WaveManager] Level Selesai.");
+            if (currentWaveIndex < enemiesPerWave.Count)
+                StartWave(currentWaveIndex);
+            else
+            {
+                Debug.Log("[WaveManager] Level Selesai.");
+                OnLevelComplete?.Invoke(); // 🔹 Pastikan event juga dipanggil di sini
+            }
         }
     }
     

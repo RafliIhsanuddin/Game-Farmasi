@@ -16849,7 +16849,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -482, y: 282}
+  m_AnchoredPosition: {x: -465, y: 282}
   m_SizeDelta: {x: 1524, y: 1024}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &765895709
@@ -30108,6 +30108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   atomPrefab: {fileID: 7919829580706015601, guid: 89b06313bb28c1b4a8d6b4658a33aabb, type: 3}
+  waveManager: {fileID: 1027275886}
 --- !u!4 &1790310328
 Transform:
   m_ObjectHideFlags: 0
@@ -36788,7 +36789,7 @@ MonoBehaviour:
   - {fileID: 345597427}
   spawnDelaySinglePerLine: 1.5
   spawnDelayMultiPerLine: 3
-  spawnMode: 2
+  spawnMode: 1
   minPerLine: 2
   maxPerLine: 4
   minDelayPerLine: 0.2
