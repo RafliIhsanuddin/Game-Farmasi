@@ -36788,7 +36788,11 @@ MonoBehaviour:
   - {fileID: 345597427}
   spawnDelaySinglePerLine: 1.5
   spawnDelayMultiPerLine: 3
-  spawnMode: 0
+  spawnMode: 2
+  minPerLine: 2
+  maxPerLine: 4
+  minDelayPerLine: 0.2
+  maxDelayPerLine: 0.4
 --- !u!1 &2033125940
 GameObject:
   m_ObjectHideFlags: 0
