@@ -14,6 +14,8 @@ public class WaveManager : MonoBehaviour
     public Slider levelProgress;
     public RectTransform flagContainer;
     public GameObject flagPrefab;
+    [Header("UI Win Panel")]
+    public GameObject winUI;
 
     [Header("Spawner")]
     public BacteriaSpawner spawner;
@@ -27,11 +29,14 @@ public class WaveManager : MonoBehaviour
     private Dictionary<int, FlagsManager> goalToFlag = new Dictionary<int, FlagsManager>();
     private HashSet<int> triggeredGoals = new HashSet<int>();
 
-    // 🔹 Tambahan event publik untuk notifikasi ke spawner lain
     public System.Action OnLevelComplete;
 
     void Start()
     {
+        // Pastikan UI Win tidak muncul di awal
+        if (winUI != null)
+            winUI.SetActive(false);
+
         totalEnemiesInLevel = 0;
         foreach (var n in enemiesPerWave) totalEnemiesInLevel += n;
 
@@ -73,7 +78,8 @@ public class WaveManager : MonoBehaviour
         if (waveIndex >= enemiesPerWave.Count)
         {
             Debug.Log("[WaveManager] Semua wave selesai.");
-            OnLevelComplete?.Invoke(); // 🔹 Panggil event ketika level selesai
+            OnLevelComplete?.Invoke();
+            ShowWinUI();
             return;
         }
 
@@ -115,9 +121,30 @@ public class WaveManager : MonoBehaviour
             else
             {
                 Debug.Log("[WaveManager] Level Selesai.");
-                OnLevelComplete?.Invoke(); // 🔹 Pastikan event juga dipanggil di sini
+                OnLevelComplete?.Invoke();
+                ShowWinUI();
             }
         }
+    }
+
+    // 🔹 Fungsi baru untuk menampilkan UI Win dan mem-pause game
+    private void ShowWinUI()
+    {
+        if (winUI != null)
+        {
+            winUI.SetActive(true);
+            Time.timeScale = 0f; // 🔹 Pause seluruh gameplay
+            Debug.Log("[WaveManager] UI Win muncul dan game dipause.");
+        }
+    }
+
+    // 🔹 Fungsi opsional jika ingin resume lagi (misal tombol “Next”)
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        if (winUI != null)
+            winUI.SetActive(false);
+        Debug.Log("[WaveManager] Game dilanjutkan lagi.");
     }
     
 }
