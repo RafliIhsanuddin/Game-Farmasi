@@ -3,11 +3,9 @@ using UnityEngine;
 public class PauseManager : MonoBehaviour
 {
     [Header("UI Pause Panel")]
-    [Tooltip("Drag panel pause (Canvas child) ke sini")]
     [SerializeField] private GameObject pauseUI;
 
     [Header("Settings")]
-    [Tooltip("Tombol untuk pause/resume (default: Escape)")]
     [SerializeField] private KeyCode pauseKey = KeyCode.Escape;
 
     private bool isPaused = false;
@@ -22,6 +20,9 @@ public class PauseManager : MonoBehaviour
 
     void Update()
     {
+        // 🔹 Cegah pause jika game sudah Win atau Lose
+        if (WaveManager.isGameOver) return;
+
         if (Input.GetKeyDown(pauseKey))
         {
             if (isPaused)
@@ -36,7 +37,7 @@ public class PauseManager : MonoBehaviour
         if (pauseUI != null)
             pauseUI.SetActive(true);
 
-        Time.timeScale = 0f; // Hentikan waktu di game
+        Time.timeScale = 0f;
         isPaused = true;
         Debug.Log("[PauseManager] Game Paused");
     }
@@ -46,18 +47,16 @@ public class PauseManager : MonoBehaviour
         if (pauseUI != null)
             pauseUI.SetActive(false);
 
-        Time.timeScale = 1f; // Lanjutkan waktu
+        Time.timeScale = 1f;
         isPaused = false;
         Debug.Log("[PauseManager] Game Resumed");
     }
 
-    // 🔹 Tambahan jika kamu ingin tombol Resume di UI
     public void OnResumeButton()
     {
         ResumeGame();
     }
 
-    // 🔹 Tambahan jika ingin tombol Quit di UI pause
     public void OnQuitButton()
     {
         Debug.Log("[PauseManager] Quit game...");

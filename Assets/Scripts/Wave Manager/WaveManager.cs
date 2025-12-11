@@ -14,28 +14,31 @@ public class WaveManager : MonoBehaviour
     public Slider levelProgress;
     public RectTransform flagContainer;
     public GameObject flagPrefab;
+
     [Header("UI Win Panel")]
     public GameObject winUI;
 
     [Header("Spawner")]
     public BacteriaSpawner spawner;
 
-    // runtime
+    // Runtime
     private int currentWaveIndex = 0;
     private int currentAliveEnemies = 0;
     private int totalKills = 0;
     private int totalEnemiesInLevel = 0;
-
     private Dictionary<int, FlagsManager> goalToFlag = new Dictionary<int, FlagsManager>();
     private HashSet<int> triggeredGoals = new HashSet<int>();
+
+    public static bool isGameOver = false; // 🔹 status global win/lose
 
     public System.Action OnLevelComplete;
 
     void Start()
     {
-        // Pastikan UI Win tidak muncul di awal
         if (winUI != null)
             winUI.SetActive(false);
+
+        isGameOver = false; // reset setiap mulai level
 
         totalEnemiesInLevel = 0;
         foreach (var n in enemiesPerWave) totalEnemiesInLevel += n;
@@ -99,12 +102,10 @@ public class WaveManager : MonoBehaviour
     {
         totalKills++;
         currentAliveEnemies--;
-
         levelProgress.value = totalKills;
 
-        for (int i = 0; i < levelGoals.Count; i++)
+        foreach (int g in levelGoals)
         {
-            int g = levelGoals[i];
             if (totalKills >= g && !triggeredGoals.Contains(g))
             {
                 triggeredGoals.Add(g);
@@ -127,18 +128,17 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    // 🔹 Fungsi baru untuk menampilkan UI Win dan mem-pause game
     private void ShowWinUI()
     {
         if (winUI != null)
         {
             winUI.SetActive(true);
-            Time.timeScale = 0f; // 🔹 Pause seluruh gameplay
+            Time.timeScale = 0f;
+            isGameOver = true; // 🔹 tandai game berakhir (menang)
             Debug.Log("[WaveManager] UI Win muncul dan game dipause.");
         }
     }
 
-    // 🔹 Fungsi opsional jika ingin resume lagi (misal tombol “Next”)
     public void ResumeGame()
     {
         Time.timeScale = 1f;

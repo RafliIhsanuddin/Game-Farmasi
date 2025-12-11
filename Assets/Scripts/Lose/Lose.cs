@@ -10,18 +10,15 @@ public class Lose : MonoBehaviour
     [SerializeField] private Animator animator;
 
     [Header("GameObjects To Activate After Delay")]
-    [Tooltip("Masukkan GameObject yang ingin diaktifkan setelah delay di sini")]
     [SerializeField] private List<GameObject> objectsToActivate = new List<GameObject>();
 
     [Header("Delay Settings")]
-    [Tooltip("Waktu delay sebelum mengaktifkan GameObject (dalam detik)")]
     [SerializeField] private float activationDelay = 2f;
 
     private bool hasTriggered = false;
 
     private void Start()
     {
-        // 🔹 Pastikan semua objek dinonaktifkan di awal
         foreach (GameObject obj in objectsToActivate)
         {
             if (obj != null)
@@ -31,10 +28,10 @@ public class Lose : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Layer 8 biasanya untuk player — bisa kamu ganti sesuai kebutuhan
         if (!hasTriggered && other.gameObject.layer == 8)
         {
             hasTriggered = true;
+            WaveManager.isGameOver = true; // 🔹 tandai game over (kalah)
             Debug.Log("[Lose] Triggered by: " + other.gameObject.name);
 
             if (animator != null)
@@ -43,7 +40,6 @@ public class Lose : MonoBehaviour
                 Debug.Log("[Lose] DeathAnimation played");
             }
 
-            // 🔹 Jalankan coroutine untuk mengaktifkan objek dengan delay
             StartCoroutine(ActivateObjectsAfterDelay());
         }
     }
@@ -62,11 +58,12 @@ public class Lose : MonoBehaviour
             }
         }
     }
-    
-    // 🔹 Fungsi Retry — bisa dipanggil dari tombol UI
+
     public void RetryLevel()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
+        Time.timeScale = 1f;
+        WaveManager.isGameOver = false;
         Debug.Log("[Lose] Reloading scene: " + currentSceneName);
         SceneManager.LoadScene(currentSceneName);
     }
