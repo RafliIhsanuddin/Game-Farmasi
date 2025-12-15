@@ -15,9 +15,14 @@ public class CapsuleSlot : MonoBehaviour
     public TextMeshProUGUI priceText;
     public Image icon;
 
-    // Opsional: efek visual saat tidak cukup suns
+    [Header("Card Visuals (Gelap Saat Dipilih)")]
+    [SerializeField] private Image cardImage;       // 🔹 latar belakang kartu kapsul
+    [SerializeField] private Image capsuleImage;    // 🔹 ikon kapsul
+    [SerializeField] private TextMeshProUGUI priceTextVisual;
+    [SerializeField, Range(0f, 1f)] private float selectedDarkAlpha = 0.5f;
+
     [Header("Optional Visuals")]
-    public Image slotButtonImage;   // drag Image dari tombol di Inspector (boleh kosong)
+    public Image slotButtonImage;
     [Range(0.2f, 1f)] public float notEnoughAlpha = 0.5f;
 
     private GameManager gms;
@@ -33,20 +38,18 @@ public class CapsuleSlot : MonoBehaviour
         if (gms == null)
             gms = GameObject.Find("GameManager")?.GetComponent<GameManager>();
 
-        // pastikan listener hanya ditambahkan sekali
         btn.onClick.RemoveListener(SelectPlant);
         btn.onClick.AddListener(SelectPlant);
 
-        // set label harga & ikon
         ApplyStaticUI();
-        // set status awal (jika saat start suns belum cukup)
         ApplyAffordability();
+        ApplySelectionVisual(); // 🔹 sync awal
     }
 
     private void Update()
     {
-        // Polling ringan supaya tombol selalu sinkron dengan nilai suns saat ini
         ApplyAffordability();
+        ApplySelectionVisual(); // 🔹 update efek visual sesuai seleksi global
     }
 
     private void ApplyStaticUI()
@@ -68,20 +71,15 @@ public class CapsuleSlot : MonoBehaviour
             priceText.text = Price.ToString();
     }
 
-    /// <summary>
-    /// Aktif/nonaktifkan tombol sesuai cukup/tidaknya suns, plus efek visual opsional.
-    /// </summary>
     private void ApplyAffordability()
     {
         if (gms == null) return;
 
         bool canAfford = gms.suns >= Price;
 
-        // 1) KUNCI tombol agar tidak bisa diklik
         if (btn != null)
             btn.interactable = canAfford;
 
-        // 2) (Opsional) efek visual saat tidak cukup suns
         if (slotButtonImage != null)
         {
             Color c = slotButtonImage.color;
@@ -90,22 +88,17 @@ public class CapsuleSlot : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Saat slot diklik (hanya akan terpanggil jika btn.interactable = true).
-    /// Tetap ada guard tambahan kalau-kalau interactable belum terset.
-    /// </summary>
     private void SelectPlant()
     {
         if (gms == null) return;
 
-        // Guard sekunder (defensive)
         if (gms.suns < Price)
         {
             Debug.LogWarning($"[CapsuleSlot] Suns tidak cukup untuk memilih {capsuleObject?.name} (butuh {Price}, punya {gms.suns})");
             return;
         }
 
-        // Klik ulang slot yang sama = batalkan pilihan
+        // Klik ulang slot yang sama = batalkan
         if (gms.currentCapsule == capsuleObject)
         {
             gms.CancelSelection();
@@ -113,13 +106,48 @@ public class CapsuleSlot : MonoBehaviour
         }
         else
         {
-            // Hanya memilih (tanpa mengurangi suns) — suns dipotong saat tanam di tile
             gms.SelectPlant(capsuleObject, capsuleSprite, Price);
             Debug.Log($"[CapsuleSlot] Selected: {capsuleObject?.name} (Price: {Price})");
         }
+
+        // 🔹 Visual akan otomatis sinkron di Update()
     }
 
-    // Jika kamu ubah Price/capsuleSprite di Inspector saat play, ini menjaga UI tetap benar
+    /// <summary>
+    /// 🔹 Efek visual saat slot dipilih — dibandingkan langsung dengan GameManager.currentCapsule
+    /// </summary>
+    /// <summary>
+    /// 🔹 Efek visual saat slot dipilih — dibandingkan langsung dengan GameManager.currentCapsule
+    /// </summary>
+    private void ApplySelectionVisual()
+    {
+        if (gms == null) return;
+
+        bool isThisSelected = (gms.currentCapsule == capsuleObject);
+        float alpha = isThisSelected ? selectedDarkAlpha : 1f;
+
+        if (cardImage != null)
+        {
+            Color c = cardImage.color;
+            c.a = alpha;
+            cardImage.color = c;
+        }
+
+        if (capsuleImage != null)
+        {
+            Color c = capsuleImage.color;
+            c.a = alpha;
+            capsuleImage.color = c;
+        }
+
+        if (priceTextVisual != null)
+        {
+            Color c = priceTextVisual.color;
+            c.a = alpha;
+            priceTextVisual.color = c;
+        }
+    }
+
     private void OnValidate()
     {
         if (priceText != null)
