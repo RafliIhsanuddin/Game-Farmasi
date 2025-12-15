@@ -17229,7 +17229,7 @@ RectTransform:
   m_GameObject: {fileID: 765895707}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.16982153, y: 0.16982153, z: 0.16982153}
+  m_LocalScale: {x: 0.1182578, y: 0.1182578, z: 0.1182578}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1577233855}
@@ -19588,8 +19588,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f978e37b6578d2343a52c5b863f10257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelGoals: 050000000a00000014000000
-  enemiesPerWave: 05000000050000000a000000
+  enemiesPerWave: 0a0000000f0000000f000000
+  spawnModesPerWave: 010000000000000002000000
   levelProgress: {fileID: 1183394060}
   flagContainer: {fileID: 1942895426}
   flagPrefab: {fileID: 8785165802296183215, guid: 84bee79144f2b9849a8c0597de3dd722, type: 3}
@@ -38602,10 +38602,10 @@ MonoBehaviour:
   spawnDelaySinglePerLine: 1.5
   spawnDelayMultiPerLine: 3
   spawnMode: 1
-  minPerLine: 2
-  maxPerLine: 4
-  minDelayPerLine: 0.2
-  maxDelayPerLine: 0.4
+  minPerLine: 1
+  maxPerLine: 3
+  minDelayPerLine: 1
+  maxDelayPerLine: 2
 --- !u!1 &2012990689
 GameObject:
   m_ObjectHideFlags: 0

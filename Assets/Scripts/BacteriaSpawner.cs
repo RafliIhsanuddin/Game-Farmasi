@@ -28,18 +28,30 @@ public class BacteriaSpawner : MonoBehaviour
     [SerializeField] private float maxDelayPerLine = 1.5f;
 
     private bool isSpawning = false;
+    private bool cancelRequested = false;   // ✅ untuk hard-stop semua proses spawn
+    private readonly List<Coroutine> runningLineCoroutines = new();
+
     public System.Action OnWaveSpawnComplete;
 
     public enum SpawnMode
     {
         SinglePerLine,
         MultiPerLine,
-        MultiPerLineGrouped // independen per baris, dengan delay acak per line
+        MultiPerLineGrouped
+    }
+
+    // ✅ Accessor publik untuk WaveManager
+    public SpawnMode Mode
+    {
+        get => spawnMode;
+        set => spawnMode = value;
     }
 
     public void StartWave(int amount)
     {
         if (isSpawning) return;
+
+        cancelRequested = false; // reset setiap mulai wave
 
         spawnDelay = (spawnMode == SpawnMode.SinglePerLine)
             ? spawnDelaySinglePerLine
@@ -51,27 +63,45 @@ public class BacteriaSpawner : MonoBehaviour
             case SpawnMode.MultiPerLine:
                 StartCoroutine(SpawnWaveCoroutine(amount));
                 break;
+
             case SpawnMode.MultiPerLineGrouped:
                 StartCoroutine(SpawnGroupedPerLineCoroutine(amount));
                 break;
         }
     }
 
-    // ---------------------------
-    // MODE NORMAL (single / multi)
-    // ---------------------------
+    // ✅ Dipanggil saat level berakhir supaya tidak ada spawn baru
+    public void StopAllSpawning()
+    {
+        cancelRequested = true;
+        isSpawning = false;
+
+        // Hentikan semua coroutine yang berjalan
+        StopAllCoroutines();
+        runningLineCoroutines.Clear();
+
+        Debug.Log("[Spawner] StopAllSpawning() dipanggil. Semua proses spawn dihentikan.");
+    }
+
+    // Opsional: dipakai WaveManager untuk cek yang hidup
+    public int CountAllAlive()
+    {
+        int total = 0;
+        total += FindObjectsByType<BacteriaControllerGreen>(FindObjectsSortMode.None).Length;
+        total += FindObjectsByType<BacteriaControllerPurple>(FindObjectsSortMode.None).Length;
+        total += FindObjectsByType<BacteriaControllerRed>(FindObjectsSortMode.None).Length;
+        return total;
+    }
+
     private IEnumerator SpawnWaveCoroutine(int amount)
     {
         isSpawning = true;
         int spawned = 0;
 
-        while (spawned < amount)
+        while (!cancelRequested && spawned < amount)
         {
             bool success = SpawnBacteriaAccordingToMode();
-
-            if (success)
-                spawned++;
-
+            if (success) spawned++;
             yield return new WaitForSeconds(spawnDelay);
         }
 
@@ -82,14 +112,14 @@ public class BacteriaSpawner : MonoBehaviour
 
     private bool SpawnBacteriaAccordingToMode()
     {
-        List<SpawnPointSlot> candidates = new List<SpawnPointSlot>();
+        if (cancelRequested) return false;
 
+        List<SpawnPointSlot> candidates = new List<SpawnPointSlot>();
         foreach (var point in spawnPoints)
         {
             if (spawnMode == SpawnMode.SinglePerLine)
             {
-                if (!point.occupied)
-                    candidates.Add(point);
+                if (!point.occupied) candidates.Add(point);
             }
             else
             {
@@ -128,69 +158,61 @@ public class BacteriaSpawner : MonoBehaviour
         if (r != null) r.spawnPoint = slot;
     }
 
-    // ---------------------------
-    // MODE BARU: MultiPerLineGrouped (independen per baris)
-    // ---------------------------
     private IEnumerator SpawnGroupedPerLineCoroutine(int amount)
     {
         isSpawning = true;
         Debug.Log("[Spawner] Mode MultiPerLineGrouped (independen per baris) aktif.");
 
-        // Jalankan loop terpisah untuk setiap baris
+        // Jalankan loop per baris yang bisa dihentikan dengan cancelRequested
         foreach (var line in spawnPoints)
         {
-            StartCoroutine(HandleLineGroupLoop(line));
+            var c = StartCoroutine(HandleLineGroupLoop(line));
+            runningLineCoroutines.Add(c);
         }
 
-        // Tunggu hingga semua baris selesai (opsional)
-        while (CountAllAlive() > 0)
-            yield return null;
-
+        // Untuk konsistensi event “wave spawned complete”,
+        // anggap wave selesai ketika set minimal sudah dimulai.
+        yield return null;
         isSpawning = false;
-        Debug.Log("[Spawner] Semua baris selesai menjalankan grup mereka.");
         OnWaveSpawnComplete?.Invoke();
     }
 
     private IEnumerator HandleLineGroupLoop(SpawnPointSlot line)
     {
-        int totalSpawned = 0;
-
-        while (true)
+        while (!cancelRequested)
         {
-            // Pilih tipe bakteri acak untuk baris ini
             GameObject selectedPrefab = bacteriaPrefabs[Random.Range(0, bacteriaPrefabs.Count)];
-
-            // Tentukan jumlah bakteri di baris ini
             int perLineCount = Random.Range(minPerLine, maxPerLine + 1);
-
-            // Tentukan delay acak untuk baris ini
             float lineDelay = Random.Range(minDelayPerLine, maxDelayPerLine);
 
-            Debug.Log($"[Spawner] {line.name}: Grup baru {perLineCount}x {selectedPrefab.name} | delay antar bakteri: {lineDelay:F2}s");
+            Debug.Log($"[Spawner] {line.name}: Grup baru {perLineCount}x {selectedPrefab.name} | delay: {lineDelay:F2}s");
 
-            // Spawn batch di baris ini
-            for (int i = 0; i < perLineCount; i++)
+            for (int i = 0; i < perLineCount && !cancelRequested; i++)
             {
                 GameObject newBacteria = Instantiate(selectedPrefab, line.transform.position, Quaternion.identity);
                 LinkSpawnPoint(line, newBacteria);
-                totalSpawned++;
                 yield return new WaitForSeconds(lineDelay);
             }
 
-            // Tunggu semua bakteri batch ini mati sebelum lanjut grup baru
-            yield return StartCoroutine(WaitUntilAllOfTypeInLineDead(line, selectedPrefab.name));
+            // Tunggu sampai grup jenis ini di baris tsb habis (kalau belum di-cancel)
+            if (!cancelRequested)
+                yield return WaitUntilAllOfTypeInLineDead(line, selectedPrefab.name);
 
-            // Jeda antar grup
-            yield return new WaitForSeconds(1.0f);
+            // jeda kecil antar grup
+            if (!cancelRequested)
+                yield return new WaitForSeconds(1.0f);
         }
+
+        Debug.Log($"[Spawner] {line.name}: Loop dihentikan (cancelRequested).");
     }
 
     private IEnumerator WaitUntilAllOfTypeInLineDead(SpawnPointSlot line, string prefabName)
     {
-        while (CountAliveOfTypeInLine(line, prefabName) > 0)
+        while (!cancelRequested && CountAliveOfTypeInLine(line, prefabName) > 0)
             yield return new WaitForSeconds(0.5f);
 
-        Debug.Log($"[Spawner] {line.name}: Semua {prefabName} di baris ini sudah mati. Grup baru siap!");
+        if (!cancelRequested)
+            Debug.Log($"[Spawner] {line.name}: Semua {prefabName} di baris ini sudah mati. Grup baru siap!");
     }
 
     private int CountAliveOfTypeInLine(SpawnPointSlot line, string prefabName)
@@ -200,34 +222,20 @@ public class BacteriaSpawner : MonoBehaviour
         if (prefabName.Contains("Green"))
         {
             var arr = FindObjectsByType<BacteriaControllerGreen>(FindObjectsSortMode.None);
-            foreach (var b in arr)
-                if (b.spawnPoint == line) count++;
+            foreach (var b in arr) if (b.spawnPoint == line) count++;
         }
-
         if (prefabName.Contains("Purple"))
         {
             var arr = FindObjectsByType<BacteriaControllerPurple>(FindObjectsSortMode.None);
-            foreach (var b in arr)
-                if (b.spawnPoint == line) count++;
+            foreach (var b in arr) if (b.spawnPoint == line) count++;
         }
-
         if (prefabName.Contains("Red"))
         {
             var arr = FindObjectsByType<BacteriaControllerRed>(FindObjectsSortMode.None);
-            foreach (var b in arr)
-                if (b.spawnPoint == line) count++;
+            foreach (var b in arr) if (b.spawnPoint == line) count++;
         }
 
         return count;
-    }
-
-    private int CountAllAlive()
-    {
-        int total = 0;
-        total += FindObjectsByType<BacteriaControllerGreen>(FindObjectsSortMode.None).Length;
-        total += FindObjectsByType<BacteriaControllerPurple>(FindObjectsSortMode.None).Length;
-        total += FindObjectsByType<BacteriaControllerRed>(FindObjectsSortMode.None).Length;
-        return total;
     }
 
 }
