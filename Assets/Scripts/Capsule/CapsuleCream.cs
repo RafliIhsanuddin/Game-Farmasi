@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class CapsuleYellow : MonoBehaviour
+public class CapsuleCream : MonoBehaviour
 {
     public Tile ownerTile; // diisi GameManager saat spawn capsule
 
-    private bool hasTriggered = false;   // 🔒 pengaman utama
+    private bool hasTriggered = false;   // 🔒 pengaman satu kali trigger
     private Collider2D capsuleCollider;
 
     private void Awake()
@@ -18,34 +18,25 @@ public class CapsuleYellow : MonoBehaviour
         if (hasTriggered) return;
 
         // ===============================
-        // TARGET UTAMA: BAKTERI UNGU
+        // TARGET UTAMA: JAMUR
         // ===============================
-        if (collision.TryGetComponent<BacteriaControllerPurple>(out BacteriaControllerPurple purple))
+        if (collision.TryGetComponent<MushroomController>(out MushroomController mushroom))
         {
             hasTriggered = true;
-            purple.Hit();        // 🔥 kena efek
+            mushroom.Hit();     // 🔥 JAMUR HANCUR
             CleanupCapsule();
             return;
         }
 
         // ===============================
-        // BAKTERI LAIN (HIJAU / MERAH)
+        // OBJEK LAIN (BAKTERI / DLL)
         // ===============================
         if (collision.TryGetComponent<BacteriaControllerGreen>(out _) ||
-            collision.TryGetComponent<BacteriaControllerRed>(out _))
+            collision.TryGetComponent<BacteriaControllerRed>(out _) ||
+            collision.TryGetComponent<BacteriaControllerPurple>(out _))
         {
             hasTriggered = true;
-            CleanupCapsule();    // ❌ bakteri tidak mati
-            return;
-        }
-
-        // ===============================
-        // JAMUR (TIDAK BEREFEK)
-        // ===============================
-        if (collision.TryGetComponent<MushroomController>(out _))
-        {
-            hasTriggered = true;
-            CleanupCapsule();    // ❌ jamur tidak kena Hit()
+            CleanupCapsule();   // ❌ tidak ada efek ke bakteri
             return;
         }
     }

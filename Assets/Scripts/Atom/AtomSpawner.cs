@@ -3,30 +3,35 @@ using UnityEngine;
 public class AtomSpawner : MonoBehaviour
 {
     public GameObject atomPrefab;
-    public WaveManager waveManager; // 🔹 referensi ke WaveManager di Inspector
+    public WaveManager waveManager;
+
+    [Header("Spawn Delay Settings")]
+    [SerializeField] private Vector2 spawnDelayRange = new Vector2(1f, 3f);
 
     private bool isSpawning = true;
 
     void Start()
     {
         if (waveManager != null)
-            waveManager.OnLevelComplete += StopSpawning; // 🔹 subscribe event
+            waveManager.OnLevelComplete += StopSpawning;
 
         SpawnAtom();
     }
 
     private void SpawnAtom()
     {
-        if (!isSpawning) return; // 🔹 hentikan spawn bila wave sudah selesai
+        if (!isSpawning) return;
 
         Instantiate(atomPrefab);
-        Invoke(nameof(SpawnAtom), Random.Range(1, 3));
+
+        float delay = Random.Range(spawnDelayRange.x, spawnDelayRange.y);
+        Invoke(nameof(SpawnAtom), delay);
     }
 
     private void StopSpawning()
     {
         isSpawning = false;
-        CancelInvoke(nameof(SpawnAtom)); // 🔹 hentikan semua Invoke yang tersisa
+        CancelInvoke(nameof(SpawnAtom));
         Debug.Log("[AtomSpawner] Spawn atom dihentikan karena semua wave selesai.");
     }
 }

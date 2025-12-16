@@ -201,6 +201,14 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        var cream = capsule.GetComponent<CapsuleCream>();
+        if (cream != null)
+        {
+            cream.ownerTile = tile;
+            Debug.Log($"[GameManager] CapsuleCream di {tile.name} terdaftar.");
+            return;
+        }
+
         Debug.LogWarning($"[GameManager] Tidak ada skrip Capsule ditemukan di {capsule.name}");
     }
 
