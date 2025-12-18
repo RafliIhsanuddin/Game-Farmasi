@@ -487,8 +487,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1161281503}
   m_HandleRect: {fileID: 1161281502}
   m_Direction: 2
-  m_Value: 0.9999999
-  m_Size: 0.39949438
+  m_Value: 1.0000001
+  m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -684,7 +684,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 212, y: 307}
+  m_AnchoredPosition: {x: 190, y: 285}
   m_SizeDelta: {x: 450, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &225363328
@@ -786,6 +786,69 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225363326}
   m_CullTransparentMesh: 1
+--- !u!1 &324760690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 324760691}
+  - component: {fileID: 324760692}
+  m_Layer: 0
+  m_Name: Hover Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &324760691
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324760690}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 671, y: 313, z: -5.3385773}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &324760692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324760690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e153c260c0ce5e40a2776c1a4e58a79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverTexts:
+  - targetButton: {fileID: 1058973091}
+    targetText: {fileID: 1497993303}
+    normalTextColor: {r: 0, g: 0, b: 0, a: 1}
+    hoverTextColor: {r: 0.43529412, g: 0.7490196, b: 0.4509804, a: 1}
+    playHoverSound: 0
+    hoverSound: {fileID: 0}
+  - targetButton: {fileID: 847849613}
+    targetText: {fileID: 1186831599}
+    normalTextColor: {r: 0, g: 0, b: 0, a: 1}
+    hoverTextColor: {r: 0.43529412, g: 0.7490196, b: 0.4509804, a: 1}
+    playHoverSound: 0
+    hoverSound: {fileID: 0}
+  - targetButton: {fileID: 508497860}
+    targetText: {fileID: 1359435148}
+    normalTextColor: {r: 0, g: 0, b: 0, a: 1}
+    hoverTextColor: {r: 0.43529412, g: 0.7490196, b: 0.4509804, a: 1}
+    playHoverSound: 0
+    hoverSound: {fileID: 0}
 --- !u!1 &328848778
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,7 +1396,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1844329183}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.6005056}
+  m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -1386,6 +1449,7 @@ GameObject:
   m_Component:
   - component: {fileID: 494980383}
   - component: {fileID: 494980384}
+  - component: {fileID: 494980385}
   m_Layer: 0
   m_Name: TextContainer
   m_TagString: Untagged
@@ -1412,7 +1476,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000091553, y: -0.0025024}
-  m_SizeDelta: {x: 1331, y: 748.49}
+  m_SizeDelta: {x: 1331, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &494980384
 MonoBehaviour:
@@ -1444,6 +1508,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &494980385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494980382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &508497858
 GameObject:
   m_ObjectHideFlags: 0
@@ -1870,7 +1948,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 212, y: 307}
+  m_AnchoredPosition: {x: 172, y: 281}
   m_SizeDelta: {x: 450, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &599813543
@@ -2001,14 +2079,14 @@ RectTransform:
   m_GameObject: {fileID: 610050520}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.999693, y: 5.266496, z: 4.0774183}
+  m_LocalScale: {x: 3.4340963, y: 4.521761, z: 3.5008307}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 564539310}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -462, y: 13}
+  m_AnchoredPosition: {x: -422, y: 40}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &610050522
@@ -2314,7 +2392,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00021362, y: -562.55176}
+  m_AnchoredPosition: {x: 0.00021362, y: -936.79663}
   m_SizeDelta: {x: 1331, y: 1873.5933}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &831018153
@@ -2343,7 +2421,7 @@ MonoBehaviour:
     bisa membuat alveoli membengkak atau terisi cairan. Inilah yang menghambat pertukaran
     oksigen normal di paru.
 
-    
+
 
     Berbagai patogen bisa menjadi penyebab infeksi
     paru-paru. Bakteri umum seperti Streptococcus pneumoniae adalah salah satu penyebab
@@ -2351,7 +2429,7 @@ MonoBehaviour:
     Selain itu, jamur tertentu juga bisa memicu infeksi paru, terutama pada orang
     dengan sistem imun yang lemah.
 
-    
+
 
     Gejala infeksi paru-paru bisa beragam,
     dari yang ringan hingga berat. Orang yang terinfeksi bisa mengalami batuk (bisa
@@ -2360,24 +2438,24 @@ MonoBehaviour:
     mengandung darah. Jika sangat parah, kulit atau bibir bisa menjadi kebiruan (sianosis)
     karena oksigen dalam darah rendah.
 
-    
 
-    Ada beberapa faktor risiko yang
-    membuat seseorang lebih rentan terkena infeksi paru-paru. Anak-anak kecil dan
-    lansia termasuk rentan karena sistem kekebalan mereka yang lemah atau belum berkembang
+
+    Ada beberapa faktor risiko yang membuat
+    seseorang lebih rentan terkena infeksi paru-paru. Anak-anak kecil dan lansia
+    termasuk rentan karena sistem kekebalan mereka yang lemah atau belum berkembang
     sepenuhnya. Orang yang memiliki penyakit paru kronis (misalnya PPOK), mereka
     yang menggunakan ventilator, perokok, atau orang dengan kondisi imun yang melemah
     juga punya risiko lebih besar.
 
-    
 
-    Untuk mendiagnosis infeksi paru,
-    dokter biasanya akan melakukan pemeriksaan fisik seperti mendengarkan suara paru
-    dengan stetoskop. Kemudian, bisa dilakukan foto rontgen dada untuk melihat apakah
-    ada infiltrasi atau cairan di paru. Tes darah juga bisa membantu, serta analisis
+
+    Untuk mendiagnosis infeksi paru, dokter
+    biasanya akan melakukan pemeriksaan fisik seperti mendengarkan suara paru dengan
+    stetoskop. Kemudian, bisa dilakukan foto rontgen dada untuk melihat apakah ada
+    infiltrasi atau cairan di paru. Tes darah juga bisa membantu, serta analisis
     dahak untuk menentukan jenis mikroorganisme penyebab infeksi.
 
-    
+
 
     Pengobatan
     tergantung dari penyebab infeksinya. Jika bakteri, dokter akan memberikan antibiotik
@@ -2386,7 +2464,7 @@ MonoBehaviour:
     Pada infeksi jamur, antijamur bisa digunakan. Selain obat, pasien juga dianjurkan
     menjaga kelembapan udara, cukup minum, dan jika perlu mendapat terapi oksigen.
 
-    
+
 
     Walaupun
     infeksi paru-paru bisa disembuhkan, jika tidak ditangani dengan baik bisa menimbulkan
@@ -2459,7 +2537,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -373.54095, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3051,7 +3129,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 558, y: 315}
+  m_AnchoredPosition: {x: 507, y: 289}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &864853175
@@ -3296,14 +3374,14 @@ RectTransform:
   m_GameObject: {fileID: 908741068}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.999693, y: 5.266496, z: 4.0774183}
+  m_LocalScale: {x: 3.6481895, y: 4.803663, z: 3.7190843}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 836042533}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -462, y: 13}
+  m_AnchoredPosition: {x: -410, y: 38}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &908741070
@@ -3354,6 +3432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 922556823}
   - component: {fileID: 922556824}
+  - component: {fileID: 922556825}
   m_Layer: 0
   m_Name: TextContainer
   m_TagString: Untagged
@@ -3380,7 +3459,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000091553, y: -0.0025024}
-  m_SizeDelta: {x: 1331, y: 748.49}
+  m_SizeDelta: {x: 1331, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &922556824
 MonoBehaviour:
@@ -3412,6 +3491,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &922556825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922556822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &970905966
 GameObject:
   m_ObjectHideFlags: 0
@@ -3522,7 +3615,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 558, y: 315}
+  m_AnchoredPosition: {x: 512, y: 286}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1054648431
@@ -3859,8 +3952,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 654094586}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.60050553}
-  m_AnchorMax: {x: 1, y: 0.9999999}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3914,7 +4007,7 @@ GameObject:
   - component: {fileID: 1186831600}
   - component: {fileID: 1186831599}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Paru Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4189,14 +4282,14 @@ RectTransform:
   m_GameObject: {fileID: 1266519698}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.999693, y: 5.266496, z: 4.0774183}
+  m_LocalScale: {x: 3.2856138, y: 4.32625, z: 3.3494625}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1198139485}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -462, y: 13}
+  m_AnchoredPosition: {x: -420, y: 13}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1266519700
@@ -4264,7 +4357,7 @@ RectTransform:
   m_GameObject: {fileID: 1287151564}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.89394, y: 0.89394, z: 0.89394}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 101063762}
@@ -4272,7 +4365,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 237.82855, y: -66.75064}
+  m_AnchoredPosition: {x: 225, y: -62}
   m_SizeDelta: {x: 819.6534, y: 576.3309}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1287151566
@@ -4348,7 +4441,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -569, y: -308}
+  m_AnchoredPosition: {x: -531, y: -253}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1301665727
@@ -4600,7 +4693,7 @@ RectTransform:
   m_GameObject: {fileID: 1344394360}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.89982, y: 0.89982, z: 0.89982}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 328848779}
@@ -4608,7 +4701,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 237.82855, y: -66.75064}
+  m_AnchoredPosition: {x: 219, y: -59}
   m_SizeDelta: {x: 819.6534, y: 576.3309}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1344394362
@@ -4661,7 +4754,7 @@ GameObject:
   - component: {fileID: 1359435149}
   - component: {fileID: 1359435148}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Usus Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4895,7 +4988,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -580, y: 295}
+  m_AnchoredPosition: {x: -519, y: 276}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1399004632
@@ -5180,7 +5273,7 @@ RectTransform:
   m_GameObject: {fileID: 1431284667}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.89982, y: 0.89982, z: 0.89982}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1932006315}
@@ -5188,7 +5281,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 237.82855, y: -66.75064}
+  m_AnchoredPosition: {x: 210, y: -62}
   m_SizeDelta: {x: 819.6534, y: 576.3309}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1431284669
@@ -5455,7 +5548,7 @@ GameObject:
   - component: {fileID: 1497993304}
   - component: {fileID: 1497993303}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Kulit Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6026,8 +6119,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00021362, y: -562.5515}
-  m_SizeDelta: {x: 1331, y: 1873.5933}
+  m_AnchoredPosition: {x: 0.00021362, y: -871.72}
+  m_SizeDelta: {x: 1331, y: 1743.4395}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1689291867
 MonoBehaviour:
@@ -6050,7 +6143,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Infeksi usus, yang juga dikenal sebagai enteritis atau enterokolitis,
-    adalah kondisi ketika usus \u2014 baik usus halus maupun usus besar \u2014 mengalami
+    adalah kondisi ketika usus baik usus halus maupun usus besar \u2014 mengalami
     peradangan akibat infeksi mikrob. Organ pencernaan ini sangat rentan diserang
     oleh patogen seperti bakteri, virus, parasit, atau dalam kasus tertentu, jamur.
     Kondisi ini bisa muncul bila mikroorganisme berbahaya masuk ke dalam saluran
@@ -6153,7 +6246,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -366.4607, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6249,8 +6342,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2055821378}
   m_HandleRect: {fileID: 2055821377}
   m_Direction: 2
-  m_Value: 0.9999999
-  m_Size: 0.39949438
+  m_Value: 1.0000002
+  m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6303,6 +6396,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1797801574}
   - component: {fileID: 1797801575}
+  - component: {fileID: 1797801576}
   m_Layer: 0
   m_Name: TextContainer
   m_TagString: Untagged
@@ -6329,7 +6423,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.000091553, y: -0.0025024}
-  m_SizeDelta: {x: 1331, y: 748.49}
+  m_SizeDelta: {x: 1331, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1797801575
 MonoBehaviour:
@@ -6361,6 +6455,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1797801576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797801573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &1823968623
 GameObject:
   m_ObjectHideFlags: 0
@@ -6393,10 +6501,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 922556823}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00021362, y: -562.5515}
-  m_SizeDelta: {x: 1331, y: 1873.5933}
+  m_AnchorMin: {x: 0.54357624, y: 1}
+  m_AnchorMax: {x: 0.54357624, y: 1}
+  m_AnchoredPosition: {x: -58.749992, y: -662.15045}
+  m_SizeDelta: {x: 1329.5, y: 1324.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1823968625
 MonoBehaviour:
@@ -6421,59 +6529,59 @@ MonoBehaviour:
   m_text: "Infeksi kulit adalah kondisi ketika mikroorganisme seperti virus, bakteri,
     jamur, atau parasit menyerang lapisan kulit, menyebabkan peradangan dan kerusakan.
     Kulit, sebagai organ terluas tubuh, berfungsi melindungi tubuh dari berbagai
-    ancaman, tetapi jika sistem pertahanan kulit melemah \u2014 misalnya karena luka,
-    kelembapan berlebih, atau sistem imun yang terganggu \u2014 mikroorganisme bisa
-    masuk dan berkembang biak. Akibatnya, muncul berbagai jenis infeksi kulit yang
-    bisa bersifat ringan hingga serius.\n\nPenyebab infeksi kulit sangat beragam.
-    Infeksi bakteri dapat menimbulkan kondisi seperti selulitis, impetigo, atau bisul.
-    Di sisi lain, infeksi jamur (mikosis) sering muncul pada bagian tubuh yang lembap
-    seperti kaki, selangkangan, atau kulit kepala, dan bisa berupa kurap atau infeksi
-    kuku. Parasit seperti tungau penyebab skabies atau larva cacing juga dapat menyebabkan
-    infeksi kulit. Sementara itu, virus seperti herpes, moluskum kontagiosum, kutil,
-    dan penyakit tangan-kaki-mulut juga termasuk jenis infeksi kulit yang cukup umum.\n\nGejala
-    infeksi kulit sangat tergantung dari jenis patogen penyebabnya. Pada infeksi
-    bakteri, kulit bisa menjadi merah, bengkak, terasa panas, dan muncul benjolan
-    yang mungkin berisi nanah. Jika infeksi disebabkan oleh jamur, gejalanya bisa
-    berupa bercak bersisik, melingkar, dan sangat gatal. Infeksi parasit seperti
-    skabies sering menimbulkan rasa gatal hebat dan jejak kecil di kulit karena tungau
-    menggerayangi kulit. Sedangkan infeksi virus bisa menimbulkan lepuhan, benjolan,
-    atau plak tergantung jenis virusnya.\n\nUntuk menentukan apakah sebuah infeksi
-    kulit terjadi, dokter biasanya melakukan wawancara medis dan pemeriksaan fisik
-    untuk melihat bentuk dan distribusi lesi di kulit. Kemudian, pemeriksaan penunjang
-    bisa dilakukan seperti kerokan kulit atau kuku untuk diperiksa di bawah mikroskop,
-    kultur mikroorganisme, tes serologi, bahkan penggunaan lampu khusus (lampu Wood)
-    atau tes molekular seperti PCR jika diperlukan. Diagnosa akurat sangat penting
-    agar pengobatan bisa tepat sasaran sesuai jenis infeksi.\n\nPengobatan infeksi
-    kulit sangat tergantung pada agen penyebabnya. Jika infeksi disebabkan oleh bakteri,
-    biasanya digunakan antibiotik topikal atau oral. Untuk infeksi jamur, antijamur
-    merupakan pilihan utama, baik yang digunakan di luar (topikal) maupun di dalam
-    tubuh (oral), tergantung keparahan. Infeksi parasit diobati dengan obat antiparasit,
-    sedangkan untuk infeksi virus, pengobatan bisa melibatkan antivirus, meski beberapa
-    infeksi virus pada kulit akan sembuh sendiri tergantung jenisnya. Selain itu,
-    gejala seperti gatal atau peradangan juga bisa diredakan dengan obat pendukung
-    seperti antihistamin.\n\nKomplikasi infeksi kulit dapat menjadi serius jika tidak
-    ditangani dengan baik. Misalnya, infeksi bakteri bisa berkembang menjadi abses
-    atau selulitis yang dalam, bahkan menyebar ke aliran darah dan menyebabkan sepsis.
-    Pada infeksi sekunder pada kulit yang sudah rusak, seperti pada dermatitis atopik,
-    mikroorganisme bisa lebih mudah masuk dan memperparah kondisi kulit. Oleh karena
-    itu, penanganan yang cepat dan tepat sangat penting untuk mencegah risiko komplikasi.\n\nDari
-    sisi epidemiologi di Indonesia, infeksi kulit merupakan masalah kesehatan yang
-    cukup besar. Sebuah studi di RSUD Jagakarsa (Februari 2023\u2013Januari 2024)
-    menemukan bahwa sekitar 39,59 persen dari kasus penyakit kulit adalah infeksi,
-    dengan infeksi jamur (sekitar 47,63 persen) dan infeksi parasit (sekitar 26,54
-    persen) sebagai penyebab utama. Sementara itu, pada Poliklinik Kulit di Klinik
-    Pratama Panti Siwi Jember (2018\u20132020), dari 257 pasien penyakit kulit, 133
-    (51,7 persen) mengalami infeksi, dengan infeksi virus sebanyak 48,1 persen, bakteri
-    41,4 persen, jamur superfisial 3 persen, dan parasit 7,5 persen. Selain itu,
-    di RSUP Dr. Kariadi Semarang (2008\u20132010) tercatat bahwa 33,52 persen dari
-    semua pasien penyakit kulit mengalami infeksi, dengan infeksi jamur superfisial
-    sebagai bagian terbesar.\n\nPencegahan infeksi kulit relatif sederhana namun
-    efektif. Menjaga kebersihan tubuh dengan mandi secara rutin, menjaga kulit tetap
-    kering terutama di lipatan tubuh, menghindari berbagi barang pribadi seperti
-    handuk, pakaian, atau alat cukur dengan orang lain, dan menjaga kebersihan lingkungan
-    adalah upaya penting. Untuk individu dengan sistem imun lemah atau kondisi kulit
-    kronis, edukasi dan pemantauan lebih intensif juga sangat dianjurkan agar infeksi
-    dapat dicegah sejak dini dan tertangani dengan baik."
+    ancaman, tetapi jika sistem pertahanan kulit melemah misalnya karena luka, kelembapan
+    berlebih, atau sistem imun yang terganggu mikroorganisme bisa masuk dan berkembang
+    biak. Akibatnya, muncul berbagai jenis infeksi kulit yang bisa bersifat ringan
+    hingga serius.\n\nPenyebab infeksi kulit sangat beragam. Infeksi bakteri dapat
+    menimbulkan kondisi seperti selulitis, impetigo, atau bisul. Di sisi lain, infeksi
+    jamur (mikosis) sering muncul pada bagian tubuh yang lembap seperti kaki, selangkangan,
+    atau kulit kepala, dan bisa berupa kurap atau infeksi kuku. Parasit seperti tungau
+    penyebab skabies atau larva cacing juga dapat menyebabkan infeksi kulit. Sementara
+    itu, virus seperti herpes, moluskum kontagiosum, kutil, dan penyakit tangan-kaki-mulut
+    juga termasuk jenis infeksi kulit yang cukup umum.\n\nGejala infeksi kulit sangat
+    tergantung dari jenis patogen penyebabnya. Pada infeksi bakteri, kulit bisa menjadi
+    merah, bengkak, terasa panas, dan muncul benjolan yang mungkin berisi nanah.
+    Jika infeksi disebabkan oleh jamur, gejalanya bisa berupa bercak bersisik, melingkar,
+    dan sangat gatal. Infeksi parasit seperti skabies sering menimbulkan rasa gatal
+    hebat dan jejak kecil di kulit karena tungau menggerayangi kulit. Sedangkan infeksi
+    virus bisa menimbulkan lepuhan, benjolan, atau plak tergantung jenis virusnya.\n\nUntuk
+    menentukan apakah sebuah infeksi kulit terjadi, dokter biasanya melakukan wawancara
+    medis dan pemeriksaan fisik untuk melihat bentuk dan distribusi lesi di kulit.
+    Kemudian, pemeriksaan penunjang bisa dilakukan seperti kerokan kulit atau kuku
+    untuk diperiksa di bawah mikroskop, kultur mikroorganisme, tes serologi, bahkan
+    penggunaan lampu khusus (lampu Wood) atau tes molekular seperti PCR jika diperlukan.
+    Diagnosa akurat sangat penting agar pengobatan bisa tepat sasaran sesuai jenis
+    infeksi.\n\nPengobatan infeksi kulit sangat tergantung pada agen penyebabnya.
+    Jika infeksi disebabkan oleh bakteri, biasanya digunakan antibiotik topikal atau
+    oral. Untuk infeksi jamur, antijamur merupakan pilihan utama, baik yang digunakan
+    di luar (topikal) maupun di dalam tubuh (oral), tergantung keparahan. Infeksi
+    parasit diobati dengan obat antiparasit, sedangkan untuk infeksi virus, pengobatan
+    bisa melibatkan antivirus, meski beberapa infeksi virus pada kulit akan sembuh
+    sendiri tergantung jenisnya. Selain itu, gejala seperti gatal atau peradangan
+    juga bisa diredakan dengan obat pendukung seperti antihistamin.\n\nKomplikasi
+    infeksi kulit dapat menjadi serius jika tidak ditangani dengan baik. Misalnya,
+    infeksi bakteri bisa berkembang menjadi abses atau selulitis yang dalam, bahkan
+    menyebar ke aliran darah dan menyebabkan sepsis. Pada infeksi sekunder pada kulit
+    yang sudah rusak, seperti pada dermatitis atopik, mikroorganisme bisa lebih mudah
+    masuk dan memperparah kondisi kulit. Oleh karena itu, penanganan yang cepat dan
+    tepat sangat penting untuk mencegah risiko komplikasi.\n\nDari sisi epidemiologi
+    di Indonesia, infeksi kulit merupakan masalah kesehatan yang cukup besar. Sebuah
+    studi di RSUD Jagakarsa (Februari 2023\u2013Januari 2024) menemukan bahwa sekitar
+    39,59 persen dari kasus penyakit kulit adalah infeksi, dengan infeksi jamur (sekitar
+    47,63 persen) dan infeksi parasit (sekitar 26,54 persen) sebagai penyebab utama.
+    Sementara itu, pada Poliklinik Kulit di Klinik Pratama Panti Siwi Jember (2018\u20132020),
+    dari 257 pasien penyakit kulit, 133 (51,7 persen) mengalami infeksi, dengan infeksi
+    virus sebanyak 48,1 persen, bakteri 41,4 persen, jamur superfisial 3 persen,
+    dan parasit 7,5 persen. Selain itu, di RSUP Dr. Kariadi Semarang (2008\u20132010)
+    tercatat bahwa 33,52 persen dari semua pasien penyakit kulit mengalami infeksi,
+    dengan infeksi jamur superfisial sebagai bagian terbesar.\n\nPencegahan infeksi
+    kulit relatif sederhana namun efektif. Menjaga kebersihan tubuh dengan mandi
+    secara rutin, menjaga kulit tetap kering terutama di lipatan tubuh, menghindari
+    berbagi barang pribadi seperti handuk, pakaian, atau alat cukur dengan orang
+    lain, dan menjaga kebersihan lingkungan adalah upaya penting. Untuk individu
+    dengan sistem imun lemah atau kondisi kulit kronis, edukasi dan pemantauan lebih
+    intensif juga sangat dianjurkan agar infeksi dapat dicegah sejak dini dan tertangani
+    dengan baik."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6538,7 +6646,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -368.31775, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6670,8 +6778,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 492729105}
   m_HandleRect: {fileID: 492729104}
   m_Direction: 2
-  m_Value: 1.0000001
-  m_Size: 0.39949438
+  m_Value: 1
+  m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6874,7 +6982,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 558, y: 315}
+  m_AnchoredPosition: {x: 534, y: 288}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1954227717
@@ -7073,7 +7181,7 @@ RectTransform:
   m_GameObject: {fileID: 1988666439}
   m_LocalRotation: {x: -0, y: -0, z: 0.46076104, w: 0.88752425}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -1.8617777, y: 1.8310527, z: 1.0951632}
+  m_LocalScale: {x: -1.4010063, y: 1.3778855, z: 0.8241213}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2048864531}
@@ -7081,7 +7189,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 54.872}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -389, y: 124}
+  m_AnchoredPosition: {x: -348, y: 143}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1988666441
@@ -7367,8 +7475,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 827287403}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.60050553}
-  m_AnchorMax: {x: 1, y: 0.9999999}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7575,14 +7683,14 @@ RectTransform:
   m_GameObject: {fileID: 2099195448}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.89393, y: 0.89393, z: 0.89393}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 836042533}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 212, y: 307}
+  m_AnchoredPosition: {x: 169, y: 276}
   m_SizeDelta: {x: 450, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2099195450
@@ -7895,3 +8003,4 @@ SceneRoots:
   - {fileID: 564539310}
   - {fileID: 1417127828}
   - {fileID: 2123231981}
+  - {fileID: 324760691}

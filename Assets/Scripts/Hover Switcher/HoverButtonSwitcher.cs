@@ -8,12 +8,30 @@ public class HoverButtonSwitcher : MonoBehaviour
     [System.Serializable]
     public class ButtonPair
     {
+        [Header("Button")]
         public Button buttonNormal; // tombol normal
         public Button buttonHover;  // tombol saat hover
+
+        [Header("Audio (Opsional)")]
+        public bool playHoverSound = false;
+        public AudioClip hoverSound;
     }
 
     [Header("Daftar pasangan button")]
     public List<ButtonPair> buttonPairs = new List<ButtonPair>();
+
+    private AudioSource audioSource;
+
+    private void Awake()
+    {
+        // Siapkan AudioSource satu kali
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
+        }
+    }
 
     private void Start()
     {
@@ -22,11 +40,10 @@ public class HoverButtonSwitcher : MonoBehaviour
             if (pair.buttonNormal == null || pair.buttonHover == null)
                 continue;
 
-            // Awal: tampilkan tombol normal, sembunyikan tombol hover
+            // Awal: normal aktif, hover mati
             pair.buttonNormal.gameObject.SetActive(true);
             pair.buttonHover.gameObject.SetActive(false);
 
-            // Tambahkan event ke kedua tombol
             AddHoverEvents(pair.buttonNormal.gameObject, pair, true);
             AddHoverEvents(pair.buttonHover.gameObject, pair, false);
         }
@@ -38,9 +55,10 @@ public class HoverButtonSwitcher : MonoBehaviour
         if (trigger == null)
             trigger = buttonObject.AddComponent<EventTrigger>();
 
+        trigger.triggers.Clear();
+
         if (isNormal)
         {
-            // Saat pointer masuk ke tombol normal → ganti ke tombol hover
             EventTrigger.Entry enterEntry = new EventTrigger.Entry
             {
                 eventID = EventTriggerType.PointerEnter
@@ -50,7 +68,6 @@ public class HoverButtonSwitcher : MonoBehaviour
         }
         else
         {
-            // Saat pointer keluar dari tombol hover → kembalikan ke tombol normal
             EventTrigger.Entry exitEntry = new EventTrigger.Entry
             {
                 eventID = EventTriggerType.PointerExit
@@ -62,14 +79,18 @@ public class HoverButtonSwitcher : MonoBehaviour
 
     private void OnHoverEnter(ButtonPair pair)
     {
-        // Masuk ke area tombol normal → tampilkan tombol hover
         pair.buttonNormal.gameObject.SetActive(false);
         pair.buttonHover.gameObject.SetActive(true);
+
+        // 🔊 Mainkan suara jika diaktifkan & ada clip
+        if (pair.playHoverSound && pair.hoverSound != null)
+        {
+            audioSource.PlayOneShot(pair.hoverSound);
+        }
     }
 
     private void OnHoverExit(ButtonPair pair)
     {
-        // Keluar dari area tombol hover → tampilkan tombol normal lagi
         pair.buttonNormal.gameObject.SetActive(true);
         pair.buttonHover.gameObject.SetActive(false);
     }
