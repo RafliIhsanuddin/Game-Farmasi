@@ -4,7 +4,7 @@ public class CapsuleBlue : MonoBehaviour
 {
     public Tile ownerTile; // diisi GameManager saat spawn capsule
 
-    private bool hasTriggered = false;   // 🔒 pengaman utama
+    private bool hasTriggered = false;   // 🔒 pengaman satu kali trigger
     private Collider2D capsuleCollider;
 
     private void Awake()
@@ -23,29 +23,22 @@ public class CapsuleBlue : MonoBehaviour
         if (collision.TryGetComponent<BacteriaControllerRed>(out BacteriaControllerRed red))
         {
             hasTriggered = true;
-            red.Hit();          // 🔥 kena efek
+            red.Hit();          // 🔥 BAKTERI MERAH HANCUR
             CleanupCapsule();
             return;
         }
 
         // ===============================
-        // BAKTERI LAIN (HIJAU / UNGU)
+        // OBJEK LAIN (TIDAK ADA EFEK)
         // ===============================
         if (collision.TryGetComponent<BacteriaControllerGreen>(out _) ||
-            collision.TryGetComponent<BacteriaControllerPurple>(out _))
+            collision.TryGetComponent<BacteriaControllerPurple>(out _) ||
+            collision.TryGetComponent<MushroomController>(out _) ||
+            collision.TryGetComponent<ProtozoaController>(out _) ||
+            collision.TryGetComponent<HelminthController>(out _))
         {
             hasTriggered = true;
-            CleanupCapsule();   // ❌ tidak kena efek
-            return;
-        }
-
-        // ===============================
-        // JAMUR (TIDAK BEREFEK)
-        // ===============================
-        if (collision.TryGetComponent<MushroomController>(out _))
-        {
-            hasTriggered = true;
-            CleanupCapsule();   // ❌ jamur tidak kena Hit()
+            CleanupCapsule();   // ❌ tidak ada efek ke objek lain
             return;
         }
     }

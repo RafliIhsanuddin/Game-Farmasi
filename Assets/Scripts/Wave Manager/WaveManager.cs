@@ -37,14 +37,16 @@ public class WaveManager : MonoBehaviour
     public static bool isGameOver = false;
     public System.Action OnLevelComplete;
 
-    void Start()
+    private void Start()
     {
         if (winUI != null) winUI.SetActive(false);
         isGameOver = false;
 
-        // Hitung total & goals otomatis
+        // Hitung total musuh level
         totalEnemiesInLevel = 0;
-        foreach (var n in enemiesPerWave) totalEnemiesInLevel += n;
+        foreach (var n in enemiesPerWave)
+            totalEnemiesInLevel += n;
+
         GenerateLevelGoals();
 
         if (levelProgress != null)
@@ -96,8 +98,6 @@ public class WaveManager : MonoBehaviour
     {
         if (waveIndex >= enemiesPerWave.Count)
         {
-            // ✅ Semua wave selesai DI-SPAWN.
-            // Sekarang pastikan: hentikan spawner lalu tunggu sampai SEMUA bakteri benar-benar habis.
             Debug.Log("[WaveManager] Semua wave selesai. Menghentikan spawner & menunggu semua musuh mati...");
             if (spawner != null) spawner.StopAllSpawning();
             StartCoroutine(WaitUntilAllEnemiesDeadThenWin());
@@ -107,19 +107,12 @@ public class WaveManager : MonoBehaviour
         int amount = enemiesPerWave[waveIndex];
         currentAliveEnemies = amount;
 
-        // Atur mode spawn wave ini
-        if (spawner != null)
+        // Set spawn mode
+        if (spawner != null && spawnModesPerWave != null && spawnModesPerWave.Count > 0)
         {
-            if (spawnModesPerWave != null && spawnModesPerWave.Count > 0)
-            {
-                int modeIndex = Mathf.Min(waveIndex, spawnModesPerWave.Count - 1);
-                spawner.Mode = spawnModesPerWave[modeIndex];
-                Debug.Log($"[WaveManager] Wave {waveIndex + 1} menggunakan mode spawn: {spawner.Mode}");
-            }
-            else
-            {
-                Debug.LogWarning("[WaveManager] spawnModesPerWave kosong, gunakan mode default Spawner.");
-            }
+            int modeIndex = Mathf.Min(waveIndex, spawnModesPerWave.Count - 1);
+            spawner.Mode = spawnModesPerWave[modeIndex];
+            Debug.Log($"[WaveManager] Wave {waveIndex + 1} menggunakan mode spawn: {spawner.Mode}");
         }
 
         Debug.Log($"[WaveManager] Start Wave {waveIndex + 1}, jumlah musuh: {amount}");
@@ -133,9 +126,13 @@ public class WaveManager : MonoBehaviour
 
     public void RegisterKill()
     {
+        if (isGameOver) return;
+
         totalKills++;
         currentAliveEnemies--;
-        if (levelProgress != null) levelProgress.value = totalKills;
+
+        if (levelProgress != null)
+            levelProgress.value = totalKills;
 
         // Trigger flags
         foreach (int g in levelGoals)
@@ -143,12 +140,12 @@ public class WaveManager : MonoBehaviour
             if (totalKills >= g && !triggeredGoals.Contains(g))
             {
                 triggeredGoals.Add(g);
-                if (goalToFlag.TryGetValue(g, out var fm) && fm != null) fm.Expand();
-                Debug.Log($"[WaveManager] Flag @{g} aktif (totalKills={totalKills}).");
+                if (goalToFlag.TryGetValue(g, out var fm) && fm != null)
+                    fm.Expand();
             }
         }
 
-        // Jika wave ini sudah tidak ada musuh (berdasarkan quota), lanjut wave berikutnya
+        // Lanjut ke wave berikutnya
         if (currentAliveEnemies <= 0)
         {
             currentWaveIndex++;
@@ -158,7 +155,6 @@ public class WaveManager : MonoBehaviour
 
     private IEnumerator WaitUntilAllEnemiesDeadThenWin()
     {
-        // Tunggu sampai tidak ada bakteri aktif di scene
         while (CountAllAliveEnemies() > 0)
             yield return new WaitForSeconds(0.5f);
 
@@ -169,13 +165,16 @@ public class WaveManager : MonoBehaviour
 
     private int CountAllAliveEnemies()
     {
-        // Gunakan spawner jika ada; fallback ke pencarian langsung.
-        if (spawner != null) return spawner.CountAllAlive();
+        if (spawner != null)
+            return spawner.CountAllAlive();
 
         int total = 0;
         total += FindObjectsByType<BacteriaControllerGreen>(FindObjectsSortMode.None).Length;
         total += FindObjectsByType<BacteriaControllerPurple>(FindObjectsSortMode.None).Length;
         total += FindObjectsByType<BacteriaControllerRed>(FindObjectsSortMode.None).Length;
+        total += FindObjectsByType<MushroomController>(FindObjectsSortMode.None).Length;
+        total += FindObjectsByType<ProtozoaController>(FindObjectsSortMode.None).Length;
+        total += FindObjectsByType<HelminthController>(FindObjectsSortMode.None).Length;
         return total;
     }
 
@@ -186,7 +185,7 @@ public class WaveManager : MonoBehaviour
             winUI.SetActive(true);
             Time.timeScale = 0f;
             isGameOver = true;
-            Debug.Log("[WaveManager] UI Win muncul (semua musuh sudah mati) dan game dipause.");
+            Debug.Log("[WaveManager] UI Win muncul dan game dipause.");
         }
     }
 

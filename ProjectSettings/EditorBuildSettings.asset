@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/PvZCorrect.unity
     guid: d4b4f686593eb224b8ecafce4fdba42e
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/MainMenu/MainMenu.unity
     guid: 80645e1ea1611334d8d5deece8402120
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f29593faec89db4ab0bfba10e806fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.03
+  speed: 0.02
   spawnPoint: {fileID: 0}
   mushroomVisual: {fileID: 4909435961034432879}
   hitParticleEffect: {fileID: 9092462129086457935}
@@ -5149,7 +5149,7 @@ Animator:
   m_GameObject: {fileID: 4909435961034432879}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ba0b759a60383e948ba7d10b459e7f7d, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -10132,7 +10132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7007017639926347687
 Transform:
   m_ObjectHideFlags: 0

@@ -29,14 +29,16 @@ public class CapsuleCream : MonoBehaviour
         }
 
         // ===============================
-        // OBJEK LAIN (BAKTERI / DLL)
+        // OBJEK LAIN (TIDAK ADA EFEK)
         // ===============================
         if (collision.TryGetComponent<BacteriaControllerGreen>(out _) ||
             collision.TryGetComponent<BacteriaControllerRed>(out _) ||
-            collision.TryGetComponent<BacteriaControllerPurple>(out _))
+            collision.TryGetComponent<BacteriaControllerPurple>(out _) ||
+            collision.TryGetComponent<ProtozoaController>(out _) ||
+            collision.TryGetComponent<HelminthController>(out _))
         {
             hasTriggered = true;
-            CleanupCapsule();   // ❌ tidak ada efek ke bakteri
+            CleanupCapsule();   // ❌ tidak ada efek ke objek lain
             return;
         }
     }
