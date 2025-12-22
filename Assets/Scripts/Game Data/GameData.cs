@@ -1,12 +1,14 @@
 using UnityEngine;
 
-public class GameData : MonoBehaviour
+public class GameData
 {
     public static GameData Data = new GameData();
 
     public int CurrentScore = 0;
     public int HighScore = 0;
 
-    // 🔓 Level unlock (minimal level 1 terbuka)
+    // Minimal level 1 terbuka
     public int UnlockedLevel = 1;
+    
+    
 }

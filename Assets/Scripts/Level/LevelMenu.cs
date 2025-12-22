@@ -12,8 +12,6 @@ public class LevelMenu : MonoBehaviour
     public class LevelButtonData
     {
         public Button button;
-
-        [Tooltip("Opsional: GameObject gembok / lock icon")]
         public GameObject lockObject;
     }
 
@@ -22,17 +20,20 @@ public class LevelMenu : MonoBehaviour
 
     private void Awake()
     {
-        int unlockedLevel = GameData.Data.UnlockedLevel;
+        // 🔒 Clamp = pengaman supaya tidak semua kebuka
+        int unlockedLevel = Mathf.Clamp(
+            GameData.Data.UnlockedLevel,
+            1,
+            levels.Count
+        );
 
         for (int i = 0; i < levels.Count; i++)
         {
             bool isUnlocked = i < unlockedLevel;
 
-            // Button state
             if (levels[i].button != null)
                 levels[i].button.interactable = isUnlocked;
 
-            // Lock icon
             if (levels[i].lockObject != null)
                 levels[i].lockObject.SetActive(!isUnlocked);
         }
@@ -40,9 +41,7 @@ public class LevelMenu : MonoBehaviour
 
     public void OpenLevel(int levelId)
     {
-        string levelName = "Level" + levelId;
-        SceneManager.LoadScene(levelName);
+        SceneManager.LoadScene("Level" + levelId);
     }
-    
     
 }
