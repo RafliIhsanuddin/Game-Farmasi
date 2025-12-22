@@ -5,9 +5,12 @@ using System.Collections;
 public class BacteriaSpawner : MonoBehaviour
 {
     
+    // ===============================
+    // SETTINGS
+    // ===============================
     [Header("Spawner Settings")]
-    public List<GameObject> bacteriaPrefabs = new List<GameObject>();
-    public List<SpawnPointSlot> spawnPoints = new List<SpawnPointSlot>();
+    public List<GameObject> bacteriaPrefabs = new();
+    public List<SpawnPointSlot> spawnPoints = new();
 
     [Header("Spawn Timing")]
     [SerializeField] private float spawnDelaySinglePerLine = 1.5f;
@@ -25,11 +28,17 @@ public class BacteriaSpawner : MonoBehaviour
     [SerializeField] private float minDelayPerLine = 0.5f;
     [SerializeField] private float maxDelayPerLine = 1.5f;
 
+    // ===============================
+    // INTERNAL STATE
+    // ===============================
     private bool isSpawning = false;
     private bool cancelRequested = false;
 
     public System.Action OnWaveSpawnComplete;
 
+    // ===============================
+    // ENUM
+    // ===============================
     public enum SpawnMode
     {
         SinglePerLine,
@@ -117,7 +126,7 @@ public class BacteriaSpawner : MonoBehaviour
     {
         if (cancelRequested) return false;
 
-        List<SpawnPointSlot> candidates = new List<SpawnPointSlot>();
+        List<SpawnPointSlot> candidates = new();
 
         foreach (var point in spawnPoints)
         {
@@ -148,7 +157,7 @@ public class BacteriaSpawner : MonoBehaviour
     }
 
     // ===============================
-    // GROUPED PER LINE SPAWN
+    // GROUPED PER LINE SPAWN (TERKONTROL)
     // ===============================
     private IEnumerator SpawnGroupedPerLineCoroutine()
     {
@@ -171,6 +180,7 @@ public class BacteriaSpawner : MonoBehaviour
             int count = Random.Range(minPerLine, maxPerLine + 1);
             float delay = Random.Range(minDelayPerLine, maxDelayPerLine);
 
+            // Spawn satu gelombang
             for (int i = 0; i < count && !cancelRequested; i++)
             {
                 GameObject enemy = Instantiate(prefab, line.transform.position, Quaternion.identity);
@@ -178,6 +188,7 @@ public class BacteriaSpawner : MonoBehaviour
                 yield return new WaitForSeconds(delay);
             }
 
+            // 🔑 REM UTAMA (INI YANG MEMBUAT TERKONTROL)
             if (!cancelRequested)
                 yield return WaitUntilAllOfTypeInLineDead(line, prefab.name);
 

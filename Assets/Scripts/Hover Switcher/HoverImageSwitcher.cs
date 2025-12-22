@@ -13,6 +13,9 @@ public class HoverImageSwitcher : MonoBehaviour
         public Image targetImage;
         public TMP_Text targetText;
 
+        [Header("Button (cek unlock)")]
+        public Button button;
+
         [Header("Image Sprite")]
         public Sprite normalSprite;
         public Sprite hoverSprite;
@@ -26,23 +29,21 @@ public class HoverImageSwitcher : MonoBehaviour
         public AudioClip hoverSound;
     }
 
-    [Header("Daftar Hover UI")]
+    [Header("Hover UI List")]
     public List<HoverUIData> hoverUIs = new List<HoverUIData>();
 
     private AudioSource audioSource;
 
     private void Awake()
     {
-        // Setup AudioSource yang aman untuk UI
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
             audioSource = gameObject.AddComponent<AudioSource>();
 
         audioSource.playOnAwake = false;
         audioSource.loop = false;
-        audioSource.volume = 1f;
-        audioSource.spatialBlend = 0f;          // 2D sound
-        audioSource.ignoreListenerPause = true; // tetap bunyi saat pause
+        audioSource.spatialBlend = 0f; // 2D
+        audioSource.ignoreListenerPause = true;
     }
 
     private void Start()
@@ -59,11 +60,19 @@ public class HoverImageSwitcher : MonoBehaviour
             if (data.targetText != null)
                 data.targetText.color = data.normalTextColor;
 
-            // Pastikan Image bisa menerima hover
-            data.targetImage.raycastTarget = true;
+            // 🔒 Lock = tidak menerima hover
+            data.targetImage.raycastTarget = IsUnlocked(data);
 
             AddHoverEvents(data);
         }
+    }
+
+    private bool IsUnlocked(HoverUIData data)
+    {
+        if (data.button == null)
+            return true; // fallback aman
+
+        return data.button.interactable;
     }
 
     private void AddHoverEvents(HoverUIData data)
@@ -95,7 +104,8 @@ public class HoverImageSwitcher : MonoBehaviour
 
     private void OnHoverEnter(HoverUIData data)
     {
-        Debug.Log($"[HoverImageSwitcher] Hover Enter: {data.targetImage.name}");
+        if (!IsUnlocked(data))
+            return;
 
         if (data.targetImage != null && data.hoverSprite != null)
             data.targetImage.sprite = data.hoverSprite;
@@ -109,7 +119,8 @@ public class HoverImageSwitcher : MonoBehaviour
 
     private void OnHoverExit(HoverUIData data)
     {
-        Debug.Log($"[HoverImageSwitcher] Hover Exit: {data.targetImage.name}");
+        if (!IsUnlocked(data))
+            return;
 
         if (data.targetImage != null && data.normalSprite != null)
             data.targetImage.sprite = data.normalSprite;

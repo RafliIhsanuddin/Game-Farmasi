@@ -2,28 +2,18 @@ using UnityEngine;
 
 public class SpawnPointSlot : MonoBehaviour
 {
-    [SerializeField] public bool occupied = false;
-    [SerializeField] public GameObject currentBacteria = null;
+    public bool occupied = false;
+    private GameObject currentEnemy;
 
-    // Tandai bahwa titik ini sedang terisi bakteri
-    public void SetOccupied(GameObject bacteria)
+    public void SetOccupied(GameObject enemy)
     {
         occupied = true;
-        currentBacteria = bacteria;
-        currentBacteria = bacteria;
+        currentEnemy = enemy;
     }
 
-    // Tandai titik ini kosong kembali
     public void ClearOccupied()
     {
         occupied = false;
-        currentBacteria = null;
-    }
-
-    // Debug visual di Scene
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = occupied ? Color.red : Color.green;
-        Gizmos.DrawWireSphere(transform.position, 0.25f);
+        currentEnemy = null;
     }
 }

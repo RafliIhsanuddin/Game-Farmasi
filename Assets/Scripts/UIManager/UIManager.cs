@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour
     [Tooltip("Aktifkan jika ingin log di console saat pindah scene")]
     [SerializeField] private bool showDebugLog = true;
 
-    // 🔹 Fungsi ini bisa dipanggil dari tombol OnClick dengan parameter scene
+    // 🔹 Fungsi pindah scene (AMAN dari timeScale nyangkut)
     public void ChangeScene(string sceneName)
     {
         if (string.IsNullOrEmpty(sceneName))
@@ -16,15 +16,20 @@ public class UIManager : MonoBehaviour
             return;
         }
 
+        // ✅ RESET TIMESCALE SEBELUM PINDAH SCENE
+        Time.timeScale = 1f;
+
         if (showDebugLog)
-            Debug.Log("[UIManager] Pindah ke scene: " + sceneName);
+            Debug.Log("[UIManager] TimeScale reset & pindah ke scene: " + sceneName);
 
         SceneManager.LoadScene(sceneName);
     }
 
-    // 🔹 Fungsi untuk tombol keluar game (opsional)
     public void QuitGame()
     {
+        // ✅ JUGA RESET SAAT KELUAR GAME (BEST PRACTICE)
+        Time.timeScale = 1f;
+
         if (showDebugLog)
             Debug.Log("[UIManager] Keluar dari game...");
         Application.Quit();
