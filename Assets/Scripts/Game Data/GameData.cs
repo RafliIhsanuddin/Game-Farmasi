@@ -4,11 +4,12 @@ public class GameData
 {
     public static GameData Data = new GameData();
 
-    public int CurrentScore = 0;
-    public int HighScore = 0;
-
-    // Minimal level 1 terbuka
+    // Global linear progression
     public int UnlockedLevel = 1;
-    
+
+    // Jumlah level per stage (URUT)
+    // Stage 1 = 4 level
+    // Stage 2 = 2 level
+    public int[] LevelsPerStage = { 4, 2 };
     
 }
