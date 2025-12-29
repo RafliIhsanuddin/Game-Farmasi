@@ -159,8 +159,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.01
   spawnPoint: {fileID: 0}
-  BacteriaPurple: {fileID: 2209656120739940901}
+  bacteriaVisual: {fileID: 2209656120739940901}
   hitParticleEffect: {fileID: 1983515127226904220}
+  health: 10
 --- !u!61 &5383541019202680011
 BoxCollider2D:
   m_ObjectHideFlags: 0

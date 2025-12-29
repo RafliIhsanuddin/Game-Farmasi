@@ -185,6 +185,15 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        // ================================
+        // 🔵 TAMBAHAN PENTING UNTUK SHOOTER
+        // ================================
+        if (capsule.TryGetComponent(out BasicShooterBlue shooter))
+        {
+            shooter.ownerTile = tile;
+            return;
+        }
+
         Debug.LogWarning($"[GameManager] Capsule tidak dikenal: {capsule.name}");
     }
 

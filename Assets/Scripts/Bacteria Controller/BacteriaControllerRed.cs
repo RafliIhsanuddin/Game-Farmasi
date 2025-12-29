@@ -2,72 +2,123 @@ using UnityEngine;
 
 public class BacteriaControllerRed : MonoBehaviour
 {
+    [Header("Movement")]
     public float speed = 1.5f;
 
+    [Header("Spawn Reference")]
     [HideInInspector] public SpawnPointSlot spawnPoint;
-    [SerializeField] private GameObject BacteriaRed;
-    [SerializeField] private GameObject hitParticleEffect; // prefab efek partikel
-    
-    private bool isHit = false;
-    
-    private Collider2D myCollider;
 
+    [Header("Visual")]
+    [SerializeField] private GameObject bacteriaVisual;
+
+    [Tooltip("Particle VFX child (awal NONAKTIF)")]
+    [SerializeField] private GameObject hitParticleEffect;
+
+    [Header("Stats")]
+    public int health = 3;
+
+    // =========================
+    // INTERNAL STATE
+    // =========================
+    private bool isHit = false;
+    private Collider2D myCollider;
+    private ParticleSystem hitPS;
+
+    // =========================
+    // UNITY EVENTS
+    // =========================
     private void Awake()
     {
         myCollider = GetComponent<Collider2D>();
+
+        if (hitParticleEffect != null)
+        {
+            hitPS = hitParticleEffect.GetComponent<ParticleSystem>();
+            hitParticleEffect.SetActive(false); // 🔒 pastikan mati di awal
+        }
+
+        Debug.Log($"[DEBUG][Red] Awake → VFX ready: {hitPS != null}");
     }
 
     private void FixedUpdate()
     {
-        
         if (isHit) return;
-        
-        transform.position -= new Vector3(speed, 0, 0);
+        transform.position -= new Vector3(speed, 0f, 0f);
     }
 
+    // =========================
+    // MAIN DEATH HANDLER
+    // =========================
     public void Hit()
     {
-        
-        if (isHit) return;     // guard di baris pertama
-        
-        Debug.Log($"[BacteriaControllerRed] {name} terkena serangan CapsuleBlue pada posisi {transform.position}");
-        
+        if (isHit)
+        {
+            Debug.Log("[DEBUG][Red] Hit() diabaikan (isHit == true)");
+            return;
+        }
+
+        Debug.Log($"[DEBUG][Red] Hit() dieksekusi untuk {name}");
+
         isHit = true;
-        speed = 0;
-        
+        speed = 0f;
+
+        // Disable collider
         if (myCollider != null)
-        {
             myCollider.enabled = false;
-            Debug.Log($"[BacteriaControllerPurple] Collider dinonaktifkan untuk {name}");
-        }
 
+        // Hide visual sprite
+        if (bacteriaVisual != null)
+            bacteriaVisual.SetActive(false);
 
-        if (BacteriaRed != null)
-            BacteriaRed.SetActive(false);
-
-        if (hitParticleEffect != null)
+        // =========================
+        // AKTIFKAN & PLAY VFX
+        // =========================
+        if (hitParticleEffect != null && hitPS != null)
         {
-            GameObject effect = Instantiate(hitParticleEffect, transform.position, Quaternion.identity);
-            effect.SetActive(true); // pastikan aktif
+            hitParticleEffect.SetActive(true);
 
-            ParticleSystem ps = effect.GetComponent<ParticleSystem>();
-            if (ps != null)
-                ps.Play(); // manual trigger
+            hitPS.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            hitPS.Play(true);
 
-            Destroy(effect, 3f); // hapus efek setelah 3 detik
-            Debug.Log($"[BacteriaControllerRed] Efek partikel ditampilkan untuk {name}");
+            Debug.Log($"[DEBUG][Red] VFX DISET ACTIVE & PLAY → isPlaying={hitPS.isPlaying}");
+        }
+        else
+        {
+            Debug.LogError("[DEBUG][Red] VFX tidak valid / belum di-assign!");
         }
 
+        // Clear spawn slot
         if (spawnPoint != null)
-        {
             spawnPoint.ClearOccupied();
-        }
-        
-        var manager = FindFirstObjectByType<WaveManager>();
+
+        // Register kill
+        WaveManager manager = FindFirstObjectByType<WaveManager>();
         if (manager != null)
             manager.RegisterKill();
 
-        Debug.Log($"[BacteriaControllerRed] {name} akan dihapus dalam 3 detik");
         Destroy(gameObject, 3f);
+        Debug.Log("[DEBUG][Red] Bakteri akan dihancurkan 3 detik lagi");
+    }
+
+    // =========================
+    // PROJECTILE EVENTS
+    // =========================
+    public void ProjectileHit(int damage)
+    {
+        if (isHit) return;
+
+        health -= damage;
+        Debug.Log($"[DEBUG][Red] Damage={damage}, HP sisa={health}");
+
+        if (health <= 0)
+            Hit();
+    }
+
+    public void ProjectileDead()
+    {
+        if (isHit) return;
+
+        Debug.Log("[DEBUG][Red] ProjectileDead()");
+        Hit();
     }
 }
