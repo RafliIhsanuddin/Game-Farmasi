@@ -1,0 +1,537 @@
+fileFormatVersion: 2
+guid: c289af4eaabb8e5449a603c0e2781012
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8832693899465552915
+    second: Red Capsule Character_0
+  - first:
+      213: 872898766395041602
+    second: Red Capsule Character_1
+  - first:
+      213: -5038605122722397761
+    second: Red Capsule Character_2
+  - first:
+      213: -364843873779410465
+    second: Red Capsule Character_3
+  - first:
+      213: 2797042923986033923
+    second: Red Capsule Character_4
+  - first:
+      213: 1054374044472982239
+    second: Red Capsule Character_5
+  - first:
+      213: 6855159604615173885
+    second: Red Capsule Character_6
+  - first:
+      213: -860036949565746324
+    second: Red Capsule Character_7
+  - first:
+      213: 7757560803900379580
+    second: Red Capsule Character_8
+  - first:
+      213: 3814024243079293775
+    second: Red Capsule Character_9
+  - first:
+      213: 3638430645384215694
+    second: Red Capsule Character_10
+  - first:
+      213: 299585536658028129
+    second: Red Capsule Character_11
+  - first:
+      213: 1215557480074770522
+    second: Red Capsule Character_12
+  - first:
+      213: 5839890707128690426
+    second: Red Capsule Character_13
+  - first:
+      213: 4977745688350671036
+    second: Red Capsule Character_14
+  - first:
+      213: 6217912093417431369
+    second: Red Capsule Character_15
+  - first:
+      213: -2343953052433375995
+    second: Red Capsule Character_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Red Capsule Character_0
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 385
+        width: 98
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: deb889032b7fb6580800000000000000
+      internalID: -8832693899465552915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Capsule Character_1
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 385
+        width: 98
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2476adf9dc82d1c00800000000000000
+      internalID: 872898766395041602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Capsule Character_2
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 385
+        width: 98
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb10ba82657431ab0800000000000000
+      internalID: -5038605122722397761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Capsule Character_3
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 385
+        width: 100
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd996e80e60dfeaf0800000000000000
+      internalID: -364843873779410465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Capsule Character_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 271
+        width: 98
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30d15b158b711d620800000000000000
+      internalID: 2797042923986033923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Capsule Character_5
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 270
+        width: 99
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fda343d6b93e1ae00800000000000000
+      internalID: 1054374044472982239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Capsule Character_6
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 270
+        width: 100
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df6d1b7175b622f50800000000000000
+      internalID: 6855159604615173885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Capsule Character_7
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 270
+        width: 100
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c635c6773f88014f0800000000000000
+      internalID: -860036949565746324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Capsule Character_8
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 150
+        width: 99
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb1d9f7237468ab60800000000000000
+      internalID: 7757560803900379580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Capsule Character_9
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 150
+        width: 99
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4b287d67d22ee430800000000000000
+      internalID: 3814024243079293775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Capsule Character_10
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 150
+        width: 100
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8c750e056d4e7230800000000000000
+      internalID: 3638430645384215694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Capsule Character_11
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 150
+        width: 100
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 166b8545577582400800000000000000
+      internalID: 299585536658028129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Capsule Character_12
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 32
+        width: 99
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a58fceb76178ed010800000000000000
+      internalID: 1215557480074770522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Capsule Character_13
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 32
+        width: 98
+        height: 94
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af6a28538a57b0150800000000000000
+      internalID: 5839890707128690426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Capsule Character_14
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 31
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb0cf509451841540800000000000000
+      internalID: 4977745688350671036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Capsule Character_15
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 31
+        width: 99
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94160c4ea167a4650800000000000000
+      internalID: 6217912093417431369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: d52d5326660ce634ba42819e34ff4693
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Red Capsule Character_0: -8832693899465552915
+      Red Capsule Character_1: 872898766395041602
+      Red Capsule Character_10: 3638430645384215694
+      Red Capsule Character_11: 299585536658028129
+      Red Capsule Character_12: 1215557480074770522
+      Red Capsule Character_13: 5839890707128690426
+      Red Capsule Character_14: 4977745688350671036
+      Red Capsule Character_15: 6217912093417431369
+      Red Capsule Character_16: -2343953052433375995
+      Red Capsule Character_2: -5038605122722397761
+      Red Capsule Character_3: -364843873779410465
+      Red Capsule Character_4: 2797042923986033923
+      Red Capsule Character_5: 1054374044472982239
+      Red Capsule Character_6: 6855159604615173885
+      Red Capsule Character_7: -860036949565746324
+      Red Capsule Character_8: 7757560803900379580
+      Red Capsule Character_9: 3814024243079293775
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

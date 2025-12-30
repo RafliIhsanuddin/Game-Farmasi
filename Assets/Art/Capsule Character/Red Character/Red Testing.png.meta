@@ -1,0 +1,649 @@
+fileFormatVersion: 2
+guid: 0b6c732ab32ec09468c5bce79258c6da
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6245134408770046671
+    second: Red Testing_0
+  - first:
+      213: -8793572064348162168
+    second: Red Testing_1
+  - first:
+      213: -8918728801086197802
+    second: Red Testing_2
+  - first:
+      213: -1189537627399766631
+    second: Red Testing_3
+  - first:
+      213: -1366664189280385845
+    second: Red Testing_4
+  - first:
+      213: 3695592781812359089
+    second: Red Testing_5
+  - first:
+      213: -5130155289853097958
+    second: Red Testing_6
+  - first:
+      213: -5322837928931437788
+    second: Red Testing_7
+  - first:
+      213: -5720575754927825200
+    second: Red Testing_8
+  - first:
+      213: -5194294541964609579
+    second: Red Testing_9
+  - first:
+      213: -9003049352861022682
+    second: Red Testing_10
+  - first:
+      213: -8919204634576807307
+    second: Red Testing_11
+  - first:
+      213: 7040607045585834261
+    second: Red Testing_12
+  - first:
+      213: 7769801906441336113
+    second: Red Testing_13
+  - first:
+      213: -7168112750747351359
+    second: Red Testing_14
+  - first:
+      213: -3804774633756989574
+    second: Red Testing_15
+  - first:
+      213: 37378162772763916
+    second: Red Testing_16
+  - first:
+      213: 7171507536870853308
+    second: Red Testing_17
+  - first:
+      213: -507536587347462300
+    second: Red Testing_18
+  - first:
+      213: 450727145806567171
+    second: Red Testing_19
+  - first:
+      213: 3603828314463502904
+    second: Red Testing_20
+  - first:
+      213: 7076018326041557966
+    second: Red Testing_21
+  - first:
+      213: -1976720146229533349
+    second: Red Testing_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Red Testing_0
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 798
+        width: 198
+        height: 225
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcace4918ac2ba650800000000000000
+      internalID: 6245134408770046671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Testing_1
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 825
+        width: 182
+        height: 182
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 887babd3cc4f6f580800000000000000
+      internalID: -8793572064348162168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Testing_2
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 826
+        width: 160
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6df263ba86f4a3480800000000000000
+      internalID: -8918728801086197802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Testing_3
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 826
+        width: 161
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99d30ef84d9ed7fe0800000000000000
+      internalID: -1189537627399766631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Testing_6
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 619
+        width: 191
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1807b1d1f60ec8b0800000000000000
+      internalID: -5130155289853097958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Testing_7
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 618
+        width: 161
+        height: 181
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 423d011fa1b7126b0800000000000000
+      internalID: -5322837928931437788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Testing_8
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 617
+        width: 160
+        height: 181
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0de90d8e8ae6c90b0800000000000000
+      internalID: -5720575754927825200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Testing_9
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 618
+        width: 160
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d7f27772a82ae7b0800000000000000
+      internalID: -5194294541964609579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Testing_10
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 389
+        width: 204
+        height: 206
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6268863505ebe0380800000000000000
+      internalID: -9003049352861022682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Testing_11
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 414
+        width: 161
+        height: 181
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57a180d04ae983480800000000000000
+      internalID: -8919204634576807307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Testing_12
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 413
+        width: 162
+        height: 181
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51191432ec245b160800000000000000
+      internalID: 7040607045585834261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Testing_13
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 412
+        width: 160
+        height: 182
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 135b690faa1e3db60800000000000000
+      internalID: 7769801906441336113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Testing_14
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 185
+        width: 202
+        height: 208
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c681c57e6fb58c90800000000000000
+      internalID: -7168112750747351359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Testing_15
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 208
+        width: 167
+        height: 184
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a776f7011a9b23bc0800000000000000
+      internalID: -3804774633756989574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Testing_16
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 208
+        width: 182
+        height: 183
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c056d62bd3bc48000800000000000000
+      internalID: 37378162772763916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Testing_17
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 210
+        width: 160
+        height: 182
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cba4937cb10568360800000000000000
+      internalID: 7171507536870853308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Testing_18
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 0
+        width: 202
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 467f3a0b92ed4f8f0800000000000000
+      internalID: -507536587347462300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Testing_20
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 2
+        width: 163
+        height: 186
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 832871312ce530230800000000000000
+      internalID: 3603828314463502904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Testing_21
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 4
+        width: 162
+        height: 184
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecb7cdb5d21133260800000000000000
+      internalID: 7076018326041557966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Testing_22
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 4
+        width: 162
+        height: 184
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5561a700874194e0800000000000000
+      internalID: -1976720146229533349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: ce6cf288940248a47a503ceaa875b7e7
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Red Testing_0: 6245134408770046671
+      Red Testing_1: -8793572064348162168
+      Red Testing_10: -9003049352861022682
+      Red Testing_11: -8919204634576807307
+      Red Testing_12: 7040607045585834261
+      Red Testing_13: 7769801906441336113
+      Red Testing_14: -7168112750747351359
+      Red Testing_15: -3804774633756989574
+      Red Testing_16: 37378162772763916
+      Red Testing_17: 7171507536870853308
+      Red Testing_18: -507536587347462300
+      Red Testing_19: 450727145806567171
+      Red Testing_2: -8918728801086197802
+      Red Testing_20: 3603828314463502904
+      Red Testing_21: 7076018326041557966
+      Red Testing_22: -1976720146229533349
+      Red Testing_3: -1189537627399766631
+      Red Testing_4: -1366664189280385845
+      Red Testing_5: 3695592781812359089
+      Red Testing_6: -5130155289853097958
+      Red Testing_7: -5322837928931437788
+      Red Testing_8: -5720575754927825200
+      Red Testing_9: -5194294541964609579
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

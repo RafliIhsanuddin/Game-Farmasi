@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BasicShooterBlue : MonoBehaviour
+public class BasicShooterRed : MonoBehaviour
 {
     [Header("Tile Ownership")]
     public Tile ownerTile;   // diisi GameManager saat spawn
@@ -87,12 +87,12 @@ public class BasicShooterBlue : MonoBehaviour
         if (hasTriggered) return;
 
         // ===============================
-        // TARGET UTAMA: BAKTERI MERAH
+        // TARGET UTAMA: BAKTERI HIJAU
         // ===============================
-        if (collision.TryGetComponent<BacteriaControllerRed>(out BacteriaControllerRed red))
+        if (collision.TryGetComponent<BacteriaControllerGreen>(out BacteriaControllerGreen green))
         {
             hasTriggered = true;
-            red.Hit();          // 🔥 BAKTERI MERAH HANCUR
+            green.Hit();        // 🔥 BAKTERI HIJAU HANCUR
             CleanupShooter();
             return;
         }
@@ -100,7 +100,7 @@ public class BasicShooterBlue : MonoBehaviour
         // ===============================
         // OBJEK LAIN (TIDAK ADA EFEK)
         // ===============================
-        if (collision.TryGetComponent<BacteriaControllerGreen>(out _) ||
+        if (collision.TryGetComponent<BacteriaControllerRed>(out _) ||
             collision.TryGetComponent<BacteriaControllerPurple>(out _) ||
             collision.TryGetComponent<MushroomController>(out _) ||
             collision.TryGetComponent<ProtozoaController>(out _) ||

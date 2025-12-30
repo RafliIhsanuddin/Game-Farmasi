@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 9102deb5be48c3040b114a03ad4f4fa6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4664418127727815495
+    second: Red Char_0
+  - first:
+      213: -6369270332186907938
+    second: Red Char_1
+  - first:
+      213: 9128766409043560414
+    second: Red Char_2
+  - first:
+      213: -713465897359668371
+    second: Red Char_3
+  - first:
+      213: 6814535597951975754
+    second: Red Char_4
+  - first:
+      213: 9111893342300926602
+    second: Red Char_5
+  - first:
+      213: -1360514658170701664
+    second: Red Char_6
+  - first:
+      213: 1995890788811881520
+    second: Red Char_7
+  - first:
+      213: -43947771030282409
+    second: Red Char_8
+  - first:
+      213: -3957422791526721621
+    second: Red Char_9
+  - first:
+      213: 3512479642578965046
+    second: Red Char_10
+  - first:
+      213: 2141283611910658707
+    second: Red Char_11
+  - first:
+      213: 4614452109089543661
+    second: Red Char_12
+  - first:
+      213: -8459662406847090925
+    second: Red Char_13
+  - first:
+      213: -3242570112531097966
+    second: Red Char_14
+  - first:
+      213: -823728189405282982
+    second: Red Char_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Red Char_0
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 792
+        width: 198
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b414ec0d68a44fb0800000000000000
+      internalID: -4664418127727815495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Char_1
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 791
+        width: 199
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edaa093f06ecb97a0800000000000000
+      internalID: -6369270332186907938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Char_2
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 791
+        width: 199
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed74f88cea4efae70800000000000000
+      internalID: 9128766409043560414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Char_3
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 791
+        width: 199
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6b8584eb824916f0800000000000000
+      internalID: -713465897359668371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Char_4
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 538
+        width: 197
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a418e297508129e50800000000000000
+      internalID: 6814535597951975754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Char_5
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 537
+        width: 199
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a82f71bc7b2f37e70800000000000000
+      internalID: 9111893342300926602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Char_6
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 537
+        width: 199
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a8f500702b7e1de0800000000000000
+      internalID: -1360514658170701664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Char_7
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 537
+        width: 199
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03c3b950914d2bb10800000000000000
+      internalID: 1995890788811881520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Char_8
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 281
+        width: 199
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75fd11f2cbdd36ff0800000000000000
+      internalID: -43947771030282409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Char_9
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 281
+        width: 199
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba7d30d30f86419c0800000000000000
+      internalID: -3957422791526721621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Char_10
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 281
+        width: 199
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 632d5b000a5deb030800000000000000
+      internalID: 3512479642578965046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Char_11
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 281
+        width: 198
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39adc4b991e57bd10800000000000000
+      internalID: 2141283611910658707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Char_12
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 23
+        width: 198
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de5955baeb3d90040800000000000000
+      internalID: 4614452109089543661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Char_13
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 22
+        width: 199
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31f2728bcdd399a80800000000000000
+      internalID: -8459662406847090925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Char_14
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 21
+        width: 198
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 296194b99a31003d0800000000000000
+      internalID: -3242570112531097966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Char_15
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 21
+        width: 197
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5db50773978194f0800000000000000
+      internalID: -823728189405282982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Red Char_0: -4664418127727815495
+      Red Char_1: -6369270332186907938
+      Red Char_10: 3512479642578965046
+      Red Char_11: 2141283611910658707
+      Red Char_12: 4614452109089543661
+      Red Char_13: -8459662406847090925
+      Red Char_14: -3242570112531097966
+      Red Char_15: -823728189405282982
+      Red Char_2: 9128766409043560414
+      Red Char_3: -713465897359668371
+      Red Char_4: 6814535597951975754
+      Red Char_5: 9111893342300926602
+      Red Char_6: -1360514658170701664
+      Red Char_7: 1995890788811881520
+      Red Char_8: -43947771030282409
+      Red Char_9: -3957422791526721621
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
