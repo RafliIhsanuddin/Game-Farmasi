@@ -51,6 +51,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   protozoaVisual: {fileID: 5955254052360572041}
   hitParticleEffect: {fileID: 6970143038926472970}
+  health: 10
 --- !u!61 &4296299282055359390
 BoxCollider2D:
   m_ObjectHideFlags: 0

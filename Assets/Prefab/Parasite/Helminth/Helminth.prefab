@@ -14784,6 +14784,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   helminthVisual: {fileID: 62695793705857960}
   hitParticleEffect: {fileID: 1429581713597411655}
+  health: 10
 --- !u!61 &5196775232761335970
 BoxCollider2D:
   m_ObjectHideFlags: 0

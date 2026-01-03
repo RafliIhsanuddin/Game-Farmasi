@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 3e75f7ad99346c341b3c844cd79a4047
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1364417342459046464
+    second: Orange Char_0
+  - first:
+      213: -2845400252341244265
+    second: Orange Char_1
+  - first:
+      213: 6919928543199598168
+    second: Orange Char_2
+  - first:
+      213: -5008127231105609168
+    second: Orange Char_3
+  - first:
+      213: 547498825964720081
+    second: Orange Char_4
+  - first:
+      213: 6406776592442957740
+    second: Orange Char_5
+  - first:
+      213: -1007618157423415686
+    second: Orange Char_6
+  - first:
+      213: -4976101534023737380
+    second: Orange Char_7
+  - first:
+      213: -296763930319682133
+    second: Orange Char_8
+  - first:
+      213: 6159503455250938946
+    second: Orange Char_9
+  - first:
+      213: -7902205498055744239
+    second: Orange Char_10
+  - first:
+      213: 3968064336416627089
+    second: Orange Char_11
+  - first:
+      213: 3285521190925268883
+    second: Orange Char_12
+  - first:
+      213: -8686004269650225724
+    second: Orange Char_13
+  - first:
+      213: 5718293779830525182
+    second: Orange Char_14
+  - first:
+      213: -528931212746091761
+    second: Orange Char_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Orange Char_0
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 809
+        width: 207
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c59851f7ad901de0800000000000000
+      internalID: -1364417342459046464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orange Char_1
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 810
+        width: 208
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79ea46bcb8b1388d0800000000000000
+      internalID: -2845400252341244265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orange Char_2
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 814
+        width: 207
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8569f70c856880060800000000000000
+      internalID: 6919928543199598168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orange Char_3
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 811
+        width: 207
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0325df741de8f7ab0800000000000000
+      internalID: -5008127231105609168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orange Char_4
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 548
+        width: 208
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1df029c084b199700800000000000000
+      internalID: 547498825964720081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orange Char_5
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 553
+        width: 207
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: caf99d3cd5179e850800000000000000
+      internalID: 6406776592442957740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orange Char_6
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 553
+        width: 207
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7e2b89df983402f0800000000000000
+      internalID: -1007618157423415686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orange Char_7
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 549
+        width: 207
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdf1d32f40651fab0800000000000000
+      internalID: -4976101534023737380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orange Char_8
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 287
+        width: 207
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba5852717cea1ebf0800000000000000
+      internalID: -296763930319682133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orange Char_9
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 287
+        width: 209
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24cf50312c3fa7550800000000000000
+      internalID: 6159503455250938946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orange Char_10
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 286
+        width: 207
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 115af3a97f9b55290800000000000000
+      internalID: -7902205498055744239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orange Char_11
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 289
+        width: 207
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19952028d75611730800000000000000
+      internalID: 3968064336416627089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orange Char_12
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 29
+        width: 206
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3977e1f9d14889d20800000000000000
+      internalID: 3285521190925268883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orange Char_13
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 27
+        width: 205
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c5d8fd132d157780800000000000000
+      internalID: -8686004269650225724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orange Char_14
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 27
+        width: 206
+        height: 166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efccf1c55e57b5f40800000000000000
+      internalID: 5718293779830525182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orange Char_15
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 29
+        width: 206
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0317a94ddbd8a8f0800000000000000
+      internalID: -528931212746091761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Orange Char_0: -1364417342459046464
+      Orange Char_1: -2845400252341244265
+      Orange Char_10: -7902205498055744239
+      Orange Char_11: 3968064336416627089
+      Orange Char_12: 3285521190925268883
+      Orange Char_13: -8686004269650225724
+      Orange Char_14: 5718293779830525182
+      Orange Char_15: -528931212746091761
+      Orange Char_2: 6919928543199598168
+      Orange Char_3: -5008127231105609168
+      Orange Char_4: 547498825964720081
+      Orange Char_5: 6406776592442957740
+      Orange Char_6: -1007618157423415686
+      Orange Char_7: -4976101534023737380
+      Orange Char_8: -296763930319682133
+      Orange Char_9: 6159503455250938946
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

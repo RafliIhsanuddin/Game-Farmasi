@@ -24,8 +24,12 @@ public class WaveManager : MonoBehaviour
     [Header("Spawner")]
     public BacteriaSpawner spawner;
 
+    // ===============================
+    // INTERNAL STATE
+    // ===============================
     private int currentWaveIndex = 0;
-    private int currentAliveEnemies = 0;
+    private int remainingEnemiesInWave = 0;
+
     private int totalKills = 0;
     private int totalEnemiesInLevel = 0;
 
@@ -35,17 +39,21 @@ public class WaveManager : MonoBehaviour
 
     public static bool isGameOver = false;
 
-    // ⬇️ JANGAN DIHILANGKAN
+    // JANGAN DIHILANGKAN
     public System.Action OnLevelComplete;
 
+    // ===============================
+    // START
+    // ===============================
     private void Start()
     {
         if (winUI != null) winUI.SetActive(false);
         isGameOver = false;
 
+        // Hitung TOTAL MUSUH LEVEL (FIXED)
         totalEnemiesInLevel = 0;
-        foreach (var n in enemiesPerWave)
-            totalEnemiesInLevel += n;
+        foreach (var count in enemiesPerWave)
+            totalEnemiesInLevel += count;
 
         GenerateLevelGoals();
 
@@ -56,13 +64,12 @@ public class WaveManager : MonoBehaviour
         }
 
         SetupFlags();
-
-        if (spawner != null)
-            spawner.OnWaveSpawnComplete += OnWaveSpawned;
-
         StartWave(0);
     }
 
+    // ===============================
+    // FLAG SETUP
+    // ===============================
     private void GenerateLevelGoals()
     {
         levelGoals.Clear();
@@ -86,7 +93,7 @@ public class WaveManager : MonoBehaviour
             var fm = flagObj.GetComponent<FlagsManager>();
             goalToFlag[goal] = fm;
 
-            float t = Mathf.Clamp01((float)goal / totalEnemiesInLevel);
+            float t = (float)goal / totalEnemiesInLevel;
             var rt = flagObj.GetComponent<RectTransform>();
             rt.anchorMin = new Vector2(t, 0.5f);
             rt.anchorMax = new Vector2(t, 0.5f);
@@ -94,92 +101,124 @@ public class WaveManager : MonoBehaviour
         }
     }
 
+    // ===============================
+    // START WAVE
+    // ===============================
     private void StartWave(int waveIndex)
     {
         if (waveIndex >= enemiesPerWave.Count)
         {
-            if (spawner != null)
-                spawner.StopAllSpawning();
-
-            StartCoroutine(WaitUntilAllEnemiesDeadThenWin());
+            Debug.Log("✅ SEMUA WAVE SELESAI → CEK WIN");
+            TryWin();
             return;
         }
 
-        int amount = enemiesPerWave[waveIndex];
-        currentAliveEnemies = amount;
+        currentWaveIndex = waveIndex;
+        remainingEnemiesInWave = enemiesPerWave[waveIndex];
 
-        if (spawner != null && spawnModesPerWave.Count > 0)
-        {
-            int modeIndex = Mathf.Min(waveIndex, spawnModesPerWave.Count - 1);
-            spawner.Mode = spawnModesPerWave[modeIndex];
-        }
+        var mode = spawnModesPerWave.Count > 0
+            ? spawnModesPerWave[Mathf.Min(waveIndex, spawnModesPerWave.Count - 1)]
+            : BacteriaSpawner.SpawnMode.SinglePerLine;
 
-        spawner.StartWave(amount);
+        spawner.Mode = mode;
+        spawner.StartWave(remainingEnemiesInWave);
+
+        Debug.Log($"🚩 WAVE {currentWaveIndex + 1} DIMULAI | Total Musuh: {remainingEnemiesInWave}");
     }
 
-    private void OnWaveSpawned()
-    {
-        // wave selesai di-spawn
-    }
-
+    // ===============================
+    // REGISTER KILL (SATU-SATUNYA PINTU)
+    // ===============================
     public void RegisterKill()
     {
         if (isGameOver) return;
 
         totalKills++;
-        currentAliveEnemies--;
+        remainingEnemiesInWave--;
+
+        Debug.Log(
+            $"💀 WAVE {currentWaveIndex + 1} | Mati: {enemiesPerWave[currentWaveIndex] - remainingEnemiesInWave} | Sisa: {remainingEnemiesInWave}"
+        );
 
         if (levelProgress != null)
-            levelProgress.value = totalKills;
+            levelProgress.value = Mathf.Min(totalKills, totalEnemiesInLevel);
 
         foreach (int g in levelGoals)
         {
             if (totalKills >= g && !triggeredGoals.Contains(g))
             {
                 triggeredGoals.Add(g);
-                if (goalToFlag.TryGetValue(g, out var fm) && fm != null)
-                    fm.Expand();
+                if (goalToFlag.TryGetValue(g, out var fm))
+                    fm?.Expand();
             }
         }
 
-        if (currentAliveEnemies <= 0)
+        // ===============================
+        // WAVE HABIS
+        // ===============================
+        if (remainingEnemiesInWave <= 0)
         {
-            currentWaveIndex++;
-            StartWave(currentWaveIndex);
+            Debug.Log($"✅ WAVE {currentWaveIndex + 1} SELESAI");
+
+            // 🔥 INI KUNCINYA
+            if (currentWaveIndex == enemiesPerWave.Count - 1)
+            {
+                Debug.Log("🛑 WAVE TERAKHIR HABIS → STOP SPAWNER");
+                spawner.StopAllSpawning();
+                TryWin();
+                return;
+            }
+
+            StartWave(currentWaveIndex + 1);
         }
     }
 
-    private IEnumerator WaitUntilAllEnemiesDeadThenWin()
+    // ===============================
+    // WIN CHECK
+    // ===============================
+    private void TryWin()
     {
-        while (CountAllAliveEnemies() > 0)
-            yield return new WaitForSeconds(0.5f);
+        // Semua musuh HARUS sudah mati
+        if (totalKills < totalEnemiesInLevel)
+        {
+            Debug.LogWarning("⚠️ WIN DICEK TAPI TOTAL KILL BELUM CUKUP");
+            return;
+        }
 
-        // ============================
-        // 🔓 UNLOCK LEVEL BERIKUTNYA
-        // ============================
+        StartCoroutine(WaitAllEnemyDeadThenWin());
+    }
+
+    private IEnumerator WaitAllEnemyDeadThenWin()
+    {
+        while (spawner.CountAllAlive() > 0)
+            yield return new WaitForSeconds(0.2f);
+
+        TriggerWin();
+    }
+
+    // ===============================
+    // WIN
+    // ===============================
+    private void TriggerWin()
+    {
+        if (isGameOver) return;
+
+        isGameOver = true;
+
+        spawner.StopAllSpawning();
+
+        if (levelProgress != null)
+            levelProgress.value = totalEnemiesInLevel;
+
+        Debug.Log("🏆 WAVE TERAKHIR SELESAI → KAMU MENANG");
+
         GameData.Data.UnlockedLevel++;
-
-        // ⬇️ EVENT TETAP DIPANGGIL
         OnLevelComplete?.Invoke();
 
-        ShowWinUI();
-    }
-
-    private int CountAllAliveEnemies()
-    {
-        if (spawner != null)
-            return spawner.CountAllAlive();
-
-        return 0;
-    }
-
-    private void ShowWinUI()
-    {
         if (winUI != null)
         {
             winUI.SetActive(true);
             Time.timeScale = 0f;
-            isGameOver = true;
         }
     }
 

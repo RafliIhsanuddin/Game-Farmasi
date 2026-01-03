@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 3481155235049280151}
   - component: {fileID: 2854517576647398735}
   - component: {fileID: 9065483441111087660}
-  - component: {fileID: 7892803588371806424}
+  - component: {fileID: 1624938821952992951}
   m_Layer: 0
   m_Name: GreenProjectile33
   m_TagString: Untagged
@@ -185,7 +185,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7892803588371806424
+--- !u!114 &1624938821952992951
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,13 +194,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8339437644049991455}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 993a2f9c023b2444488abc19fcb27777, type: 3}
+  m_Script: {fileID: 11500000, guid: 50a23e6edb3774847bced7670a17a504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.7
   damageRed: 3
+  damagePurple: 3
   damageGreen: 3
   damageMushroom: 3
-  damageProtozoa: 3
   damageHelminth: 3
   lifeTime: 25

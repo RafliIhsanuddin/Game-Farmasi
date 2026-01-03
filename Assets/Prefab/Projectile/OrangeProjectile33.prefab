@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4920314435965006219}
   - component: {fileID: 9181535709775353630}
   - component: {fileID: 1065557608291172676}
-  - component: {fileID: 7842866583311867577}
+  - component: {fileID: -2316375031842680862}
   m_Layer: 0
   m_Name: OrangeProjectile33
   m_TagString: Untagged
@@ -98,7 +98,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7842866583311867577
+--- !u!114 &-2316375031842680862
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,15 +107,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1995052073455096532}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 993a2f9c023b2444488abc19fcb27777, type: 3}
+  m_Script: {fileID: 11500000, guid: fc432230d4357a74abc4629aba01afc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.7
   damageRed: 3
+  damagePurple: 3
   damageGreen: 3
   damageMushroom: 3
   damageProtozoa: 3
-  damageHelminth: 3
   lifeTime: 25
 --- !u!1 &7920023885109222426
 GameObject:

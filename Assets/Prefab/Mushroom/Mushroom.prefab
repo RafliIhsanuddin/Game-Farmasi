@@ -51,6 +51,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   mushroomVisual: {fileID: 4909435961034432879}
   hitParticleEffect: {fileID: 9092462129086457935}
+  health: 10
 --- !u!61 &801780192308471031
 BoxCollider2D:
   m_ObjectHideFlags: 0

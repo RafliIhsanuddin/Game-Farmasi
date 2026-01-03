@@ -14784,7 +14784,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   bacteriaVisual: {fileID: 2181007859898350770}
   hitParticleEffect: {fileID: 2422812870958245913}
-  health: 3
+  health: 10
 --- !u!61 &809364108760731623
 BoxCollider2D:
   m_ObjectHideFlags: 0
