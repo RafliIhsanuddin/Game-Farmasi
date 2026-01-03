@@ -2,79 +2,123 @@ using UnityEngine;
 
 public class ProtozoaController : MonoBehaviour
 {
+    [Header("Movement")]
     public float speed = 1.5f;
 
+    [Header("Spawn Reference")]
     [HideInInspector] public SpawnPointSlot spawnPoint;
 
-    [SerializeField] private GameObject protozoaVisual;     // body / sprite protozoa
-    [SerializeField] private GameObject hitParticleEffect;  // efek saat terkena kapsul
+    [Header("Visual")]
+    [SerializeField] private GameObject protozoaVisual;
 
+    [Tooltip("Particle VFX child (awal NONAKTIF)")]
+    [SerializeField] private GameObject hitParticleEffect;
+
+    [Header("Stats")]
+    public int health = 3;
+
+    // =========================
+    // INTERNAL STATE
+    // =========================
     private bool isHit = false;
     private Collider2D myCollider;
+    private ParticleSystem hitPS;
 
+    // =========================
+    // UNITY EVENTS
+    // =========================
     private void Awake()
     {
         myCollider = GetComponent<Collider2D>();
+
+        if (hitParticleEffect != null)
+        {
+            hitPS = hitParticleEffect.GetComponent<ParticleSystem>();
+            hitParticleEffect.SetActive(false); // 🔒 mati di awal
+        }
+
+        Debug.Log($"[DEBUG][Protozoa] Awake → VFX ready: {hitPS != null}");
     }
 
     private void FixedUpdate()
     {
         if (isHit) return;
-
-        transform.position -= new Vector3(speed, 0, 0);
+        transform.position -= new Vector3(speed, 0f, 0f);
     }
 
+    // =========================
+    // MAIN DEATH HANDLER
+    // =========================
     public void Hit()
     {
-        if (isHit) return; // guard clause
-
-        Debug.Log($"[ProtozoaController] {name} terkena serangan pada posisi {transform.position}");
-
-        isHit = true;
-        speed = 0;
-
-        // Matikan collider
-        if (myCollider != null)
+        if (isHit)
         {
-            myCollider.enabled = false;
-            Debug.Log($"[ProtozoaController] Collider dinonaktifkan untuk {name}");
+            Debug.Log("[DEBUG][Protozoa] Hit() diabaikan (isHit == true)");
+            return;
         }
 
-        // Matikan visual protozoa
+        Debug.Log($"[DEBUG][Protozoa] Hit() dieksekusi untuk {name}");
+
+        isHit = true;
+        speed = 0f;
+
+        // Disable collider
+        if (myCollider != null)
+            myCollider.enabled = false;
+
+        // Hide visual protozoa
         if (protozoaVisual != null)
             protozoaVisual.SetActive(false);
 
-        // Spawn efek partikel (SAMA PERSIS DENGAN MUSHROOM)
-        if (hitParticleEffect != null)
+        // =========================
+        // AKTIFKAN & PLAY VFX
+        // =========================
+        if (hitParticleEffect != null && hitPS != null)
         {
-            GameObject effect = Instantiate(
-                hitParticleEffect,
-                transform.position,
-                Quaternion.identity
-            );
+            hitParticleEffect.SetActive(true);
 
-            effect.SetActive(true); // 🔑 WAJIB
+            hitPS.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            hitPS.Play(true);
 
-            ParticleSystem ps = effect.GetComponent<ParticleSystem>();
-            if (ps != null)
-                ps.Play();
-
-            Destroy(effect, 3f);
-            Debug.Log($"[ProtozoaController] Efek partikel ditampilkan untuk {name}");
+            Debug.Log($"[DEBUG][Protozoa] VFX DISET ACTIVE & PLAY → isPlaying={hitPS.isPlaying}");
+        }
+        else
+        {
+            Debug.LogError("[DEBUG][Protozoa] VFX tidak valid / belum di-assign!");
         }
 
-        // Bebaskan spawn point
+        // Clear spawn slot
         if (spawnPoint != null)
-        {
             spawnPoint.ClearOccupied();
-        }
 
-        // Register kill ke WaveManager
-        var manager = FindFirstObjectByType<WaveManager>();
+        // Register kill
+        WaveManager manager = FindFirstObjectByType<WaveManager>();
         if (manager != null)
             manager.RegisterKill();
 
-        Debug.Log($"[ProtozoaController] {name} akan dihapus dalam 3 detik");
         Destroy(gameObject, 3f);
+        Debug.Log("[DEBUG][Protozoa] Protozoa akan dihancurkan 3 detik lagi");
+    }
+
+    // =========================
+    // PROJECTILE EVENTS
+    // =========================
+    public void ProjectileHit(int damage)
+    {
+        if (isHit) return;
+
+        health -= damage;
+        Debug.Log($"[DEBUG][Protozoa] Damage={damage}, HP sisa={health}");
+
+        if (health <= 0)
+            Hit();
+    }
+
+    public void ProjectileDead()
+    {
+        if (isHit) return;
+
+        Debug.Log("[DEBUG][Protozoa] ProjectileDead()");
+        Hit();
     }
 }

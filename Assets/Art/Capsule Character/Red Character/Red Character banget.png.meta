@@ -1,0 +1,637 @@
+fileFormatVersion: 2
+guid: 1e668bf45473d084396a70d5ea1487ad
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6170029987973528660
+    second: Red Character banget_0
+  - first:
+      213: -859985846000651106
+    second: Red Character banget_1
+  - first:
+      213: 3556754807565561312
+    second: Red Character banget_2
+  - first:
+      213: -1633189555710447799
+    second: Red Character banget_3
+  - first:
+      213: 5188677105573990177
+    second: Red Character banget_4
+  - first:
+      213: 8634090029624111778
+    second: Red Character banget_5
+  - first:
+      213: 1062354929520257589
+    second: Red Character banget_6
+  - first:
+      213: -6184644092582451374
+    second: Red Character banget_7
+  - first:
+      213: 7384744544432110870
+    second: Red Character banget_8
+  - first:
+      213: 6375395505903623939
+    second: Red Character banget_9
+  - first:
+      213: 713685784555977403
+    second: Red Character banget_10
+  - first:
+      213: -6832032554451264166
+    second: Red Character banget_11
+  - first:
+      213: -1388300641943466369
+    second: Red Character banget_12
+  - first:
+      213: 7006773180955831999
+    second: Red Character banget_13
+  - first:
+      213: 6363301483483500064
+    second: Red Character banget_14
+  - first:
+      213: -1830609290649989461
+    second: Red Character banget_15
+  - first:
+      213: 6735669507005233498
+    second: Red Character banget_16
+  - first:
+      213: 8628344963234971284
+    second: Red Character banget_17
+  - first:
+      213: -283664047820175830
+    second: Red Character banget_18
+  - first:
+      213: 6436916428469770252
+    second: Red Character banget_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Red Character banget_0
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 838
+        width: 161
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca384598a66af5aa0800000000000000
+      internalID: -6170029987973528660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Character banget_1
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 838
+        width: 160
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e947441fd67b014f0800000000000000
+      internalID: -859985846000651106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Character banget_2
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 837
+        width: 162
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0edab1a27a12c5130800000000000000
+      internalID: 3556754807565561312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Character banget_3
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 838
+        width: 159
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94f200980ceb559e0800000000000000
+      internalID: -1633189555710447799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Character banget_4
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 629
+        width: 159
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12f80f33652e10840800000000000000
+      internalID: 5188677105573990177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Character banget_5
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 627
+        width: 160
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a2bc76f22372d770800000000000000
+      internalID: 8634090029624111778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Character banget_6
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 629
+        width: 160
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53aa0770e2e3ebe00800000000000000
+      internalID: 1062354929520257589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Character banget_7
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 630
+        width: 159
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 257a76727fabb2aa0800000000000000
+      internalID: -6184644092582451374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Character banget_8
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 422
+        width: 161
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61d31ef7902eb7660800000000000000
+      internalID: 7384744544432110870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Character banget_9
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 421
+        width: 161
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30fd1003f64f97850800000000000000
+      internalID: 6375395505903623939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Character banget_10
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 422
+        width: 161
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bba74b5907587e900800000000000000
+      internalID: 713685784555977403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Character banget_11
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 422
+        width: 162
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5d1702e69ebf21a0800000000000000
+      internalID: -6832032554451264166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Character banget_12
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 217
+        width: 162
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7e4383fbe3cbbce0800000000000000
+      internalID: -1388300641943466369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Character banget_13
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 213
+        width: 160
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbe2b98a51f0d3160800000000000000
+      internalID: 7006773180955831999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Character banget_14
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 214
+        width: 160
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02e00c92cfcfe4850800000000000000
+      internalID: 6363301483483500064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Character banget_15
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 213
+        width: 160
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bae07449c8e5896e0800000000000000
+      internalID: -1830609290649989461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Character banget_16
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 11
+        width: 162
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a593a71cab7e97d50800000000000000
+      internalID: 6735669507005233498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Character banget_17
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 9
+        width: 163
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49eb625770a0eb770800000000000000
+      internalID: 8628344963234971284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Character banget_18
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 8
+        width: 161
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a26012a2d09301cf0800000000000000
+      internalID: -283664047820175830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red Character banget_19
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 8
+        width: 162
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0811df2365845950800000000000000
+      internalID: 6436916428469770252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Red Character banget_0: -6170029987973528660
+      Red Character banget_1: -859985846000651106
+      Red Character banget_10: 713685784555977403
+      Red Character banget_11: -6832032554451264166
+      Red Character banget_12: -1388300641943466369
+      Red Character banget_13: 7006773180955831999
+      Red Character banget_14: 6363301483483500064
+      Red Character banget_15: -1830609290649989461
+      Red Character banget_16: 6735669507005233498
+      Red Character banget_17: 8628344963234971284
+      Red Character banget_18: -283664047820175830
+      Red Character banget_19: 6436916428469770252
+      Red Character banget_2: 3556754807565561312
+      Red Character banget_3: -1633189555710447799
+      Red Character banget_4: 5188677105573990177
+      Red Character banget_5: 8634090029624111778
+      Red Character banget_6: 1062354929520257589
+      Red Character banget_7: -6184644092582451374
+      Red Character banget_8: 7384744544432110870
+      Red Character banget_9: 6375395505903623939
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

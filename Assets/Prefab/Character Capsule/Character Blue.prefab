@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ownerTile: {fileID: 0}
-  projectile: {fileID: 3811689653652678917, guid: 0cf23c92a41e6044e9db1b067f59e3e6, type: 3}
+  projectile: {fileID: 617251693423207449, guid: 3fd9b3f3d66813746a583e730e06730f, type: 3}
   shootOrigin: {fileID: 2033201661347168403}
   cooldown: 4
   range: 10

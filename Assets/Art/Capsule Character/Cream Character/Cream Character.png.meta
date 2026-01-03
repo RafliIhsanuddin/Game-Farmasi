@@ -1,0 +1,537 @@
+fileFormatVersion: 2
+guid: 5a97b23d10cbd4e4091db201166304d9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3487676887769309417
+    second: Cream Character_0
+  - first:
+      213: -5354514457367091046
+    second: Cream Character_1
+  - first:
+      213: 7389248385870405224
+    second: Cream Character_2
+  - first:
+      213: 1901418727084885810
+    second: Cream Character_3
+  - first:
+      213: -4178391431777749714
+    second: Cream Character_4
+  - first:
+      213: 1912609790681376930
+    second: Cream Character_5
+  - first:
+      213: 3434864010132293722
+    second: Cream Character_6
+  - first:
+      213: -7110974487754410443
+    second: Cream Character_7
+  - first:
+      213: 8448798843444059454
+    second: Cream Character_8
+  - first:
+      213: -8789212050574026536
+    second: Cream Character_9
+  - first:
+      213: -2568574588491937411
+    second: Cream Character_10
+  - first:
+      213: 2802788819992972223
+    second: Cream Character_11
+  - first:
+      213: 5823819253597846092
+    second: Cream Character_12
+  - first:
+      213: -6336126411327800112
+    second: Cream Character_13
+  - first:
+      213: 2708248965810711501
+    second: Cream Character_14
+  - first:
+      213: 8993262807134056024
+    second: Cream Character_15
+  - first:
+      213: 586777221425582028
+    second: Cream Character_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Cream Character_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 787
+        width: 223
+        height: 237
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e064d2a6a7b66030800000000000000
+      internalID: 3487676887769309417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cream Character_1
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 788
+        width: 224
+        height: 236
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a98e0ff6871f0b5b0800000000000000
+      internalID: -5354514457367091046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cream Character_2
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 788
+        width: 223
+        height: 236
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86e1fecc142eb8660800000000000000
+      internalID: 7389248385870405224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cream Character_3
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 787
+        width: 222
+        height: 237
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2378b251242336a10800000000000000
+      internalID: 1901418727084885810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cream Character_4
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 530
+        width: 224
+        height: 239
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e25f950812f5306c0800000000000000
+      internalID: -4178391431777749714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cream Character_5
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 530
+        width: 222
+        height: 239
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a86f7f9874fa8a10800000000000000
+      internalID: 1912609790681376930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cream Character_6
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 532
+        width: 222
+        height: 238
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5885b75e961baf20800000000000000
+      internalID: 3434864010132293722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cream Character_7
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 530
+        width: 222
+        height: 239
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5367882016eb05d90800000000000000
+      internalID: -7110974487754410443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cream Character_8
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 271
+        width: 223
+        height: 229
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3dd632d8c9204570800000000000000
+      internalID: 8448798843444059454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cream Character_10
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 272
+        width: 224
+        height: 239
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d79c7d945079a5cd0800000000000000
+      internalID: -2568574588491937411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cream Character_11
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 273
+        width: 223
+        height: 238
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbb0e1cf49185e620800000000000000
+      internalID: 2802788819992972223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cream Character_12
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 271
+        width: 222
+        height: 240
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4ab7c651cc52d050800000000000000
+      internalID: 5823819253597846092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cream Character_13
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 13
+        width: 223
+        height: 240
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dcf5d0699e8118a0800000000000000
+      internalID: -6336126411327800112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cream Character_14
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 13
+        width: 223
+        height: 240
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcb6772e512a59520800000000000000
+      internalID: 2708248965810711501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cream Character_15
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 14
+        width: 223
+        height: 239
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85e25feefdc7ecc70800000000000000
+      internalID: 8993262807134056024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cream Character_16
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 13
+        width: 223
+        height: 240
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccfcc5526c6a42800800000000000000
+      internalID: 586777221425582028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 7c65a1ed6976dbe478a8de5674625173
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Cream Character_0: 3487676887769309417
+      Cream Character_1: -5354514457367091046
+      Cream Character_10: -2568574588491937411
+      Cream Character_11: 2802788819992972223
+      Cream Character_12: 5823819253597846092
+      Cream Character_13: -6336126411327800112
+      Cream Character_14: 2708248965810711501
+      Cream Character_15: 8993262807134056024
+      Cream Character_16: 586777221425582028
+      Cream Character_2: 7389248385870405224
+      Cream Character_3: 1901418727084885810
+      Cream Character_4: -4178391431777749714
+      Cream Character_5: 1912609790681376930
+      Cream Character_6: 3434864010132293722
+      Cream Character_7: -7110974487754410443
+      Cream Character_8: 8448798843444059454
+      Cream Character_9: -8789212050574026536
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

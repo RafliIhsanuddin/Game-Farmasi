@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 26ca1a267cdf471458baa926800cd588
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5434326127950680618
+    second: Yellow New_0
+  - first:
+      213: 8195663134447173928
+    second: Yellow New_1
+  - first:
+      213: -3486562372015125807
+    second: Yellow New_2
+  - first:
+      213: 1393819258521375100
+    second: Yellow New_3
+  - first:
+      213: -3899401770782796485
+    second: Yellow New_4
+  - first:
+      213: -1881291829525728683
+    second: Yellow New_5
+  - first:
+      213: -5497005989843887837
+    second: Yellow New_6
+  - first:
+      213: -1376152480290908685
+    second: Yellow New_7
+  - first:
+      213: 8170709743199058282
+    second: Yellow New_8
+  - first:
+      213: -4341882627522612136
+    second: Yellow New_9
+  - first:
+      213: 1121573103735125454
+    second: Yellow New_10
+  - first:
+      213: -2531005471139470107
+    second: Yellow New_11
+  - first:
+      213: -464608310677638207
+    second: Yellow New_12
+  - first:
+      213: 2141366087922304727
+    second: Yellow New_13
+  - first:
+      213: 7379596502544056218
+    second: Yellow New_14
+  - first:
+      213: -1707152107048637049
+    second: Yellow New_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Yellow New_0
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 814
+        width: 217
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dd20edcd256594b0800000000000000
+      internalID: -5434326127950680618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow New_1
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 806
+        width: 215
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8210d73c238dcb170800000000000000
+      internalID: 8195663134447173928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow New_2
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 808
+        width: 215
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1da8bc8cefd3d9fc0800000000000000
+      internalID: -3486562372015125807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow New_3
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 807
+        width: 211
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c71d3491b37d75310800000000000000
+      internalID: 1393819258521375100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow New_4
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 553
+        width: 210
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3556f7dfba82e9c0800000000000000
+      internalID: -3899401770782796485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow New_5
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 553
+        width: 210
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 552364e6c0f44e5e0800000000000000
+      internalID: -1881291829525728683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow New_6
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 555
+        width: 210
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32919273d26b6b3b0800000000000000
+      internalID: -5497005989843887837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow New_7
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 555
+        width: 210
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f5dc7f3c9ce6ece0800000000000000
+      internalID: -1376152480290908685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow New_8
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 295
+        width: 210
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a69f33e9831346170800000000000000
+      internalID: 8170709743199058282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow New_9
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 295
+        width: 210
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 854331a21c88eb3c0800000000000000
+      internalID: -4341882627522612136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow New_10
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 295
+        width: 210
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec5b3c5abc0a09f00800000000000000
+      internalID: 1121573103735125454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow New_11
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 295
+        width: 209
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e469201fef00ecd0800000000000000
+      internalID: -2531005471139470107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow New_12
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 36
+        width: 209
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c37d5af3316d89f0800000000000000
+      internalID: -464608310677638207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow New_13
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 35
+        width: 210
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d64dac8c19a7bd10800000000000000
+      internalID: 2141366087922304727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow New_14
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 36
+        width: 209
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9f7ad79be7996660800000000000000
+      internalID: 7379596502544056218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow New_15
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 37
+        width: 210
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78d6ec9143afe48e0800000000000000
+      internalID: -1707152107048637049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Yellow New_0: -5434326127950680618
+      Yellow New_1: 8195663134447173928
+      Yellow New_10: 1121573103735125454
+      Yellow New_11: -2531005471139470107
+      Yellow New_12: -464608310677638207
+      Yellow New_13: 2141366087922304727
+      Yellow New_14: 7379596502544056218
+      Yellow New_15: -1707152107048637049
+      Yellow New_2: -3486562372015125807
+      Yellow New_3: 1393819258521375100
+      Yellow New_4: -3899401770782796485
+      Yellow New_5: -1881291829525728683
+      Yellow New_6: -5497005989843887837
+      Yellow New_7: -1376152480290908685
+      Yellow New_8: 8170709743199058282
+      Yellow New_9: -4341882627522612136
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

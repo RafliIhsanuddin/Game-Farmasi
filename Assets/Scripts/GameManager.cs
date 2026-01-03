@@ -188,11 +188,48 @@ public class GameManager : MonoBehaviour
         // ================================
         // 🔵 TAMBAHAN PENTING UNTUK SHOOTER
         // ================================
-        if (capsule.TryGetComponent(out BasicShooterBlue shooter))
+        if (capsule.TryGetComponent(out BasicShooterBlue shooterBlue))
         {
-            shooter.ownerTile = tile;
+            shooterBlue.ownerTile = tile;
             return;
         }
+
+        if (capsule.TryGetComponent(out BasicShooterYellow shooterYellow))
+        {
+            shooterYellow.ownerTile = tile;
+            return;
+        }
+        
+        if (capsule.TryGetComponent(out BasicShooterRed shooterRed))
+        {
+            shooterRed.ownerTile = tile;
+            return;
+        }
+
+        if (capsule.TryGetComponent(out BasicShooterCream shooterCream))
+        {
+            shooterCream.ownerTile = tile;
+            return;
+        }
+        
+        // ================================
+        // 🟢 BASIC SHOOTER GREEN
+        // ================================
+        if (capsule.TryGetComponent(out BasicShooterGreen shooterGreen))
+        {
+            shooterGreen.ownerTile = tile;
+            return;
+        }
+
+        // ================================
+        // 🟧 BASIC SHOOTER ORANGE
+        // ================================
+        if (capsule.TryGetComponent(out BasicShooterOrange shooterOrange))
+        {
+            shooterOrange.ownerTile = tile;
+            return;
+        }
+        
 
         Debug.LogWarning($"[GameManager] Capsule tidak dikenal: {capsule.name}");
     }

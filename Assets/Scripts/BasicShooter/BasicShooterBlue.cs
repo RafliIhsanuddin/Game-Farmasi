@@ -3,13 +3,12 @@ using UnityEngine;
 public class BasicShooterBlue : MonoBehaviour
 {
     [Header("Tile Ownership")]
-    public Tile ownerTile;   // diisi GameManager saat spawn
+    public Tile ownerTile;
 
     [Header("Shooting")]
     public GameObject projectile;
     public Transform shootOrigin;
     public float cooldown = 1f;
-    private bool canShoot = true;
 
     [Header("Detection (LINE CHECK)")]
     public float range = 5f;
@@ -18,7 +17,8 @@ public class BasicShooterBlue : MonoBehaviour
     // =====================
     // INTERNAL STATE
     // =====================
-    private bool hasTriggered = false;
+    private bool hasTriggered = false;   // 🔒 GLOBAL LOCK
+    private bool canShoot = true;
     private Collider2D myCollider;
 
     // =====================
@@ -33,17 +33,18 @@ public class BasicShooterBlue : MonoBehaviour
 
     private void Update()
     {
-        // ❌ Belum ditempatkan di tile
+        // ❌ Sudah mati / trigger
+        if (hasTriggered)
+            return;
+
+        // ❌ Belum ditempatkan
         if (ownerTile == null)
             return;
 
-        // ❌ Masih cooldown
+        // ❌ Cooldown
         if (!canShoot)
             return;
 
-        // =====================
-        // LINE DETECTION
-        // =====================
         runtimeHit = Physics2D.Raycast(
             transform.position,
             Vector2.right,
@@ -59,7 +60,8 @@ public class BasicShooterBlue : MonoBehaviour
 
     private void Shoot()
     {
-        if (!canShoot)
+        // 🔒 DOUBLE GUARD
+        if (!canShoot || hasTriggered)
             return;
 
         canShoot = false;
@@ -75,15 +77,18 @@ public class BasicShooterBlue : MonoBehaviour
 
     private void ResetCooldown()
     {
+        // ❌ Jangan reset jika sudah trigger
+        if (hasTriggered)
+            return;
+
         canShoot = true;
     }
 
     // =====================
-    // TRIGGER CLEANUP
+    // TRIGGER (ONE TIME ONLY)
     // =====================
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // 🔒 Capsule hanya boleh bereaksi SATU KALI
         if (hasTriggered) return;
 
         // ===============================
@@ -92,13 +97,14 @@ public class BasicShooterBlue : MonoBehaviour
         if (collision.TryGetComponent<BacteriaControllerRed>(out BacteriaControllerRed red))
         {
             hasTriggered = true;
-            red.Hit();          // 🔥 BAKTERI MERAH HANCUR
+
+            red.Hit();              // 🔥 MATI 1X
             CleanupShooter();
             return;
         }
 
         // ===============================
-        // OBJEK LAIN (TIDAK ADA EFEK)
+        // OBJEK LAIN (TETAP MATI SHOOTER)
         // ===============================
         if (collision.TryGetComponent<BacteriaControllerGreen>(out _) ||
             collision.TryGetComponent<BacteriaControllerPurple>(out _) ||
@@ -107,18 +113,18 @@ public class BasicShooterBlue : MonoBehaviour
             collision.TryGetComponent<HelminthController>(out _))
         {
             hasTriggered = true;
-            CleanupShooter();   // ❌ tidak ada efek ke objek lain
-            return;
+            CleanupShooter();
         }
     }
 
     private void CleanupShooter()
     {
-        // Matikan collider supaya tidak double trigger
+        // 🔒 MATIKAN SEMUA AKSI
+        canShoot = false;
+
         if (myCollider != null)
             myCollider.enabled = false;
 
-        // Lepaskan tile
         if (ownerTile != null)
         {
             ownerTile.hasCapsule = false;
@@ -129,7 +135,7 @@ public class BasicShooterBlue : MonoBehaviour
     }
 
     // =====================
-    // GIZMOS (REAL-TIME)
+    // GIZMOS
     // =====================
     private void OnDrawGizmos()
     {

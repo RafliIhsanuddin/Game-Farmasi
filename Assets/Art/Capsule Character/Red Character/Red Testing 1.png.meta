@@ -254,50 +254,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Red Testing_4
-      rect:
-        serializedVersion: 2
-        x: 855
-        y: 798
-        width: 16
-        height: 18
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bc402b62922a80de0800000000000000
-      internalID: -1366664189280385845
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Red Testing_5
-      rect:
-        serializedVersion: 2
-        x: 873
-        y: 808
-        width: 10
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1bf5c621e02694330800000000000000
-      internalID: 3695592781812359089
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Red Testing_6
       rect:
         serializedVersion: 2
@@ -579,28 +535,6 @@ TextureImporter:
       bones: []
       spriteID: 467f3a0b92ed4f8f0800000000000000
       internalID: -507536587347462300
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Red Testing_19
-      rect:
-        serializedVersion: 2
-        x: 124
-        y: 185
-        width: 11
-        height: 17
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3071d6873fd414600800000000000000
-      internalID: 450727145806567171
       vertices: []
       indices: 
       edges: []
