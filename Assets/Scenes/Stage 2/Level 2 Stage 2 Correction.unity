@@ -21518,7 +21518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flagCount: 2
-  enemiesPerWave: 0a0000000f00000014000000
+  enemiesPerWave: 0a0000000f00000019000000
   spawnModesPerWave: 000000000100000002000000
   levelProgress: {fileID: 1183394060}
   flagContainer: {fileID: 1942895426}
@@ -41297,13 +41297,13 @@ MonoBehaviour:
   - {fileID: 1494768030}
   - {fileID: 1163710783}
   - {fileID: 345597427}
-  spawnDelaySinglePerLine: 1.5
-  spawnDelayMultiPerLine: 3
-  spawnMode: 2
-  minPerLine: 1
-  maxPerLine: 2
-  minDelayPerLine: 1
-  maxDelayPerLine: 2
+  singleSpawnDelay: 3
+  multiSpawnDelay: 1
+  minPerLine: 5
+  maxPerLine: 12
+  minDelayPerLine: 0.5
+  maxDelayPerLine: 1.5
+  delayBetweenGroups: 1
 --- !u!1 &2012990689
 GameObject:
   m_ObjectHideFlags: 0

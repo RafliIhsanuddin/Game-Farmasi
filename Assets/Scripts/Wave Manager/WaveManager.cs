@@ -8,9 +8,18 @@ public class WaveManager : MonoBehaviour
 {
 
     // ===============================
+    // SPAWN MODE (MILIK WAVE MANAGER)
+    // ===============================
+    public enum SpawnMode
+    {
+        SinglePerLine,
+        MultiPerLine,
+        GroupedPerLine
+    }
+
+    // ===============================
     // INSPECTOR CONFIG
     // ===============================
-
     [Header("Flags")]
     [Tooltip("Jumlah bendera (checkpoint)")]
     public int flagCount = 1;
@@ -19,14 +28,14 @@ public class WaveManager : MonoBehaviour
     public List<int> enemiesPerWave = new();
 
     [Header("Spawn Mode per Wave")]
-    public List<BacteriaSpawner.SpawnMode> spawnModesPerWave = new();
+    public List<SpawnMode> spawnModesPerWave = new();
 
     [Header("UI")]
     public Slider levelProgress;
     public RectTransform flagContainer;
     public GameObject flagPrefab;
 
-    [Header("UI Win Panel")]
+    [Header("Win Panel")]
     public GameObject winUI;
 
     [Header("Spawner")]
@@ -35,7 +44,6 @@ public class WaveManager : MonoBehaviour
     // ===============================
     // INTERNAL STATE
     // ===============================
-
     private int currentWaveIndex = 0;
     private int remainingEnemiesInWave = 0;
     private int totalKills = 0;
@@ -51,32 +59,25 @@ public class WaveManager : MonoBehaviour
     public System.Action OnLevelComplete;
 
     // ===============================
-    // UNITY EVENTS
+    // ON VALIDATE (AUTO RESIZE)
     // ===============================
-
     private void OnValidate()
     {
-        int requiredWaveCount = flagCount + 1;
+        int required = flagCount + 1;
 
-        // Auto resize enemiesPerWave
-        while (enemiesPerWave.Count < requiredWaveCount)
-            enemiesPerWave.Add(5);
+        AutoResize(enemiesPerWave, required, 5);
+        AutoResize(spawnModesPerWave, required, SpawnMode.SinglePerLine);
+    }
 
-        while (enemiesPerWave.Count > requiredWaveCount)
-            enemiesPerWave.RemoveAt(enemiesPerWave.Count - 1);
-
-        // Auto resize spawnModes
-        while (spawnModesPerWave.Count < requiredWaveCount)
-            spawnModesPerWave.Add(BacteriaSpawner.SpawnMode.SinglePerLine);
-
-        while (spawnModesPerWave.Count > requiredWaveCount)
-            spawnModesPerWave.RemoveAt(spawnModesPerWave.Count - 1);
+    private void AutoResize<T>(List<T> list, int size, T defaultValue)
+    {
+        while (list.Count < size) list.Add(defaultValue);
+        while (list.Count > size) list.RemoveAt(list.Count - 1);
     }
 
     // ===============================
     // START
     // ===============================
-
     private void Start()
     {
         if (winUI != null) winUI.SetActive(false);
@@ -93,7 +94,6 @@ public class WaveManager : MonoBehaviour
     // ===============================
     // SETUP
     // ===============================
-
     private void CalculateTotalEnemies()
     {
         totalEnemiesInLevel = 0;
@@ -104,8 +104,8 @@ public class WaveManager : MonoBehaviour
     private void GenerateFlagGoals()
     {
         flagGoals.Clear();
-
         int cumulative = 0;
+
         for (int i = 0; i < flagCount; i++)
         {
             cumulative += enemiesPerWave[i];
@@ -116,7 +116,6 @@ public class WaveManager : MonoBehaviour
     private void SetupProgressUI()
     {
         if (levelProgress == null) return;
-
         levelProgress.maxValue = totalEnemiesInLevel;
         levelProgress.value = 0;
     }
@@ -131,13 +130,12 @@ public class WaveManager : MonoBehaviour
         foreach (int goal in flagGoals)
         {
             GameObject flagObj = Instantiate(flagPrefab, flagContainer);
-            var fm = flagObj.GetComponent<FlagsManager>();
+            FlagsManager fm = flagObj.GetComponent<FlagsManager>();
             goalToFlag[goal] = fm;
 
             float t = (float)goal / totalEnemiesInLevel;
-            var rt = flagObj.GetComponent<RectTransform>();
-            rt.anchorMin = new Vector2(t, 0.5f);
-            rt.anchorMax = new Vector2(t, 0.5f);
+            RectTransform rt = flagObj.GetComponent<RectTransform>();
+            rt.anchorMin = rt.anchorMax = new Vector2(t, 0.5f);
             rt.anchoredPosition = Vector2.zero;
         }
     }
@@ -145,17 +143,27 @@ public class WaveManager : MonoBehaviour
     // ===============================
     // WAVE LOGIC
     // ===============================
-
     private void StartWave(int waveIndex)
     {
         currentWaveIndex = waveIndex;
         remainingEnemiesInWave = enemiesPerWave[waveIndex];
 
-        var mode = spawnModesPerWave[waveIndex];
-        spawner.Mode = mode;
-        spawner.StartWave(remainingEnemiesInWave);
+        Debug.Log($"🚩 WAVE {waveIndex + 1} DIMULAI | Mode: {spawnModesPerWave[waveIndex]} | Spawn: {remainingEnemiesInWave}");
 
-        Debug.Log($"🚩 WAVE {waveIndex + 1} DIMULAI | Spawn {remainingEnemiesInWave}");
+        switch (spawnModesPerWave[waveIndex])
+        {
+            case SpawnMode.SinglePerLine:
+                spawner.StartSinglePerLineWave(remainingEnemiesInWave);
+                break;
+
+            case SpawnMode.MultiPerLine:
+                spawner.StartMultiPerLineWave(remainingEnemiesInWave);
+                break;
+
+            case SpawnMode.GroupedPerLine:
+                spawner.StartGroupedPerLineWave();
+                break;
+        }
 
         if (!isCheckingFailSafe)
             StartCoroutine(FailSafeChecker());
@@ -171,7 +179,6 @@ public class WaveManager : MonoBehaviour
         if (levelProgress != null)
             levelProgress.value = totalKills;
 
-        // Flag trigger
         foreach (int goal in flagGoals)
         {
             if (totalKills >= goal && !triggeredGoals.Contains(goal))
@@ -201,7 +208,6 @@ public class WaveManager : MonoBehaviour
     // ===============================
     // FAIL SAFE
     // ===============================
-
     private IEnumerator FailSafeChecker()
     {
         isCheckingFailSafe = true;
@@ -224,7 +230,6 @@ public class WaveManager : MonoBehaviour
     // ===============================
     // WIN
     // ===============================
-
     private void TryWin()
     {
         if (totalKills < totalEnemiesInLevel) return;
