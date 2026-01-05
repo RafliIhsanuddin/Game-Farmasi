@@ -18,6 +18,14 @@ public class BacteriaControllerRed : MonoBehaviour
     public int health = 3;
 
     // =========================
+    // 🟡 ATOM DROP SETTINGS (TAMBAHAN)
+    // =========================
+    [Header("Atom Drop On Death")]
+    [SerializeField] private GameObject atomPrefab;
+    [Range(0f, 1f)]
+    [SerializeField] private float atomDropChance = 1f;
+
+    // =========================
     // INTERNAL STATE
     // =========================
     private bool isHit = false;
@@ -34,7 +42,7 @@ public class BacteriaControllerRed : MonoBehaviour
         if (hitParticleEffect != null)
         {
             hitPS = hitParticleEffect.GetComponent<ParticleSystem>();
-            hitParticleEffect.SetActive(false); // 🔒 pastikan mati di awal
+            hitParticleEffect.SetActive(false);
         }
 
         Debug.Log($"[DEBUG][Red] Awake → VFX ready: {hitPS != null}");
@@ -43,6 +51,8 @@ public class BacteriaControllerRed : MonoBehaviour
     private void FixedUpdate()
     {
         if (isHit) return;
+
+        // ❗ MOVEMENT TIDAK DIUBAH
         transform.position -= new Vector3(speed, 0f, 0f);
     }
 
@@ -87,6 +97,11 @@ public class BacteriaControllerRed : MonoBehaviour
             Debug.LogError("[DEBUG][Red] VFX tidak valid / belum di-assign!");
         }
 
+        // =========================
+        // 🟡 DROP ATOM (TERINTEGRASI)
+        // =========================
+        TrySpawnAtom();
+
         // Clear spawn slot
         if (spawnPoint != null)
             spawnPoint.ClearOccupied();
@@ -98,6 +113,40 @@ public class BacteriaControllerRed : MonoBehaviour
 
         Destroy(gameObject, 3f);
         Debug.Log("[DEBUG][Red] Bakteri akan dihancurkan 3 detik lagi");
+    }
+
+    // =========================
+    // 🟡 ATOM DROP LOGIC
+    // =========================
+    private void TrySpawnAtom()
+    {
+        if (atomPrefab == null)
+        {
+            Debug.LogWarning("[DEBUG][Red] atomPrefab belum di-assign");
+            return;
+        }
+
+        if (Random.value > atomDropChance)
+        {
+            Debug.Log("[DEBUG][Red] Atom tidak drop (chance gagal)");
+            return;
+        }
+
+        // Spawn atom di posisi bakteri mati
+        GameObject atom = Instantiate(
+            atomPrefab,
+            transform.position,
+            Quaternion.identity
+        );
+
+        // 🔑 KORELASI DENGAN SCRIPT Atom
+        Atom atomScript = atom.GetComponent<Atom>();
+        if (atomScript != null)
+        {
+            atomScript.useRandomSpawn = false;
+        }
+
+        Debug.Log("[DEBUG][Red] Atom drop berhasil (mode bakteri)");
     }
 
     // =========================

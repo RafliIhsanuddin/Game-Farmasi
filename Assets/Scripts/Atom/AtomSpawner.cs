@@ -10,7 +10,7 @@ public class AtomSpawner : MonoBehaviour
 
     private bool isSpawning = true;
 
-    void Start()
+    private void Start()
     {
         if (waveManager != null)
             waveManager.OnLevelComplete += StopSpawning;
@@ -22,7 +22,13 @@ public class AtomSpawner : MonoBehaviour
     {
         if (!isSpawning) return;
 
-        Instantiate(atomPrefab);
+        // ===============================
+        // SPAWN ATOM RANDOM (MODE RANDOM)
+        // ===============================
+        GameObject atom = Instantiate(atomPrefab);
+        Atom atomScript = atom.GetComponent<Atom>();
+        if (atomScript != null)
+            atomScript.useRandomSpawn = true;
 
         float delay = Random.Range(spawnDelayRange.x, spawnDelayRange.y);
         Invoke(nameof(SpawnAtom), delay);

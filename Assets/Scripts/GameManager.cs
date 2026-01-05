@@ -230,6 +230,15 @@ public class GameManager : MonoBehaviour
             return;
         }
         
+        // ================================
+        // 🟡 BASIC SHOOTER YELLOW SOLDIER ✅
+        // ================================
+        if (capsule.TryGetComponent(out BasicShooterYellowSoldier shooterYellowSoldier))
+        {
+            shooterYellowSoldier.ownerTile = tile;
+            return;
+        }
+        
 
         Debug.LogWarning($"[GameManager] Capsule tidak dikenal: {capsule.name}");
     }

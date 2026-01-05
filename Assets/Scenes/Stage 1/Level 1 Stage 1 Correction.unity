@@ -6790,7 +6790,7 @@ GameObject:
   - component: {fileID: 173060543}
   - component: {fileID: 173060542}
   m_Layer: 5
-  m_Name: card Character Yellow
+  m_Name: card Character Yellow Soldier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6873,8 +6873,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a2ade36f07b9a4a8d6f701fb422fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  capsuleSprite: {fileID: -5434326127950680618, guid: 26ca1a267cdf471458baa926800cd588, type: 3}
-  capsuleObject: {fileID: 7849078131063618835, guid: 94343b02f6854b94f96ef0ed7216deee, type: 3}
+  capsuleSprite: {fileID: 7629120926859432625, guid: 361d1b309ea781b488aefbcc4a05f4b1, type: 3}
+  capsuleObject: {fileID: 1951576720732793043, guid: c41769e771bbf7343a273ea2a68f6710, type: 3}
   Price: 10
   priceText: {fileID: 785750083}
   icon: {fileID: 669647798}
@@ -11777,15 +11777,15 @@ RectTransform:
   m_GameObject: {fileID: 669647796}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1671188, y: 1.317788, z: 0.60519}
+  m_LocalScale: {x: 0.610053, y: 0.6888078, z: 0.31633282}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 173060541}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: 7}
-  m_SizeDelta: {x: 217, y: 178}
+  m_AnchoredPosition: {x: -14, y: 18}
+  m_SizeDelta: {x: 391, y: 434}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &669647798
 MonoBehaviour:
@@ -11807,7 +11807,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5434326127950680618, guid: 26ca1a267cdf471458baa926800cd588, type: 3}
+  m_Sprite: {fileID: 7629120926859432625, guid: 361d1b309ea781b488aefbcc4a05f4b1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -32240,7 +32240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   atomPrefab: {fileID: 7919829580706015601, guid: 89b06313bb28c1b4a8d6b4658a33aabb, type: 3}
   waveManager: {fileID: 1027275886}
-  spawnDelayRange: {x: 2, y: 4}
+  spawnDelayRange: {x: 3, y: 5}
 --- !u!4 &1790310328
 Transform:
   m_ObjectHideFlags: 0
@@ -38830,13 +38830,13 @@ MonoBehaviour:
   - {fileID: 1494768030}
   - {fileID: 1163710783}
   - {fileID: 345597427}
-  spawnDelaySinglePerLine: 1.5
-  spawnDelayMultiPerLine: 3
-  spawnMode: 2
+  singleSpawnDelay: 1.5
+  multiSpawnDelay: 1
   minPerLine: 1
   maxPerLine: 3
   minDelayPerLine: 1
   maxDelayPerLine: 2
+  delayBetweenGroups: 1
 --- !u!1 &2012990689
 GameObject:
   m_ObjectHideFlags: 0

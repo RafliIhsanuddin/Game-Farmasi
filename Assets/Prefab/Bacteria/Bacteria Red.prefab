@@ -162,6 +162,8 @@ MonoBehaviour:
   bacteriaVisual: {fileID: 1518172554581896339}
   hitParticleEffect: {fileID: 1133654000076153718}
   health: 10
+  atomPrefab: {fileID: 7919829580706015601, guid: 89b06313bb28c1b4a8d6b4658a33aabb, type: 3}
+  atomDropChance: 1
 --- !u!61 &1001178241137328324
 BoxCollider2D:
   m_ObjectHideFlags: 0
