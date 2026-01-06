@@ -47,11 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a12c832e3d8ae5d49a340f1774a8fcfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.02
+  speed: 0.009
   spawnPoint: {fileID: 0}
   protozoaVisual: {fileID: 5955254052360572041}
   hitParticleEffect: {fileID: 6970143038926472970}
-  health: 10
+  health: 20
 --- !u!61 &4296299282055359390
 BoxCollider2D:
   m_ObjectHideFlags: 0

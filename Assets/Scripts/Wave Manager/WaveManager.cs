@@ -7,9 +7,6 @@ using UnityEngine.SceneManagement;
 public class WaveManager : MonoBehaviour
 {
 
-    // ===============================
-    // SPAWN MODE (MILIK WAVE MANAGER)
-    // ===============================
     public enum SpawnMode
     {
         SinglePerLine,
@@ -17,11 +14,7 @@ public class WaveManager : MonoBehaviour
         GroupedPerLine
     }
 
-    // ===============================
-    // INSPECTOR CONFIG
-    // ===============================
     [Header("Flags")]
-    [Tooltip("Jumlah bendera (checkpoint)")]
     public int flagCount = 1;
 
     [Header("Wave Configuration (AUTO = flag + 1)")]
@@ -58,13 +51,9 @@ public class WaveManager : MonoBehaviour
 
     public System.Action OnLevelComplete;
 
-    // ===============================
-    // ON VALIDATE (AUTO RESIZE)
-    // ===============================
     private void OnValidate()
     {
         int required = flagCount + 1;
-
         AutoResize(enemiesPerWave, required, 5);
         AutoResize(spawnModesPerWave, required, SpawnMode.SinglePerLine);
     }
@@ -75,9 +64,6 @@ public class WaveManager : MonoBehaviour
         while (list.Count > size) list.RemoveAt(list.Count - 1);
     }
 
-    // ===============================
-    // START
-    // ===============================
     private void Start()
     {
         if (winUI != null) winUI.SetActive(false);
@@ -89,11 +75,11 @@ public class WaveManager : MonoBehaviour
         SetupFlags();
 
         StartWave(0);
+
+        if (!isCheckingFailSafe)
+            StartCoroutine(FailSafeChecker());
     }
 
-    // ===============================
-    // SETUP
-    // ===============================
     private void CalculateTotalEnemies()
     {
         totalEnemiesInLevel = 0;
@@ -124,8 +110,13 @@ public class WaveManager : MonoBehaviour
     {
         goalToFlag.Clear();
 
-        foreach (Transform child in flagContainer)
-            Destroy(child.gameObject);
+        if (flagContainer != null)
+        {
+            foreach (Transform child in flagContainer)
+                Destroy(child.gameObject);
+        }
+
+        if (flagContainer == null || flagPrefab == null) return;
 
         foreach (int goal in flagGoals)
         {
@@ -133,7 +124,7 @@ public class WaveManager : MonoBehaviour
             FlagsManager fm = flagObj.GetComponent<FlagsManager>();
             goalToFlag[goal] = fm;
 
-            float t = (float)goal / totalEnemiesInLevel;
+            float t = (float)goal / Mathf.Max(1, totalEnemiesInLevel);
             RectTransform rt = flagObj.GetComponent<RectTransform>();
             rt.anchorMin = rt.anchorMax = new Vector2(t, 0.5f);
             rt.anchoredPosition = Vector2.zero;
@@ -148,6 +139,10 @@ public class WaveManager : MonoBehaviour
         currentWaveIndex = waveIndex;
         remainingEnemiesInWave = enemiesPerWave[waveIndex];
 
+        // ✅ FIX: stop coroutine wave sebelumnya biar tidak nyampur
+        if (spawner != null)
+            spawner.StopAllSpawning();
+
         Debug.Log($"🚩 WAVE {waveIndex + 1} DIMULAI | Mode: {spawnModesPerWave[waveIndex]} | Spawn: {remainingEnemiesInWave}");
 
         switch (spawnModesPerWave[waveIndex])
@@ -161,12 +156,10 @@ public class WaveManager : MonoBehaviour
                 break;
 
             case SpawnMode.GroupedPerLine:
-                spawner.StartGroupedPerLineWave();
+                // ✅ FIX: grouped juga harus fixed amount
+                spawner.StartGroupedPerLineWave(remainingEnemiesInWave);
                 break;
         }
-
-        if (!isCheckingFailSafe)
-            StartCoroutine(FailSafeChecker());
     }
 
     public void RegisterKill()
@@ -195,6 +188,7 @@ public class WaveManager : MonoBehaviour
 
     private void OnWaveCompleted()
     {
+        // wave terakhir
         if (currentWaveIndex >= enemiesPerWave.Count - 1)
         {
             spawner.StopAllSpawning();
@@ -216,12 +210,19 @@ public class WaveManager : MonoBehaviour
         {
             yield return new WaitForSeconds(0.5f);
 
-            if (remainingEnemiesInWave > 0 && spawner.CountAllAlive() == 0)
+            int alive = spawner != null ? spawner.CountAllAlive() : 0;
+
+            // kondisi wave “macet”: target wave masih ada, tapi tidak ada enemy hidup
+            if (remainingEnemiesInWave > 0 && alive == 0)
             {
-                Debug.LogWarning("⚠️ FAILSAFE TRIGGERED");
+                Debug.LogWarning("⚠️ FAILSAFE: remainingEnemiesInWave > 0 tapi alive == 0. Paksa wave selesai.");
                 remainingEnemiesInWave = 0;
                 OnWaveCompleted();
+                continue;
             }
+
+            // tambahan: kalau spawner sudah tidak spawning tapi remaining masih ada,
+            // berarti spawn wave mungkin terhenti. Kalau nanti alive jadi 0, rule di atas nge-handle.
         }
 
         isCheckingFailSafe = false;
@@ -238,7 +239,7 @@ public class WaveManager : MonoBehaviour
 
     private IEnumerator WaitAllEnemyDeadThenWin()
     {
-        while (spawner.CountAllAlive() > 0)
+        while (spawner != null && spawner.CountAllAlive() > 0)
             yield return new WaitForSeconds(0.2f);
 
         TriggerWin();
@@ -249,7 +250,9 @@ public class WaveManager : MonoBehaviour
         if (isGameOver) return;
 
         isGameOver = true;
-        spawner.StopAllSpawning();
+
+        if (spawner != null)
+            spawner.StopAllSpawning();
 
         if (levelProgress != null)
             levelProgress.value = totalEnemiesInLevel;

@@ -5,6 +5,9 @@ public class RedProjectile : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float speed = 5f;
 
+    [Header("Damage Primary")]
+    [SerializeField] private int damageGreen = 1;
+    
     [Header("Damage Settings")]
     [SerializeField] private int damageRed = 1;
     [SerializeField] private int damagePurple = 1;
@@ -30,13 +33,20 @@ public class RedProjectile : MonoBehaviour
         // ===============================
         // TARGET UTAMA : BACTERIA GREEN
         // ===============================
-        if (other.TryGetComponent<BacteriaControllerGreen>(out var green))
+        /*if (other.TryGetComponent<BacteriaControllerGreen>(out var green))
         {
             green.ProjectileDead();   // 💀 mati langsung
             Destroy(gameObject);
             return;
+        }*/
+        
+        if (other.TryGetComponent<BacteriaControllerGreen>(out var green))
+        {
+            green.ProjectileHit(damageGreen);
+            Destroy(gameObject);
+            return;
         }
-
+        
         // ===============================
         // TARGET LAIN (PAKAI DAMAGE)
         // ===============================

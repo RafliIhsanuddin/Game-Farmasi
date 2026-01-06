@@ -5,6 +5,9 @@ public class OrangeProjectile : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float speed = 5f;
 
+    [Header("Damage Primary")]
+    [SerializeField] private int damageHelminth = 1;
+    
     [Header("Damage Settings")]
     [SerializeField] private int damageRed = 1;
     [SerializeField] private int damagePurple = 1;
@@ -30,9 +33,16 @@ public class OrangeProjectile : MonoBehaviour
         // ===============================
         // TARGET UTAMA : HELMINTH
         // ===============================
-        if (other.TryGetComponent<HelminthController>(out var helminth))
+        /*if (other.TryGetComponent<HelminthController>(out var helminth))
         {
             helminth.ProjectileDead();   // 💀 mati langsung
+            Destroy(gameObject);
+            return;
+        }*/
+        
+        if (other.TryGetComponent<HelminthController>(out var helminth))
+        {
+            helminth.ProjectileHit(damageHelminth);
             Destroy(gameObject);
             return;
         }

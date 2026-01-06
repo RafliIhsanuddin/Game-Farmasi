@@ -26,9 +26,9 @@ public class BacteriaSpawner : MonoBehaviour
     [SerializeField] private float multiSpawnDelay = 1.0f;
 
     // ===============================
-    // GROUPED PER LINE SETTINGS
+    // GROUPED PER LINE SETTINGS (FIXED AMOUNT)
     // ===============================
-    [Header("Grouped Per Line")]
+    [Header("Grouped Per Line (Fixed Amount)")]
     [SerializeField] private int minPerLine = 5;
     [SerializeField] private int maxPerLine = 12;
     [SerializeField] private float minDelayPerLine = 0.5f;
@@ -41,22 +41,22 @@ public class BacteriaSpawner : MonoBehaviour
     private bool isSpawning = false;
     private bool cancelRequested = false;
 
-    // SinglePerLine / Grouped butuh lock tracking
+    // tracking occupied untuk Single/Grouped
     private readonly Dictionary<SpawnPointSlot, GameObject> slotToEnemy = new();
 
     public System.Action OnWaveSpawnComplete;
 
     // ===============================
-    // PUBLIC API (DIPANGGIL WAVE MANAGER)
+    // PUBLIC API
     // ===============================
+    public bool IsSpawning => isSpawning;
+
     public void StartSinglePerLineWave(int amount)
     {
         if (isSpawning) return;
         cancelRequested = false;
 
-        // pastikan status occupied sinkron saat mulai wave
         SyncOccupiedStateFromScene();
-
         StartCoroutine(SpawnWaveCoroutine(amount, singleSpawnDelay, singlePerLine: true));
     }
 
@@ -65,20 +65,18 @@ public class BacteriaSpawner : MonoBehaviour
         if (isSpawning) return;
         cancelRequested = false;
 
-        // Multi tidak butuh occupied, tapi aman sync biar konsisten
         SyncOccupiedStateFromScene();
-
         StartCoroutine(SpawnWaveCoroutine(amount, multiSpawnDelay, singlePerLine: false));
     }
 
-    public void StartGroupedPerLineWave()
+    // ✅ FIX: grouped harus fixed amount biar wave manager tidak kacau
+    public void StartGroupedPerLineWave(int amount)
     {
         if (isSpawning) return;
         cancelRequested = false;
 
         SyncOccupiedStateFromScene();
-
-        StartCoroutine(SpawnGroupedPerLineCoroutine());
+        StartCoroutine(SpawnGroupedPerLineFixedAmountCoroutine(amount));
     }
 
     // ===============================
@@ -114,30 +112,41 @@ public class BacteriaSpawner : MonoBehaviour
         isSpawning = true;
         int spawned = 0;
 
-        // loop spawn sampai amount terpenuhi
+        float noFreeLineTimer = 0f;
+        const float NO_FREE_LINE_RESYNC_AFTER = 2.0f; // ✅ watchdog
+
         while (!cancelRequested && spawned < amount)
         {
             if (singlePerLine)
             {
-                // sebelum cari line kosong, bersihkan dulu slot yang enemy-nya sudah mati
                 CleanupDeadOccupancies();
+                ForceClearInvalidOccupiedSlots(); // ✅ NEW safety
 
                 SpawnPointSlot free = GetFreeLine();
                 if (free == null)
                 {
-                    // semua line masih terisi → tunggu sebentar
+                    noFreeLineTimer += Time.deltaTime;
+
+                    // ✅ kalau kelamaan tidak dapat free line, resync total
+                    if (noFreeLineTimer >= NO_FREE_LINE_RESYNC_AFTER)
+                    {
+                        Debug.LogWarning("[Spawner] SinglePerLine stuck? Resync occupied state...");
+                        SyncOccupiedStateFromScene();
+                        noFreeLineTimer = 0f;
+                    }
+
                     yield return null;
                     continue;
                 }
 
-                // spawn dan LOCK line
+                noFreeLineTimer = 0f;
+
                 SpawnEnemyAndLock(free);
                 spawned++;
                 yield return new WaitForSeconds(delay);
             }
             else
             {
-                // MultiPerLine: bebas spawn ke random slot (boleh numpuk)
                 if (spawnPoints.Count == 0)
                 {
                     yield return null;
@@ -155,7 +164,6 @@ public class BacteriaSpawner : MonoBehaviour
         OnWaveSpawnComplete?.Invoke();
     }
 
-    // Cari line yang benar-benar kosong
     private SpawnPointSlot GetFreeLine()
     {
         foreach (var p in spawnPoints)
@@ -167,63 +175,86 @@ public class BacteriaSpawner : MonoBehaviour
     }
 
     // ===============================
-    // GROUPED PER LINE
+    // ✅ GROUPED (FIXED AMOUNT)
     // ===============================
-    private IEnumerator SpawnGroupedPerLineCoroutine()
+    private IEnumerator SpawnGroupedPerLineFixedAmountCoroutine(int amount)
     {
         isSpawning = true;
 
-        // per line jalan coroutine sendiri
-        foreach (var line in spawnPoints)
+        if (spawnPoints.Count == 0)
         {
-            if (line == null) continue;
-            StartCoroutine(HandleLineGroup(line));
+            isSpawning = false;
+            OnWaveSpawnComplete?.Invoke();
+            yield break;
         }
 
-        yield return null;
-        isSpawning = false;
-        OnWaveSpawnComplete?.Invoke();
-    }
+        int spawned = 0;
+        int lineIndex = 0;
 
-    private IEnumerator HandleLineGroup(SpawnPointSlot line)
-    {
-        while (!cancelRequested)
+        while (!cancelRequested && spawned < amount)
         {
-            // sebelum mulai group baru, pastikan line benar-benar clear
-            yield return WaitUntilLineClear(line);
+            // round-robin per line biar terasa “grouped per line”
+            SpawnPointSlot line = spawnPoints[lineIndex % spawnPoints.Count];
+            lineIndex++;
 
-            int count = Random.Range(minPerLine, maxPerLine + 1);
+            if (line == null) { yield return null; continue; }
+
+            // tunggu line clear (dengan safety clear + resync)
+            yield return WaitUntilLineClearSafe(line);
+
+            int groupCount = Random.Range(minPerLine, maxPerLine + 1);
             float delay = Random.Range(minDelayPerLine, maxDelayPerLine);
 
-            for (int i = 0; i < count && !cancelRequested; i++)
+            // cap agar total spawn tidak lewat amount
+            groupCount = Mathf.Min(groupCount, amount - spawned);
+
+            for (int i = 0; i < groupCount && !cancelRequested; i++)
             {
-                // Grouped = kita treat seperti "line locked" juga,
-                // supaya di dalam 1 line ada tracking yang rapih
                 CleanupDeadOccupancies();
+                ForceClearInvalidOccupiedSlots();
+
+                // kalau tiba-tiba occupied lagi, tunggu clear
+                if (line.occupied)
+                {
+                    yield return WaitUntilLineClearSafe(line);
+                }
+
                 SpawnEnemyAndLock(line);
+                spawned++;
                 yield return new WaitForSeconds(delay);
             }
-
-            // tunggu sampai semua musuh di line itu habis
-            yield return WaitUntilLineClear(line);
 
             if (!cancelRequested)
                 yield return new WaitForSeconds(delayBetweenGroups);
         }
+
+        isSpawning = false;
+        OnWaveSpawnComplete?.Invoke();
     }
 
-    private IEnumerator WaitUntilLineClear(SpawnPointSlot line)
+    private IEnumerator WaitUntilLineClearSafe(SpawnPointSlot line)
     {
+        float stuckTimer = 0f;
+        const float RESYNC_AFTER = 2.0f;
+
         while (!cancelRequested)
         {
             CleanupDeadOccupancies();
+            ForceClearInvalidOccupiedSlots();
+
             if (line == null) yield break;
 
-            // jika tidak occupied berarti line clear
             if (!line.occupied)
                 yield break;
 
-            // kalau occupied tapi musuhnya sudah mati, CleanupDeadOccupancies akan unlock
+            stuckTimer += 0.2f;
+            if (stuckTimer >= RESYNC_AFTER)
+            {
+                Debug.LogWarning("[Spawner] Line stuck occupied too long. Resync...");
+                SyncOccupiedStateFromScene();
+                stuckTimer = 0f;
+            }
+
             yield return new WaitForSeconds(0.2f);
         }
     }
@@ -238,33 +269,27 @@ public class BacteriaSpawner : MonoBehaviour
         GameObject prefab = bacteriaPrefabs[Random.Range(0, bacteriaPrefabs.Count)];
         GameObject enemy = Instantiate(prefab, slot.transform.position, Quaternion.identity);
         LinkSpawnPoint(slot, enemy);
-        // tidak lock slot
     }
 
-    // 🔑 Ini yang bikin "1 line = 1 enemy" beneran jalan
     private void SpawnEnemyAndLock(SpawnPointSlot slot)
     {
         if (slot == null || bacteriaPrefabs.Count == 0) return;
 
-        // kalau slot masih occupied, jangan spawn (safety)
         if (slot.occupied) return;
 
         GameObject prefab = bacteriaPrefabs[Random.Range(0, bacteriaPrefabs.Count)];
         GameObject enemy = Instantiate(prefab, slot.transform.position, Quaternion.identity);
         LinkSpawnPoint(slot, enemy);
 
-        // LOCK: pakai sistem slot bawaan kamu
         slot.SetOccupied(enemy);
         slotToEnemy[slot] = enemy;
     }
 
     // ===============================
-    // OCCUPIED MAINTENANCE (NO NEW SCRIPT)
+    // OCCUPIED MAINTENANCE
     // ===============================
-    // Bersihkan slot yang enemy-nya sudah mati (destroyed)
     private void CleanupDeadOccupancies()
     {
-        // collect keys dulu biar aman ketika modify dictionary
         if (slotToEnemy.Count == 0) return;
 
         List<SpawnPointSlot> toClear = null;
@@ -274,7 +299,6 @@ public class BacteriaSpawner : MonoBehaviour
             SpawnPointSlot slot = kv.Key;
             GameObject enemy = kv.Value;
 
-            // slot sudah null (scene unload) atau enemy sudah destroyed
             if (slot == null || enemy == null)
             {
                 toClear ??= new List<SpawnPointSlot>();
@@ -288,30 +312,66 @@ public class BacteriaSpawner : MonoBehaviour
         {
             SpawnPointSlot slot = toClear[i];
             if (slot != null)
-            {
-                // kalau SpawnPointSlot kamu punya fungsi ClearOccupied(), pakai itu.
-                // kalau tidak ada, set manual (sesuaikan field kamu).
-                // Aku asumsikan ada: occupied + currentEnemy di dalam slot.
                 slot.ClearOccupied();
-            }
+
             slotToEnemy.Remove(slot);
         }
     }
 
-    // Sinkronkan occupied saat mulai wave (kalau ada enemy dari wave sebelumnya masih hidup)
+    // ✅ NEW: kalau slot occupied tapi musuhnya sebenarnya sudah tidak ada (atau tidak ke-track),
+    // kita paksa clear berdasarkan “apakah ada enemy yang spawnPoint == slot”
+    private void ForceClearInvalidOccupiedSlots()
+    {
+        foreach (var slot in spawnPoints)
+        {
+            if (slot == null) continue;
+            if (!slot.occupied) continue;
+
+            bool foundAliveOnThisSlot = false;
+
+            foreach (var g in FindObjectsByType<BacteriaControllerGreen>(FindObjectsSortMode.None))
+                if (g.spawnPoint == slot) { foundAliveOnThisSlot = true; break; }
+
+            if (!foundAliveOnThisSlot)
+                foreach (var r in FindObjectsByType<BacteriaControllerRed>(FindObjectsSortMode.None))
+                    if (r.spawnPoint == slot) { foundAliveOnThisSlot = true; break; }
+
+            if (!foundAliveOnThisSlot)
+                foreach (var p in FindObjectsByType<BacteriaControllerPurple>(FindObjectsSortMode.None))
+                    if (p.spawnPoint == slot) { foundAliveOnThisSlot = true; break; }
+
+            if (!foundAliveOnThisSlot)
+                foreach (var m in FindObjectsByType<MushroomController>(FindObjectsSortMode.None))
+                    if (m.spawnPoint == slot) { foundAliveOnThisSlot = true; break; }
+
+            if (!foundAliveOnThisSlot)
+                foreach (var pr in FindObjectsByType<ProtozoaController>(FindObjectsSortMode.None))
+                    if (pr.spawnPoint == slot) { foundAliveOnThisSlot = true; break; }
+
+            if (!foundAliveOnThisSlot)
+                foreach (var h in FindObjectsByType<HelminthController>(FindObjectsSortMode.None))
+                    if (h.spawnPoint == slot) { foundAliveOnThisSlot = true; break; }
+
+            if (!foundAliveOnThisSlot)
+            {
+                // tidak ada musuh yg mengaku slot ini → clear paksa
+                Debug.LogWarning("[Spawner] Force clear occupied slot (no alive enemy found on this spawnPoint).");
+                slot.ClearOccupied();
+                slotToEnemy.Remove(slot);
+            }
+        }
+    }
+
     private void SyncOccupiedStateFromScene()
     {
         slotToEnemy.Clear();
 
-        // reset semua slot jadi tidak occupied dulu
         foreach (var slot in spawnPoints)
         {
             if (slot == null) continue;
             slot.ClearOccupied();
         }
 
-        // cari semua enemy hidup, lalu lock slot sesuai spawnPoint mereka
-        // (ini supaya "single per line" tidak rusak kalau ada enemy sisa)
         foreach (var g in FindObjectsByType<BacteriaControllerGreen>(FindObjectsSortMode.None))
             if (g.spawnPoint != null) ForceLock(g.spawnPoint, g.gameObject);
 

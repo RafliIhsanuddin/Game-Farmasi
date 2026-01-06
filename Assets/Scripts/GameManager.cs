@@ -230,17 +230,49 @@ public class GameManager : MonoBehaviour
             return;
         }
         
-        // ================================
-        // 🟡 BASIC SHOOTER YELLOW SOLDIER ✅
-        // ================================
-        if (capsule.TryGetComponent(out BasicShooterYellowSoldier shooterYellowSoldier))
+        // ===============================
+        // 🟡 SHOOTER SOLDIER (FINAL SYSTEM)
+        // ===============================
+        if (capsule.TryGetComponent(out BasicShooterYellowSoldier yellowSoldier))
         {
-            shooterYellowSoldier.ownerTile = tile;
+            yellowSoldier.ownerTile = tile;
             return;
         }
-        
 
-        Debug.LogWarning($"[GameManager] Capsule tidak dikenal: {capsule.name}");
+        if (capsule.TryGetComponent(out BasicShooterRedSoldier redSoldier))
+        {
+            redSoldier.ownerTile = tile;
+            return;
+        }
+
+        if (capsule.TryGetComponent(out BasicShooterGreenSoldier greenSoldier))
+        {
+            greenSoldier.ownerTile = tile;
+            return;
+        }
+
+        if (capsule.TryGetComponent(out BasicShooterBlueSoldier blueSoldier))
+        {
+            blueSoldier.ownerTile = tile;
+            return;
+        }
+
+        if (capsule.TryGetComponent(out BasicShooterCreamSoldier creamSoldier))
+        {
+            creamSoldier.ownerTile = tile;
+            return;
+        }
+
+        if (capsule.TryGetComponent(out BasicShooterOrangeSoldier orangeSoldier))
+        {
+            orangeSoldier.ownerTile = tile;
+            return;
+        }
+
+        // ===============================
+        // FALLBACK WARNING
+        // ===============================
+        Debug.LogWarning($"[GameManager] Capsule/Soldier tidak dikenali: {capsule.name}");
     }
 
     // ===============================

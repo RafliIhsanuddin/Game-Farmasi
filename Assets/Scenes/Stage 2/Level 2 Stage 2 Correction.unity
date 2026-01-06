@@ -34199,7 +34199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   atomPrefab: {fileID: 7919829580706015601, guid: 89b06313bb28c1b4a8d6b4658a33aabb, type: 3}
   waveManager: {fileID: 1027275886}
-  spawnDelayRange: {x: 1, y: 2}
+  spawnDelayRange: {x: 3, y: 5}
 --- !u!4 &1790310328
 Transform:
   m_ObjectHideFlags: 0

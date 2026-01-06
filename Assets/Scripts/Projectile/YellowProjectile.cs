@@ -5,6 +5,9 @@ public class YellowProjectile : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float speed = 5f;
 
+    [Header("Damage Primary")]
+    [SerializeField] private int damagePurple = 1;
+    
     [Header("Damage Settings")]
     [SerializeField] private int damageRed = 1;
     [SerializeField] private int damageGreen = 1;
@@ -15,6 +18,9 @@ public class YellowProjectile : MonoBehaviour
     [Header("Lifetime")]
     [SerializeField] private float lifeTime = 25f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip hitPurpleSfx;
+    
     private void Start()
     {
         Destroy(gameObject, lifeTime);
@@ -30,9 +36,26 @@ public class YellowProjectile : MonoBehaviour
         // ===============================
         // TARGET UTAMA : BACTERIA PURPLE
         // ===============================
+        /*if (other.TryGetComponent<BacteriaControllerPurple>(out var purple))
+        {
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.PlayShootSFX(hitPurpleSfx);
+            }
+            
+            purple.ProjectileDead();   // 💀 mati langsung
+            Destroy(gameObject);
+            return;
+        }*/
+        
         if (other.TryGetComponent<BacteriaControllerPurple>(out var purple))
         {
-            purple.ProjectileDead();   // 💀 mati langsung
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.PlayShootSFX(hitPurpleSfx);
+            }
+            
+            purple.ProjectileHit(damagePurple);
             Destroy(gameObject);
             return;
         }

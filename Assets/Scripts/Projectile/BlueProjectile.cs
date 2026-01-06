@@ -6,6 +6,9 @@ public class BlueProjectile : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float speed = 5f;
 
+    [Header("Damage Primary")]
+    [SerializeField] private int damageRed = 1;
+    
     [Header("Damage Settings")]
     [SerializeField] private int damagePurple = 1;
     [SerializeField] private int damageGreen = 1;
@@ -31,9 +34,16 @@ public class BlueProjectile : MonoBehaviour
         // ===============================
         // TARGET UTAMA : BACTERIA RED
         // ===============================
-        if (other.TryGetComponent<BacteriaControllerRed>(out var red))
+        /*if (other.TryGetComponent<BacteriaControllerRed>(out var red))
         {
             red.ProjectileDead();   // 💀 mati langsung
+            Destroy(gameObject);
+            return;
+        }*/
+        
+        if (other.TryGetComponent<BacteriaControllerRed>(out var red))
+        {
+            red.ProjectileHit(damageRed);
             Destroy(gameObject);
             return;
         }

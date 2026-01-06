@@ -51,7 +51,7 @@ MonoBehaviour:
   ownerTile: {fileID: 0}
   projectile: {fileID: 2860216238543496867, guid: 0820eaf077c35a540bdfa0246134979f, type: 3}
   shootOrigin: {fileID: 7947919311532591408}
-  cooldown: 4
+  cooldown: 1
   animator: {fileID: 3373188911136681277}
   range: 11
   shootMask:

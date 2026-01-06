@@ -5,12 +5,17 @@ public class CreamProjectile : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float speed = 5f;
 
-    [Header("Damage Settings")]
+    [Header("Damage Primary")]
+    [SerializeField] private int damageMushroom = 1;
+    
+    [Header("Damage Second")]
     [SerializeField] private int damageRed = 1;
     [SerializeField] private int damagePurple = 1;
     [SerializeField] private int damageGreen = 1;
     [SerializeField] private int damageProtozoa = 1;
     [SerializeField] private int damageHelminth = 1;
+    
+    [Header("Damage Third")]
 
     [Header("Lifetime")]
     [SerializeField] private float lifeTime = 25f;
@@ -30,9 +35,16 @@ public class CreamProjectile : MonoBehaviour
         // ===============================
         // TARGET UTAMA : MUSHROOM
         // ===============================
-        if (other.TryGetComponent<MushroomController>(out var mushroom))
+        /*if (other.TryGetComponent<MushroomController>(out var mushroom))
         {
             mushroom.ProjectileDead();   // 💀 mati langsung
+            Destroy(gameObject);
+            return;
+        }*/
+        
+        if (other.TryGetComponent<MushroomController>(out var mushroom))
+        {
+            mushroom.ProjectileHit(damageMushroom);
             Destroy(gameObject);
             return;
         }

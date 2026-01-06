@@ -5,6 +5,9 @@ public class GreenProjectile : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float speed = 5f;
 
+    [Header("Damage Primary")]
+    [SerializeField] private int damageProtozoa = 1;
+    
     [Header("Damage Settings")]
     [SerializeField] private int damageRed = 1;
     [SerializeField] private int damagePurple = 1;
@@ -30,9 +33,16 @@ public class GreenProjectile : MonoBehaviour
         // ===============================
         // TARGET UTAMA : PROTOZOA
         // ===============================
-        if (other.TryGetComponent<ProtozoaController>(out var protozoa))
+        /*if (other.TryGetComponent<ProtozoaController>(out var protozoa))
         {
             protozoa.ProjectileDead();   // 💀 mati langsung
+            Destroy(gameObject);
+            return;
+        }*/
+        
+        if (other.TryGetComponent<ProtozoaController>(out var protozoa))
+        {
+            protozoa.ProjectileHit(damageProtozoa);
             Destroy(gameObject);
             return;
         }

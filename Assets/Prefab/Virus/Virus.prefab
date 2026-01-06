@@ -14780,11 +14780,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 171403648fe82af47b6eceb5f5f919ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.04
+  speed: 0.009
   spawnPoint: {fileID: 0}
   bacteriaVisual: {fileID: 2181007859898350770}
   hitParticleEffect: {fileID: 2422812870958245913}
-  health: 10
+  health: 20
 --- !u!61 &809364108760731623
 BoxCollider2D:
   m_ObjectHideFlags: 0
