@@ -4,17 +4,26 @@ public class Tile : MonoBehaviour
 {
 
     [Header("Capsule Status")]
-    public bool hasCapsule = false; // apakah tile terisi kapsul?
-    public GameObject currentCapsule; // kapsul yang ada di tile ini
+    public bool hasCapsule;
+    public GameObject currentCapsule;
 
-    // Opsional: buat mudah set data
     public void SetCapsule(GameObject capsule)
     {
         hasCapsule = true;
         currentCapsule = capsule;
+
+        // 🔴 INI KUNCI UTAMA
+        capsule.transform.SetParent(transform, false);
+
+        Debug.Log(
+            $"[Tile] Capsule '{capsule.name}' attached to Tile: {name}"
+        );
+
+        // Trigger sorting refresh
+        GetComponent<TileSpriteOrderController>()
+            ?.ApplySortingOrder();
     }
 
-    // Opsional: reset saat kapsul hilang
     public void ClearCapsule()
     {
         hasCapsule = false;
