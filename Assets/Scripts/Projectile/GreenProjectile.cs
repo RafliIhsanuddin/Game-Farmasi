@@ -8,11 +8,13 @@ public class GreenProjectile : MonoBehaviour
     [Header("Damage Primary")]
     [SerializeField] private int damageProtozoa = 1;
     
-    [Header("Damage Settings")]
-    [SerializeField] private int damageRed = 1;
-    [SerializeField] private int damagePurple = 1;
+    [Header("Damage Second")]
     [SerializeField] private int damageGreen = 1;
     [SerializeField] private int damageMushroom = 1;
+    
+    [Header("Damage Third")]
+    [SerializeField] private int damageRed = 1;
+    [SerializeField] private int damagePurple = 1;
     [SerializeField] private int damageHelminth = 1;
 
     [Header("Lifetime")]

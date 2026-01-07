@@ -21277,7 +21277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flagCount: 1
   enemiesPerWave: 0a0000000f000000
-  spawnModesPerWave: 0100000000000000
+  spawnModesPerWave: 0000000001000000
   levelProgress: {fileID: 1183394060}
   flagContainer: {fileID: 1942895426}
   flagPrefab: {fileID: 8785165802296183215, guid: 84bee79144f2b9849a8c0597de3dd722, type: 3}
@@ -34838,7 +34838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   atomPrefab: {fileID: 7919829580706015601, guid: 89b06313bb28c1b4a8d6b4658a33aabb, type: 3}
   waveManager: {fileID: 1027275886}
-  spawnDelayRange: {x: 1, y: 2}
+  spawnDelayRange: {x: 3, y: 5}
 --- !u!4 &1790310328
 Transform:
   m_ObjectHideFlags: 0

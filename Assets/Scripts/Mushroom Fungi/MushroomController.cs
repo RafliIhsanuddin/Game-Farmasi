@@ -18,6 +18,14 @@ public class MushroomController : MonoBehaviour
     public int health = 3;
 
     // =========================
+    // 🟡 ATOM DROP SETTINGS
+    // =========================
+    [Header("Atom Drop On Death")]
+    [SerializeField] private GameObject atomPrefab;
+    [Range(0f, 1f)]
+    [SerializeField] private float atomDropChance = 1f;
+
+    // =========================
     // INTERNAL STATE
     // =========================
     private bool isHit = false;
@@ -34,7 +42,7 @@ public class MushroomController : MonoBehaviour
         if (hitParticleEffect != null)
         {
             hitPS = hitParticleEffect.GetComponent<ParticleSystem>();
-            hitParticleEffect.SetActive(false); // 🔒 pastikan mati di awal
+            hitParticleEffect.SetActive(false);
         }
 
         Debug.Log($"[DEBUG][Mushroom] Awake → VFX ready: {hitPS != null}");
@@ -57,8 +65,6 @@ public class MushroomController : MonoBehaviour
             return;
         }
 
-        Debug.Log($"[DEBUG][Mushroom] Hit() dieksekusi untuk {name}");
-
         isHit = true;
         speed = 0f;
 
@@ -71,21 +77,19 @@ public class MushroomController : MonoBehaviour
             mushroomVisual.SetActive(false);
 
         // =========================
-        // AKTIFKAN & PLAY VFX
+        // PLAY HIT VFX
         // =========================
         if (hitParticleEffect != null && hitPS != null)
         {
             hitParticleEffect.SetActive(true);
-
             hitPS.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
             hitPS.Play(true);
+        }
 
-            Debug.Log($"[DEBUG][Mushroom] VFX DISET ACTIVE & PLAY → isPlaying={hitPS.isPlaying}");
-        }
-        else
-        {
-            Debug.LogError("[DEBUG][Mushroom] VFX tidak valid / belum di-assign!");
-        }
+        // =========================
+        // 🟡 DROP ATOM (SUN)
+        // =========================
+        TrySpawnAtom();
 
         // Clear spawn slot
         if (spawnPoint != null)
@@ -98,6 +102,39 @@ public class MushroomController : MonoBehaviour
 
         Destroy(gameObject, 3f);
         Debug.Log("[DEBUG][Mushroom] Jamur akan dihancurkan 3 detik lagi");
+    }
+
+    // =========================
+    // 🟡 ATOM DROP LOGIC
+    // =========================
+    private void TrySpawnAtom()
+    {
+        if (atomPrefab == null)
+        {
+            Debug.LogWarning("[DEBUG][Mushroom] atomPrefab belum di-assign");
+            return;
+        }
+
+        if (Random.value > atomDropChance)
+        {
+            Debug.Log("[DEBUG][Mushroom] Atom tidak drop (chance gagal)");
+            return;
+        }
+
+        GameObject atom = Instantiate(
+            atomPrefab,
+            transform.position,
+            Quaternion.identity
+        );
+
+        // Sinkron dengan Atom.cs
+        Atom atomScript = atom.GetComponent<Atom>();
+        if (atomScript != null)
+        {
+            atomScript.useRandomSpawn = false;
+        }
+
+        Debug.Log("[DEBUG][Mushroom] Atom drop berhasil");
     }
 
     // =========================
@@ -117,7 +154,6 @@ public class MushroomController : MonoBehaviour
     public void ProjectileDead()
     {
         if (isHit) return;
-
         Debug.Log("[DEBUG][Mushroom] ProjectileDead()");
         Hit();
     }

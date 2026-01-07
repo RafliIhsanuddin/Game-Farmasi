@@ -47,11 +47,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f29593faec89db4ab0bfba10e806fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.009
+  speed: 0.003
   spawnPoint: {fileID: 0}
   mushroomVisual: {fileID: 4909435961034432879}
   hitParticleEffect: {fileID: 9092462129086457935}
   health: 20
+  atomPrefab: {fileID: 7919829580706015601, guid: 89b06313bb28c1b4a8d6b4658a33aabb, type: 3}
+  atomDropChance: 1
 --- !u!61 &801780192308471031
 BoxCollider2D:
   m_ObjectHideFlags: 0

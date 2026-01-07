@@ -14780,11 +14780,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d89a64362cee53a48ac20331c09c585d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.009
+  speed: 0.003
   spawnPoint: {fileID: 0}
   helminthVisual: {fileID: 62695793705857960}
   hitParticleEffect: {fileID: 1429581713597411655}
   health: 20
+  atomPrefab: {fileID: 7919829580706015601, guid: 89b06313bb28c1b4a8d6b4658a33aabb, type: 3}
+  atomDropChance: 1
 --- !u!61 &5196775232761335970
 BoxCollider2D:
   m_ObjectHideFlags: 0

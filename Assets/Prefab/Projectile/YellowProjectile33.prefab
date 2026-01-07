@@ -111,8 +111,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  damageRed: 3
-  damageGreen: 3
+  damagePurple: 7
+  damageRed: 4
+  damageGreen: 4
   damageMushroom: 3
   damageProtozoa: 3
   damageHelminth: 3

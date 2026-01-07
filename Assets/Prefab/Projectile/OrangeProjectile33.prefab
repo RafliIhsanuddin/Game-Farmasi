@@ -111,11 +111,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  damageHelminth: 7
+  damageMushroom: 4
+  damageProtozoa: 4
   damageRed: 3
   damagePurple: 3
   damageGreen: 3
-  damageMushroom: 3
-  damageProtozoa: 3
   lifeTime: 25
 --- !u!1 &7920023885109222426
 GameObject:

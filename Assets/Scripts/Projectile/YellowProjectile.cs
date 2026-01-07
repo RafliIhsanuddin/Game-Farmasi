@@ -8,9 +8,11 @@ public class YellowProjectile : MonoBehaviour
     [Header("Damage Primary")]
     [SerializeField] private int damagePurple = 1;
     
-    [Header("Damage Settings")]
+    [Header("Damage Second")]
     [SerializeField] private int damageRed = 1;
     [SerializeField] private int damageGreen = 1;
+    
+    [Header("Damage Third")]
     [SerializeField] private int damageMushroom = 1;
     [SerializeField] private int damageProtozoa = 1;
     [SerializeField] private int damageHelminth = 1;
