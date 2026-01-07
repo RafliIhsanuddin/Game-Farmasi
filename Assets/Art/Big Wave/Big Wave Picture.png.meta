@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 6a47bb14b0fd46a49b6907f4a742a5e5
+guid: b7bc1c48d0f23d04f86cc9b1062ad263
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2895157278119961449
-    second: Untitled design_0
-  - first:
-      213: -1284203495265738372
-    second: Untitled design_1
+      213: 5929274391523896284
+    second: Big Wave Picture_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Untitled design_0
+      name: Big Wave Picture_0
       rect:
         serializedVersion: 2
-        x: 28
-        y: 43
-        width: 397
-        height: 365
+        x: 11
+        y: 0
+        width: 1494
+        height: 1024
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 79cd5c47bc552d7d0800000000000000
-      internalID: -2895157278119961449
+      spriteID: cdb2a9af4a3094250800000000000000
+      internalID: 5929274391523896284
       vertices: []
       indices: 
       edges: []
@@ -128,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 810216dac32f1934ab983b0021e8425d
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -138,8 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Untitled design_0: -2895157278119961449
-      Untitled design_1: -1284203495265738372
+      Big Wave Picture_0: 5929274391523896284
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

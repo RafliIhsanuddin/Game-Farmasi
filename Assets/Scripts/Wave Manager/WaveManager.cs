@@ -28,6 +28,13 @@ public class WaveManager : MonoBehaviour
     public RectTransform flagContainer;
     public GameObject flagPrefab;
 
+    // ===============================
+    // 🔥 WAVE TRANSITION UI
+    // ===============================
+    [Header("Wave Transition UI")]
+    [SerializeField] private float waveDelaySeconds = 5f;
+    [SerializeField] private GameObject waveIncomingUI;
+
     [Header("Win Panel")]
     public GameObject winUI;
 
@@ -46,11 +53,17 @@ public class WaveManager : MonoBehaviour
     private Dictionary<int, FlagsManager> goalToFlag = new();
     private HashSet<int> triggeredGoals = new();
 
+    // 🔥 FLAG YANG DITUNDA (UNTUK UX)
+    private int pendingFlagGoal = -1;
+
     private bool isCheckingFailSafe = false;
     public static bool isGameOver = false;
 
     public System.Action OnLevelComplete;
 
+    // ===============================
+    // UNITY EVENTS
+    // ===============================
     private void OnValidate()
     {
         int required = flagCount + 1;
@@ -67,6 +80,8 @@ public class WaveManager : MonoBehaviour
     private void Start()
     {
         if (winUI != null) winUI.SetActive(false);
+        if (waveIncomingUI != null) waveIncomingUI.SetActive(false);
+
         isGameOver = false;
 
         CalculateTotalEnemies();
@@ -80,6 +95,9 @@ public class WaveManager : MonoBehaviour
             StartCoroutine(FailSafeChecker());
     }
 
+    // ===============================
+    // SETUP
+    // ===============================
     private void CalculateTotalEnemies()
     {
         totalEnemiesInLevel = 0;
@@ -139,7 +157,6 @@ public class WaveManager : MonoBehaviour
         currentWaveIndex = waveIndex;
         remainingEnemiesInWave = enemiesPerWave[waveIndex];
 
-        // ✅ FIX: stop coroutine wave sebelumnya biar tidak nyampur
         if (spawner != null)
             spawner.StopAllSpawning();
 
@@ -156,7 +173,6 @@ public class WaveManager : MonoBehaviour
                 break;
 
             case SpawnMode.GroupedPerLine:
-                // ✅ FIX: grouped juga harus fixed amount
                 spawner.StartGroupedPerLineWave(remainingEnemiesInWave);
                 break;
         }
@@ -172,13 +188,14 @@ public class WaveManager : MonoBehaviour
         if (levelProgress != null)
             levelProgress.value = totalKills;
 
+        // 🔥 TUNDA PERUBAHAN FLAG
         foreach (int goal in flagGoals)
         {
             if (totalKills >= goal && !triggeredGoals.Contains(goal))
             {
+                pendingFlagGoal = goal;
                 triggeredGoals.Add(goal);
-                if (goalToFlag.TryGetValue(goal, out var fm))
-                    fm?.Expand();
+                break; // satu flag saja
             }
         }
 
@@ -188,7 +205,6 @@ public class WaveManager : MonoBehaviour
 
     private void OnWaveCompleted()
     {
-        // wave terakhir
         if (currentWaveIndex >= enemiesPerWave.Count - 1)
         {
             spawner.StopAllSpawning();
@@ -196,7 +212,38 @@ public class WaveManager : MonoBehaviour
             return;
         }
 
-        StartWave(currentWaveIndex + 1);
+        StartCoroutine(WaveTransitionDelay(() =>
+        {
+            StartWave(currentWaveIndex + 1);
+        }));
+    }
+
+    // ===============================
+    // 🔥 WAVE TRANSITION (UX FIX)
+    // ===============================
+    private IEnumerator WaveTransitionDelay(System.Action onComplete)
+    {
+        // 1. TAMPILKAN BIG WAVE UI
+        if (waveIncomingUI != null)
+            waveIncomingUI.SetActive(true);
+
+        // 2. TUNGGU (PLAYER MEMBACA)
+        yield return new WaitForSeconds(waveDelaySeconds);
+
+        // 3. MATIKAN BIG WAVE UI
+        if (waveIncomingUI != null)
+            waveIncomingUI.SetActive(false);
+
+        // 4. BARU AKTIFKAN FLAG
+        if (pendingFlagGoal != -1 &&
+            goalToFlag.TryGetValue(pendingFlagGoal, out var fm))
+        {
+            fm?.Expand();
+            pendingFlagGoal = -1;
+        }
+
+        // 5. LANJUT KE WAVE BERIKUTNYA
+        onComplete?.Invoke();
     }
 
     // ===============================
@@ -212,17 +259,12 @@ public class WaveManager : MonoBehaviour
 
             int alive = spawner != null ? spawner.CountAllAlive() : 0;
 
-            // kondisi wave “macet”: target wave masih ada, tapi tidak ada enemy hidup
             if (remainingEnemiesInWave > 0 && alive == 0)
             {
                 Debug.LogWarning("⚠️ FAILSAFE: remainingEnemiesInWave > 0 tapi alive == 0. Paksa wave selesai.");
                 remainingEnemiesInWave = 0;
                 OnWaveCompleted();
-                continue;
             }
-
-            // tambahan: kalau spawner sudah tidak spawning tapi remaining masih ada,
-            // berarti spawn wave mungkin terhenti. Kalau nanti alive jadi 0, rule di atas nge-handle.
         }
 
         isCheckingFailSafe = false;
