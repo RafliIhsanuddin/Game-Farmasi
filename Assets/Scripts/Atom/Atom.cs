@@ -7,7 +7,11 @@ public class Atom : MonoBehaviour
 
     [Header("Spawn Mode")]
     public bool useRandomSpawn = true;
-
+    
+    [Header("Lifetime")]
+    [SerializeField] private float minLifeTime = 15f;
+    [SerializeField] private float maxLifeTime = 30f;
+    
     private Transform[] possiblePositions;
     private float dropToYPos;
 
@@ -50,7 +54,11 @@ public class Atom : MonoBehaviour
         // ===============================
         dropToYPos = Random.Range(2f, -3f);
 
-        Destroy(gameObject, Random.Range(15f, 30f));
+        // ===============================
+        // AUTO DESTROY (CLEANUP)
+        // ===============================
+        float lifeTime = Random.Range(minLifeTime, maxLifeTime);
+        Destroy(gameObject, lifeTime);
     }
 
     private void Update()

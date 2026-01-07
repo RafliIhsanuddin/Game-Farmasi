@@ -118,6 +118,7 @@ MonoBehaviour:
   damageMushroom: 3
   damageHelminth: 3
   lifeTime: 25
+  hitBlueProjectileSfx: {fileID: 8300000, guid: 0efe8ad1e1190cb408780794468493c7, type: 3}
 --- !u!1 &5299106693135408946
 GameObject:
   m_ObjectHideFlags: 0

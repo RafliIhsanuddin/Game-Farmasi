@@ -35,15 +35,9 @@ public class GreenProjectile : MonoBehaviour
         // ===============================
         // TARGET UTAMA : PROTOZOA
         // ===============================
-        /*if (other.TryGetComponent<ProtozoaController>(out var protozoa))
-        {
-            protozoa.ProjectileDead();   // 💀 mati langsung
-            Destroy(gameObject);
-            return;
-        }*/
-        
         if (other.TryGetComponent<ProtozoaController>(out var protozoa))
         {
+            SoundManager.Instance?.PlayGreenHit();
             protozoa.ProjectileHit(damageProtozoa);
             Destroy(gameObject);
             return;
@@ -54,6 +48,7 @@ public class GreenProjectile : MonoBehaviour
         // ===============================
         if (other.TryGetComponent<BacteriaControllerRed>(out var red))
         {
+            SoundManager.Instance?.PlayGreenHit();
             red.ProjectileHit(damageRed);
             Destroy(gameObject);
             return;
@@ -61,6 +56,7 @@ public class GreenProjectile : MonoBehaviour
 
         if (other.TryGetComponent<BacteriaControllerPurple>(out var purple))
         {
+            SoundManager.Instance?.PlayGreenHit();
             purple.ProjectileHit(damagePurple);
             Destroy(gameObject);
             return;
@@ -68,6 +64,7 @@ public class GreenProjectile : MonoBehaviour
 
         if (other.TryGetComponent<BacteriaControllerGreen>(out var green))
         {
+            SoundManager.Instance?.PlayGreenHit();
             green.ProjectileHit(damageGreen);
             Destroy(gameObject);
             return;
@@ -75,6 +72,7 @@ public class GreenProjectile : MonoBehaviour
 
         if (other.TryGetComponent<MushroomController>(out var mushroom))
         {
+            SoundManager.Instance?.PlayGreenHit();
             mushroom.ProjectileHit(damageMushroom);
             Destroy(gameObject);
             return;
@@ -82,6 +80,7 @@ public class GreenProjectile : MonoBehaviour
 
         if (other.TryGetComponent<HelminthController>(out var helminth))
         {
+            SoundManager.Instance?.PlayGreenHit();
             helminth.ProjectileHit(damageHelminth);
             Destroy(gameObject);
             return;

@@ -44,6 +44,7 @@ public class CreamProjectile : MonoBehaviour
         
         if (other.TryGetComponent<MushroomController>(out var mushroom))
         {
+            SoundManager.Instance?.PlayCreamHit();
             mushroom.ProjectileHit(damageMushroom);
             Destroy(gameObject);
             return;
@@ -54,6 +55,7 @@ public class CreamProjectile : MonoBehaviour
         // ===============================
         if (other.TryGetComponent<BacteriaControllerRed>(out var red))
         {
+            SoundManager.Instance?.PlayCreamHit();
             red.ProjectileHit(damageRed);
             Destroy(gameObject);
             return;
@@ -61,6 +63,7 @@ public class CreamProjectile : MonoBehaviour
 
         if (other.TryGetComponent<BacteriaControllerPurple>(out var purple))
         {
+            SoundManager.Instance?.PlayCreamHit();
             purple.ProjectileHit(damagePurple);
             Destroy(gameObject);
             return;
@@ -68,6 +71,7 @@ public class CreamProjectile : MonoBehaviour
 
         if (other.TryGetComponent<BacteriaControllerGreen>(out var green))
         {
+            SoundManager.Instance?.PlayCreamHit();
             green.ProjectileHit(damageGreen);
             Destroy(gameObject);
             return;
@@ -75,6 +79,7 @@ public class CreamProjectile : MonoBehaviour
 
         if (other.TryGetComponent<ProtozoaController>(out var protozoa))
         {
+            SoundManager.Instance?.PlayCreamHit();
             protozoa.ProjectileHit(damageProtozoa);
             Destroy(gameObject);
             return;
@@ -82,6 +87,7 @@ public class CreamProjectile : MonoBehaviour
 
         if (other.TryGetComponent<HelminthController>(out var helminth))
         {
+            SoundManager.Instance?.PlayCreamHit();
             helminth.ProjectileHit(damageHelminth);
             Destroy(gameObject);
             return;

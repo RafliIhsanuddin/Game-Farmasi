@@ -35,15 +35,9 @@ public class OrangeProjectile : MonoBehaviour
         // ===============================
         // TARGET UTAMA : HELMINTH
         // ===============================
-        /*if (other.TryGetComponent<HelminthController>(out var helminth))
-        {
-            helminth.ProjectileDead();   // 💀 mati langsung
-            Destroy(gameObject);
-            return;
-        }*/
-        
         if (other.TryGetComponent<HelminthController>(out var helminth))
         {
+            SoundManager.Instance?.PlayOrangeHit();
             helminth.ProjectileHit(damageHelminth);
             Destroy(gameObject);
             return;
@@ -54,6 +48,7 @@ public class OrangeProjectile : MonoBehaviour
         // ===============================
         if (other.TryGetComponent<BacteriaControllerRed>(out var red))
         {
+            SoundManager.Instance?.PlayOrangeHit();
             red.ProjectileHit(damageRed);
             Destroy(gameObject);
             return;
@@ -61,6 +56,7 @@ public class OrangeProjectile : MonoBehaviour
 
         if (other.TryGetComponent<BacteriaControllerPurple>(out var purple))
         {
+            SoundManager.Instance?.PlayOrangeHit();
             purple.ProjectileHit(damagePurple);
             Destroy(gameObject);
             return;
@@ -68,6 +64,7 @@ public class OrangeProjectile : MonoBehaviour
 
         if (other.TryGetComponent<BacteriaControllerGreen>(out var green))
         {
+            SoundManager.Instance?.PlayOrangeHit();
             green.ProjectileHit(damageGreen);
             Destroy(gameObject);
             return;
@@ -75,6 +72,7 @@ public class OrangeProjectile : MonoBehaviour
 
         if (other.TryGetComponent<MushroomController>(out var mushroom))
         {
+            SoundManager.Instance?.PlayOrangeHit();
             mushroom.ProjectileHit(damageMushroom);
             Destroy(gameObject);
             return;
@@ -82,6 +80,7 @@ public class OrangeProjectile : MonoBehaviour
 
         if (other.TryGetComponent<ProtozoaController>(out var protozoa))
         {
+            SoundManager.Instance?.PlayOrangeHit();
             protozoa.ProjectileHit(damageProtozoa);
             Destroy(gameObject);
             return;

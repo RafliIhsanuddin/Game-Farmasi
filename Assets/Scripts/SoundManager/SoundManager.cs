@@ -4,18 +4,22 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
 
-    [Header("Audio Sources")]
-    [SerializeField] private AudioSource bgmSource;
-    [SerializeField] private AudioSource sfxSource;
-    [SerializeField] private AudioSource shootSfxSource;
+    [Header("Audio Source Prefab")]
+    [SerializeField] private GameObject audioSourcePrefab;
 
-    [Header("Default Clips")]
-    [SerializeField] private AudioClip defaultBgm;
-    [SerializeField] private AudioClip defaultShootSfx;
+    [Header("Projectile Hit Clips")]
+    [SerializeField] private AudioClip hitYellowProjectileSfx;
+    [SerializeField] private AudioClip hitBlueProjectileSfx;
+    [SerializeField] private AudioClip hitCreamProjectileSfx;
+    [SerializeField] private AudioClip hitRedProjectileSfx;
+    [SerializeField] private AudioClip hitGreenProjectileSfx;
+    [SerializeField] private AudioClip hitOrangeProjectileSfx; // 🟠 ORANGE
+
+    [Header("Destroy Delay")]
+    [SerializeField] private float destroyDelay = 3f;
 
     private void Awake()
     {
-        // Singleton sederhana
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -26,55 +30,36 @@ public class SoundManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void Start()
+    // ======================
+    // PUBLIC API
+    // ======================
+    public void PlayYellowHit() => PlayClip(hitYellowProjectileSfx);
+    public void PlayBlueHit()   => PlayClip(hitBlueProjectileSfx);
+    public void PlayCreamHit()  => PlayClip(hitCreamProjectileSfx);
+    public void PlayRedHit()    => PlayClip(hitRedProjectileSfx);
+    public void PlayGreenHit()  => PlayClip(hitGreenProjectileSfx);
+    public void PlayOrangeHit() => PlayClip(hitOrangeProjectileSfx); // 🟠
+
+    // ======================
+    // INTERNAL
+    // ======================
+    private void PlayClip(AudioClip clip)
     {
-        // Auto play BGM jika ada
-        if (bgmSource != null && defaultBgm != null)
+        if (audioSourcePrefab == null || clip == null) return;
+
+        GameObject go = Instantiate(audioSourcePrefab, transform);
+        AudioSource src = go.GetComponent<AudioSource>();
+
+        if (src == null)
         {
-            bgmSource.clip = defaultBgm;
-            bgmSource.loop = true;
-            bgmSource.Play();
+            Destroy(go);
+            return;
         }
-    }
 
-    // =====================
-    // BGM
-    // =====================
-    public void PlayBGM(AudioClip clip, bool loop = true)
-    {
-        if (bgmSource == null || clip == null) return;
+        src.Stop();
+        src.clip = null;
+        src.PlayOneShot(clip);
 
-        bgmSource.clip = clip;
-        bgmSource.loop = loop;
-        bgmSource.Play();
-    }
-
-    public void StopBGM()
-    {
-        if (bgmSource == null) return;
-        bgmSource.Stop();
-    }
-
-    // =====================
-    // SFX UMUM
-    // =====================
-    public void PlaySFX(AudioClip clip)
-    {
-        if (sfxSource == null || clip == null) return;
-        sfxSource.PlayOneShot(clip);
-    }
-
-    // =====================
-    // SHOOT SFX (KHUSUS)
-    // =====================
-    public void PlayShootSFX(AudioClip clip = null)
-    {
-        if (shootSfxSource == null) return;
-
-        // Kalau tidak dikirim clip → pakai default
-        AudioClip finalClip = clip != null ? clip : defaultShootSfx;
-        if (finalClip == null) return;
-
-        shootSfxSource.PlayOneShot(finalClip);
+        Destroy(go, destroyDelay);
     }
 }

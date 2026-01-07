@@ -45,6 +45,7 @@ public class RedProjectile : MonoBehaviour
         
         if (other.TryGetComponent<BacteriaControllerGreen>(out var green))
         {
+            SoundManager.Instance?.PlayRedHit();
             green.ProjectileHit(damageGreen);
             Destroy(gameObject);
             return;
@@ -55,6 +56,7 @@ public class RedProjectile : MonoBehaviour
         // ===============================
         if (other.TryGetComponent<BacteriaControllerRed>(out var red))
         {
+            SoundManager.Instance?.PlayRedHit();
             red.ProjectileHit(damageRed);
             Destroy(gameObject);
             return;
@@ -62,6 +64,7 @@ public class RedProjectile : MonoBehaviour
 
         if (other.TryGetComponent<BacteriaControllerPurple>(out var purple))
         {
+            SoundManager.Instance?.PlayRedHit();
             purple.ProjectileHit(damagePurple);
             Destroy(gameObject);
             return;
@@ -69,6 +72,7 @@ public class RedProjectile : MonoBehaviour
 
         if (other.TryGetComponent<MushroomController>(out var mushroom))
         {
+            SoundManager.Instance?.PlayRedHit();
             mushroom.ProjectileHit(damageMushroom);
             Destroy(gameObject);
             return;
@@ -76,6 +80,7 @@ public class RedProjectile : MonoBehaviour
 
         if (other.TryGetComponent<ProtozoaController>(out var protozoa))
         {
+            SoundManager.Instance?.PlayRedHit();
             protozoa.ProjectileHit(damageProtozoa);
             Destroy(gameObject);
             return;
@@ -83,6 +88,7 @@ public class RedProjectile : MonoBehaviour
 
         if (other.TryGetComponent<HelminthController>(out var helminth))
         {
+            SoundManager.Instance?.PlayRedHit();
             helminth.ProjectileHit(damageHelminth);
             Destroy(gameObject);
             return;
