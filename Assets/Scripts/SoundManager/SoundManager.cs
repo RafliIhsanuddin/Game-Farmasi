@@ -15,6 +15,9 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip hitGreenProjectileSfx;
     [SerializeField] private AudioClip hitOrangeProjectileSfx; // 🟠 ORANGE
 
+    [Header("Big Wave SFX")]
+    [SerializeField] private AudioClip bigWaveWarningSfx; // 🌊 BIG WAVE
+
     [Header("Destroy Delay")]
     [SerializeField] private float destroyDelay = 3f;
 
@@ -38,7 +41,9 @@ public class SoundManager : MonoBehaviour
     public void PlayCreamHit()  => PlayClip(hitCreamProjectileSfx);
     public void PlayRedHit()    => PlayClip(hitRedProjectileSfx);
     public void PlayGreenHit()  => PlayClip(hitGreenProjectileSfx);
-    public void PlayOrangeHit() => PlayClip(hitOrangeProjectileSfx); // 🟠
+    public void PlayOrangeHit() => PlayClip(hitOrangeProjectileSfx);
+
+    public void PlayBigWaveWarning() => PlayClip(bigWaveWarningSfx); // 🌊 CALL IN WAVE MANAGER
 
     // ======================
     // INTERNAL

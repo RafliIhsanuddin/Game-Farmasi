@@ -227,6 +227,10 @@ public class WaveManager : MonoBehaviour
         if (waveIncomingUI != null)
             waveIncomingUI.SetActive(true);
 
+        // 🔊 MAIN SOUND BIG WAVE
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlayBigWaveWarning();
+
         // 2. TUNGGU (PLAYER MEMBACA)
         yield return new WaitForSeconds(waveDelaySeconds);
 
@@ -234,7 +238,7 @@ public class WaveManager : MonoBehaviour
         if (waveIncomingUI != null)
             waveIncomingUI.SetActive(false);
 
-        // 4. BARU AKTIFKAN FLAG
+        // 4. FLAG (UX)
         if (pendingFlagGoal != -1 &&
             goalToFlag.TryGetValue(pendingFlagGoal, out var fm))
         {
@@ -242,7 +246,7 @@ public class WaveManager : MonoBehaviour
             pendingFlagGoal = -1;
         }
 
-        // 5. LANJUT KE WAVE BERIKUTNYA
+        // 5. LANJUT WAVE
         onComplete?.Invoke();
     }
 
