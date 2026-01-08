@@ -28,9 +28,6 @@ public class WaveManager : MonoBehaviour
     public RectTransform flagContainer;
     public GameObject flagPrefab;
 
-    // ===============================
-    // 🔥 WAVE TRANSITION UI
-    // ===============================
     [Header("Wave Transition UI")]
     [SerializeField] private float waveDelaySeconds = 5f;
     [SerializeField] private GameObject waveIncomingUI;
@@ -41,9 +38,6 @@ public class WaveManager : MonoBehaviour
     [Header("Spawner")]
     public BacteriaSpawner spawner;
 
-    // ===============================
-    // INTERNAL STATE
-    // ===============================
     private int currentWaveIndex = 0;
     private int remainingEnemiesInWave = 0;
     private int totalKills = 0;
@@ -53,7 +47,6 @@ public class WaveManager : MonoBehaviour
     private Dictionary<int, FlagsManager> goalToFlag = new();
     private HashSet<int> triggeredGoals = new();
 
-    // 🔥 FLAG YANG DITUNDA (UNTUK UX)
     private int pendingFlagGoal = -1;
 
     private bool isCheckingFailSafe = false;
@@ -61,9 +54,6 @@ public class WaveManager : MonoBehaviour
 
     public System.Action OnLevelComplete;
 
-    // ===============================
-    // UNITY EVENTS
-    // ===============================
     private void OnValidate()
     {
         int required = flagCount + 1;
@@ -95,9 +85,6 @@ public class WaveManager : MonoBehaviour
             StartCoroutine(FailSafeChecker());
     }
 
-    // ===============================
-    // SETUP
-    // ===============================
     private void CalculateTotalEnemies()
     {
         totalEnemiesInLevel = 0;
@@ -149,9 +136,6 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    // ===============================
-    // WAVE LOGIC
-    // ===============================
     private void StartWave(int waveIndex)
     {
         currentWaveIndex = waveIndex;
@@ -161,6 +145,12 @@ public class WaveManager : MonoBehaviour
             spawner.StopAllSpawning();
 
         Debug.Log($"🚩 WAVE {waveIndex + 1} DIMULAI | Mode: {spawnModesPerWave[waveIndex]} | Spawn: {remainingEnemiesInWave}");
+
+        // 🔊 MUSIC HANYA UNTUK WAVE > 0
+        if (SoundManager.Instance != null && currentWaveIndex > 0)
+        {
+            SoundManager.Instance.PlayWaveStartMusic();
+        }
 
         switch (spawnModesPerWave[waveIndex])
         {
@@ -188,14 +178,13 @@ public class WaveManager : MonoBehaviour
         if (levelProgress != null)
             levelProgress.value = totalKills;
 
-        // 🔥 TUNDA PERUBAHAN FLAG
         foreach (int goal in flagGoals)
         {
             if (totalKills >= goal && !triggeredGoals.Contains(goal))
             {
                 pendingFlagGoal = goal;
                 triggeredGoals.Add(goal);
-                break; // satu flag saja
+                break;
             }
         }
 
@@ -218,41 +207,34 @@ public class WaveManager : MonoBehaviour
         }));
     }
 
-    // ===============================
-    // 🔥 WAVE TRANSITION (UX FIX)
-    // ===============================
     private IEnumerator WaveTransitionDelay(System.Action onComplete)
     {
-        // 1. TAMPILKAN BIG WAVE UI
         if (waveIncomingUI != null)
             waveIncomingUI.SetActive(true);
 
-        // 🔊 MAIN SOUND BIG WAVE
         if (SoundManager.Instance != null)
             SoundManager.Instance.PlayBigWaveWarning();
 
-        // 2. TUNGGU (PLAYER MEMBACA)
         yield return new WaitForSeconds(waveDelaySeconds);
 
-        // 3. MATIKAN BIG WAVE UI
         if (waveIncomingUI != null)
             waveIncomingUI.SetActive(false);
 
-        // 4. FLAG (UX)
+        // 🔥 FLAG EXPAND = JADI MERAH
         if (pendingFlagGoal != -1 &&
             goalToFlag.TryGetValue(pendingFlagGoal, out var fm))
         {
+            // 🔊 ALWAYS MAIN MUSIC SAAT FLAG EXPAND
+            if (SoundManager.Instance != null)
+                SoundManager.Instance.PlayWaveStartMusic();
+
             fm?.Expand();
             pendingFlagGoal = -1;
         }
 
-        // 5. LANJUT WAVE
         onComplete?.Invoke();
     }
 
-    // ===============================
-    // FAIL SAFE
-    // ===============================
     private IEnumerator FailSafeChecker()
     {
         isCheckingFailSafe = true;
@@ -274,9 +256,6 @@ public class WaveManager : MonoBehaviour
         isCheckingFailSafe = false;
     }
 
-    // ===============================
-    // WIN
-    // ===============================
     private void TryWin()
     {
         if (totalKills < totalEnemiesInLevel) return;

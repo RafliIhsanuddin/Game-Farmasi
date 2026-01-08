@@ -13,10 +13,14 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip hitCreamProjectileSfx;
     [SerializeField] private AudioClip hitRedProjectileSfx;
     [SerializeField] private AudioClip hitGreenProjectileSfx;
-    [SerializeField] private AudioClip hitOrangeProjectileSfx; // 🟠 ORANGE
+    [SerializeField] private AudioClip hitOrangeProjectileSfx;
 
     [Header("Big Wave SFX")]
-    [SerializeField] private AudioClip bigWaveWarningSfx; // 🌊 BIG WAVE
+    [SerializeField] private AudioClip bigWaveWarningSfx;
+
+    // 🌟 NEW: MUSIC / WAVE START
+    [Header("Wave Music / Start")]
+    [SerializeField] private AudioClip waveStartMusic;
 
     [Header("Destroy Delay")]
     [SerializeField] private float destroyDelay = 3f;
@@ -43,7 +47,9 @@ public class SoundManager : MonoBehaviour
     public void PlayGreenHit()  => PlayClip(hitGreenProjectileSfx);
     public void PlayOrangeHit() => PlayClip(hitOrangeProjectileSfx);
 
-    public void PlayBigWaveWarning() => PlayClip(bigWaveWarningSfx); // 🌊 CALL IN WAVE MANAGER
+    public void PlayBigWaveWarning() => PlayClip(bigWaveWarningSfx);
+
+    public void PlayWaveStartMusic() => PlayClip(waveStartMusic);
 
     // ======================
     // INTERNAL

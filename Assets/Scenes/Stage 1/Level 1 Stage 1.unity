@@ -14881,6 +14881,7 @@ MonoBehaviour:
   hitGreenProjectileSfx: {fileID: 8300000, guid: 0efe8ad1e1190cb408780794468493c7, type: 3}
   hitOrangeProjectileSfx: {fileID: 8300000, guid: 0efe8ad1e1190cb408780794468493c7, type: 3}
   bigWaveWarningSfx: {fileID: 8300000, guid: 57e8bcbff97a79d43aac771c936c8f13, type: 3}
+  waveStartMusic: {fileID: 8300000, guid: c726fa5f1b240d74fb5957bfa0174255, type: 3}
   destroyDelay: 6
 --- !u!4 &698203291
 Transform:
