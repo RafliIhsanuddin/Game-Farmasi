@@ -31,7 +31,6 @@ public class CardSelectable : MonoBehaviour
     public void MoveToSlot(Transform slot)
     {
         transform.SetParent(slot);
-        transform.localPosition = Vector3.zero;
     }
 
     public void ReturnToSelector()
