@@ -17,6 +17,7 @@ public class CardSelectable : MonoBehaviour
         originalParent = transform.parent;
         originalPosition = transform.localPosition;
 
+        // disable CapsuleSlot pre-level
         var cap = GetComponent<CapsuleSlot>();
         if (cap != null) cap.enabled = false;
 

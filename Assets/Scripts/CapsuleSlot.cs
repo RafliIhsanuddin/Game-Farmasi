@@ -88,7 +88,7 @@ public class CapsuleSlot : MonoBehaviour
         }
     }
 
-    private void SelectPlant()
+    public void SelectPlant()
     {
         if (gms == null) return;
 

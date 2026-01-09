@@ -1,15 +1,18 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class CardSelectionManager : MonoBehaviour
 {
+    [Header("Cards & Slots")]
     [SerializeField] private List<CardSelectable> allCards;
     [SerializeField] private List<CardSlot> slots;
+
+    [Header("Selection Settings")]
     [SerializeField] private int maxSelection = 3;
     [SerializeField] private float compactSpeed = 12f;
 
     private int currentSelected = 0;
-    private bool locked = false;
 
     private void Update()
     {
@@ -18,7 +21,7 @@ public class CardSelectionManager : MonoBehaviour
 
     public void OnCardClicked(CardSelectable card)
     {
-        // cek apakah card sedang berada di slot (=> unequip)
+        // UNEQUIP
         foreach (var s in slots)
         {
             if (s.occupiedCard == card)
@@ -28,6 +31,7 @@ public class CardSelectionManager : MonoBehaviour
             }
         }
 
+        // ADD
         AddToSlot(card);
     }
 
@@ -42,9 +46,6 @@ public class CardSelectionManager : MonoBehaviour
         card.MoveToSlot(empty.transform);
 
         currentSelected++;
-
-        if (currentSelected == maxSelection)
-            locked = true;
     }
 
     void RemoveFromSlot(CardSlot slot)
@@ -55,7 +56,6 @@ public class CardSelectionManager : MonoBehaviour
         slot.occupiedCard = null;
 
         currentSelected--;
-        locked = false;
 
         CompactSlots();
     }
@@ -88,25 +88,46 @@ public class CardSelectionManager : MonoBehaviour
                 var pos = card.transform.position;
 
                 card.transform.position = Vector3.Lerp(
-                    pos, target, Time.deltaTime * compactSpeed
+                    pos,
+                    target,
+                    Time.deltaTime * compactSpeed
                 );
             }
         }
     }
 
+    // DIPANGGIL ReadyButton
     public void ConfirmSelection()
     {
-        locked = true;
+        // 1. Disable selectable scripts
+        foreach (var card in allCards)
+            card.enabled = false;
 
-        foreach (var c in allCards)
-            c.enabled = false;
-
+        // 2. Swap Button Listener to CapsuleSlot
         foreach (var s in slots)
         {
             if (s.occupiedCard == null) continue;
 
-            var cap = s.occupiedCard.GetComponent<CapsuleSlot>();
-            if (cap != null) cap.enabled = true;
+            var card = s.occupiedCard;
+            var btn = card.GetComponent<Button>();
+            var cap = card.GetComponent<CapsuleSlot>();
+
+            if (btn != null)
+            {
+                btn.onClick.RemoveAllListeners();
+
+                // ini penting: langsung gunakan SelectPlant milik CapsuleSlot
+                if (cap != null)
+                    btn.onClick.AddListener(cap.SelectPlant);
+            }
+
+            // aktifkan script CapsuleSlot supaya Update() affordability & highlight jalan
+            if (cap != null)
+                cap.enabled = true;
         }
+
+        // 3. Disable manager
+        this.enabled = false;
+        gameObject.SetActive(false); // seperti permintaanmu
     }
 }
