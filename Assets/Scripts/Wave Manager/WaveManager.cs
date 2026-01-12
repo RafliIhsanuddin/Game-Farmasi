@@ -32,8 +32,8 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private float waveDelaySeconds = 5f;
     [SerializeField] private GameObject waveIncomingUI;
 
-    [Header("Win Panel")]
-    public GameObject winUI;
+    [Header("Win Panel (Multiple UI)")]
+    public List<GameObject> winUIs = new();
 
     [Header("Spawner")]
     public BacteriaSpawner spawner;
@@ -69,8 +69,11 @@ public class WaveManager : MonoBehaviour
 
     private void Start()
     {
-        if (winUI != null) winUI.SetActive(false);
-        if (waveIncomingUI != null) waveIncomingUI.SetActive(false);
+        foreach (var ui in winUIs)
+            if (ui != null) ui.SetActive(false);
+
+        if (waveIncomingUI != null)
+            waveIncomingUI.SetActive(false);
 
         isGameOver = false;
 
@@ -146,7 +149,6 @@ public class WaveManager : MonoBehaviour
 
         Debug.Log($"🚩 WAVE {waveIndex + 1} DIMULAI | Mode: {spawnModesPerWave[waveIndex]} | Spawn: {remainingEnemiesInWave}");
 
-        // 🔊 MUSIC HANYA UNTUK WAVE > 0
         if (SoundManager.Instance != null && currentWaveIndex > 0)
         {
             SoundManager.Instance.PlayWaveStartMusic();
@@ -220,11 +222,9 @@ public class WaveManager : MonoBehaviour
         if (waveIncomingUI != null)
             waveIncomingUI.SetActive(false);
 
-        // 🔥 FLAG EXPAND = JADI MERAH
         if (pendingFlagGoal != -1 &&
             goalToFlag.TryGetValue(pendingFlagGoal, out var fm))
         {
-            // 🔊 ALWAYS MAIN MUSIC SAAT FLAG EXPAND
             if (SoundManager.Instance != null)
                 SoundManager.Instance.PlayWaveStartMusic();
 
@@ -286,12 +286,10 @@ public class WaveManager : MonoBehaviour
 
         OnLevelComplete?.Invoke();
 
-        if (winUI != null)
-        {
-            winUI.SetActive(true);
-            Time.timeScale = 0f;
-        }
-    }
+        foreach (var ui in winUIs)
+            if (ui != null) ui.SetActive(true);
 
+        Time.timeScale = 0f;
+    }
     
 }
