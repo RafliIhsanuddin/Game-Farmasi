@@ -38,6 +38,11 @@ public class WaveManager : MonoBehaviour
     [Header("Spawner")]
     public BacteriaSpawner spawner;
 
+    // === NEW ===
+    [Header("Win Actions (Opsional)")]
+    public List<GameObject> enableOnWin = new();
+    public List<GameObject> disableOnWin = new();
+
     private int currentWaveIndex = 0;
     private int remainingEnemiesInWave = 0;
     private int totalKills = 0;
@@ -286,10 +291,20 @@ public class WaveManager : MonoBehaviour
 
         OnLevelComplete?.Invoke();
 
+        // === WIN UI DEFAULT ===
         foreach (var ui in winUIs)
             if (ui != null) ui.SetActive(true);
 
+        // === NEW === ENABLE LIST ===
+        foreach (var go in enableOnWin)
+            if (go != null) go.SetActive(true);
+
+        // === NEW === DISABLE LIST ===
+        foreach (var go in disableOnWin)
+            if (go != null) go.SetActive(false);
+
         Time.timeScale = 0f;
     }
+
     
 }
