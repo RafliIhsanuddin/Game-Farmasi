@@ -14780,7 +14780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d89a64362cee53a48ac20331c09c585d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.003
+  speed: 0.005
   spawnPoint: {fileID: 0}
   helminthVisual: {fileID: 62695793705857960}
   hitParticleEffect: {fileID: 1429581713597411655}

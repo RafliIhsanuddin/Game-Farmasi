@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f29593faec89db4ab0bfba10e806fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.003
+  speed: 0.005
   spawnPoint: {fileID: 0}
   mushroomVisual: {fileID: 4909435961034432879}
   hitParticleEffect: {fileID: 9092462129086457935}
