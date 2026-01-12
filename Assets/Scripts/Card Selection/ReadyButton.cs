@@ -54,21 +54,34 @@ public class ReadyButton : MonoBehaviour
             return;
         }
 
-        // valid ready
         cardManager.ConfirmSelection();
 
         if (selectorHUD) selectorHUD.SetActive(false);
         if (readyButton) readyButton.interactable = false;
-        
+
         StartCoroutine(Sequence());
     }
 
     private IEnumerator Sequence()
     {
         movingCamera = true;
-
         while (movingCamera)
             yield return null;
+
+        // ambil pool dari preview helper
+        SpawnPreviewHelper helper = Object.FindFirstObjectByType<SpawnPreviewHelper>();
+        if (helper != null)
+        {
+            var pool = helper.GetSelectedEnemyPool();
+
+            var spawner = bacteriaSpawner.GetComponent<BacteriaSpawner>();
+            if (spawner != null && pool.Count > 0)
+            {
+                spawner.SetEnemyPool(pool);
+            }
+
+            helper.ClearPreview();
+        }
 
         if (atomSpawner) atomSpawner.SetActive(true);
         if (waveManager) waveManager.SetActive(true);
