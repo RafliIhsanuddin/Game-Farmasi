@@ -6,28 +6,16 @@ using System.Collections;
 
 public class BacteriaSpawner : MonoBehaviour
 {
-    // ===============================
-    // SPAWNER DATA
-    // ===============================
     [Header("Spawner Data")]
     public List<GameObject> bacteriaPrefabs = new();
     public List<SpawnPointSlot> spawnPoints = new();
 
-    // ===============================
-    // SINGLE PER LINE SETTINGS
-    // ===============================
     [Header("Single Per Line")]
     [SerializeField] private float singleSpawnDelay = 1.5f;
 
-    // ===============================
-    // MULTI PER LINE SETTINGS
-    // ===============================
     [Header("Multi Per Line")]
     [SerializeField] private float multiSpawnDelay = 1.0f;
 
-    // ===============================
-    // GROUPED PER LINE SETTINGS (FIXED AMOUNT)
-    // ===============================
     [Header("Grouped Per Line (Fixed Amount)")]
     [SerializeField] private int minPerLine = 5;
     [SerializeField] private int maxPerLine = 12;
@@ -35,9 +23,6 @@ public class BacteriaSpawner : MonoBehaviour
     [SerializeField] private float maxDelayPerLine = 1.5f;
     [SerializeField] private float delayBetweenGroups = 1f;
 
-    // ===============================
-    // INTERNAL STATE
-    // ===============================
     private bool isSpawning = false;
     private bool cancelRequested = false;
 
@@ -47,11 +32,10 @@ public class BacteriaSpawner : MonoBehaviour
     public bool IsSpawning => isSpawning;
 
     // ===============================
-    // PUBLIC API (POOL INJECTOR)
+    // RANDOMIZER POOL INJECTOR
     // ===============================
     public void SetEnemyPool(List<GameObject> newPool)
     {
-        // make sure copy only, avoid ref
         bacteriaPrefabs = new List<GameObject>(newPool);
     }
 
@@ -132,7 +116,7 @@ public class BacteriaSpawner : MonoBehaviour
 
                     if (noFreeLineTimer >= NO_FREE_LINE_RESYNC_AFTER)
                     {
-                        Debug.LogWarning("[Spawner] SinglePerLine stuck? Resync...");
+                        Debug.Log("[Spawner] SinglePerLine stuck? Resync...");
                         SyncOccupiedStateFromScene();
                         noFreeLineTimer = 0f;
                     }

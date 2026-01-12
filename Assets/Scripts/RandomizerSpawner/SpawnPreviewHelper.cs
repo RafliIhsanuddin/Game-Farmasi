@@ -43,7 +43,6 @@ public class SpawnPreviewHelper : MonoBehaviour
         previewPool.Clear();
         previewInstances.Clear();
 
-        // clone list untuk sampling unik
         List<GameObject> temp = new List<GameObject>(allEnemyPrefabs);
 
         for (int i = 0; i < previewCount; i++)

@@ -68,8 +68,11 @@ public class ReadyButton : MonoBehaviour
         while (movingCamera)
             yield return null;
 
-        // ambil pool dari preview helper
+        // ===========================
+        // RANDOMIZER CHECK (optional)
+        // ===========================
         SpawnPreviewHelper helper = Object.FindFirstObjectByType<SpawnPreviewHelper>();
+
         if (helper != null)
         {
             var pool = helper.GetSelectedEnemyPool();
@@ -78,11 +81,23 @@ public class ReadyButton : MonoBehaviour
             if (spawner != null && pool.Count > 0)
             {
                 spawner.SetEnemyPool(pool);
+                Debug.Log("<color=green>[Randomizer]</color> Enemy pool diambil dari SpawnPreviewHelper.");
+            }
+            else
+            {
+                Debug.LogWarning("[Randomizer] PreviewHelper ada tetapi pool kosong atau spawner null.");
             }
 
             helper.ClearPreview();
         }
+        else
+        {
+            Debug.Log("<color=yellow>[Randomizer]</color> Tidak ditemukan SpawnPreviewHelper, pakai prefab default pada BacteriaSpawner.");
+        }
 
+        // ===========================
+        // ENABLE GAME SYSTEM
+        // ===========================
         if (atomSpawner) atomSpawner.SetActive(true);
         if (waveManager) waveManager.SetActive(true);
         if (bacteriaSpawner) bacteriaSpawner.SetActive(true);
