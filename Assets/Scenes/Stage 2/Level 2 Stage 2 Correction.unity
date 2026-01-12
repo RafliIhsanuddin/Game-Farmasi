@@ -9205,6 +9205,7 @@ MonoBehaviour:
   - {fileID: 2228323387740713211, guid: c2b589809fb5e7d41983794dfcbf667b, type: 3}
   - {fileID: 7157105662761619761, guid: 769f61a68c68e574394f72a0360e7d46, type: 3}
   previewCount: 3
+  previewScale: 2.5
 --- !u!1 &1290252696
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,9 +13,14 @@ public class SpawnPreviewHelper : MonoBehaviour
     [Header("Jumlah Random Preview")]
     [SerializeField] private int previewCount = 3;
 
+    [Header("Preview Visual Settings")]
+    [Tooltip("Skala preview untuk visualisasi, tidak mempengaruhi prefab asli")]
+    [SerializeField] private float previewScale = 1.5f;
+
     private readonly List<GameObject> previewPool = new List<GameObject>();
     private readonly List<GameObject> previewInstances = new List<GameObject>();
 
+    // Dipanggil oleh ReadyButton
     public List<GameObject> GetSelectedEnemyPool()
     {
         return previewPool;
@@ -36,13 +41,14 @@ public class SpawnPreviewHelper : MonoBehaviour
 
         if (allEnemyPrefabs.Count < previewCount)
         {
-            Debug.LogWarning("[Preview] Enemy prefab kurang untuk random unik");
+            Debug.LogWarning("[Preview] Enemy prefab kurang untuk sampling unik");
             return;
         }
 
         previewPool.Clear();
         previewInstances.Clear();
 
+        // gunakan list clone supaya bisa remove untuk sampling unik
         List<GameObject> temp = new List<GameObject>(allEnemyPrefabs);
 
         for (int i = 0; i < previewCount; i++)
@@ -53,7 +59,13 @@ public class SpawnPreviewHelper : MonoBehaviour
 
             previewPool.Add(chosen);
 
-            GameObject inst = Instantiate(chosen, previewSlots[i].position, previewSlots[i].rotation);
+            // spawn visual preview
+            GameObject inst = Instantiate(
+                chosen,
+                previewSlots[i].position,
+                previewSlots[i].rotation
+            );
+
             previewInstances.Add(inst);
 
             SetupPreviewInstance(inst);
@@ -62,20 +74,27 @@ public class SpawnPreviewHelper : MonoBehaviour
 
     private void SetupPreviewInstance(GameObject inst)
     {
+        // SCALE HANYA DI PREVIEW
+        inst.transform.localScale *= previewScale;
+
+        // keep animator (idle)
         Animator animator = inst.GetComponentInChildren<Animator>();
 
+        // disable semua script lain
         var scripts = inst.GetComponentsInChildren<MonoBehaviour>(true);
         foreach (var s in scripts)
         {
             if (animator != null && s == animator)
-                continue;
+                continue; // animator tetap aktif untuk idle preview
 
             s.enabled = false;
         }
 
+        // disable collider (jangan bisa collision)
         Collider2D col = inst.GetComponentInChildren<Collider2D>();
         if (col) col.enabled = false;
 
+        // disable physics
         Rigidbody2D rb = inst.GetComponentInChildren<Rigidbody2D>();
         if (rb) rb.simulated = false;
     }
