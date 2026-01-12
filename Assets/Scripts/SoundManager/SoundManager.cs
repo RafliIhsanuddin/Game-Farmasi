@@ -18,9 +18,12 @@ public class SoundManager : MonoBehaviour
     [Header("Big Wave SFX")]
     [SerializeField] private AudioClip bigWaveWarningSfx;
 
-    // 🌟 NEW: MUSIC / WAVE START
     [Header("Wave Music / Start")]
     [SerializeField] private AudioClip waveStartMusic;
+
+    // 🌟 ADD: WRONG SFX
+    [Header("UI / Validation")]
+    [SerializeField] private AudioClip wrongSfx;
 
     [Header("Destroy Delay")]
     [SerializeField] private float destroyDelay = 3f;
@@ -38,7 +41,7 @@ public class SoundManager : MonoBehaviour
     }
 
     // ======================
-    // PUBLIC API
+    // PROJECTILE API (KEEP)
     // ======================
     public void PlayYellowHit() => PlayClip(hitYellowProjectileSfx);
     public void PlayBlueHit()   => PlayClip(hitBlueProjectileSfx);
@@ -47,9 +50,16 @@ public class SoundManager : MonoBehaviour
     public void PlayGreenHit()  => PlayClip(hitGreenProjectileSfx);
     public void PlayOrangeHit() => PlayClip(hitOrangeProjectileSfx);
 
+    // ======================
+    // WAVE API (KEEP)
+    // ======================
     public void PlayBigWaveWarning() => PlayClip(bigWaveWarningSfx);
-
     public void PlayWaveStartMusic() => PlayClip(waveStartMusic);
+
+    // ======================
+    // WRONG UI SFX
+    // ======================
+    public void PlayWrong() => PlayClip(wrongSfx);
 
     // ======================
     // INTERNAL

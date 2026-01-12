@@ -21,7 +21,28 @@ public class CardSelectionManager : MonoBehaviour
 
     public void OnCardClicked(CardSelectable card)
     {
-        // UNEQUIP
+        // CASE: sudah 3, user klik kartu lain -> WRONG
+        if (currentSelected >= maxSelection)
+        {
+            bool isSelected = false;
+
+            foreach (var s in slots)
+            {
+                if (s.occupiedCard == card)
+                {
+                    isSelected = true;
+                    break;
+                }
+            }
+
+            if (!isSelected)
+            {
+                SoundManager.Instance?.PlayWrong();
+                return;
+            }
+        }
+
+        // CASE: REMOVE (unselect)
         foreach (var s in slots)
         {
             if (s.occupiedCard == card)
@@ -31,16 +52,24 @@ public class CardSelectionManager : MonoBehaviour
             }
         }
 
-        // ADD
+        // CASE: ADD
         AddToSlot(card);
     }
 
     void AddToSlot(CardSelectable card)
     {
-        if (currentSelected >= maxSelection) return;
+        if (currentSelected >= maxSelection)
+        {
+            SoundManager.Instance?.PlayWrong();
+            return;
+        }
 
         CardSlot empty = slots.Find(s => s.IsFree);
-        if (empty == null) return;
+        if (empty == null)
+        {
+            SoundManager.Instance?.PlayWrong();
+            return;
+        }
 
         empty.occupiedCard = card;
         card.MoveToSlot(empty.transform);
@@ -85,10 +114,8 @@ public class CardSelectionManager : MonoBehaviour
             {
                 var card = slots[i].occupiedCard;
                 var target = slots[i].transform.position;
-                var pos = card.transform.position;
-
                 card.transform.position = Vector3.Lerp(
-                    pos,
+                    card.transform.position,
                     target,
                     Time.deltaTime * compactSpeed
                 );
@@ -99,11 +126,11 @@ public class CardSelectionManager : MonoBehaviour
     // DIPANGGIL ReadyButton
     public void ConfirmSelection()
     {
-        // 1. Disable selectable scripts
+        // disable selectable
         foreach (var card in allCards)
             card.enabled = false;
 
-        // 2. Swap Button Listener to CapsuleSlot
+        // convert button to capsule slot SelectPlant
         foreach (var s in slots)
         {
             if (s.occupiedCard == null) continue;
@@ -115,19 +142,20 @@ public class CardSelectionManager : MonoBehaviour
             if (btn != null)
             {
                 btn.onClick.RemoveAllListeners();
-
-                // ini penting: langsung gunakan SelectPlant milik CapsuleSlot
                 if (cap != null)
                     btn.onClick.AddListener(cap.SelectPlant);
             }
 
-            // aktifkan script CapsuleSlot supaya Update() affordability & highlight jalan
             if (cap != null)
                 cap.enabled = true;
         }
 
-        // 3. Disable manager
         this.enabled = false;
-        gameObject.SetActive(false); // seperti permintaanmu
+        gameObject.SetActive(false);
+    }
+
+    public int GetSelectedCount()
+    {
+        return currentSelected;
     }
 }
