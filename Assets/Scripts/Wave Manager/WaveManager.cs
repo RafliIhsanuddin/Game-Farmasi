@@ -11,7 +11,7 @@ public class WaveManager : MonoBehaviour
     {
         SinglePerLine,
         MultiPerLine,
-        GroupedPerLine
+        MultiPerLineGrouped   // 👈 versi B (grup per line, tunggu mati)
     }
 
     [Header("Flags")]
@@ -159,6 +159,7 @@ public class WaveManager : MonoBehaviour
             SoundManager.Instance.PlayWaveStartMusic();
         }
 
+        // Panggil spawner sesuai mode
         switch (spawnModesPerWave[waveIndex])
         {
             case SpawnMode.SinglePerLine:
@@ -169,7 +170,7 @@ public class WaveManager : MonoBehaviour
                 spawner.StartMultiPerLineWave(remainingEnemiesInWave);
                 break;
 
-            case SpawnMode.GroupedPerLine:
+            case SpawnMode.MultiPerLineGrouped:
                 spawner.StartGroupedPerLineWave(remainingEnemiesInWave);
                 break;
         }
@@ -291,15 +292,12 @@ public class WaveManager : MonoBehaviour
 
         OnLevelComplete?.Invoke();
 
-        // === WIN UI DEFAULT ===
         foreach (var ui in winUIs)
             if (ui != null) ui.SetActive(true);
 
-        // === NEW === ENABLE LIST ===
         foreach (var go in enableOnWin)
             if (go != null) go.SetActive(true);
 
-        // === NEW === DISABLE LIST ===
         foreach (var go in disableOnWin)
             if (go != null) go.SetActive(false);
 

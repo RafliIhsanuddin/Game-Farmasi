@@ -308,7 +308,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(atom);
 
-            // ======== MODIFIKASI DI SINI SAJA ========
             if (atomRewardValues.Count > 0)
             {
                 suns += atomRewardValues[Random.Range(0, atomRewardValues.Count)];
