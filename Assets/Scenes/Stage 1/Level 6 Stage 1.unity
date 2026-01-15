@@ -32599,7 +32599,7 @@ MonoBehaviour:
   - {fileID: 1037294280}
   - {fileID: 2390261962746429077}
   - {fileID: 2390261962949852454}
-  spawnDelay: {x: 3, y: 5}
+  spawnDelay: {x: 1, y: 3}
 --- !u!1 &1822594470
 GameObject:
   m_ObjectHideFlags: 0
