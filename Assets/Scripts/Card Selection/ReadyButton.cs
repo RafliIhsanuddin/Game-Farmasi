@@ -14,6 +14,9 @@ public class ReadyButton : MonoBehaviour
     [SerializeField] private GameObject waveManager;
     [SerializeField] private GameObject bacteriaSpawner;
 
+    [Header("Selection Requirement")]
+    [SerializeField] private int minRequiredSelection = 3;   // ⬅ serialize
+
     [Header("Camera Move Settings")]
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private float cameraTargetX = 0f;
@@ -48,7 +51,7 @@ public class ReadyButton : MonoBehaviour
     {
         int selected = cardManager.GetSelectedCount();
 
-        if (selected < 3)
+        if (selected < minRequiredSelection)
         {
             SoundManager.Instance?.PlayWrong();
             return;
@@ -68,9 +71,6 @@ public class ReadyButton : MonoBehaviour
         while (movingCamera)
             yield return null;
 
-        // ===========================
-        // RANDOMIZER CHECK (optional)
-        // ===========================
         SpawnPreviewHelper helper = Object.FindFirstObjectByType<SpawnPreviewHelper>();
 
         if (helper != null)
@@ -81,23 +81,11 @@ public class ReadyButton : MonoBehaviour
             if (spawner != null && pool.Count > 0)
             {
                 spawner.SetEnemyPool(pool);
-                Debug.Log("<color=green>[Randomizer]</color> Enemy pool diambil dari SpawnPreviewHelper.");
-            }
-            else
-            {
-                Debug.LogWarning("[Randomizer] PreviewHelper ada tetapi pool kosong atau spawner null.");
             }
 
             helper.ClearPreview();
         }
-        else
-        {
-            Debug.Log("<color=yellow>[Randomizer]</color> Tidak ditemukan SpawnPreviewHelper, pakai prefab default pada BacteriaSpawner.");
-        }
 
-        // ===========================
-        // ENABLE GAME SYSTEM
-        // ===========================
         if (atomSpawner) atomSpawner.SetActive(true);
         if (waveManager) waveManager.SetActive(true);
         if (bacteriaSpawner) bacteriaSpawner.SetActive(true);

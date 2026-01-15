@@ -9,7 +9,7 @@ public class CardSelectionManager : MonoBehaviour
     [SerializeField] private List<CardSlot> slots;
 
     [Header("Selection Settings")]
-    [SerializeField] private int maxSelection = 3;
+    [SerializeField] private int maxSelection = 3;      // ⬅ serialize
     [SerializeField] private float compactSpeed = 12f;
 
     private int currentSelected = 0;
@@ -21,7 +21,7 @@ public class CardSelectionManager : MonoBehaviour
 
     public void OnCardClicked(CardSelectable card)
     {
-        // CASE: sudah 3, user klik kartu lain -> WRONG
+        // CASE: sudah max, user klik kartu lain -> WRONG
         if (currentSelected >= maxSelection)
         {
             bool isSelected = false;
@@ -42,7 +42,7 @@ public class CardSelectionManager : MonoBehaviour
             }
         }
 
-        // CASE: REMOVE (unselect)
+        // CASE: REMOVE / unselect
         foreach (var s in slots)
         {
             if (s.occupiedCard == card)
@@ -123,14 +123,11 @@ public class CardSelectionManager : MonoBehaviour
         }
     }
 
-    // DIPANGGIL ReadyButton
     public void ConfirmSelection()
     {
-        // disable selectable
         foreach (var card in allCards)
             card.enabled = false;
 
-        // convert button to capsule slot SelectPlant
         foreach (var s in slots)
         {
             if (s.occupiedCard == null) continue;
@@ -157,5 +154,10 @@ public class CardSelectionManager : MonoBehaviour
     public int GetSelectedCount()
     {
         return currentSelected;
+    }
+
+    public int GetMaxSelection()
+    {
+        return maxSelection;  // optionally useful
     }
 }
