@@ -8,89 +8,88 @@ public class ReadyButton : MonoBehaviour
     [SerializeField] private GameObject selectorHUD;
     [SerializeField] private Button readyButton;
 
-    [Header("Gameplay")]
+    [Header("Selection")]
     [SerializeField] private CardSelectionManager cardManager;
-    [SerializeField] private GameObject atomSpawner;
-    [SerializeField] private GameObject waveManager;
-    [SerializeField] private GameObject bacteriaSpawner;
+    [SerializeField] private int minRequiredSelection = 3;
 
-    [Header("Selection Requirement")]
-    [SerializeField] private int minRequiredSelection = 3;   // ⬅ serialize
+    [Header("Endless Hooks")]
+    [SerializeField] private EndlessPhaseController phaseController;
+    [SerializeField] private EndlessWaveManager endlessWaveManager;
+    [SerializeField] private EndlessUIController uiController;
 
-    [Header("Camera Move Settings")]
-    [SerializeField] private Transform cameraTransform;
-    [SerializeField] private float cameraTargetX = 0f;
-    [SerializeField] private float cameraMoveSpeed = 2f;
+    [Header("Cinematic Settings")]
+    [SerializeField] private float postCycleDelay = 3f;
 
-    private bool movingCamera = false;
+    private bool selectionLocked = false;
 
     private void Awake()
     {
+        if (readyButton == null)
+            readyButton = GetComponent<Button>();
+
         if (readyButton != null)
-            readyButton.onClick.AddListener(OnReady);
-
-        if (atomSpawner) atomSpawner.SetActive(false);
-        if (waveManager) waveManager.SetActive(false);
-        if (bacteriaSpawner) bacteriaSpawner.SetActive(false);
+            readyButton.onClick.AddListener(() => StartCoroutine(OnReadyPressed()));
     }
 
-    private void Update()
+    private IEnumerator OnReadyPressed()
     {
-        if (movingCamera && cameraTransform != null)
+        // batas minimal kartu (PVZ survival rules)
+        if (!selectionLocked)
         {
-            Vector3 pos = cameraTransform.position;
-            float newX = Mathf.Lerp(pos.x, cameraTargetX, Time.deltaTime * cameraMoveSpeed);
-            cameraTransform.position = new Vector3(newX, pos.y, pos.z);
+            int selected = cardManager != null ? cardManager.GetSelectedCount() : 0;
 
-            if (Mathf.Abs(newX - cameraTargetX) < 0.05f)
-                movingCamera = false;
-        }
-    }
-
-    private void OnReady()
-    {
-        int selected = cardManager.GetSelectedCount();
-
-        if (selected < minRequiredSelection)
-        {
-            SoundManager.Instance?.PlayWrong();
-            return;
-        }
-
-        cardManager.ConfirmSelection();
-
-        if (selectorHUD) selectorHUD.SetActive(false);
-        if (readyButton) readyButton.interactable = false;
-
-        StartCoroutine(Sequence());
-    }
-
-    private IEnumerator Sequence()
-    {
-        movingCamera = true;
-        while (movingCamera)
-            yield return null;
-
-        SpawnPreviewHelper helper = Object.FindFirstObjectByType<SpawnPreviewHelper>();
-
-        if (helper != null)
-        {
-            var pool = helper.GetSelectedEnemyPool();
-
-            var spawner = bacteriaSpawner.GetComponent<BacteriaSpawner>();
-            if (spawner != null && pool.Count > 0)
+            if (selected < minRequiredSelection)
             {
-                spawner.SetEnemyPool(pool);
+                SoundManager.Instance?.PlayWrong();
+                yield break;
             }
 
-            helper.ClearPreview();
+            if (cardManager != null)
+                cardManager.ConfirmSelection();
+
+            selectionLocked = true;
         }
 
-        if (atomSpawner) atomSpawner.SetActive(true);
-        if (waveManager) waveManager.SetActive(true);
-        if (bacteriaSpawner) bacteriaSpawner.SetActive(true);
+        Debug.Log("<color=orange>[ReadyButton] PRESSED</color>");
+
+        // hide select UI
+        if (selectorHUD)
+            selectorHUD.SetActive(false);
 
         if (readyButton)
-            readyButton.gameObject.SetActive(false);
+            readyButton.interactable = false;
+
+        // 🚨 Cycle bertambah saat tombol READY ditekan
+        if (uiController != null)
+        {
+            uiController.IncrementCycleVisual();
+            Debug.Log($"<color=lime>[ReadyButton] Cycle Masuk → {uiController.CurrentCycle}</color>");
+        }
+
+        // pindah dunia → PLAY phase
+        if (phaseController != null)
+            phaseController.StartPlayPhase();
+
+        // jalankan 1 cycle
+        if (endlessWaveManager != null)
+            yield return endlessWaveManager.RunSingleCycle();
+
+        // delay cinematic PVZ
+        if (postCycleDelay > 0f)
+            yield return new WaitForSeconds(postCycleDelay);
+
+        // balik ke SELECT
+        if (phaseController != null)
+            yield return phaseController.SmoothBackToSelect();
+
+        // tampilkan select HUD lagi
+        if (selectorHUD)
+            selectorHUD.SetActive(true);
+
+        if (readyButton)
+        {
+            readyButton.interactable = true;
+            readyButton.gameObject.SetActive(true);
+        }
     }
 }

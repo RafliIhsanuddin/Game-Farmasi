@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class FlagsManager : MonoBehaviour
 {
     [Header("Flag Sprites")]
@@ -43,9 +42,6 @@ public class FlagsManager : MonoBehaviour
         flagImage.SetNativeSize();
         isExpanded = true;
 
-        // Log perubahan visual
         Debug.Log($"[FlagsManager] ✅ Flag berhasil diubah! Sprite baru: {flagImage.sprite.name}");
     }
-    
-    
 }
