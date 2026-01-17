@@ -5,25 +5,20 @@ using System.Collections.Generic;
 
 public class EndlessUIController : MonoBehaviour
 {
+    [Header("Texts")]
+    [SerializeField] private TextMeshProUGUI cycleText;
+    [SerializeField] private TextMeshProUGUI totalFlagText;
+
     [Header("Progress UI (per Cycle)")]
     [SerializeField] private Slider slider;
     [SerializeField] private RectTransform flagContainer;
     [SerializeField] private GameObject flagPrefab;
     [SerializeField] private GameObject bigWaveWarning;
 
-    [Header("Texts")]
-    [SerializeField] private TextMeshProUGUI cycleText;
-    [SerializeField] private TextMeshProUGUI totalFlagText;
-
     private int totalEnemiesThisCycle;
     private int totalKillsThisCycle;
     private int totalFlagsAllCycles;
-
-    private int wave1Goal;
-    private int wave2Goal;
-
-    // Cycle visual untuk UI (tidak reset saat SELECT)
-    private int currentCycleVisual = 0;
+    private int currentCycleVisual = 0;   // 0 = belum pernah main, nanti naik di OnPlayPhaseStart
 
     private readonly List<FlagsManager> cycleFlags = new List<FlagsManager>();
 
@@ -38,16 +33,50 @@ public class EndlessUIController : MonoBehaviour
         totalFlagsAllCycles = 0;
         currentCycleVisual = 0;
 
-        UpdateCycleText();
+        UpdateSelectText();
         UpdateTotalFlagsText();
-
-        Debug.Log("<color=cyan>[EndlessUI] Start → Cycle: 0, Flags: 0</color>");
     }
 
-    // Dipanggil EndlessWaveManager saat PLAY start
-    public void SetupNewCycle(int cycleIndex, int wave1Count, int wave2Count)
+    // ============================
+    // SELECT PHASE
+    // ============================
+    public void EnterSelectPhase()
     {
-        totalEnemiesThisCycle = wave1Count + wave2Count;
+        UpdateSelectText();
+    }
+
+    private void UpdateSelectText()
+    {
+        if (!cycleText) return;
+
+        int nextCycle = currentCycleVisual + 1;
+        cycleText.text = $"Click Ready to enter Cycle {nextCycle}";
+        Debug.Log($"[EndlessUI] TEXT → Select Phase: Click Ready to enter Cycle {nextCycle}");
+    }
+
+    // ============================
+    // PLAY PHASE START
+    // ============================
+    public void OnPlayPhaseStart()
+    {
+        currentCycleVisual++;           // 0 → 1 → 2 → 3 ...
+        UpdatePlayText();
+    }
+
+    private void UpdatePlayText()
+    {
+        if (!cycleText) return;
+
+        cycleText.text = $"Cycle {currentCycleVisual}";
+        Debug.Log($"[EndlessUI] TEXT → Play Phase: Cycle {currentCycleVisual}");
+    }
+
+    // ============================
+    // SETUP CYCLE (WAVE INFO)
+    // ============================
+    public void SetupNewCycle(int cycleIndex, int wave1, int wave2)
+    {
+        totalEnemiesThisCycle = wave1 + wave2;
         totalKillsThisCycle = 0;
 
         if (slider != null)
@@ -57,14 +86,6 @@ public class EndlessUIController : MonoBehaviour
             slider.value = 0;
         }
 
-        wave1Goal = wave1Count;
-        wave2Goal = totalEnemiesThisCycle;
-
-        currentCycleVisual = cycleIndex;
-        UpdateCycleText();
-
-        Debug.Log($"<color=orange>[EndlessUI] Setup Cycle → {currentCycleVisual}</color>");
-
         RebuildFlags();
     }
 
@@ -72,21 +93,21 @@ public class EndlessUIController : MonoBehaviour
     {
         cycleFlags.Clear();
 
-        if (flagContainer == null || flagPrefab == null || totalEnemiesThisCycle <= 0)
+        if (!flagContainer || !flagPrefab || totalEnemiesThisCycle <= 0)
             return;
 
         foreach (Transform c in flagContainer)
-            GameObject.Destroy(c.gameObject);
+            Destroy(c.gameObject);
 
-        float t1 = (float)wave1Goal / totalEnemiesThisCycle;
-        float t2 = (float)wave2Goal / totalEnemiesThisCycle;
+        // Karena konsep: 1 cycle = 2 wave → 2 bendera
+        float t1 = 0.5f;  // tengah bar untuk wave 1
+        float t2 = 1.0f;  // ujung bar untuk wave 2
 
         float[] anchors = { t1, t2 };
 
         for (int i = 0; i < anchors.Length; i++)
         {
-            GameObject f = GameObject.Instantiate(flagPrefab, flagContainer);
-
+            GameObject f = Instantiate(flagPrefab, flagContainer);
             RectTransform rt = f.GetComponent<RectTransform>();
             rt.anchorMin = rt.anchorMax = new Vector2(anchors[i], 0.5f);
             rt.anchoredPosition = Vector2.zero;
@@ -102,11 +123,13 @@ public class EndlessUIController : MonoBehaviour
         if (delta <= 0) return;
 
         totalKillsThisCycle += delta;
-
         if (slider != null)
             slider.value = totalKillsThisCycle;
     }
 
+    /// <summary>
+    /// waveIndex: 0 = wave1, 1 = wave2
+    /// </summary>
     public void MarkWaveComplete(int waveIndex)
     {
         if (waveIndex < 0 || waveIndex >= cycleFlags.Count)
@@ -118,21 +141,8 @@ public class EndlessUIController : MonoBehaviour
 
         totalFlagsAllCycles++;
         UpdateTotalFlagsText();
-    }
 
-    // === NEW === (buat ReadyButton)
-    public void IncrementCycleVisual()
-    {
-        currentCycleVisual++;
-        UpdateCycleText();
-
-        Debug.Log($"<color=lime>[EndlessUI] Cycle Masuk → {currentCycleVisual}</color>");
-    }
-
-    private void UpdateCycleText()
-    {
-        if (cycleText != null)
-            cycleText.text = $"Cycle: {currentCycleVisual}";
+        Debug.Log($"[EndlessUI] Flag wave {waveIndex + 1} complete. TotalFlags={totalFlagsAllCycles}");
     }
 
     private void UpdateTotalFlagsText()
@@ -147,15 +157,26 @@ public class EndlessUIController : MonoBehaviour
             bigWaveWarning.SetActive(show);
     }
 
-    // dipanggil saat endless kalah
     public void ResetUIForGameOver()
     {
         currentCycleVisual = 0;
         totalFlagsAllCycles = 0;
 
-        UpdateCycleText();
+        UpdateSelectText();
         UpdateTotalFlagsText();
 
-        Debug.Log("<color=red>[EndlessUI] Reset UI (GameOver)</color>");
+        if (slider != null)
+            slider.value = 0;
+
+        if (flagContainer != null)
+        {
+            foreach (Transform c in flagContainer)
+                Destroy(c.gameObject);
+        }
+
+        if (bigWaveWarning)
+            bigWaveWarning.SetActive(false);
+
+        Debug.Log("[EndlessUI] Reset UI for Game Over");
     }
 }

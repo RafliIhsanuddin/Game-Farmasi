@@ -15,12 +15,13 @@ public class ReadyButton : MonoBehaviour
     [Header("Endless Hooks")]
     [SerializeField] private EndlessPhaseController phaseController;
     [SerializeField] private EndlessWaveManager endlessWaveManager;
-    [SerializeField] private EndlessUIController uiController;
+    [SerializeField] private EndlessUIController ui;
 
     [Header("Cinematic Settings")]
     [SerializeField] private float postCycleDelay = 3f;
 
     private bool selectionLocked = false;
+    private bool isBusy = false; // anti double-press
 
     private void Awake()
     {
@@ -31,9 +32,27 @@ public class ReadyButton : MonoBehaviour
             readyButton.onClick.AddListener(() => StartCoroutine(OnReadyPressed()));
     }
 
+    // NOTE: sesuai aturan kamu, ini cuma ngubah interactable (bukan hide/show)
+    public void SetReadyEnabled(bool state)
+    {
+        if (readyButton != null)
+        {
+            readyButton.interactable = state;
+            Debug.Log($"<color=orange>[ReadyButton] INTERACTABLE → {(state ? "ENABLED" : "DISABLED")}</color>");
+        }
+    }
+
     private IEnumerator OnReadyPressed()
     {
-        // batas minimal kartu (PVZ survival rules)
+        if (isBusy)
+        {
+            Debug.LogWarning("[ReadyButton] Ignored click because isBusy=true");
+            yield break;
+        }
+
+        isBusy = true;
+
+        // ------ 1x selection lock check ------
         if (!selectionLocked)
         {
             int selected = cardManager != null ? cardManager.GetSelectedCount() : 0;
@@ -41,55 +60,58 @@ public class ReadyButton : MonoBehaviour
             if (selected < minRequiredSelection)
             {
                 SoundManager.Instance?.PlayWrong();
+                isBusy = false;
                 yield break;
             }
 
             if (cardManager != null)
-                cardManager.ConfirmSelection();
+                cardManager.ConfirmSelection(); // mekanik lama tidak diubah
 
             selectionLocked = true;
+            Debug.Log($"<color=cyan>[ReadyButton] Selection LOCKED → {selected} cards</color>");
         }
 
-        Debug.Log("<color=orange>[ReadyButton] PRESSED</color>");
+        Debug.Log("<color=yellow>[ReadyButton] PRESSED</color>");
 
-        // hide select UI
-        if (selectorHUD)
-            selectorHUD.SetActive(false);
+        // hide selector HUD seperti biasa
+        selectorHUD?.SetActive(false);
 
-        if (readyButton)
-            readyButton.interactable = false;
+        // =========================
+        // RULE KAMU:
+        // Press Ready -> READY tetap ENABLE saat camera MOVE
+        // Jadi di sini kita TIDAK disable tombol.
+        // =========================
 
-        // 🚨 Cycle bertambah saat tombol READY ditekan
-        if (uiController != null)
-        {
-            uiController.IncrementCycleVisual();
-            Debug.Log($"<color=lime>[ReadyButton] Cycle Masuk → {uiController.CurrentCycle}</color>");
-        }
-
-        // pindah dunia → PLAY phase
+        // ====== ENTER PLAY (camera move) ======
+        Debug.Log("<color=yellow>[ReadyButton] StartPlayPhase() (Ready stays ENABLE while moving)</color>");
         if (phaseController != null)
-            phaseController.StartPlayPhase();
+            yield return phaseController.StartPlayPhase(); // phase controller yang akan DISABLE setelah arrive PLAY
 
-        // jalankan 1 cycle
+        // UI: Cycle naik visual saat benar-benar mulai PLAY
+        if (ui != null)
+            ui.OnPlayPhaseStart();
+
+        // ====== RUN CYCLE (2 WAVE) ======
         if (endlessWaveManager != null)
             yield return endlessWaveManager.RunSingleCycle();
 
-        // delay cinematic PVZ
-        if (postCycleDelay > 0f)
-            yield return new WaitForSeconds(postCycleDelay);
-
-        // balik ke SELECT
-        if (phaseController != null)
-            yield return phaseController.SmoothBackToSelect();
-
-        // tampilkan select HUD lagi
-        if (selectorHUD)
-            selectorHUD.SetActive(true);
-
-        if (readyButton)
+        // ====== CINEMATIC DELAY ======
+        if (postCycleDelay > 0)
         {
-            readyButton.interactable = true;
-            readyButton.gameObject.SetActive(true);
+            Debug.Log("<color=cyan>[ReadyButton] Cinematic Delay</color>");
+            yield return new WaitForSeconds(postCycleDelay);
         }
+
+        // ====== BACK TO SELECT ======
+        Debug.Log("<color=magenta>[ReadyButton] Back To SELECT</color>");
+        if (phaseController != null)
+            yield return phaseController.SmoothBackToSelect(); // phase controller ENABLE setelah arrive SELECT
+
+        selectorHUD?.SetActive(true);
+
+        if (ui != null)
+            ui.EnterSelectPhase();
+
+        isBusy = false;
     }
 }

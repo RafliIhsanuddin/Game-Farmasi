@@ -8,7 +8,6 @@ public class GameData
     public int UnlockedLevel = 1;
     public int[] LevelsPerStage = { 4, 2 };
 
-
     // ============================
     // ENDLESS MODE DATA
     // ============================
@@ -23,23 +22,23 @@ public class GameData
     public int BestFlags = 0;
     public int BestEndlessScore = 0;
 
-    // Update from Endless Session
+    // Update dari Endless Session
     public void UpdateEndlessRun(int cycle, int flags)
     {
-        int score = cycle * 2 + flags; // formula simpel
+        // Formula ringan: setiap cycle bernilai 2 poin + flags
+        int score = cycle * 2 + flags;
 
-        // Save last
+        // Save last run
         LastCycle = cycle;
         LastFlags = flags;
         LastEndlessScore = score;
 
-        // Update best
         bool improved = false;
 
         if (cycle > BestCycle) { BestCycle = cycle; improved = true; }
         if (flags > BestFlags) { BestFlags = flags; improved = true; }
         if (score > BestEndlessScore) { BestEndlessScore = score; improved = true; }
 
-        Debug.Log($"[GameData] Endless Run Updated | Last: C={cycle}, F={flags}, S={score} | Best Improved? {improved}");
+        Debug.Log($"[GameData] Endless Run Updated | Last: C={cycle}, F={flags}, S={score} | BestImproved={improved}");
     }
 }

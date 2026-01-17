@@ -3880,29 +3880,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 675e009d15653c4498316bcd7e6e03ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeOnSelect:
-  - {fileID: 779231768}
-  - {fileID: 1968988295}
-  - {fileID: 1659383129}
-  inactiveOnSelect:
-  - {fileID: 2001866865}
-  - {fileID: 1790310326}
-  activeOnPlay:
-  - {fileID: 2001866865}
-  - {fileID: 1790310326}
-  - {fileID: 1991753520}
-  - {fileID: 1057052236}
-  inactiveOnPlay:
-  - {fileID: 779231768}
-  - {fileID: 1968988295}
-  - {fileID: 1659383129}
   cameraTransform: {fileID: 519420032}
   selectCameraX: 18
   playCameraX: -2
-  cameraMoveSpeed: 2
-  waveManager: {fileID: 815850}
-  bacteriaSpawner: {fileID: 2001866865}
-  atomSpawner: {fileID: 1790310326}
+  cameraMoveSpeed: 3
+  ui: {fileID: 940213192}
+  readyButton: {fileID: 1968988300}
+  selectActive:
+  - {fileID: 779231768}
+  playActive:
+  - {fileID: 207047502}
+  - {fileID: 1790310326}
+  - {fileID: 2001866865}
 --- !u!1 &420263844
 GameObject:
   m_ObjectHideFlags: 0
@@ -6850,7 +6839,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseWave1Count: 10
   baseWave2Count: 12
-  incrementPerCycle: 4
+  wave1Increment: 3
+  wave2Increment: 5
 --- !u!1 &882681105
 GameObject:
   m_ObjectHideFlags: 0
@@ -7461,12 +7451,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2209d891b8a1be4eae39afe6d0c8f1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cycleText: {fileID: 1111735972}
+  totalFlagText: {fileID: 1651897862}
   slider: {fileID: 1183394060}
   flagContainer: {fileID: 1942895426}
   flagPrefab: {fileID: 8785165802296183215, guid: 84bee79144f2b9849a8c0597de3dd722, type: 3}
   bigWaveWarning: {fileID: 2067225477}
-  cycleText: {fileID: 1111735972}
-  totalFlagText: {fileID: 1651897862}
 --- !u!1 &940310185
 GameObject:
   m_ObjectHideFlags: 0
@@ -8813,7 +8803,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -217.59995, y: 201.30005}
+  m_AnchoredPosition: {x: -338, y: 133}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1083282207
@@ -9588,8 +9578,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.09, y: 9.2}
-  m_SizeDelta: {x: 70.1008, y: 19.4517}
+  m_AnchoredPosition: {x: 64.8313, y: 9.2}
+  m_SizeDelta: {x: 223.3932, y: 19.4517}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1111735972
 MonoBehaviour:
@@ -9638,8 +9628,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 17
-  m_fontSizeBase: 17
+  m_fontSize: 14.9
+  m_fontSizeBase: 14.9
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -17272,7 +17262,7 @@ MonoBehaviour:
   minRequiredSelection: 4
   phaseController: {fileID: 416857640}
   endlessWaveManager: {fileID: 207047504}
-  uiController: {fileID: 940213192}
+  ui: {fileID: 0}
   postCycleDelay: 3
 --- !u!1 &1970782975
 GameObject:

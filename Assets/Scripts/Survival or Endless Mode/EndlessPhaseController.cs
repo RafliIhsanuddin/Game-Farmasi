@@ -4,116 +4,117 @@ using System.Collections.Generic;
 
 public class EndlessPhaseController : MonoBehaviour
 {
-    [Header("Group — Active Saat SELECT Phase")]
-    [SerializeField] private List<GameObject> activeOnSelect = new();
-
-    [Header("Group — Non-Active Saat SELECT Phase")]
-    [SerializeField] private List<GameObject> inactiveOnSelect = new();
-
-    [Header("Group — Active Saat PLAY Phase")]
-    [SerializeField] private List<GameObject> activeOnPlay = new();
-
-    [Header("Group — Non-Active Saat PLAY Phase")]
-    [SerializeField] private List<GameObject> inactiveOnPlay = new();
-
-    [Header("Camera Settings (2D)")]
+    [Header("Camera (2D)")]
     [SerializeField] private Transform cameraTransform;
-    [SerializeField] private float selectCameraX = 6.5f;  // kanan (seed select)
-    [SerializeField] private float playCameraX = 0f;      // kiri (board play)
+    [SerializeField] private float selectCameraX = 6.5f;
+    [SerializeField] private float playCameraX = 0f;
     [SerializeField] private float cameraMoveSpeed = 3f;
 
-    [Header("Gameplay Systems")]
-    [SerializeField] private GameObject waveManager;
-    [SerializeField] private GameObject bacteriaSpawner;
-    [SerializeField] private GameObject atomSpawner;
+    [Header("UI Ref")]
+    [SerializeField] private EndlessUIController ui;
+
+    [Header("Ready Button Ref")]
+    [SerializeField] private ReadyButton readyButton;
+
+    [Header("Objects Active On Select")]
+    [SerializeField] private List<GameObject> selectActive = new List<GameObject>();
+
+    [Header("Objects Active On Play")]
+    [SerializeField] private List<GameObject> playActive = new List<GameObject>();
 
     private bool movingCamera = false;
 
     private void Start()
     {
-        EnterSelectPhase(); // default survival behavior
-    }
-
-    // ===========================
-    // SELECT PHASE (SNAP)
-    // ===========================
-    public void EnterSelectPhase()
-    {
-        SetList(activeOnSelect, true);
-        SetList(inactiveOnSelect, false);
-
-        if (waveManager) waveManager.SetActive(false);
-        if (bacteriaSpawner) bacteriaSpawner.SetActive(false);
-        if (atomSpawner) atomSpawner.SetActive(false);
+        Debug.Log("<color=cyan>[EndlessPhase] SELECT Phase Start</color>");
 
         SnapCamera(selectCameraX);
+        ApplySelectPhaseObjects();
 
-        Debug.Log("[EndlessPhase] SELECT PHASE");
+        // SELECT awal -> READY ENABLE
+        if (readyButton != null)
+            readyButton.SetReadyEnabled(true);
+
+        if (ui != null)
+            ui.EnterSelectPhase();
     }
 
-    // ===========================
-    // PLAY PHASE (dipanggil Ready)
-    // ===========================
-    public void StartPlayPhase()
+    // =========================
+    // PLAY PHASE
+    // =========================
+    public IEnumerator StartPlayPhase()
     {
-        StartCoroutine(PlaySequence());
-    }
+        Debug.Log("<color=yellow>[EndlessPhase] PLAY Phase Request</color>");
 
-    private IEnumerator PlaySequence()
-    {
-        SetList(activeOnPlay, true);
-        SetList(inactiveOnPlay, false);
+        // APPLY object PLAY dulu (jadi bisa dicek apa yang harus hilang)
+        ApplyPlayPhaseObjects();
 
-        // smooth ke kiri (board)
+        // RULE KAMU:
+        // Press Ready -> READY tetap ENABLE saat camera MOVE
+        // Jadi di sini TIDAK disable.
+        Debug.Log("<color=orange>[EndlessPhase] Camera moving SELECT → PLAY (Ready stays ENABLE)</color>");
+
         yield return MoveCameraSmooth(playCameraX);
 
-        if (atomSpawner) atomSpawner.SetActive(true);
-        if (bacteriaSpawner) bacteriaSpawner.SetActive(true);
-        if (waveManager) waveManager.SetActive(true);
+        // Setelah sampai PLAY & DIAM -> DISABLE
+        if (readyButton != null)
+            readyButton.SetReadyEnabled(false);
 
-        Debug.Log("[EndlessPhase] PLAY PHASE");
+        Debug.Log("<color=red>[EndlessPhase] Arrived PLAY & STOP → READY DISABLED</color>");
     }
 
-    // ===========================
-    // BALIK KE SELECT (SMOOTH)
-    // ===========================
+    // =========================
+    // BACK TO SELECT
+    // =========================
     public IEnumerator SmoothBackToSelect()
     {
-        // matikan gameplay systems dulu
-        if (waveManager) waveManager.SetActive(false);
-        if (bacteriaSpawner) bacteriaSpawner.SetActive(false);
-        if (atomSpawner) atomSpawner.SetActive(false);
+        Debug.Log("<color=orange>[EndlessPhase] Camera moving PLAY → SELECT</color>");
 
-        // UI balik ke SELECT
-        SetList(activeOnSelect, true);
-        SetList(inactiveOnSelect, false);
+        // Saat balik ke select, READY harus DISABLE selama moving & sampai select baru enable
+        if (readyButton != null)
+            readyButton.SetReadyEnabled(false);
 
-        // camera smooth ke kanan
+        ApplySelectPhaseObjects();
+
         yield return MoveCameraSmooth(selectCameraX);
 
-        Debug.Log("[EndlessPhase] BACK TO SELECT");
+        // Setelah sampai SELECT & DIAM -> ENABLE
+        if (readyButton != null)
+            readyButton.SetReadyEnabled(true);
+
+        Debug.Log("<color=lime>[EndlessPhase] Arrived SELECT & STOP → READY ENABLED</color>");
     }
 
-    // ===========================
-    // CAMERA LOGIC
-    // ===========================
+    // =========================
+    // CAMERA
+    // =========================
     private void SnapCamera(float x)
     {
-        if (!cameraTransform) return;
+        if (!cameraTransform)
+        {
+            Debug.LogError("<color=red>[Camera] Missing cameraTransform!</color>");
+            return;
+        }
 
-        Vector3 p = cameraTransform.position;
-        cameraTransform.position = new Vector3(x, p.y, p.z);
+        cameraTransform.position = new Vector3(
+            x,
+            cameraTransform.position.y,
+            cameraTransform.position.z
+        );
+
+        Debug.Log($"<color=teal>[Camera] Snap To X={x}</color>");
     }
 
     private IEnumerator MoveCameraSmooth(float targetX)
     {
         if (!cameraTransform)
         {
-            Debug.LogError("[EndlessPhase] cameraTransform NULL!");
+            Debug.LogError("<color=red>[Camera] Missing cameraTransform!</color>");
             yield break;
         }
 
         movingCamera = true;
+        Debug.Log($"<color=yellow>[Camera] Move START → Target={targetX}</color>");
 
         while (movingCamera)
         {
@@ -121,19 +122,56 @@ public class EndlessPhaseController : MonoBehaviour
             float newX = Mathf.Lerp(p.x, targetX, Time.deltaTime * cameraMoveSpeed);
             cameraTransform.position = new Vector3(newX, p.y, p.z);
 
+            Debug.Log($"<color=grey>[Camera] posX={newX:F3} → target={targetX}</color>");
+
             if (Mathf.Abs(newX - targetX) < 0.05f)
+            {
                 movingCamera = false;
+                Debug.Log("<color=green>[Camera] MOVE FINISHED</color>");
+            }
 
             yield return null;
         }
     }
 
-    // ===========================
-    // HELPERS
-    // ===========================
-    private void SetList(List<GameObject> list, bool state)
+    // =========================
+    // OBJECT GROUPS + DEBUG
+    // =========================
+    private void ApplySelectPhaseObjects()
     {
-        foreach (var go in list)
-            if (go) go.SetActive(state);
+        Debug.Log("<color=cyan>[Phase] APPLY SELECT OBJECTS</color>");
+
+        foreach (var o in selectActive)
+        {
+            if (o == null) { Debug.LogWarning("[SelectActive] NULL"); continue; }
+            o.SetActive(true);
+            Debug.Log($"[SelectActive] ON  → {o.name} (activeSelf={o.activeSelf})");
+        }
+
+        foreach (var o in playActive)
+        {
+            if (o == null) { Debug.LogWarning("[PlayActive] NULL"); continue; }
+            o.SetActive(false);
+            Debug.Log($"[PlayActive] OFF → {o.name} (activeSelf={o.activeSelf})");
+        }
+    }
+
+    private void ApplyPlayPhaseObjects()
+    {
+        Debug.Log("<color=cyan>[Phase] APPLY PLAY OBJECTS</color>");
+
+        foreach (var o in selectActive)
+        {
+            if (o == null) { Debug.LogWarning("[SelectActive] NULL"); continue; }
+            o.SetActive(false);
+            Debug.Log($"[SelectActive] OFF → {o.name} (activeSelf={o.activeSelf})");
+        }
+
+        foreach (var o in playActive)
+        {
+            if (o == null) { Debug.LogWarning("[PlayActive] NULL"); continue; }
+            o.SetActive(true);
+            Debug.Log($"[PlayActive] ON  → {o.name} (activeSelf={o.activeSelf})");
+        }
     }
 }

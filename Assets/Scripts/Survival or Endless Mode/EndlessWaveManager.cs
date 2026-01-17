@@ -12,57 +12,63 @@ public class EndlessWaveManager : MonoBehaviour
     [SerializeField] private float bigWaveDelay = 3f;
     [SerializeField] private float checkInterval = 0.25f;
 
-    private int completedCycles = 0;
-    private bool hasSavedRun = false;
+    public bool IsGameOver { get; private set; } = false;
 
     /// <summary>
-    /// Dipanggil oleh ReadyButton setiap kali player menekan Ready.
-    /// Menjalankan 1 cycle: Wave1(Multi) + Wave2(Grouped) lalu selesai.
+    /// Jalankan 1 cycle: Wave1 (MultiPerLine) + Wave2 (GroupedPerLine)
     /// </summary>
     public IEnumerator RunSingleCycle()
     {
-        if (spawner == null || difficulty == null || ui == null)
+        if (IsGameOver)
+            yield break;
+
+        if (difficulty == null || ui == null || spawner == null)
         {
-            Debug.LogWarning("[EndlessWaveManager] Missing references.");
+            Debug.LogError("[EndlessWave] Missing references!");
             yield break;
         }
 
-        if (WaveManager.isGameOver)
-        {
-            SaveEndlessRunIfNeeded();
-            yield break;
-        }
+        int wave1 = difficulty.GetWave1Count();
+        int wave2 = difficulty.GetWave2Count();
 
-        int cycleIndex = difficulty.CurrentCycle;
-        int wave1Count = difficulty.GetWave1Count();
-        int wave2Count = difficulty.GetWave2Count();
+        int cycleIndex = ui.CurrentCycle;  // UI sudah dinaikkan di ReadyButton
+        ui.SetupNewCycle(cycleIndex, wave1, wave2);
 
-        ui.SetupNewCycle(cycleIndex, wave1Count, wave2Count);
+        Debug.Log($"<color=yellow>[EndlessWave] RUN CYCLE {cycleIndex} | W1={wave1}, W2={wave2}</color>");
 
-        // WAVE 1: Multi Per Line
-        yield return RunMulti(wave1Count);
+        // ========== WAVE 1 ==========
+        Debug.Log($"<color=cyan>[EndlessWave] Wave1 Start</color>");
+        yield return RunMulti(wave1);
+        if (IsGameOver) yield break;
+
         ui.MarkWaveComplete(0);
+        Debug.Log($"<color=green>[EndlessWave] Wave1 DONE</color>");
 
-        // Big Wave Warning
+        // ========== BIG WAVE WARNING ==========
         ui.ShowBigWave(true);
+        Debug.Log("<color=orange>[EndlessWave] BIG WAVE WARNING</color>");
+
         yield return new WaitForSeconds(bigWaveDelay);
+
         ui.ShowBigWave(false);
 
-        // WAVE 2: Grouped Per Line
-        yield return RunGrouped(wave2Count);
+        // ========== WAVE 2 ==========
+        Debug.Log($"<color=cyan>[EndlessWave] Wave2 Start</color>");
+        yield return RunGrouped(wave2);
+        if (IsGameOver) yield break;
+
         ui.MarkWaveComplete(1);
+        Debug.Log($"<color=green>[EndlessWave] Wave2 DONE → Cycle FINISHED</color>");
 
-        // Satu cycle (2 wave) selesai
-        completedCycles++;
+        // Setelah 2 wave → difficulty naik
         difficulty.AdvanceCycle();
-
-        Debug.Log($"[EndlessWaveManager] Cycle {cycleIndex} selesai. CompletedCycles={completedCycles}");
     }
 
     private IEnumerator RunMulti(int count)
     {
         spawner.StopAllSpawning();
         spawner.StartMultiPerLineWave(count);
+        Debug.Log($"[EndlessWave] Spawn W1 count={count}");
         yield return WaitAllEnemiesDead();
     }
 
@@ -70,6 +76,7 @@ public class EndlessWaveManager : MonoBehaviour
     {
         spawner.StopAllSpawning();
         spawner.StartGroupedPerLineWave(count);
+        Debug.Log($"[EndlessWave] Spawn W2 count={count}");
         yield return WaitAllEnemiesDead();
     }
 
@@ -78,16 +85,9 @@ public class EndlessWaveManager : MonoBehaviour
         int lastAlive = 0;
         bool seenEnemy = false;
 
-        while (true)
+        while (!IsGameOver)
         {
-            if (WaveManager.isGameOver)
-            {
-                spawner.StopAllSpawning();
-                SaveEndlessRunIfNeeded();
-                yield break;
-            }
-
-            int alive = spawner != null ? spawner.CountAllAlive() : 0;
+            int alive = spawner.CountAllAlive();
 
             if (alive > 0) seenEnemy = true;
             if (seenEnemy && alive == 0)
@@ -100,21 +100,40 @@ public class EndlessWaveManager : MonoBehaviour
             }
 
             lastAlive = alive;
-
             yield return new WaitForSeconds(checkInterval);
         }
     }
 
-    private void SaveEndlessRunIfNeeded()
+    // ===============================
+    // GAME OVER SYSTEM ENDLESS
+    // ===============================
+    public void TriggerGameOver()
     {
-        if (hasSavedRun) return;
+        if (IsGameOver)
+            return;
 
-        int finalCycle = completedCycles;
-        int finalFlags = ui != null ? ui.TotalFlags : finalCycle * 2;
+        IsGameOver = true;
 
-        GameData.Data.UpdateEndlessRun(finalCycle, finalFlags);
-        hasSavedRun = true;
+        Debug.Log("<color=red>[EndlessWave] GAME OVER TRIGGERED</color>");
 
-        Debug.Log($"[EndlessWaveManager] SaveEndlessRun: cycle={finalCycle}, flags={finalFlags}");
+        if (spawner != null)
+            spawner.StopAllSpawning();
+
+        StopAllCoroutines();
+
+        if (ui != null)
+        {
+            GameData.Data.UpdateEndlessRun(ui.CurrentCycle, ui.TotalFlags);
+            Debug.Log($"<color=magenta>[EndlessWave] Final Run → Cycle={ui.CurrentCycle}, Flags={ui.TotalFlags}</color>");
+
+            ui.ResetUIForGameOver();
+        }
+    }
+
+    public void ResetEndlessState()
+    {
+        IsGameOver = false;
+        if (difficulty != null)
+            difficulty.ResetDifficulty();
     }
 }

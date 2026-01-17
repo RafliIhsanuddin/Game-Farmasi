@@ -4,14 +4,14 @@ using System.Collections.Generic;
 
 public class SpawnPreviewHelper : MonoBehaviour
 {
-    [Header("Preview Slots (3 Posisi)")]
+    [Header("Preview Slots (4 Posisi)")]
     [SerializeField] private Transform[] previewSlots;
 
     [Header("Enemy Prefabs (semua musuh lengkap)")]
     [SerializeField] private List<GameObject> allEnemyPrefabs = new List<GameObject>();
 
     [Header("Jumlah Random Preview")]
-    [SerializeField] private int previewCount = 3;
+    [SerializeField] private int previewCount = 4;
 
     [Header("Preview Visual Settings")]
     [Tooltip("Skala preview untuk visualisasi, tidak mempengaruhi prefab asli")]
@@ -20,7 +20,7 @@ public class SpawnPreviewHelper : MonoBehaviour
     private readonly List<GameObject> previewPool = new List<GameObject>();
     private readonly List<GameObject> previewInstances = new List<GameObject>();
 
-    // Dipanggil oleh ReadyButton
+    // Dipanggil oleh EndlessPhaseController / ReadyButton
     public List<GameObject> GetSelectedEnemyPool()
     {
         return previewPool;
@@ -45,8 +45,8 @@ public class SpawnPreviewHelper : MonoBehaviour
             return;
         }
 
+        ClearPreview();
         previewPool.Clear();
-        previewInstances.Clear();
 
         // gunakan list clone supaya bisa remove untuk sampling unik
         List<GameObject> temp = new List<GameObject>(allEnemyPrefabs);
@@ -70,6 +70,8 @@ public class SpawnPreviewHelper : MonoBehaviour
 
             SetupPreviewInstance(inst);
         }
+
+        Debug.Log($"[Preview] GeneratePreview() → pool size = {previewPool.Count}");
     }
 
     private void SetupPreviewInstance(GameObject inst)

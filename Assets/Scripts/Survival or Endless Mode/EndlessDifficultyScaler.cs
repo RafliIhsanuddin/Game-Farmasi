@@ -2,30 +2,36 @@ using UnityEngine;
 
 public class EndlessDifficultyScaler : MonoBehaviour
 {
-    [Header("Base Counts per Wave (Cycle 1)")]
+    [Header("Base Enemy Count")]
     [SerializeField] private int baseWave1Count = 10;
-    [SerializeField] private int baseWave2Count = 12;
+    [SerializeField] private int baseWave2Count = 18;
 
-    [Header("Increment Per Cycle")]
-    [SerializeField] private int incrementPerCycle = 4;
+    [Header("Per Cycle Increment")]
+    [SerializeField] private int wave1Increment = 3;
+    [SerializeField] private int wave2Increment = 5;
 
-    private int currentCycle = 1;
-
-    public int CurrentCycle => currentCycle;
+    public int CurrentCycle { get; private set; } = 0;
 
     public int GetWave1Count()
     {
-        return baseWave1Count + (currentCycle - 1) * incrementPerCycle;
+        int value = baseWave1Count + wave1Increment * CurrentCycle;
+        return Mathf.Max(1, value);
     }
 
     public int GetWave2Count()
     {
-        return baseWave2Count + (currentCycle - 1) * incrementPerCycle;
+        int value = baseWave2Count + wave2Increment * CurrentCycle;
+        return Mathf.Max(1, value);
     }
 
     public void AdvanceCycle()
     {
-        currentCycle++;
-        Debug.Log($"[EndlessDifficulty] AdvanceCycle → {currentCycle}");
+        CurrentCycle++;
+        Debug.Log($"[EndlessDifficulty] Advance → Cycle = {CurrentCycle}");
+    }
+
+    public void ResetDifficulty()
+    {
+        CurrentCycle = 0;
     }
 }
