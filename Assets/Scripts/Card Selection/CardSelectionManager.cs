@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class CardSelectionManager : MonoBehaviour
 {
-    [Header("Cards & Slots")]
+        [Header("Cards & Slots")]
     [SerializeField] private List<CardSelectable> allCards;
     [SerializeField] private List<CardSlot> slots;
 
@@ -118,6 +118,7 @@ public class CardSelectionManager : MonoBehaviour
         }
     }
 
+    // ==== Dipanggil sekali per READY (semua cycle) ====
     public void ConfirmSelection()
     {
         foreach (var card in allCards)
@@ -128,8 +129,8 @@ public class CardSelectionManager : MonoBehaviour
             if (s.occupiedCard == null) continue;
 
             var card = s.occupiedCard;
-            var btn = card.GetComponent<Button>();
-            var cap = card.GetComponent<CapsuleSlot>();
+            var btn  = card.GetComponent<Button>();
+            var cap  = card.GetComponent<CapsuleSlot>();
 
             if (btn != null)
             {
@@ -142,11 +143,12 @@ public class CardSelectionManager : MonoBehaviour
                 cap.enabled = true;
         }
 
+        // manager sendiri dimatikan di PLAY
         this.enabled = false;
         gameObject.SetActive(false);
     }
 
-    // === ReEnter untuk Cycle Berikutnya ===
+    // ==== Dipanggil saat balik ke SELECT untuk cycle berikutnya ====
     public void ReEnterSelectPhase()
     {
         this.enabled = true;
@@ -166,10 +168,20 @@ public class CardSelectionManager : MonoBehaviour
             }
 
             if (cap != null)
-                cap.enabled = false; // MODE 1
+                cap.enabled = false;   // balik ke mode SELECT (CapsuleSlot OFF)
         }
+
+        // currentSelected tetap sesuai jumlah kartu di slot,
+        // jadi GetSelectedCount tetap VALID.
     }
 
-    public int GetSelectedCount() => currentSelected;
-    public int GetMaxSelection() => maxSelection;
+    public int GetSelectedCount()
+    {
+        return currentSelected;
+    }
+
+    public int GetMaxSelection()
+    {
+        return maxSelection;
+    }
 }

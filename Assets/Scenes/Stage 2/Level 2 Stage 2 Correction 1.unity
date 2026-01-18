@@ -3891,6 +3891,8 @@ MonoBehaviour:
   waveManager: {fileID: 207047504}
   readyButton: {fileID: 1968988300}
   readyButtonObj: {fileID: 1968988295}
+  cardManager: {fileID: 1659383131}
+  preview: {fileID: 1283489923}
   selectActive:
   - {fileID: 779231768}
   - {fileID: 1283489921}
@@ -3900,8 +3902,6 @@ MonoBehaviour:
   - {fileID: 1790310326}
   - {fileID: 207047502}
   - {fileID: 2001866865}
-  cardManager: {fileID: 1659383131}
-  previewHelper: {fileID: 1283489923}
 --- !u!1 &420263844
 GameObject:
   m_ObjectHideFlags: 0
@@ -10743,8 +10743,8 @@ GameObject:
   - component: {fileID: 1277271654}
   - component: {fileID: 1277271653}
   - component: {fileID: 1277271652}
-  - component: {fileID: 1277271651}
   - component: {fileID: 1277271655}
+  - component: {fileID: 1277271651}
   m_Layer: 5
   m_Name: card Character Pink Soldier
   m_TagString: Untagged

@@ -15,7 +15,7 @@ public class ReadyButton : MonoBehaviour
 
     [Header("Endless Hooks")]
     [SerializeField] private EndlessPhaseController phaseController;
-    [SerializeField] private EndlessWaveManager endlessWaveManager;   // tidak dipakai langsung, tapi biarkan saja
+    [SerializeField] private EndlessWaveManager endlessWaveManager;   // tidak dipakai langsung, biarkan saja
     [SerializeField] private EndlessUIController ui;
     [SerializeField] private SpawnPreviewHelper preview;
     [SerializeField] private BacteriaSpawner spawner;
@@ -28,6 +28,13 @@ public class ReadyButton : MonoBehaviour
             readyButton = GetComponent<Button>();
 
         readyButton.onClick.AddListener(() => StartCoroutine(OnReadyPressed()));
+    }
+
+    // 🔑 Setiap kali GameObject READY aktif lagi (balik SELECT),
+    // kita reset lock supaya ConfirmSelection dipanggil lagi di cycle berikutnya.
+    private void OnEnable()
+    {
+        selectionLocked = false;
     }
 
     private IEnumerator OnReadyPressed()
@@ -47,7 +54,7 @@ public class ReadyButton : MonoBehaviour
             }
 
             if (cardManager != null)
-                cardManager.ConfirmSelection();
+                cardManager.ConfirmSelection();   // CardSelectable OFF, CapsuleSlot ON
 
             selectionLocked = true;
             Debug.Log("<color=green>[READY] Selection Locked</color>");
@@ -79,7 +86,7 @@ public class ReadyButton : MonoBehaviour
             Debug.Log("<color=magenta>[READY] Destroyed all preview enemy instances BEFORE Play</color>");
         }
 
-        // === ENTER PLAY PHASE (GESER KAMERA, MULAI WAVE) ===
+        // === ENTER PLAY PHASE ===
         if (phaseController != null)
         {
             yield return phaseController.StartPlayPhase();

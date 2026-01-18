@@ -22,84 +22,154 @@ public class EndlessPhaseController : MonoBehaviour
     [Header("Ready Button OBJ (GameObject)")]
     [SerializeField] private GameObject readyButtonObj;
 
+    [Header("Selection Manager")]
+    [SerializeField] private CardSelectionManager cardManager;
+
+    [Header("Enemy Preview Helper")]
+    [SerializeField] private SpawnPreviewHelper preview;
+
     [Header("Objects Active On Select")]
     [SerializeField] private List<GameObject> selectActive = new List<GameObject>();
 
     [Header("Objects Active On Play")]
     [SerializeField] private List<GameObject> playActive = new List<GameObject>();
 
-    [Header("Selection & Preview")]
-    [SerializeField] private CardSelectionManager cardManager;
-    [SerializeField] private SpawnPreviewHelper previewHelper;
-
     private void Start()
     {
+        Debug.Log("<color=cyan>[PHASE] Scene START → SELECT phase</color>");
+
         SnapCamera(selectCameraX);
         ApplySelectObjects();
 
-        ui?.EnterSelectPhase();
+        // Text "Click Ready to enter Cycle X"
+        if (ui != null)
+            ui.EnterSelectPhase();
 
-        readyButtonObj?.SetActive(true);
-        readyButton?.SetReadyEnabled(true);
+        // Pastikan CardSelectable ON, CapsuleSlot OFF (mode SELECT)
+        if (cardManager != null)
+            cardManager.ReEnterSelectPhase();
 
-        previewHelper?.GeneratePreviewWithMinDifference();
+        // === SELECT awal: READY ENABLE (sesuai tabel) ===
+        if (readyButtonObj != null)
+        {
+            readyButtonObj.SetActive(true);
+            Debug.Log("<color=green>[PHASE] READY → ENABLE (SELECT AWAL)</color>");
+        }
+
+        if (readyButton != null)
+            readyButton.SetReadyEnabled(true);
     }
 
+    // Dipanggil dari ReadyButton
     public IEnumerator StartPlayPhase()
     {
+        Debug.Log("<color=orange>[PHASE] StartPlayPhase called</color>");
+
+        // Press Ready → READY tetap ENABLE ketika kamera bergerak (sesuai tabel)
+        Debug.Log("<color=grey>[PHASE] Camera SELECT → PLAY moving...</color>");
         yield return MoveCameraSmooth(playCameraX);
+
+        Debug.Log("<color=lime>[PHASE] Camera arrived at PLAY</color>");
 
         ApplyPlayObjects();
 
-        readyButtonObj?.SetActive(false);
-        readyButton?.SetReadyEnabled(false);
+        // Arrive PLAY → READY DISABLE
+        if (readyButtonObj != null)
+        {
+            readyButtonObj.SetActive(false);
+            Debug.Log("<color=red>[PHASE] READY → DISABLE (Arrive PLAY)</color>");
+        }
 
-        ui?.OnPlayPhaseStart();
+        // Info saja, text "Cycle X" sudah di-set di SetupNewCycle()
+        if (ui != null)
+            ui.OnPlayPhaseStart();
 
         if (waveManager != null)
+        {
+            Debug.Log("<color=magenta>[PHASE] Starting RunSingleCycle coroutine</color>");
             waveManager.StartCoroutine(waveManager.RunSingleCycle());
+        }
+        else
+        {
+            Debug.LogError("<color=red>[PHASE] WaveManager is NULL!</color>");
+        }
     }
 
+    // Dipanggil dari EndlessWaveManager setelah Wave1+Wave2 selesai
     public IEnumerator SmoothBackToSelect()
     {
+        Debug.Log("<color=grey>[PHASE] Camera PLAY → SELECT moving...</color>");
+
+        // Back SELECT (move): READY tetap DISABLE
+        if (readyButtonObj != null)
+            Debug.Log("<color=red>[PHASE] READY tetap DISABLE (Back SELECT move)</color>");
+
         yield return MoveCameraSmooth(selectCameraX);
+
+        Debug.Log("<color=lime>[PHASE] Camera arrived at SELECT</color>");
 
         ApplySelectObjects();
 
-        cardManager?.ReEnterSelectPhase();
+        // Balik SELECT → hidupkan lagi CardSelection & regenerate preview
+        if (cardManager != null)
+            cardManager.ReEnterSelectPhase();
 
-        previewHelper?.ClearPreview();
-        previewHelper?.GeneratePreviewWithMinDifference();
+        if (preview != null)
+            preview.GeneratePreviewWithMinDifference();
 
-        ui?.EnterSelectPhase();
+        // Arrive SELECT → READY ENABLE lagi
+        if (readyButtonObj != null)
+        {
+            readyButtonObj.SetActive(true);
+            Debug.Log("<color=green>[PHASE] READY → ENABLE (Arrive SELECT)</color>");
+        }
 
-        readyButtonObj?.SetActive(true);
-        readyButton?.SetReadyEnabled(true);
+        if (readyButton != null)
+            readyButton.SetReadyEnabled(true);
+
+        if (ui != null)
+            ui.EnterSelectPhase(); // "Click Ready to enter Cycle (X+1)"
     }
 
     private void ApplySelectObjects()
     {
         foreach (var o in selectActive)
-            if (o) o.SetActive(true);
+        {
+            if (!o) continue;
+            o.SetActive(true);
+            Debug.Log($"<color=cyan>[PHASE] SELECT ON → {o.name}</color>");
+        }
 
         foreach (var o in playActive)
-            if (o) o.SetActive(false);
+        {
+            if (!o) continue;
+            o.SetActive(false);
+            Debug.Log($"<color=cyan>[PHASE] PLAY OFF → {o.name}</color>");
+        }
     }
 
     private void ApplyPlayObjects()
     {
         foreach (var o in selectActive)
-            if (o) o.SetActive(false);
+        {
+            if (!o) continue;
+            o.SetActive(false);
+            Debug.Log($"<color=yellow>[PHASE] SELECT OFF → {o.name}</color>");
+        }
 
         foreach (var o in playActive)
-            if (o) o.SetActive(true);
+        {
+            if (!o) continue;
+            o.SetActive(true);
+            Debug.Log($"<color=yellow>[PHASE] PLAY ON → {o.name}</color>");
+        }
     }
-    
+
     private void SnapCamera(float x)
     {
         if (!cameraTransform)
         {
-            Debug.LogError("[PHASE] Missing cameraTransform!");
+            Debug.LogError("<color=red>[PHASE] Missing cameraTransform!</color>");
             return;
         }
 
@@ -108,21 +178,35 @@ public class EndlessPhaseController : MonoBehaviour
             cameraTransform.position.y,
             cameraTransform.position.z
         );
+
+        Debug.Log($"<color=teal>[PHASE] Camera SNAP to X={x}</color>");
     }
 
     private IEnumerator MoveCameraSmooth(float targetX)
     {
+        if (!cameraTransform)
+        {
+            Debug.LogError("<color=red>[PHASE] Missing cameraTransform!</color>");
+            yield break;
+        }
+
         while (true)
         {
-            var p = cameraTransform.position;
+            Vector3 p = cameraTransform.position;
             float newX = Mathf.Lerp(p.x, targetX, Time.deltaTime * cameraMoveSpeed);
             cameraTransform.position = new Vector3(newX, p.y, p.z);
 
-            if (Mathf.Abs(newX - targetX) < 0.05f) break;
+            if (Mathf.Abs(newX - targetX) < 0.05f)
+                break;
+
             yield return null;
         }
 
-        var pp = cameraTransform.position;
-        cameraTransform.position = new Vector3(targetX, pp.y, pp.z);
+        // snap akhir
+        cameraTransform.position = new Vector3(
+            targetX,
+            cameraTransform.position.y,
+            cameraTransform.position.z
+        );
     }
 }
