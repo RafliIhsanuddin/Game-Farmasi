@@ -1432,6 +1432,7 @@ MonoBehaviour:
   spawner: {fileID: 2001866867}
   difficulty: {fileID: 860888000}
   ui: {fileID: 940213192}
+  phase: {fileID: 416857640}
   bigWaveDelay: 3
   checkInterval: 0.25
 --- !u!1 &219516988
@@ -3885,12 +3886,14 @@ MonoBehaviour:
   playCameraX: -2
   cameraMoveSpeed: 3
   ui: {fileID: 940213192}
+  waveManager: {fileID: 207047504}
   readyButton: {fileID: 1968988300}
   selectActive:
   - {fileID: 779231768}
+  - {fileID: 1283489921}
   playActive:
-  - {fileID: 207047502}
   - {fileID: 1790310326}
+  - {fileID: 207047502}
   - {fileID: 2001866865}
 --- !u!1 &420263844
 GameObject:
@@ -17265,7 +17268,6 @@ MonoBehaviour:
   ui: {fileID: 940213192}
   preview: {fileID: 1283489923}
   spawner: {fileID: 2001866867}
-  postCycleDelay: 3
 --- !u!1 &1970782975
 GameObject:
   m_ObjectHideFlags: 0

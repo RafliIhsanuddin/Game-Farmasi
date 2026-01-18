@@ -27,11 +27,14 @@ public class EndlessUIController : MonoBehaviour
 
     private void Start()
     {
-        if (bigWaveWarning) bigWaveWarning.SetActive(false);
+        if (bigWaveWarning)
+            bigWaveWarning.SetActive(false);
+
         currentCycleVisual = 0;
         totalFlagsAllCycles = 0;
-        UpdateSelectText();
+
         UpdateTotalFlagsText();
+        UpdateSelectText(); // awal → "Click Ready to enter Cycle 1"
     }
 
     // ==== SELECT UI ====
@@ -43,26 +46,35 @@ public class EndlessUIController : MonoBehaviour
     private void UpdateSelectText()
     {
         if (!cycleText) return;
+
         int next = currentCycleVisual + 1;
-        cycleText.text = $"Click Ready to enter Cycle {next}";
+        string msg = $"Click Ready to enter Cycle {next}";
+
+        Debug.Log($"<color=cyan>[UI] SELECT → text = \"{msg}\" (currentCycleVisual={currentCycleVisual})</color>");
+
+        cycleText.text = msg;
     }
 
     // ==== PLAY UI ====
+    // Hanya untuk log status, TIDAK mengubah text (text diubah di SetupNewCycle)
     public void OnPlayPhaseStart()
     {
-        currentCycleVisual++;
-        UpdatePlayText();
+        Debug.Log($"<color=grey>[UI] Enter PLAY phase (currentCycleVisual={currentCycleVisual})</color>");
     }
 
-    private void UpdatePlayText()
-    {
-        if (!cycleText) return;
-        cycleText.text = $"Cycle {currentCycleVisual}";
-    }
-
-    // ==== New Cycle Setup ====
+    // ==== New Cycle Setup (dipanggil dari EndlessWaveManager.RunSingleCycle) ====
     public void SetupNewCycle(int wave1, int wave2)
     {
+        currentCycleVisual++;
+
+        // >>> DI SINI text berubah jadi "Cycle 1", "Cycle 2", dst <<<
+        string msg = $"Cycle {currentCycleVisual}";
+        if (cycleText != null)
+        {
+            cycleText.text = msg;
+            Debug.Log($"<color=yellow>[UI] PLAY → text = \"{msg}\" (SetupNewCycle)</color>");
+        }
+
         totalEnemiesThisCycle = wave1 + wave2;
         totalKillsThisCycle = 0;
 
@@ -134,6 +146,7 @@ public class EndlessUIController : MonoBehaviour
     {
         currentCycleVisual = 0;
         totalFlagsAllCycles = 0;
+
         UpdateTotalFlagsText();
         UpdateSelectText();
     }

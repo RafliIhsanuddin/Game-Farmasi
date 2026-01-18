@@ -15,13 +15,10 @@ public class ReadyButton : MonoBehaviour
 
     [Header("Endless Hooks")]
     [SerializeField] private EndlessPhaseController phaseController;
-    [SerializeField] private EndlessWaveManager endlessWaveManager;
+    [SerializeField] private EndlessWaveManager endlessWaveManager;   // tidak dipakai langsung, tapi biarkan saja
     [SerializeField] private EndlessUIController ui;
     [SerializeField] private SpawnPreviewHelper preview;
     [SerializeField] private BacteriaSpawner spawner;
-
-    [Header("Cinematic Settings")]
-    [SerializeField] private float postCycleDelay = 3f;
 
     private bool selectionLocked = false;
 
@@ -35,61 +32,68 @@ public class ReadyButton : MonoBehaviour
 
     private IEnumerator OnReadyPressed()
     {
-        // SELECTION CHECK
+        Debug.Log("<color=orange>[READY] Player pressed Ready</color>");
+
+        // === SELECTION CHECK ===
         if (!selectionLocked)
         {
-            int selected = cardManager.GetSelectedCount();
+            int selected = cardManager != null ? cardManager.GetSelectedCount() : 0;
 
             if (selected < minRequiredSelection)
             {
+                Debug.Log($"<color=red>[READY] Not enough cards selected ({selected}/{minRequiredSelection})</color>");
                 SoundManager.Instance?.PlayWrong();
                 yield break;
             }
 
-            cardManager.ConfirmSelection();
+            if (cardManager != null)
+                cardManager.ConfirmSelection();
+
             selectionLocked = true;
+            Debug.Log("<color=green>[READY] Selection Locked</color>");
         }
 
-        selectorHUD?.SetActive(false);
+        // === CLOSE SELECTOR HUD ===
+        if (selectorHUD != null)
+            selectorHUD.SetActive(false);
 
-        // --------- PREVIEW → SPAWNER ----------
+        // === PREVIEW → SPAWNER ASSIGN ===
         if (preview != null)
         {
             List<GameObject> pool = preview.GetSelectedEnemyPool();
             if (pool != null && pool.Count > 0 && spawner != null)
             {
                 spawner.SetEnemyPool(pool);
+                Debug.Log($"<color=cyan>[READY] Enemy pool assigned to spawner (count={pool.Count})</color>");
+            }
+            else
+            {
+                Debug.Log("<color=yellow>[READY] Preview pool empty or spawner missing</color>");
             }
         }
 
-        // -------- ENTER PLAY PHASE --------
-        yield return phaseController.StartPlayPhase();
-
-        if (ui != null)
-            ui.OnPlayPhaseStart();   // "Cycle X"
-
-        // -------- RUN CYCLE (2 waves) --------
-        yield return endlessWaveManager.RunSingleCycle();
-
-        // -------- PVZ DELAY STYLE --------
-        if (postCycleDelay > 0)
-            yield return new WaitForSeconds(postCycleDelay);
-
-        // -------- BACK TO SELECT --------
-        yield return phaseController.SmoothBackToSelect();
-
-        selectorHUD?.SetActive(true);
-
-        // PREVIEW REFRESH (for next cycle)
-        if (preview != null)
-            preview.GeneratePreviewWithMinDifference();
-
-        if (ui != null)
-            ui.EnterSelectPhase();   // "Click Ready to enter Cycle X"
+        // === ENTER PLAY PHASE ===
+        // PhaseController akan:
+        // - Pindahkan kamera SELECT → PLAY
+        // - Switch Select/Play objects
+        // - Nanti WaveManager.RunSingleCycle() dipanggil dari PhaseController
+        if (phaseController != null)
+        {
+            yield return phaseController.StartPlayPhase();
+            Debug.Log("<color=lime>[READY] Handoff to PhaseController completed</color>");
+        }
+        else
+        {
+            Debug.LogError("<color=red>[READY] PhaseController is NULL!</color>");
+        }
     }
 
     public void SetReadyEnabled(bool state)
     {
-        readyButton.interactable = state;
+        if (readyButton != null)
+        {
+            readyButton.interactable = state;
+            Debug.Log($"<color=yellow>[READY] Button interactable = {state}</color>");
+        }
     }
 }

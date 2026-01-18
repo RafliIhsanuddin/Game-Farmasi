@@ -3,20 +3,16 @@ using System.Collections;
 
 public class EndlessWaveManager : MonoBehaviour
 {
-    [Header("Core References")]
     [SerializeField] private BacteriaSpawner spawner;
     [SerializeField] private EndlessDifficultyScaler difficulty;
     [SerializeField] private EndlessUIController ui;
+    [SerializeField] private EndlessPhaseController phase;
 
-    [Header("Timing")]
     [SerializeField] private float bigWaveDelay = 3f;
     [SerializeField] private float checkInterval = 0.25f;
 
     public bool IsGameOver { get; private set; } = false;
 
-    /// <summary>
-    /// Jalankan 1 cycle: Wave1 (MultiPerLine) + Wave2 (GroupedPerLine)
-    /// </summary>
     public IEnumerator RunSingleCycle()
     {
         int w1 = difficulty.GetWave1Count();
@@ -24,27 +20,46 @@ public class EndlessWaveManager : MonoBehaviour
 
         ui.SetupNewCycle(w1, w2);
 
-        // WAVE1
-        yield return RunMulti(w1);
-        ui.MarkWaveComplete(0);
+        if (difficulty.CurrentCycle == 0)
+        {
+            yield return RunSingle(w1);
+            ui.MarkWaveComplete(0);
 
-        // BIG WAVE
-        ui.ShowBigWave(true);
-        yield return new WaitForSeconds(bigWaveDelay);
-        ui.ShowBigWave(false);
+            ui.ShowBigWave(true);
+            yield return new WaitForSeconds(bigWaveDelay);
+            ui.ShowBigWave(false);
 
-        // WAVE2
-        yield return RunGrouped(w2);
-        ui.MarkWaveComplete(1);
+            yield return RunSingle(w2);
+            ui.MarkWaveComplete(1);
+        }
+        else
+        {
+            yield return RunMulti(w1);
+            ui.MarkWaveComplete(0);
+
+            ui.ShowBigWave(true);
+            yield return new WaitForSeconds(bigWaveDelay);
+            ui.ShowBigWave(false);
+
+            yield return RunGrouped(w2);
+            ui.MarkWaveComplete(1);
+        }
 
         difficulty.AdvanceCycle();
+        phase.StartCoroutine(phase.SmoothBackToSelect());
+    }
+
+    private IEnumerator RunSingle(int count)
+    {
+        spawner.StopAllSpawning();
+        spawner.StartSinglePerLineWave(count);
+        yield return WaitAllEnemiesDead();
     }
 
     private IEnumerator RunMulti(int count)
     {
         spawner.StopAllSpawning();
         spawner.StartMultiPerLineWave(count);
-        Debug.Log($"[EndlessWave] Spawn W1 count={count}");
         yield return WaitAllEnemiesDead();
     }
 
@@ -52,7 +67,6 @@ public class EndlessWaveManager : MonoBehaviour
     {
         spawner.StopAllSpawning();
         spawner.StartGroupedPerLineWave(count);
-        Debug.Log($"[EndlessWave] Spawn W2 count={count}");
         yield return WaitAllEnemiesDead();
     }
 
@@ -66,10 +80,9 @@ public class EndlessWaveManager : MonoBehaviour
             int alive = spawner.CountAllAlive();
 
             if (alive > 0) seenEnemy = true;
-            if (seenEnemy && alive == 0)
-                break;
+            if (seenEnemy && alive == 0) break;
 
-            if (alive < lastAlive && ui != null)
+            if (alive < lastAlive)
             {
                 int delta = lastAlive - alive;
                 ui.AddKills(delta);
@@ -78,38 +91,5 @@ public class EndlessWaveManager : MonoBehaviour
             lastAlive = alive;
             yield return new WaitForSeconds(checkInterval);
         }
-    }
-
-    // ===============================
-    // GAME OVER SYSTEM ENDLESS
-    // ===============================
-    public void TriggerGameOver()
-    {
-        if (IsGameOver)
-            return;
-
-        IsGameOver = true;
-
-        Debug.Log("<color=red>[EndlessWave] GAME OVER TRIGGERED</color>");
-
-        if (spawner != null)
-            spawner.StopAllSpawning();
-
-        StopAllCoroutines();
-
-        if (ui != null)
-        {
-            GameData.Data.UpdateEndlessRun(ui.CurrentCycle, ui.TotalFlags);
-            Debug.Log($"<color=magenta>[EndlessWave] Final Run → Cycle={ui.CurrentCycle}, Flags={ui.TotalFlags}</color>");
-
-            ui.ResetUIForGameOver();
-        }
-    }
-
-    public void ResetEndlessState()
-    {
-        IsGameOver = false;
-        if (difficulty != null)
-            difficulty.ResetDifficulty();
     }
 }
