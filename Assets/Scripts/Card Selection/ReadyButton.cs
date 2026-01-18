@@ -73,10 +73,6 @@ public class ReadyButton : MonoBehaviour
         }
 
         // === ENTER PLAY PHASE ===
-        // PhaseController akan:
-        // - Pindahkan kamera SELECT → PLAY
-        // - Switch Select/Play objects
-        // - Nanti WaveManager.RunSingleCycle() dipanggil dari PhaseController
         if (phaseController != null)
         {
             yield return phaseController.StartPlayPhase();

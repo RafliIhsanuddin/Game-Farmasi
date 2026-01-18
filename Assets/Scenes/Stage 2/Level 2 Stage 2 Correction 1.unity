@@ -3888,9 +3888,11 @@ MonoBehaviour:
   ui: {fileID: 940213192}
   waveManager: {fileID: 207047504}
   readyButton: {fileID: 1968988300}
+  readyButtonObj: {fileID: 1968988295}
   selectActive:
   - {fileID: 779231768}
   - {fileID: 1283489921}
+  - {fileID: 1659383129}
   playActive:
   - {fileID: 1790310326}
   - {fileID: 207047502}

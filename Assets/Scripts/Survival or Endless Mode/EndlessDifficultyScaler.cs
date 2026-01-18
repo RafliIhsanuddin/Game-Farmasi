@@ -27,11 +27,12 @@ public class EndlessDifficultyScaler : MonoBehaviour
     public void AdvanceCycle()
     {
         CurrentCycle++;
-        Debug.Log($"[EndlessDifficulty] Advance → Cycle = {CurrentCycle}");
+        Debug.Log($"[EndlessDifficulty] Advance → Cycle = {CurrentCycle + 1}");
     }
 
     public void ResetDifficulty()
     {
         CurrentCycle = 0;
+        Debug.Log("[EndlessDifficulty] Reset → Cycle = 1");
     }
 }

@@ -34,7 +34,7 @@ public class EndlessUIController : MonoBehaviour
         totalFlagsAllCycles = 0;
 
         UpdateTotalFlagsText();
-        UpdateSelectText(); // awal → "Click Ready to enter Cycle 1"
+        UpdateSelectText();
     }
 
     // ==== SELECT UI ====
@@ -50,16 +50,14 @@ public class EndlessUIController : MonoBehaviour
         int next = currentCycleVisual + 1;
         string msg = $"Click Ready to enter Cycle {next}";
 
-        Debug.Log($"<color=cyan>[UI] SELECT → text = \"{msg}\" (currentCycleVisual={currentCycleVisual})</color>");
-
+        Debug.Log($"[UI] SELECT → \"{msg}\" (currentCycleVisual={currentCycleVisual})");
         cycleText.text = msg;
     }
 
     // ==== PLAY UI ====
-    // Hanya untuk log status, TIDAK mengubah text (text diubah di SetupNewCycle)
     public void OnPlayPhaseStart()
     {
-        Debug.Log($"<color=grey>[UI] Enter PLAY phase (currentCycleVisual={currentCycleVisual})</color>");
+        Debug.Log($"[UI] Enter PLAY phase (currentCycleVisual={currentCycleVisual})");
     }
 
     // ==== New Cycle Setup (dipanggil dari EndlessWaveManager.RunSingleCycle) ====
@@ -67,12 +65,11 @@ public class EndlessUIController : MonoBehaviour
     {
         currentCycleVisual++;
 
-        // >>> DI SINI text berubah jadi "Cycle 1", "Cycle 2", dst <<<
         string msg = $"Cycle {currentCycleVisual}";
         if (cycleText != null)
         {
             cycleText.text = msg;
-            Debug.Log($"<color=yellow>[UI] PLAY → text = \"{msg}\" (SetupNewCycle)</color>");
+            Debug.Log($"[UI] PLAY → \"{msg}\" (SetupNewCycle)");
         }
 
         totalEnemiesThisCycle = wave1 + wave2;
@@ -96,7 +93,8 @@ public class EndlessUIController : MonoBehaviour
         foreach (Transform c in flagContainer)
             Destroy(c.gameObject);
 
-        float[] anchors = { 0.25f, 0.75f }; // 2 wave = 2 flags
+        // 2 wave = 2 flags
+        float[] anchors = { 0.25f, 0.75f };
 
         foreach (var t in anchors)
         {

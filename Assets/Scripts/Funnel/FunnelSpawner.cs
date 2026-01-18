@@ -54,6 +54,6 @@ public class FunnelSpawner : MonoBehaviour
         if (a != null)
             a.source = Atom.AtomSource.Funnel;
 
-        Debug.Log($"[FunnelSpawner] Spawn at {pos}");
+        //Debug.Log($"[FunnelSpawner] Spawn at {pos}");
     }
 }
