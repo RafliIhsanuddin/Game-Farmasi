@@ -72,7 +72,14 @@ public class ReadyButton : MonoBehaviour
             }
         }
 
-        // === ENTER PLAY PHASE ===
+        // === HANCURKAN SEMUA ENEMY PREVIEW SEBELUM GESER KAMERA ===
+        if (preview != null)
+        {
+            preview.ClearPreview();
+            Debug.Log("<color=magenta>[READY] Destroyed all preview enemy instances BEFORE Play</color>");
+        }
+
+        // === ENTER PLAY PHASE (GESER KAMERA, MULAI WAVE) ===
         if (phaseController != null)
         {
             yield return phaseController.StartPlayPhase();

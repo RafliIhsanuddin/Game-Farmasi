@@ -3621,6 +3621,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3babc11194bc34a8bcdc8386270295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectorParentGO: {fileID: 779231768}
+  selectorPosGO: {fileID: 723654334}
   originalParent: {fileID: 0}
   originalPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &360676624
@@ -3893,10 +3895,13 @@ MonoBehaviour:
   - {fileID: 779231768}
   - {fileID: 1283489921}
   - {fileID: 1659383129}
+  - {fileID: 1283489921}
   playActive:
   - {fileID: 1790310326}
   - {fileID: 207047502}
   - {fileID: 2001866865}
+  cardManager: {fileID: 1659383131}
+  previewHelper: {fileID: 1283489923}
 --- !u!1 &420263844
 GameObject:
   m_ObjectHideFlags: 0
@@ -7323,6 +7328,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3babc11194bc34a8bcdc8386270295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectorParentGO: {fileID: 779231768}
+  selectorPosGO: {fileID: 149257785}
   originalParent: {fileID: 0}
   originalPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &935581408
@@ -8288,6 +8295,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3babc11194bc34a8bcdc8386270295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectorParentGO: {fileID: 779231768}
+  selectorPosGO: {fileID: 33054625}
   originalParent: {fileID: 0}
   originalPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1002158819
@@ -9844,6 +9853,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3babc11194bc34a8bcdc8386270295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectorParentGO: {fileID: 779231768}
+  selectorPosGO: {fileID: 1155967089}
   originalParent: {fileID: 0}
   originalPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1155967089
@@ -10879,6 +10890,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3babc11194bc34a8bcdc8386270295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectorParentGO: {fileID: 779231768}
+  selectorPosGO: {fileID: 1540532463}
   originalParent: {fileID: 0}
   originalPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1283489921
@@ -16989,6 +17002,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3babc11194bc34a8bcdc8386270295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectorParentGO: {fileID: 779231768}
+  selectorPosGO: {fileID: 1202514802}
   originalParent: {fileID: 0}
   originalPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1952896470

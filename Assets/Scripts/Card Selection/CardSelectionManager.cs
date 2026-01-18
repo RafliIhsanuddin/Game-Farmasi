@@ -9,7 +9,7 @@ public class CardSelectionManager : MonoBehaviour
     [SerializeField] private List<CardSlot> slots;
 
     [Header("Selection Settings")]
-    [SerializeField] private int maxSelection = 3;      // ⬅ serialize
+    [SerializeField] private int maxSelection = 3;
     [SerializeField] private float compactSpeed = 12f;
 
     private int currentSelected = 0;
@@ -21,11 +21,10 @@ public class CardSelectionManager : MonoBehaviour
 
     public void OnCardClicked(CardSelectable card)
     {
-        // CASE: sudah max, user klik kartu lain -> WRONG
+        // sudah max? cek remove atau wrong
         if (currentSelected >= maxSelection)
         {
             bool isSelected = false;
-
             foreach (var s in slots)
             {
                 if (s.occupiedCard == card)
@@ -42,7 +41,7 @@ public class CardSelectionManager : MonoBehaviour
             }
         }
 
-        // CASE: REMOVE / unselect
+        // remove
         foreach (var s in slots)
         {
             if (s.occupiedCard == card)
@@ -52,7 +51,7 @@ public class CardSelectionManager : MonoBehaviour
             }
         }
 
-        // CASE: ADD
+        // add
         AddToSlot(card);
     }
 
@@ -73,7 +72,6 @@ public class CardSelectionManager : MonoBehaviour
 
         empty.occupiedCard = card;
         card.MoveToSlot(empty.transform);
-
         currentSelected++;
     }
 
@@ -85,7 +83,6 @@ public class CardSelectionManager : MonoBehaviour
         slot.occupiedCard = null;
 
         currentSelected--;
-
         CompactSlots();
     }
 
@@ -94,10 +91,8 @@ public class CardSelectionManager : MonoBehaviour
         List<CardSelectable> temp = new List<CardSelectable>();
 
         foreach (var s in slots)
-        {
             if (s.occupiedCard != null)
                 temp.Add(s.occupiedCard);
-        }
 
         foreach (var s in slots)
             s.occupiedCard = null;
@@ -151,13 +146,30 @@ public class CardSelectionManager : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public int GetSelectedCount()
+    // === ReEnter untuk Cycle Berikutnya ===
+    public void ReEnterSelectPhase()
     {
-        return currentSelected;
+        this.enabled = true;
+        gameObject.SetActive(true);
+
+        foreach (var card in allCards)
+        {
+            card.enabled = true;
+
+            var btn = card.GetComponent<Button>();
+            var cap = card.GetComponent<CapsuleSlot>();
+
+            if (btn != null)
+            {
+                btn.onClick.RemoveAllListeners();
+                btn.onClick.AddListener(() => OnCardClicked(card));
+            }
+
+            if (cap != null)
+                cap.enabled = false; // MODE 1
+        }
     }
 
-    public int GetMaxSelection()
-    {
-        return maxSelection;  // optionally useful
-    }
+    public int GetSelectedCount() => currentSelected;
+    public int GetMaxSelection() => maxSelection;
 }

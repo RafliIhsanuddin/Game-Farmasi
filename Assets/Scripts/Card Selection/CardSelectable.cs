@@ -3,6 +3,11 @@ using UnityEngine.UI;
 
 public class CardSelectable : MonoBehaviour
 {
+    [Header("Return To Selector Target (Static PVZ)")]
+    [SerializeField] private GameObject selectorParentGO; // parent target (HUD)
+    [SerializeField] private GameObject selectorPosGO;    // posisi target (HUD)
+
+    [Header("Original (Fallback)")]
     [HideInInspector] public Transform originalParent;
     [HideInInspector] public Vector3 originalPosition;
 
@@ -17,16 +22,17 @@ public class CardSelectable : MonoBehaviour
         originalParent = transform.parent;
         originalPosition = transform.localPosition;
 
-        // disable CapsuleSlot pre-level
         var cap = GetComponent<CapsuleSlot>();
         if (cap != null) cap.enabled = false;
 
-        btn.onClick.AddListener(OnClick);
+        if (btn != null)
+            btn.onClick.AddListener(OnClick);
     }
 
     void OnClick()
     {
-        manager.OnCardClicked(this);
+        if (manager != null)
+            manager.OnCardClicked(this);
     }
 
     public void MoveToSlot(Transform slot)
@@ -36,6 +42,20 @@ public class CardSelectable : MonoBehaviour
 
     public void ReturnToSelector()
     {
+        // STATIC PVZ SELECTOR RETURN
+        if (selectorParentGO != null)
+        {
+            transform.SetParent(selectorParentGO.transform);
+
+            if (selectorPosGO != null)
+                transform.position = selectorPosGO.transform.position; // pos absolute (UI)
+            else
+                transform.localPosition = Vector3.zero;
+
+            return;
+        }
+
+        // fallback (tidak mengurangi behaviour lama)
         transform.SetParent(originalParent);
         transform.localPosition = originalPosition;
     }
