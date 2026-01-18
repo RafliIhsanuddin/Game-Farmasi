@@ -14990,7 +14990,7 @@ Transform:
   m_GameObject: {fileID: 1680809546}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.061366167, w: 0.9981153}
-  m_LocalPosition: {x: -6.06, y: 0.02, z: 0}
+  m_LocalPosition: {x: -7.84, y: 0.02, z: 0}
   m_LocalScale: {x: 1.475, y: 8.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17262,7 +17262,9 @@ MonoBehaviour:
   minRequiredSelection: 4
   phaseController: {fileID: 416857640}
   endlessWaveManager: {fileID: 207047504}
-  ui: {fileID: 0}
+  ui: {fileID: 940213192}
+  preview: {fileID: 1283489923}
+  spawner: {fileID: 2001866867}
   postCycleDelay: 3
 --- !u!1 &1970782975
 GameObject:

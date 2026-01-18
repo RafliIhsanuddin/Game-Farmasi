@@ -19,48 +19,24 @@ public class EndlessWaveManager : MonoBehaviour
     /// </summary>
     public IEnumerator RunSingleCycle()
     {
-        if (IsGameOver)
-            yield break;
+        int w1 = difficulty.GetWave1Count();
+        int w2 = difficulty.GetWave2Count();
 
-        if (difficulty == null || ui == null || spawner == null)
-        {
-            Debug.LogError("[EndlessWave] Missing references!");
-            yield break;
-        }
+        ui.SetupNewCycle(w1, w2);
 
-        int wave1 = difficulty.GetWave1Count();
-        int wave2 = difficulty.GetWave2Count();
-
-        int cycleIndex = ui.CurrentCycle;  // UI sudah dinaikkan di ReadyButton
-        ui.SetupNewCycle(cycleIndex, wave1, wave2);
-
-        Debug.Log($"<color=yellow>[EndlessWave] RUN CYCLE {cycleIndex} | W1={wave1}, W2={wave2}</color>");
-
-        // ========== WAVE 1 ==========
-        Debug.Log($"<color=cyan>[EndlessWave] Wave1 Start</color>");
-        yield return RunMulti(wave1);
-        if (IsGameOver) yield break;
-
+        // WAVE1
+        yield return RunMulti(w1);
         ui.MarkWaveComplete(0);
-        Debug.Log($"<color=green>[EndlessWave] Wave1 DONE</color>");
 
-        // ========== BIG WAVE WARNING ==========
+        // BIG WAVE
         ui.ShowBigWave(true);
-        Debug.Log("<color=orange>[EndlessWave] BIG WAVE WARNING</color>");
-
         yield return new WaitForSeconds(bigWaveDelay);
-
         ui.ShowBigWave(false);
 
-        // ========== WAVE 2 ==========
-        Debug.Log($"<color=cyan>[EndlessWave] Wave2 Start</color>");
-        yield return RunGrouped(wave2);
-        if (IsGameOver) yield break;
-
+        // WAVE2
+        yield return RunGrouped(w2);
         ui.MarkWaveComplete(1);
-        Debug.Log($"<color=green>[EndlessWave] Wave2 DONE → Cycle FINISHED</color>");
 
-        // Setelah 2 wave → difficulty naik
         difficulty.AdvanceCycle();
     }
 

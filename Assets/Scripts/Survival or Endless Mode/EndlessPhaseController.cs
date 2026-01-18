@@ -48,6 +48,9 @@ public class EndlessPhaseController : MonoBehaviour
 
         // APPLY object PLAY dulu (jadi bisa dicek apa yang harus hilang)
         ApplyPlayPhaseObjects();
+        
+        if (ui != null)
+            ui.OnPlayPhaseStart();
 
         // RULE KAMU:
         // Press Ready -> READY tetap ENABLE saat camera MOVE
@@ -75,6 +78,8 @@ public class EndlessPhaseController : MonoBehaviour
             readyButton.SetReadyEnabled(false);
 
         ApplySelectPhaseObjects();
+        
+        ui.EnterSelectPhase();
 
         yield return MoveCameraSmooth(selectCameraX);
 

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ReadyButton : MonoBehaviour
 {
@@ -16,102 +17,79 @@ public class ReadyButton : MonoBehaviour
     [SerializeField] private EndlessPhaseController phaseController;
     [SerializeField] private EndlessWaveManager endlessWaveManager;
     [SerializeField] private EndlessUIController ui;
+    [SerializeField] private SpawnPreviewHelper preview;
+    [SerializeField] private BacteriaSpawner spawner;
 
     [Header("Cinematic Settings")]
     [SerializeField] private float postCycleDelay = 3f;
 
     private bool selectionLocked = false;
-    private bool isBusy = false; // anti double-press
 
     private void Awake()
     {
         if (readyButton == null)
             readyButton = GetComponent<Button>();
 
-        if (readyButton != null)
-            readyButton.onClick.AddListener(() => StartCoroutine(OnReadyPressed()));
-    }
-
-    // NOTE: sesuai aturan kamu, ini cuma ngubah interactable (bukan hide/show)
-    public void SetReadyEnabled(bool state)
-    {
-        if (readyButton != null)
-        {
-            readyButton.interactable = state;
-            Debug.Log($"<color=orange>[ReadyButton] INTERACTABLE → {(state ? "ENABLED" : "DISABLED")}</color>");
-        }
+        readyButton.onClick.AddListener(() => StartCoroutine(OnReadyPressed()));
     }
 
     private IEnumerator OnReadyPressed()
     {
-        if (isBusy)
-        {
-            Debug.LogWarning("[ReadyButton] Ignored click because isBusy=true");
-            yield break;
-        }
-
-        isBusy = true;
-
-        // ------ 1x selection lock check ------
+        // SELECTION CHECK
         if (!selectionLocked)
         {
-            int selected = cardManager != null ? cardManager.GetSelectedCount() : 0;
+            int selected = cardManager.GetSelectedCount();
 
             if (selected < minRequiredSelection)
             {
                 SoundManager.Instance?.PlayWrong();
-                isBusy = false;
                 yield break;
             }
 
-            if (cardManager != null)
-                cardManager.ConfirmSelection(); // mekanik lama tidak diubah
-
+            cardManager.ConfirmSelection();
             selectionLocked = true;
-            Debug.Log($"<color=cyan>[ReadyButton] Selection LOCKED → {selected} cards</color>");
         }
 
-        Debug.Log("<color=yellow>[ReadyButton] PRESSED</color>");
-
-        // hide selector HUD seperti biasa
         selectorHUD?.SetActive(false);
 
-        // =========================
-        // RULE KAMU:
-        // Press Ready -> READY tetap ENABLE saat camera MOVE
-        // Jadi di sini kita TIDAK disable tombol.
-        // =========================
-
-        // ====== ENTER PLAY (camera move) ======
-        Debug.Log("<color=yellow>[ReadyButton] StartPlayPhase() (Ready stays ENABLE while moving)</color>");
-        if (phaseController != null)
-            yield return phaseController.StartPlayPhase(); // phase controller yang akan DISABLE setelah arrive PLAY
-
-        // UI: Cycle naik visual saat benar-benar mulai PLAY
-        if (ui != null)
-            ui.OnPlayPhaseStart();
-
-        // ====== RUN CYCLE (2 WAVE) ======
-        if (endlessWaveManager != null)
-            yield return endlessWaveManager.RunSingleCycle();
-
-        // ====== CINEMATIC DELAY ======
-        if (postCycleDelay > 0)
+        // --------- PREVIEW → SPAWNER ----------
+        if (preview != null)
         {
-            Debug.Log("<color=cyan>[ReadyButton] Cinematic Delay</color>");
-            yield return new WaitForSeconds(postCycleDelay);
+            List<GameObject> pool = preview.GetSelectedEnemyPool();
+            if (pool != null && pool.Count > 0 && spawner != null)
+            {
+                spawner.SetEnemyPool(pool);
+            }
         }
 
-        // ====== BACK TO SELECT ======
-        Debug.Log("<color=magenta>[ReadyButton] Back To SELECT</color>");
-        if (phaseController != null)
-            yield return phaseController.SmoothBackToSelect(); // phase controller ENABLE setelah arrive SELECT
+        // -------- ENTER PLAY PHASE --------
+        yield return phaseController.StartPlayPhase();
+
+        if (ui != null)
+            ui.OnPlayPhaseStart();   // "Cycle X"
+
+        // -------- RUN CYCLE (2 waves) --------
+        yield return endlessWaveManager.RunSingleCycle();
+
+        // -------- PVZ DELAY STYLE --------
+        if (postCycleDelay > 0)
+            yield return new WaitForSeconds(postCycleDelay);
+
+        // -------- BACK TO SELECT --------
+        yield return phaseController.SmoothBackToSelect();
 
         selectorHUD?.SetActive(true);
 
-        if (ui != null)
-            ui.EnterSelectPhase();
+        // PREVIEW REFRESH (for next cycle)
+        if (preview != null)
+            preview.GeneratePreviewWithMinDifference();
 
-        isBusy = false;
+        if (ui != null)
+            ui.EnterSelectPhase();   // "Click Ready to enter Cycle X"
+    }
+
+    public void SetReadyEnabled(bool state)
+    {
+        readyButton.interactable = state;
     }
 }
