@@ -6849,8 +6849,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseWave1Count: 10
   baseWave2Count: 12
+  growthMode: 1
   wave1Increment: 3
   wave2Increment: 5
+  wave1Multiplier: 3
+  wave2Multiplier: 3
 --- !u!1 &882681105
 GameObject:
   m_ObjectHideFlags: 0
