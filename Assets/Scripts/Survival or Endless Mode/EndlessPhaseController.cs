@@ -110,6 +110,10 @@ public class EndlessPhaseController : MonoBehaviour
 
         ApplySelectObjects();
 
+        // 🔴🔴🔴 Tambahan sesuai permintaan kamu 🔴🔴🔴
+        ClearAllTiles();
+
+
         // Balik SELECT → hidupkan lagi CardSelection & regenerate preview
         if (cardManager != null)
             cardManager.ReEnterSelectPhase();
@@ -208,5 +212,25 @@ public class EndlessPhaseController : MonoBehaviour
             cameraTransform.position.y,
             cameraTransform.position.z
         );
+    }
+
+    // ====================================================
+    // 🔴🔴🔴 FUNGSI TAMBAHAN: CLEAR BOARD (TILE + CAPSULE)
+    // ====================================================
+    private void ClearAllTiles()
+    {
+        Tile[] tiles = Object.FindObjectsByType<Tile>(FindObjectsSortMode.None);
+
+        foreach (var t in tiles)
+        {
+            if (t.currentCapsule != null)
+            {
+                Destroy(t.currentCapsule);
+            }
+
+            t.ClearCapsule();
+        }
+
+        Debug.Log("<color=magenta>[PHASE] Semua tile CLEARED untuk fase SELECT</color>");
     }
 }
