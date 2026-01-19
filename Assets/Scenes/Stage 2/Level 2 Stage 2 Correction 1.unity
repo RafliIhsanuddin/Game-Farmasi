@@ -1429,10 +1429,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beac1aec0a185634daa99bb48e8ab666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner: {fileID: 2001866867}
+  spawner: {fileID: 1880680100}
   difficulty: {fileID: 860888000}
   ui: {fileID: 940213192}
   phase: {fileID: 416857640}
+  speedScaler: {fileID: 1018909588}
   bigWaveDelay: 3
   checkInterval: 0.25
 --- !u!1 &219516988
@@ -3887,6 +3888,7 @@ MonoBehaviour:
   selectCameraX: 18
   playCameraX: -2
   cameraMoveSpeed: 3
+  spawner: {fileID: 1880680100}
   ui: {fileID: 940213192}
   waveManager: {fileID: 207047504}
   readyButton: {fileID: 1968988300}
@@ -3901,7 +3903,8 @@ MonoBehaviour:
   playActive:
   - {fileID: 1790310326}
   - {fileID: 207047502}
-  - {fileID: 2001866865}
+  - {fileID: 1605286616}
+  - {fileID: 1880680099}
 --- !u!1 &420263844
 GameObject:
   m_ObjectHideFlags: 0
@@ -8418,6 +8421,55 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1018909586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1018909587}
+  - component: {fileID: 1018909588}
+  m_Layer: 0
+  m_Name: EndlessSpeedScaler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1018909587
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018909586}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.241492, y: 1.2781031, z: -0.21315026}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1676539731}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1018909588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018909586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 184844a6c06def34db90421c3a0650ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 1
+  wave1Increment: 1
+  wave2Increment: 1
+  wave1Multiplier: 1.2
+  wave2Multiplier: 1.2
 --- !u!1 &1021169321
 GameObject:
   m_ObjectHideFlags: 0
@@ -14925,6 +14977,7 @@ Transform:
   - {fileID: 860887999}
   - {fileID: 940213191}
   - {fileID: 416857639}
+  - {fileID: 1018909587}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1680809546
@@ -16397,6 +16450,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1877409542}
   m_CullTransparentMesh: 1
+--- !u!1 &1880680099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1880680101}
+  - component: {fileID: 1880680100}
+  m_Layer: 0
+  m_Name: BacteriaSpawnerEndless
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1880680100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880680099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d99015a83cd98b4dbb771db31c1281f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bacteriaPrefabs:
+  - {fileID: 7638793912796795254, guid: fb85a64c47ae62542a6a32174cd6f115, type: 3}
+  - {fileID: 8709541256312501482, guid: 2f2f040ab11cf3a47b61b447552cc0aa, type: 3}
+  - {fileID: 3908616477801205783, guid: c9e668a1b048bd84d8b5575e69df7b49, type: 3}
+  - {fileID: 5747463354546977687, guid: ef5dd0584e1bc0f4e971c561e31436af, type: 3}
+  - {fileID: 7157105662761619761, guid: 769f61a68c68e574394f72a0360e7d46, type: 3}
+  - {fileID: 2228323387740713211, guid: c2b589809fb5e7d41983794dfcbf667b, type: 3}
+  spawnPoints:
+  - {fileID: 1411708659}
+  - {fileID: 189643910}
+  - {fileID: 1494768030}
+  - {fileID: 1163710783}
+  - {fileID: 345597427}
+  singleSpawnDelay: 1.5
+  multiSpawnDelay: 1
+  minPerLine: 5
+  maxPerLine: 12
+  minDelayPerLine: 0.5
+  maxDelayPerLine: 1.5
+  delayBetweenGroups: 1
+  speedScaler: {fileID: 1018909588}
+--- !u!4 &1880680101
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880680099}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.376865, y: -2.5468228, z: 0.07568805}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1901547188
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17808,7 +17926,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2001866866
 Transform:
   m_ObjectHideFlags: 0
@@ -19040,6 +19158,7 @@ SceneRoots:
   - {fileID: 1470963849}
   - {fileID: 1283489922}
   - {fileID: 2001866866}
+  - {fileID: 1880680101}
   - {fileID: 491383235}
   - {fileID: 516972683}
   - {fileID: 1731094546}

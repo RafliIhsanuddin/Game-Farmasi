@@ -10,6 +10,9 @@ public class EndlessPhaseController : MonoBehaviour
     [SerializeField] private float playCameraX = 0f;
     [SerializeField] private float cameraMoveSpeed = 3f;
 
+    [Header("Spawner Endless")]
+    [SerializeField] private BacteriaSpawnerEndless spawner;
+    
     [Header("UI Ref")]
     [SerializeField] private EndlessUIController ui;
 
@@ -80,10 +83,23 @@ public class EndlessPhaseController : MonoBehaviour
             Debug.Log("<color=red>[PHASE] READY → DISABLE (Arrive PLAY)</color>");
         }
 
-        // Info saja, text "Cycle X" sudah di-set di SetupNewCycle()
+        // UI update (Cycle text)
         if (ui != null)
             ui.OnPlayPhaseStart();
 
+        // =====================================================
+        //  🔸  PREVIEW → POOL → WAVE MANAGER (KUNCI ENDLESS)
+        // =====================================================
+        if (preview != null && waveManager != null)
+        {
+            var pool = preview.GetSelectedEnemyPool();
+            spawner.SetEnemyPool(pool);
+            Debug.Log("<color=yellow>[PHASE] Enemy pool injected to WaveManager</color>");
+        }
+
+        // =====================================================
+        // 🔸 MULAI ENEMY SPAWN (Wave1+Wave2)
+        // =====================================================
         if (waveManager != null)
         {
             Debug.Log("<color=magenta>[PHASE] Starting RunSingleCycle coroutine</color>");

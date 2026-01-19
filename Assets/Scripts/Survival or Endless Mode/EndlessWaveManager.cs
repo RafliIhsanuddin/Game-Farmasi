@@ -1,14 +1,14 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class EndlessWaveManager : MonoBehaviour
 {
     [Header("Core References")]
-    [SerializeField] private BacteriaSpawner spawner;
+    [SerializeField] private BacteriaSpawnerEndless spawner;
     [SerializeField] private EndlessDifficultyScaler difficulty;
     [SerializeField] private EndlessUIController ui;
     [SerializeField] private EndlessPhaseController phase;
+    [SerializeField] private EndlessSpeedScaler speedScaler;
 
     [Header("Timing")]
     [SerializeField] private float bigWaveDelay = 3f;
@@ -17,7 +17,7 @@ public class EndlessWaveManager : MonoBehaviour
     public bool IsGameOver { get; private set; } = false;
 
     // =====================================================================
-    //  RUN SINGLE CYCLE (PATCH DEBUG FULL)
+    //  RUN SINGLE CYCLE
     // =====================================================================
     public IEnumerator RunSingleCycle()
     {
@@ -35,10 +35,12 @@ public class EndlessWaveManager : MonoBehaviour
         int w2 = difficulty.GetWave2Count();
 
         Debug.Log($"[EndlessWave] Start Cycle {cycleNum} → Wave 1 Total={w1}, Wave 2 Total={w2}");
-
         Debug.Log($"[EndlessWave] Spawner state BEFORE cycle {cycleNum}: prefabs={spawner.bacteriaPrefabs?.Count}, spawnPoints={spawner.spawnPoints?.Count}, isSpawning={spawner.IsSpawning}");
 
         ui.SetupNewCycle(w1, w2);
+
+        // kasih info cycle ke spawner (untuk debug)
+        spawner.SetCycle(cycleNum);
 
         if (difficulty.CurrentCycle == 0)
         {
@@ -53,14 +55,12 @@ public class EndlessWaveManager : MonoBehaviour
             yield return RunSingleQueuePVZ(w1, 1);
 
             ui.MarkWaveComplete(0);
-
             Debug.Log($"<color=#AAAAAA>Cycle {cycleNum} Wave 1 — FINISHED</color>");
 
             Debug.Log($"<color=yellow>[DEBUG] >>> BEFORE Wave2: WaitAllEnemiesDead()</color>");
             yield return WaitAllEnemiesDead();
 
             Debug.Log($"<color=#FFA500>[DEBUG] >>> BIG WAVE WARNING</color>");
-
             ui.ShowBigWave(true);
             yield return new WaitForSeconds(bigWaveDelay);
             ui.ShowBigWave(false);
@@ -69,7 +69,6 @@ public class EndlessWaveManager : MonoBehaviour
             Debug.Log($"<color=cyan>[DEBUG] >>> CALL RunSingleQueuePVZ(w2,2)</color>");
 
             yield return RunSingleQueuePVZ(w2, 2);
-
             ui.MarkWaveComplete(1);
 
             Debug.Log($"<color=#AAAAAA>Cycle {cycleNum} Wave 2 — FINISHED</color>");
@@ -91,7 +90,6 @@ public class EndlessWaveManager : MonoBehaviour
             ui.MarkWaveComplete(0);
 
             Debug.Log($"<color=#FFA500>[DEBUG] >>> BIG WAVE WARNING</color>");
-
             ui.ShowBigWave(true);
             yield return new WaitForSeconds(bigWaveDelay);
             ui.ShowBigWave(false);
@@ -114,7 +112,7 @@ public class EndlessWaveManager : MonoBehaviour
     }
 
     // =====================================================================
-    //  RUNNERS (PATCH HEADER DEBUG)
+    //  RUNNERS
     // =====================================================================
     private IEnumerator RunSingleQueuePVZ(int count, int waveNumber)
     {
@@ -127,6 +125,13 @@ public class EndlessWaveManager : MonoBehaviour
         Debug.Log("spawner activate enemy spawn mode single per line");
 
         spawner.StopAllSpawning();
+
+        // wave info ke spawner
+        spawner.SetWaveNumber(waveNumber);
+
+        // speed scaler update wave
+        if (speedScaler != null)
+            speedScaler.NotifyWaveStart(waveNumber);
 
         bool spawnDone = false;
         spawner.OnWaveSpawnComplete = () =>
@@ -151,6 +156,10 @@ public class EndlessWaveManager : MonoBehaviour
         Debug.Log("spawner activate enemy spawn mode multi per line");
 
         spawner.StopAllSpawning();
+        spawner.SetWaveNumber(waveNumber);
+
+        if (speedScaler != null)
+            speedScaler.NotifyWaveStart(waveNumber);
 
         bool spawnDone = false;
         spawner.OnWaveSpawnComplete = () =>
@@ -175,6 +184,10 @@ public class EndlessWaveManager : MonoBehaviour
         Debug.Log("spawner activate enemy spawn mode grouped per line");
 
         spawner.StopAllSpawning();
+        spawner.SetWaveNumber(waveNumber);
+
+        if (speedScaler != null)
+            speedScaler.NotifyWaveStart(waveNumber);
 
         bool spawnDone = false;
         spawner.OnWaveSpawnComplete = () =>
@@ -189,7 +202,7 @@ public class EndlessWaveManager : MonoBehaviour
     }
 
     // =====================================================================
-    // VALIDATION (TIDAK DIUBAH)
+    // VALIDATION
     // =====================================================================
     private bool ValidateSpawnerForWave(int cycleNum, int waveNumber, int count)
     {
@@ -221,7 +234,7 @@ public class EndlessWaveManager : MonoBehaviour
     }
 
     // =====================================================================
-    // TRACK KILLS (TIDAK DIUBAH)
+    // TRACK KILLS
     // =====================================================================
     private IEnumerator TrackKillsUntilComplete(int cycleNum, int waveNumber, int count, System.Func<bool> isSpawnDone)
     {
@@ -263,7 +276,7 @@ public class EndlessWaveManager : MonoBehaviour
     }
 
     // =====================================================================
-    // WAIT CLEANUP (TIDAK DIUBAH)
+    // WAIT CLEANUP
     // =====================================================================
     private IEnumerator WaitAllEnemiesDead()
     {
@@ -281,7 +294,7 @@ public class EndlessWaveManager : MonoBehaviour
     }
 
     // =====================================================================
-    // GAME OVER (TIDAK DIUBAH)
+    // GAME OVER
     // =====================================================================
     public void TriggerGameOver()
     {
@@ -294,6 +307,10 @@ public class EndlessWaveManager : MonoBehaviour
 
         if (spawner != null)
             spawner.StopAllSpawning();
+
+        // ✅ Reset speed per Game Over (opsi e)
+        if (speedScaler != null)
+            speedScaler.ResetSpeed();
 
         StopAllCoroutines();
 
