@@ -44,15 +44,12 @@ public class EndlessPhaseController : MonoBehaviour
         SnapCamera(selectCameraX);
         ApplySelectObjects();
 
-        // Text "Click Ready to enter Cycle X"
         if (ui != null)
             ui.EnterSelectPhase();
 
-        // Pastikan CardSelectable ON, CapsuleSlot OFF (mode SELECT)
         if (cardManager != null)
             cardManager.ReEnterSelectPhase();
 
-        // === SELECT awal: READY ENABLE (sesuai tabel) ===
         if (readyButtonObj != null)
         {
             readyButtonObj.SetActive(true);
@@ -63,12 +60,10 @@ public class EndlessPhaseController : MonoBehaviour
             readyButton.SetReadyEnabled(true);
     }
 
-    // Dipanggil dari ReadyButton
     public IEnumerator StartPlayPhase()
     {
         Debug.Log("<color=orange>[PHASE] StartPlayPhase called</color>");
 
-        // Press Ready → READY tetap ENABLE ketika kamera bergerak (sesuai tabel)
         Debug.Log("<color=grey>[PHASE] Camera SELECT → PLAY moving...</color>");
         yield return MoveCameraSmooth(playCameraX);
 
@@ -76,20 +71,15 @@ public class EndlessPhaseController : MonoBehaviour
 
         ApplyPlayObjects();
 
-        // Arrive PLAY → READY DISABLE
         if (readyButtonObj != null)
         {
             readyButtonObj.SetActive(false);
             Debug.Log("<color=red>[PHASE] READY → DISABLE (Arrive PLAY)</color>");
         }
 
-        // UI update (Cycle text)
         if (ui != null)
             ui.OnPlayPhaseStart();
 
-        // =====================================================
-        //  🔸  PREVIEW → POOL → WAVE MANAGER (KUNCI ENDLESS)
-        // =====================================================
         if (preview != null && waveManager != null)
         {
             var pool = preview.GetSelectedEnemyPool();
@@ -97,9 +87,6 @@ public class EndlessPhaseController : MonoBehaviour
             Debug.Log("<color=yellow>[PHASE] Enemy pool injected to WaveManager</color>");
         }
 
-        // =====================================================
-        // 🔸 MULAI ENEMY SPAWN (Wave1+Wave2)
-        // =====================================================
         if (waveManager != null)
         {
             Debug.Log("<color=magenta>[PHASE] Starting RunSingleCycle coroutine</color>");
@@ -111,12 +98,10 @@ public class EndlessPhaseController : MonoBehaviour
         }
     }
 
-    // Dipanggil dari EndlessWaveManager setelah Wave1+Wave2 selesai
     public IEnumerator SmoothBackToSelect()
     {
         Debug.Log("<color=grey>[PHASE] Camera PLAY → SELECT moving...</color>");
 
-        // Back SELECT (move): READY tetap DISABLE
         if (readyButtonObj != null)
             Debug.Log("<color=red>[PHASE] READY tetap DISABLE (Back SELECT move)</color>");
 
@@ -126,18 +111,16 @@ public class EndlessPhaseController : MonoBehaviour
 
         ApplySelectObjects();
 
-        // 🔴🔴🔴 Tambahan sesuai permintaan kamu 🔴🔴🔴
-        ClearAllTiles();
+        ClearAllTiles();   // original
 
+        ClearAllAtoms();   // 🔴 ADD HERE
 
-        // Balik SELECT → hidupkan lagi CardSelection & regenerate preview
         if (cardManager != null)
             cardManager.ReEnterSelectPhase();
 
         if (preview != null)
             preview.GeneratePreviewWithMinDifference();
 
-        // Arrive SELECT → READY ENABLE lagi
         if (readyButtonObj != null)
         {
             readyButtonObj.SetActive(true);
@@ -148,7 +131,7 @@ public class EndlessPhaseController : MonoBehaviour
             readyButton.SetReadyEnabled(true);
 
         if (ui != null)
-            ui.EnterSelectPhase(); // "Click Ready to enter Cycle (X+1)"
+            ui.EnterSelectPhase();
     }
 
     private void ApplySelectObjects()
@@ -222,7 +205,6 @@ public class EndlessPhaseController : MonoBehaviour
             yield return null;
         }
 
-        // snap akhir
         cameraTransform.position = new Vector3(
             targetX,
             cameraTransform.position.y,
@@ -230,9 +212,6 @@ public class EndlessPhaseController : MonoBehaviour
         );
     }
 
-    // ====================================================
-    // 🔴🔴🔴 FUNGSI TAMBAHAN: CLEAR BOARD (TILE + CAPSULE)
-    // ====================================================
     private void ClearAllTiles()
     {
         Tile[] tiles = Object.FindObjectsByType<Tile>(FindObjectsSortMode.None);
@@ -248,5 +227,18 @@ public class EndlessPhaseController : MonoBehaviour
         }
 
         Debug.Log("<color=magenta>[PHASE] Semua tile CLEARED untuk fase SELECT</color>");
+    }
+
+    // ====================================================
+    // 🔴🔴🔴  TAMBAHAN SESUAI REQUEST: CLEAR ATOM SUN  🔴🔴🔴
+    // ====================================================
+    private void ClearAllAtoms()
+    {
+        Atom[] atoms = Object.FindObjectsByType<Atom>(FindObjectsSortMode.None);
+
+        foreach (var a in atoms)
+            Destroy(a.gameObject);
+
+        Debug.Log("<color=magenta>[PHASE] Semua ATOM (komponen Atom) dihapus (SELECT)</color>");
     }
 }

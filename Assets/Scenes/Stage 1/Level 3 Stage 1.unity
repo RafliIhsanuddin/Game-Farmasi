@@ -20474,7 +20474,8 @@ MonoBehaviour:
   hitOrangeProjectileSfx: {fileID: 8300000, guid: 0efe8ad1e1190cb408780794468493c7, type: 3}
   bigWaveWarningSfx: {fileID: 8300000, guid: 57e8bcbff97a79d43aac771c936c8f13, type: 3}
   waveStartMusic: {fileID: 8300000, guid: c726fa5f1b240d74fb5957bfa0174255, type: 3}
-  wrongSfx: {fileID: 0}
+  wrongSfx: {fileID: 8300000, guid: 2db469c140a36414199b900359fdf8ad, type: 3}
+  atomClickSfx: {fileID: 8300000, guid: 93ccc572286eca1449cdb59a9cf8856f, type: 3}
   destroyDelay: 6
 --- !u!4 &1193525414
 Transform:

@@ -285,6 +285,7 @@ public class GameManager : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(mouseWorld, Vector2.zero, Mathf.Infinity, AtomLayer);
             if (hit.collider != null)
             {
+                SoundManager.Instance?.PlayAtomClick();
                 StartCoroutine(
                     MoveAtomToTargetAndDestroy(hit.collider.gameObject, atomValueTarget.position)
                 );

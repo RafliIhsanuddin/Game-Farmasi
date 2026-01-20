@@ -24,6 +24,9 @@ public class SoundManager : MonoBehaviour
     // 🌟 ADD: WRONG SFX
     [Header("UI / Validation")]
     [SerializeField] private AudioClip wrongSfx;
+    
+    [Header("Atom SFX")]
+    [SerializeField] private AudioClip atomClickSfx;
 
     [Header("Destroy Delay")]
     [SerializeField] private float destroyDelay = 3f;
@@ -55,7 +58,12 @@ public class SoundManager : MonoBehaviour
     // ======================
     public void PlayBigWaveWarning() => PlayClip(bigWaveWarningSfx);
     public void PlayWaveStartMusic() => PlayClip(waveStartMusic);
-
+    
+    // ======================
+    // ATOM API (ONLY CLICK)
+    // ======================
+    public void PlayAtomClick() => PlayClip(atomClickSfx);
+    
     // ======================
     // WRONG UI SFX
     // ======================
