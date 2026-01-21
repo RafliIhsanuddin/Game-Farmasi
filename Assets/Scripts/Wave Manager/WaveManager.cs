@@ -88,6 +88,10 @@ public class WaveManager : MonoBehaviour
 
         StartWave(0);
 
+        // === BGM LOOP START (ADD) ===
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlayBgmLoop();
+
         if (!isCheckingFailSafe)
             StartCoroutine(FailSafeChecker());
     }
@@ -280,6 +284,12 @@ public class WaveManager : MonoBehaviour
         if (isGameOver) return;
 
         isGameOver = true;
+        
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.StopBgmLoop();
+        
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PlayWin();
 
         if (spawner != null)
             spawner.StopAllSpawning();

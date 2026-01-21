@@ -15080,6 +15080,14 @@ MonoBehaviour:
   wrongSfx: {fileID: 8300000, guid: 2db469c140a36414199b900359fdf8ad, type: 3}
   atomClickSfx: {fileID: 8300000, guid: 93ccc572286eca1449cdb59a9cf8856f, type: 3}
   destroyDelay: 6
+  bgmLoopClip: {fileID: 8300000, guid: bbd6acd96d81bd945929a4f5f28a5f25, type: 3}
+  useBgmLoopDelay: 0
+  bgmLoopDelaySeconds: 0.2
+  bigWaveVolume: 0.5
+  sirenVolume: 0.3
+  winSfx: {fileID: 8300000, guid: b66fbe93d5adf604192cfe6dce398981, type: 3}
+  winVolume: 2
+  winBoostMultiplier: 3
 --- !u!4 &698203291
 Transform:
   m_ObjectHideFlags: 0
