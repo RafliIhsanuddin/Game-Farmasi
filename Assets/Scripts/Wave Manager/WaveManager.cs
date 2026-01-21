@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class WaveManager : MonoBehaviour
 {
-
     public enum SpawnMode
     {
         SinglePerLine,
@@ -290,6 +289,22 @@ public class WaveManager : MonoBehaviour
 
         Debug.Log("🏆 LEVEL SELESAI");
 
+        // === PROGRESSION: UNLOCK NEXT LEVEL (+1) ===
+        // Tanpa PlayerPrefs. Hanya naikkan angka global.
+        // (Clamp agar tidak melewati total level yang ada di GameData.LevelsPerStage)
+        int totalLevels = 0;
+        if (GameData.Data.LevelsPerStage != null)
+        {
+            for (int i = 0; i < GameData.Data.LevelsPerStage.Length; i++)
+                totalLevels += GameData.Data.LevelsPerStage[i];
+        }
+
+        if (totalLevels > 0)
+            GameData.Data.UnlockedLevel = Mathf.Min(GameData.Data.UnlockedLevel + 1, totalLevels);
+        else
+            GameData.Data.UnlockedLevel = GameData.Data.UnlockedLevel + 1;
+        // === END PROGRESSION ===
+
         OnLevelComplete?.Invoke();
 
         foreach (var ui in winUIs)
@@ -303,6 +318,4 @@ public class WaveManager : MonoBehaviour
 
         Time.timeScale = 0f;
     }
-
-    
 }

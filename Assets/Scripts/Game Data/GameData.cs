@@ -6,7 +6,7 @@ public class GameData
 
     // --- Adventure Progression ---
     public int UnlockedLevel = 1;
-    public int[] LevelsPerStage = { 4, 2 };
+    public int[] LevelsPerStage = { 6, 1 };
 
     // ============================
     // ENDLESS MODE DATA

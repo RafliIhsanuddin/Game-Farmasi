@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Lose : MonoBehaviour
 {
-    
     [Header("Animator Settings")]
     [SerializeField] private Animator animator;
 
@@ -14,6 +13,13 @@ public class Lose : MonoBehaviour
 
     [Header("Delay Settings")]
     [SerializeField] private float activationDelay = 2f;
+
+    [Header("Enemy Layer Mask (Dropdown)")]
+    [SerializeField] private LayerMask enemyLayerMask;
+
+    // 🔹 NEW: Delay sebelum game pause
+    [Header("Pause Delay After Trigger (Seconds)")]
+    [SerializeField] private float pauseDelay = 7f;
 
     private bool hasTriggered = false;
 
@@ -28,7 +34,9 @@ public class Lose : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!hasTriggered && other.gameObject.layer == 8)
+        bool isEnemy = (enemyLayerMask.value & (1 << other.gameObject.layer)) != 0;
+
+        if (!hasTriggered && isEnemy)
         {
             hasTriggered = true;
             WaveManager.isGameOver = true; // 🔹 tandai game over (kalah)
@@ -41,6 +49,7 @@ public class Lose : MonoBehaviour
             }
 
             StartCoroutine(ActivateObjectsAfterDelay());
+            StartCoroutine(PauseAfterDelay()); // 🔹 NEW
         }
     }
 
@@ -59,6 +68,16 @@ public class Lose : MonoBehaviour
         }
     }
 
+    // 🔹 NEW: Pause setelah delay
+    private IEnumerator PauseAfterDelay()
+    {
+        Debug.Log("[Lose] Waiting " + pauseDelay + " seconds before PAUSE...");
+        yield return new WaitForSeconds(pauseDelay);
+
+        Time.timeScale = 0f;
+        Debug.Log("[Lose] GAME PAUSED (Time.timeScale = 0)");
+    }
+
     public void RetryLevel()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
@@ -67,5 +86,4 @@ public class Lose : MonoBehaviour
         Debug.Log("[Lose] Reloading scene: " + currentSceneName);
         SceneManager.LoadScene(currentSceneName);
     }
-    
 }

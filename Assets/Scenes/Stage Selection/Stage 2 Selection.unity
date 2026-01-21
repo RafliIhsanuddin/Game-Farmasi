@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level 1
+  m_text: Survival
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3914de223fa8efc4787902589e5d6968, type: 2}
   m_sharedMaterial: {fileID: 4947494457033249829, guid: 3914de223fa8efc4787902589e5d6968, type: 2}
@@ -1254,7 +1254,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1011787460930121566, guid: fb06036bfd7c838478c46e1f9981b241, type: 3}
+  m_Sprite: {fileID: 1339456100210175538, guid: 735ccb8b843fceb479e2f549e9224182, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1510,7 +1510,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1911132907354890755, guid: 18e66baf32c5bcf48a4dc045077c21c2, type: 3}
+  m_Sprite: {fileID: 8025697685466599856, guid: fad1f067a7e0b75438d7d8d04c458c96, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1560,7 +1560,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -280, y: -62}
+  m_AnchoredPosition: {x: 0, y: -62}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1627066342
@@ -1597,8 +1597,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.65, y: 163.5}
-  m_SizeDelta: {x: 152.2, y: 33.2}
+  m_AnchoredPosition: {x: 0, y: 128.2253}
+  m_SizeDelta: {x: 152.2, y: 51.0428}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1627066344
 MonoBehaviour:
@@ -1620,7 +1620,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Stage 1
+  m_text: Stage 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
   m_sharedMaterial: {fileID: 3866023056381278409, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
@@ -1654,8 +1654,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1736,7 +1736,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -93.3333, y: -71}
+  m_AnchoredPosition: {x: 0, y: -71}
   m_SizeDelta: {x: 444, y: 447}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1692781418
@@ -1815,7 +1815,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3490517037632188572, guid: 11fe544b7a0caee4bbd8bb329f7e8d44, type: 3}
+  m_Sprite: {fileID: -8507973731939059039, guid: 44a62602d0053f24dbac7f61fa7887e0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1987,7 +1987,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1917642542
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2085,7 +2085,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3490517037632188572, guid: 11fe544b7a0caee4bbd8bb329f7e8d44, type: 3}
+  m_Sprite: {fileID: -8507973731939059039, guid: 44a62602d0053f24dbac7f61fa7887e0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2136,8 +2136,8 @@ MonoBehaviour:
   - targetImage: {fileID: 1692781419}
     targetText: {fileID: 275598633}
     button: {fileID: 0}
-    normalSprite: {fileID: 3490517037632188572, guid: 11fe544b7a0caee4bbd8bb329f7e8d44, type: 3}
-    hoverSprite: {fileID: 3081898844155430518, guid: cc437b91cc1b32f4ea73ec9eb4ed439c, type: 3}
+    normalSprite: {fileID: -8507973731939059039, guid: 44a62602d0053f24dbac7f61fa7887e0, type: 3}
+    hoverSprite: {fileID: 3490517037632188572, guid: 11fe544b7a0caee4bbd8bb329f7e8d44, type: 3}
     normalTextColor: {r: 0, g: 0, b: 0, a: 1}
     hoverTextColor: {r: 1, g: 1, b: 1, a: 1}
     playHoverSound: 0
@@ -2145,8 +2145,8 @@ MonoBehaviour:
   - targetImage: {fileID: 1917642544}
     targetText: {fileID: 429037921}
     button: {fileID: 0}
-    normalSprite: {fileID: 3490517037632188572, guid: 11fe544b7a0caee4bbd8bb329f7e8d44, type: 3}
-    hoverSprite: {fileID: 3081898844155430518, guid: cc437b91cc1b32f4ea73ec9eb4ed439c, type: 3}
+    normalSprite: {fileID: -8507973731939059039, guid: 44a62602d0053f24dbac7f61fa7887e0, type: 3}
+    hoverSprite: {fileID: 3490517037632188572, guid: 11fe544b7a0caee4bbd8bb329f7e8d44, type: 3}
     normalTextColor: {r: 0, g: 0, b: 0, a: 1}
     hoverTextColor: {r: 1, g: 1, b: 1, a: 1}
     playHoverSound: 0
