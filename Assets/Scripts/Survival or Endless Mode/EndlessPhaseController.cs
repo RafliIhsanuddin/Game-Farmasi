@@ -58,6 +58,15 @@ public class EndlessPhaseController : MonoBehaviour
 
         if (readyButton != null)
             readyButton.SetReadyEnabled(true);
+
+        // ============================================
+        // 🔴 AUDIO: PLAY BGM LOOP + PAUSE UNTUK SELECT
+        // ============================================
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlayBgmLoop();  // start loop
+            SoundManager.Instance.PauseBgm();     // mute for SELECT
+        }
     }
 
     public IEnumerator StartPlayPhase()
@@ -80,6 +89,13 @@ public class EndlessPhaseController : MonoBehaviour
         if (ui != null)
             ui.OnPlayPhaseStart();
 
+        // ==================================================
+        // 🔴 AUDIO: BGM DULUAN → SIRENE OVERLAP DIPERBOLEHKAN
+        // ==================================================
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.ResumeBgm();
+
+        // original behaviour injection pool
         if (preview != null && waveManager != null)
         {
             var pool = preview.GetSelectedEnemyPool();
@@ -113,7 +129,7 @@ public class EndlessPhaseController : MonoBehaviour
 
         ClearAllTiles();   // original
 
-        ClearAllAtoms();   // 🔴 ADD HERE
+        ClearAllAtoms();   // tambahan dari request sebelumnya
 
         if (cardManager != null)
             cardManager.ReEnterSelectPhase();
@@ -132,6 +148,12 @@ public class EndlessPhaseController : MonoBehaviour
 
         if (ui != null)
             ui.EnterSelectPhase();
+
+        // ============================
+        // 🔴 AUDIO: PAUSE BGM DI SELECT
+        // ============================
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.PauseBgm();
     }
 
     private void ApplySelectObjects()
@@ -229,9 +251,6 @@ public class EndlessPhaseController : MonoBehaviour
         Debug.Log("<color=magenta>[PHASE] Semua tile CLEARED untuk fase SELECT</color>");
     }
 
-    // ====================================================
-    // 🔴🔴🔴  TAMBAHAN SESUAI REQUEST: CLEAR ATOM SUN  🔴🔴🔴
-    // ====================================================
     private void ClearAllAtoms()
     {
         Atom[] atoms = Object.FindObjectsByType<Atom>(FindObjectsSortMode.None);

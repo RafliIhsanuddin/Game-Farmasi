@@ -17069,6 +17069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseUI: {fileID: 1085518229}
   pauseKey: 27
+  blockObject: {fileID: 0}
 --- !u!4 &972053831
 Transform:
   m_ObjectHideFlags: 0
@@ -27498,6 +27499,7 @@ MonoBehaviour:
   atomRewardValues: 0a000000140000001e000000
   suns: 0
   sunsText: {fileID: 1847109884}
+  sunsEndingText: {fileID: 0}
   AtomLayer:
     serializedVersion: 2
     m_Bits: 128

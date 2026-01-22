@@ -27,10 +27,14 @@ public class GameManager : MonoBehaviour
         30
     };
 
-
     [Header("Suns Data")]
     public int suns;
     public TextMeshProUGUI sunsText;
+
+    // ==== PENAMBAHAN SUNNAH ====
+    [SerializeField] private TextMeshProUGUI sunsEndingText; 
+    // ==========================
+
     private int selectedPrice;
 
     [Header("Atom Settings")]
@@ -46,6 +50,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         sunsText.text = suns.ToString();
+
+        // ==== PENAMBAHAN DISPLAY ENDING SUN ====
+        if (sunsEndingText != null)
+            sunsEndingText.text = $"final sun value : {suns}";
+        // ========================================
 
         Vector3 mouseWorld = mainCam.ScreenToWorldPoint(Input.mousePosition);
         mouseWorld.z = 0f;
@@ -185,9 +194,6 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        // ================================
-        // 🔵 TAMBAHAN PENTING UNTUK SHOOTER
-        // ================================
         if (capsule.TryGetComponent(out BasicShooterBlue shooterBlue))
         {
             shooterBlue.ownerTile = tile;
@@ -212,27 +218,18 @@ public class GameManager : MonoBehaviour
             return;
         }
         
-        // ================================
-        // 🟢 BASIC SHOOTER GREEN
-        // ================================
         if (capsule.TryGetComponent(out BasicShooterGreen shooterGreen))
         {
             shooterGreen.ownerTile = tile;
             return;
         }
 
-        // ================================
-        // 🟧 BASIC SHOOTER ORANGE
-        // ================================
         if (capsule.TryGetComponent(out BasicShooterOrange shooterOrange))
         {
             shooterOrange.ownerTile = tile;
             return;
         }
-        
-        // ===============================
-        // 🟡 SHOOTER SOLDIER (FINAL SYSTEM)
-        // ===============================
+
         if (capsule.TryGetComponent(out BasicShooterYellowSoldier yellowSoldier))
         {
             yellowSoldier.ownerTile = tile;
@@ -269,9 +266,6 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        // ===============================
-        // FALLBACK WARNING
-        // ===============================
         Debug.LogWarning($"[GameManager] Capsule/Soldier tidak dikenali: {capsule.name}");
     }
 
@@ -315,6 +309,4 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    
-    
 }

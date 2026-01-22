@@ -169,6 +169,7 @@ MonoBehaviour:
     button: {fileID: 0}
     normalSprite: {fileID: 6555858209487075825, guid: 20f994a1740692c4c80a2314031c8b6d, type: 3}
     hoverSprite: {fileID: -7217596639588493494, guid: 25568d9759e97df45a3649add7476fe8, type: 3}
+    textHoverEnabled: 1
     normalTextColor: {r: 0, g: 0, b: 0, a: 1}
     hoverTextColor: {r: 1, g: 1, b: 1, a: 1}
     playHoverSound: 1
@@ -178,6 +179,7 @@ MonoBehaviour:
     button: {fileID: 0}
     normalSprite: {fileID: 3368253194555578171, guid: 3b63a055c3063d041908a0500dcb1cc9, type: 3}
     hoverSprite: {fileID: -2833121098963904301, guid: f6aac8a499af8404cb0965f1c351f0dc, type: 3}
+    textHoverEnabled: 1
     normalTextColor: {r: 0, g: 0, b: 0, a: 1}
     hoverTextColor: {r: 1, g: 1, b: 1, a: 1}
     playHoverSound: 1
@@ -1192,7 +1194,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level 6 Stage 1
+          m_StringArgument: Level 2 Stage 2 Correction 1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1396102250

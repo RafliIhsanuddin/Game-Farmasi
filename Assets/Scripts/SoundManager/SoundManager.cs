@@ -22,7 +22,6 @@ public class SoundManager : MonoBehaviour
     [Header("Wave Music / Start")]
     [SerializeField] private AudioClip waveStartMusic;
 
-    // 🌟 WRONG SFX
     [Header("UI / Validation")]
     [SerializeField] private AudioClip wrongSfx;
 
@@ -46,27 +45,24 @@ public class SoundManager : MonoBehaviour
     private AudioSource bgmLoopSource;
     private Coroutine bgmCoroutine;
 
-    // ==================================
     // VOLUME CONTROLLERS
-    // ==================================
     [Header("Wave SFX Volume (0-1)")]
     [Range(0f, 1f)] [SerializeField] private float bigWaveVolume = 1f;
     [Range(0f, 1f)] [SerializeField] private float sirenVolume = 1f;
 
-    // ==================================
     // WIN SFX
-    // ==================================
     [Header("Win SFX")]
     [SerializeField] private AudioClip winSfx;
 
-    [Tooltip("Volume dasar win SFX (0-3)")]
     [Range(0f, 3f)]
-    [SerializeField] private float winVolume = 1.5f; // default lebih keras
+    [SerializeField] private float winVolume = 1.5f;
 
-    [Tooltip("Multiplier extra saat win (1-3)")]
     [Range(1f, 3f)]
-    [SerializeField] private float winBoostMultiplier = 1.8f; // boost final
+    [SerializeField] private float winBoostMultiplier = 1.8f;
 
+    // CONTROL FLAGS
+    private bool isGamePaused = false;
+    private bool isGameWin = false;
 
     private void Awake()
     {
@@ -86,7 +82,7 @@ public class SoundManager : MonoBehaviour
     }
 
     // ======================
-    // PROJECTILE API (KEEP)
+    // PROJECTILE API
     // ======================
     public void PlayYellowHit() => PlayClip(hitYellowProjectileSfx);
     public void PlayBlueHit()   => PlayClip(hitBlueProjectileSfx);
@@ -96,49 +92,49 @@ public class SoundManager : MonoBehaviour
     public void PlayOrangeHit() => PlayClip(hitOrangeProjectileSfx);
 
     // ======================
-    // WAVE API (KEEP)
+    // WAVE API
     // ======================
     public void PlayBigWaveWarning()
     {
         if (bigWaveWarningSfx == null) return;
-
         GameObject go = Instantiate(audioSourcePrefab, transform);
         AudioSource src = go.GetComponent<AudioSource>();
-
         src.volume = bigWaveVolume;
         src.PlayOneShot(bigWaveWarningSfx);
-
         Destroy(go, destroyDelay);
     }
 
     public void PlayWaveStartMusic()
     {
         if (waveStartMusic == null) return;
-
         GameObject go = Instantiate(audioSourcePrefab, transform);
         AudioSource src = go.GetComponent<AudioSource>();
-
         src.volume = sirenVolume;
         src.PlayOneShot(waveStartMusic);
-
         Destroy(go, destroyDelay);
     }
 
     // ======================
-    // ATOM API (KEEP)
+    // ATOM API
     // ======================
     public void PlayAtomClick() => PlayClip(atomClickSfx);
 
     // ======================
-    // WRONG API (KEEP)
+    // WRONG API
     // ======================
     public void PlayWrong() => PlayClip(wrongSfx);
 
     // ======================
-    // WIN SFX (BOOSTED)
+    // WIN SFX STOP BGM
     // ======================
     public void PlayWin()
     {
+        if (isGameWin) return;
+        isGameWin = true;
+
+        // Stop loop total (sesuai pilihan B)
+        StopBgmLoop();
+
         if (winSfx == null || audioSourcePrefab == null) return;
 
         GameObject go = Instantiate(audioSourcePrefab, transform);
@@ -146,13 +142,13 @@ public class SoundManager : MonoBehaviour
 
         float boosted = Mathf.Clamp(winVolume * winBoostMultiplier, 0f, 3f);
         src.volume = boosted;
-
         src.PlayOneShot(winSfx);
+
         Destroy(go, destroyDelay);
     }
 
     // ======================
-    // BGM LOOP API (KEEP UPDATED)
+    // BGM LOOP CONTROL
     // ======================
     public void PlayBgmLoop()
     {
@@ -174,17 +170,62 @@ public class SoundManager : MonoBehaviour
             bgmLoopSource.Stop();
     }
 
+    // ======================
+    // BGM PAUSE / RESUME
+    // ======================
+    public void PauseBgm()
+    {
+        isGamePaused = true;
+        if (bgmLoopSource != null && bgmLoopSource.isPlaying)
+            bgmLoopSource.Pause();
+    }
+
+    public void ResumeBgm()
+    {
+        isGamePaused = false;
+        if (!isGameWin && bgmLoopSource != null)
+            bgmLoopSource.UnPause();
+    }
+
+    // ======================
+    // BGM COROUTINE (FIXED)
+    // ======================
     private IEnumerator BgmCoroutine()
     {
         while (true)
         {
+            if (isGameWin) yield break;
+
+            // tunggu sampai tidak di-pause
+            if (isGamePaused)
+                yield return new WaitUntil(() => !isGamePaused);
+
             bgmLoopSource.clip = bgmLoopClip;
             bgmLoopSource.Play();
 
-            yield return new WaitForSeconds(bgmLoopClip.length);
+            // hitung durasi clip realtime, tapi patuh pause
+            float t = 0f;
+            while (t < bgmLoopClip.length)
+            {
+                if (!isGamePaused && !isGameWin)
+                    t += Time.unscaledDeltaTime;
+
+                yield return null;
+            }
+
+            if (isGameWin) yield break;
 
             if (useBgmLoopDelay && bgmLoopDelaySeconds > 0f)
-                yield return new WaitForSeconds(bgmLoopDelaySeconds);
+            {
+                float d = 0f;
+                while (d < bgmLoopDelaySeconds)
+                {
+                    if (!isGamePaused && !isGameWin)
+                        d += Time.unscaledDeltaTime;
+
+                    yield return null;
+                }
+            }
         }
     }
 
@@ -197,8 +238,8 @@ public class SoundManager : MonoBehaviour
 
         GameObject go = Instantiate(audioSourcePrefab, transform);
         AudioSource src = go.GetComponent<AudioSource>();
-
         src.PlayOneShot(clip);
+
         Destroy(go, destroyDelay);
     }
 }

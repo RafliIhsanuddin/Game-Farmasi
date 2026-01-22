@@ -9,6 +9,9 @@ public class EndlessUIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI cycleText;
     [SerializeField] private TextMeshProUGUI totalFlagText;
 
+    [Header("Optional Summary Text (Sunnah)")]
+    [SerializeField] private TextMeshProUGUI totalFlagSummaryText; // opsional
+
     [Header("Progress UI per Cycle")]
     [SerializeField] private Slider slider;
     [SerializeField] private RectTransform flagContainer;
@@ -93,7 +96,7 @@ public class EndlessUIController : MonoBehaviour
         foreach (Transform c in flagContainer)
             Destroy(c.gameObject);
 
-        // 2 wave = 2 flags
+        // cycle = 2 wave = 2 flags
         float[] anchors = { 0.25f, 0.75f };
 
         foreach (var t in anchors)
@@ -130,6 +133,10 @@ public class EndlessUIController : MonoBehaviour
     {
         if (totalFlagText)
             totalFlagText.text = $"Flags: {totalFlagsAllCycles}";
+
+        // ===== Optional Summary Output (Sunnah) =====
+        if (totalFlagSummaryText)
+            totalFlagSummaryText.text = $"Total flag captured : {totalFlagsAllCycles}";
     }
 
     // ==== Big Wave ====

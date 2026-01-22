@@ -3,8 +3,9 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using TMPro;
+using System.Collections;
 
-public class HoverImageSwitcher : MonoBehaviour
+public class HoverImageSwitcher_WithReset : MonoBehaviour
 {
     [System.Serializable]
     public class HoverUIData
@@ -30,6 +31,9 @@ public class HoverImageSwitcher : MonoBehaviour
         [Header("Audio")]
         public bool playHoverSound = true;
         public AudioClip hoverSound;
+
+        // INTERNAL
+        [HideInInspector] public bool isHovering = false;
     }
 
     [Header("Hover UI List")]
@@ -62,7 +66,6 @@ public class HoverImageSwitcher : MonoBehaviour
                 data.targetText.color = data.normalTextColor;
 
             data.targetImage.raycastTarget = IsUnlocked(data);
-
             AddHoverEvents(data);
         }
     }
@@ -75,11 +78,9 @@ public class HoverImageSwitcher : MonoBehaviour
 
     private void AddHoverEvents(HoverUIData data)
     {
-        var obj = data.targetImage.gameObject;
-
-        var trig = obj.GetComponent<EventTrigger>();
+        EventTrigger trig = data.targetImage.gameObject.GetComponent<EventTrigger>();
         if (trig == null)
-            trig = obj.AddComponent<EventTrigger>();
+            trig = data.targetImage.gameObject.AddComponent<EventTrigger>();
 
         trig.triggers.Clear();
 
@@ -96,13 +97,15 @@ public class HoverImageSwitcher : MonoBehaviour
     {
         if (!IsUnlocked(data)) return;
 
+        data.isHovering = true;
+
         if (data.targetImage && data.hoverSprite)
             data.targetImage.sprite = data.hoverSprite;
 
         if (data.textHoverEnabled && data.targetText)
             data.targetText.color = data.hoverTextColor;
 
-        if (data.playHoverSound && data.hoverSound)
+        if (audioSource && data.playHoverSound && data.hoverSound)
             audioSource.PlayOneShot(data.hoverSound);
     }
 
@@ -110,10 +113,29 @@ public class HoverImageSwitcher : MonoBehaviour
     {
         if (!IsUnlocked(data)) return;
 
+        data.isHovering = false;
+        ResetToNormal(data);
+    }
+
+    private void ResetToNormal(HoverUIData data)
+    {
         if (data.targetImage && data.normalSprite)
             data.targetImage.sprite = data.normalSprite;
 
         if (data.textHoverEnabled && data.targetText)
             data.targetText.color = data.normalTextColor;
+    }
+
+    private void Update()
+    {
+        // Reset globlal saat timelapse == 0 (atau pause)
+        if (Time.timeScale == 0f)
+        {
+            foreach (var data in hoverUIs)
+            {
+                data.isHovering = false;
+                ResetToNormal(data);
+            }
+        }
     }
 }
