@@ -3639,7 +3639,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 518243991}
   m_HandleRect: {fileID: 518243990}
   m_Direction: 2
-  m_Value: 1.0000001
+  m_Value: 1
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4551,7 +4551,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1853282339}
   m_HandleRect: {fileID: 1853282338}
   m_Direction: 2
-  m_Value: 1.0000001
+  m_Value: 1
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -16020,7 +16020,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1441778565}
   m_HandleRect: {fileID: 1441778564}
   m_Direction: 2
-  m_Value: 1.0000001
+  m_Value: 1
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -16759,7 +16759,7 @@ RectTransform:
   m_GameObject: {fileID: 1660050703}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.16852786, y: 0.2528019, z: 0.1068088}
+  m_LocalScale: {x: 0.12218101, y: 0.2528019, z: 0.1068088}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 290440328}
@@ -17039,14 +17039,14 @@ RectTransform:
   m_GameObject: {fileID: 1696581589}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.13786077, y: 0.23635435, z: 0.08051778}
+  m_LocalScale: {x: 0.11718304, y: 0.23635435, z: 0.08051778}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 799727874}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 190.09999, y: 12.600008}
+  m_AnchoredPosition: {x: 198.9, y: 12.600008}
   m_SizeDelta: {x: 660, y: 438}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1696581593
@@ -18128,6 +18128,12 @@ MonoBehaviour:
   BioRangerCanvas: {fileID: 799727870}
   BioEnemyCanvas: {fileID: 0}
   HowToPlayCanvas: {fileID: 0}
+  whiteCharacter: {fileID: 1501681657}
+  blueCharacter: {fileID: 591013613}
+  pinkCharacter: {fileID: 1511545156}
+  redCharacter: {fileID: 834050719}
+  greenCharacter: {fileID: 428739340}
+  yellowCharacter: {fileID: 290440324}
 --- !u!1 &1821043282
 GameObject:
   m_ObjectHideFlags: 0

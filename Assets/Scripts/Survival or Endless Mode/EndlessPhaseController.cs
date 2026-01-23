@@ -59,13 +59,12 @@ public class EndlessPhaseController : MonoBehaviour
         if (readyButton != null)
             readyButton.SetReadyEnabled(true);
 
-        // ============================================
-        // 🔴 AUDIO: PLAY BGM LOOP + PAUSE UNTUK SELECT
-        // ============================================
+        // =========================
+        // 🔴 AUDIO: STOP/RESET BGM DI SELECT
+        // =========================
         if (SoundManager.Instance != null)
         {
-            SoundManager.Instance.PlayBgmLoop();  // start loop
-            SoundManager.Instance.PauseBgm();     // mute for SELECT
+            SoundManager.Instance.StopBgmLoop();
         }
     }
 
@@ -90,10 +89,13 @@ public class EndlessPhaseController : MonoBehaviour
             ui.OnPlayPhaseStart();
 
         // ==================================================
-        // 🔴 AUDIO: BGM DULUAN → SIRENE OVERLAP DIPERBOLEHKAN
+        // 🔴 AUDIO: BGM DIMULAI DARI AWAL SETIAP MASUK PLAY
         // ==================================================
         if (SoundManager.Instance != null)
-            SoundManager.Instance.ResumeBgm();
+        {
+            SoundManager.Instance.StopBgmLoop();  // reset dulu
+            SoundManager.Instance.PlayBgmLoop();  // mulai loop dari awal
+        }
 
         // original behaviour injection pool
         if (preview != null && waveManager != null)
@@ -150,10 +152,10 @@ public class EndlessPhaseController : MonoBehaviour
             ui.EnterSelectPhase();
 
         // ============================
-        // 🔴 AUDIO: PAUSE BGM DI SELECT
+        // 🔴 AUDIO: STOP/RESET BGM DI SELECT
         // ============================
         if (SoundManager.Instance != null)
-            SoundManager.Instance.PauseBgm();
+            SoundManager.Instance.StopBgmLoop();
     }
 
     private void ApplySelectObjects()

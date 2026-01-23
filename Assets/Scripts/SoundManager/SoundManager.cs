@@ -64,6 +64,9 @@ public class SoundManager : MonoBehaviour
     private bool isGamePaused = false;
     private bool isGameWin = false;
 
+    // === NEW FLAG (FIX BEHAVIOUR) ===
+    private bool bgmWasPlayingBeforePause = false;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -132,7 +135,6 @@ public class SoundManager : MonoBehaviour
         if (isGameWin) return;
         isGameWin = true;
 
-        // Stop loop total (sesuai pilihan B)
         StopBgmLoop();
 
         if (winSfx == null || audioSourcePrefab == null) return;
@@ -160,6 +162,8 @@ public class SoundManager : MonoBehaviour
 
     public void StopBgmLoop()
     {
+        bgmWasPlayingBeforePause = false;
+
         if (bgmCoroutine != null)
         {
             StopCoroutine(bgmCoroutine);
@@ -176,14 +180,25 @@ public class SoundManager : MonoBehaviour
     public void PauseBgm()
     {
         isGamePaused = true;
+
         if (bgmLoopSource != null && bgmLoopSource.isPlaying)
+        {
+            bgmWasPlayingBeforePause = true;
             bgmLoopSource.Pause();
+        }
+        else
+        {
+            bgmWasPlayingBeforePause = false;
+        }
     }
 
     public void ResumeBgm()
     {
         isGamePaused = false;
-        if (!isGameWin && bgmLoopSource != null)
+
+        if (isGameWin) return;
+
+        if (bgmWasPlayingBeforePause && bgmLoopSource != null)
             bgmLoopSource.UnPause();
     }
 
@@ -196,14 +211,12 @@ public class SoundManager : MonoBehaviour
         {
             if (isGameWin) yield break;
 
-            // tunggu sampai tidak di-pause
             if (isGamePaused)
                 yield return new WaitUntil(() => !isGamePaused);
 
             bgmLoopSource.clip = bgmLoopClip;
             bgmLoopSource.Play();
 
-            // hitung durasi clip realtime, tapi patuh pause
             float t = 0f;
             while (t < bgmLoopClip.length)
             {
