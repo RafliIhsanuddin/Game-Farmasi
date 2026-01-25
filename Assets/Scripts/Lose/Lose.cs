@@ -74,6 +74,19 @@ public class Lose : MonoBehaviour
         Debug.Log("[Lose] Waiting " + pauseDelay + " seconds before PAUSE...");
         yield return new WaitForSeconds(pauseDelay);
 
+        // === SUNNAH FINAL COUNT ===
+        var counter = Object.FindFirstObjectByType<ListCounterManager>();
+        if (counter != null)
+        {
+            counter.ForceFinalCount();
+            Debug.Log("[Lose] Final ListCounterManager count applied before pause.");
+        }
+        else
+        {
+            Debug.Log("[Lose] ListCounterManager not found in scene (sunnah only). Skipped final count.");
+        }
+
+        // Freeze
         Time.timeScale = 0f;
         Debug.Log("[Lose] GAME PAUSED (Time.timeScale = 0)");
     }

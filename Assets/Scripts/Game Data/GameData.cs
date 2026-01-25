@@ -22,7 +22,32 @@ public class GameData
     public int BestFlags = 0;
     public int BestEndlessScore = 0;
 
-    // Update dari Endless Session
+    // ============================
+    // TOTAL COUNT (NUCLEUS / ACTIVE OBJECTS)
+    // ============================
+    public int TotalActiveObjects = 0;
+
+    // ============================
+    // CURRENT FLAGS (FINAL FLAGS)
+    // ============================
+    public int CurrentFlags = 0;
+
+    // ============================
+    // FINAL SUN VALUE
+    // ============================
+    public int FinalSuns = 0;
+
+    // ============================
+    // FINAL SCORE (FOR LEADERBOARD)
+    // ============================
+    public int FinalScore = 0;
+
+    // ============================
+    // FINAL PLAYER NAME
+    // ============================
+    public string PlayerName = "";
+
+    // Update dari Endless Session (UNCHANGED)
     public void UpdateEndlessRun(int cycle, int flags)
     {
         // Formula ringan: setiap cycle bernilai 2 poin + flags

@@ -50,6 +50,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage Selection/Stage Selection.unity
     guid: ce74e87c6b03fab4ea5c60a3d4cf518c
+  - enabled: 1
+    path: Assets/Scenes/Leaderboard/Leaderboard Sample.unity
+    guid: 1c66f710b4eef864a9c3cb19316a34e4
+  - enabled: 1
+    path: Assets/Scenes/Leaderboard/PlayerInputName.unity
+    guid: 8a659676dec6156448f0dafe38bfdae8
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

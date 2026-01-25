@@ -5739,7 +5739,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 690522735}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 464096687}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Leaderboard
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &690522735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8110,7 +8122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseUI: {fileID: 2100717459}
   pauseKey: 27
-  blockObject: {fileID: 0}
+  blockObjects: []
 --- !u!4 &972053831
 Transform:
   m_ObjectHideFlags: 0
@@ -9252,16 +9264,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Lose, Assembly-CSharp
-        m_MethodName: RetryLevel
-        m_Mode: 1
+      - m_Target: {fileID: 464096687}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: PlayerInputName
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1089010860
@@ -11615,6 +11627,57 @@ Transform:
   - {fileID: 1853556225}
   m_Father: {fileID: 1605286617}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!1 &1335835697
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1335835699}
+  - component: {fileID: 1335835698}
+  m_Layer: 0
+  m_Name: ListCounterManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1335835698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335835697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5447224f31e877245abcb5fd7674d82a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackedObjects:
+  - {fileID: 1927728406}
+  - {fileID: 1109368734}
+  - {fileID: 1492568831}
+  - {fileID: 1491760166}
+  - {fileID: 1696312513}
+  updateInterval: 0.25
+--- !u!4 &1335835699
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335835697}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 693.4522, y: 300.56427, z: -3.555989}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1349025705
 GameObject:
   m_ObjectHideFlags: 0
@@ -16061,7 +16124,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 464096687}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: ChangeScene
         m_Mode: 5
@@ -18210,7 +18273,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 464096687}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: ChangeScene
         m_Mode: 5
@@ -18219,7 +18282,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Stage 1 Selection
+          m_StringArgument: Stage 2 Selection
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1995232757
@@ -19544,3 +19607,4 @@ SceneRoots:
   - {fileID: 1590329657}
   - {fileID: 360676626}
   - {fileID: 1676539731}
+  - {fileID: 1335835699}

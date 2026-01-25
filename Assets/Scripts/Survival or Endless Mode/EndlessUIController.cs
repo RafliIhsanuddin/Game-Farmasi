@@ -36,6 +36,9 @@ public class EndlessUIController : MonoBehaviour
         currentCycleVisual = 0;
         totalFlagsAllCycles = 0;
 
+        // === NEW: simpan flags ke GameData (hanya flags) ===
+        GameData.Data.CurrentFlags = totalFlagsAllCycles;
+
         UpdateTotalFlagsText();
         UpdateSelectText();
     }
@@ -126,6 +129,10 @@ public class EndlessUIController : MonoBehaviour
         if (fm) fm.Expand();
 
         totalFlagsAllCycles++;
+
+        // === NEW: simpan flags ke GameData (hanya flags) ===
+        GameData.Data.CurrentFlags = totalFlagsAllCycles;
+
         UpdateTotalFlagsText();
     }
 
@@ -151,6 +158,9 @@ public class EndlessUIController : MonoBehaviour
     {
         currentCycleVisual = 0;
         totalFlagsAllCycles = 0;
+
+        // === NEW: reset flags di GameData (hanya flags) ===
+        GameData.Data.CurrentFlags = totalFlagsAllCycles;
 
         UpdateTotalFlagsText();
         UpdateSelectText();

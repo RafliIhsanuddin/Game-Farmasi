@@ -56,6 +56,10 @@ public class GameManager : MonoBehaviour
             sunsEndingText.text = $"final sun value : {suns}";
         // ========================================
 
+        // ==== SUNNAH: SAVE FINAL SUN ====
+        GameData.Data.FinalSuns = suns;
+        // =================================
+
         Vector3 mouseWorld = mainCam.ScreenToWorldPoint(Input.mousePosition);
         mouseWorld.z = 0f;
 
