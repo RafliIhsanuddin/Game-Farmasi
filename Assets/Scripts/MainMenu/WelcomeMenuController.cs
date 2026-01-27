@@ -3,14 +3,18 @@ using TMPro;
 
 public class WelcomeMenuController : MonoBehaviour
 {
-    [Header("Welcome Text (Main Menu) - Sunnah")]
-    [SerializeField] private TextMeshProUGUI welcomeText; 
+    [Header("Welcome Text (Main Menu) - Sunnah (Opsional)")]
+    [SerializeField] private TextMeshProUGUI welcomeText;
 
     [Header("Stage Selection Text - Sunnah (Opsional)")]
     [SerializeField] private TextMeshProUGUI stageSelectionText;
 
     private void Start()
     {
+        // Kalau tidak ada UserManager tidak usah pusing
+        if (UserManager.Instance == null)
+            return;
+
         Refresh();
         UserManager.Instance.OnUserChanged += HandleUserChanged;
     }
@@ -22,13 +26,16 @@ public class WelcomeMenuController : MonoBehaviour
 
     private void Refresh()
     {
+        if (UserManager.Instance == null)
+            return;
+
         string name = UserManager.Instance.CurrentUser;
 
-        // Jika welcomeText di assign → pakai format awal (seperti skrip original)
+        // Sunnah 1
         if (welcomeText)
             welcomeText.text = $"{name}";
 
-        // Jika stageSelectionText di assign → pakai format "Halo, {name}"
+        // Sunnah 2
         if (stageSelectionText)
             stageSelectionText.text = $"Halo, {name}";
     }
