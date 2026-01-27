@@ -22,38 +22,10 @@ public class GameData
     public int BestFlags = 0;
     public int BestEndlessScore = 0;
 
-    // ============================
-    // TOTAL COUNT (NUCLEUS / ACTIVE OBJECTS)
-    // ============================
-    public int TotalActiveObjects = 0;
-
-    // ============================
-    // CURRENT FLAGS (FINAL FLAGS)
-    // ============================
-    public int CurrentFlags = 0;
-
-    // ============================
-    // FINAL SUN VALUE
-    // ============================
-    public int FinalSuns = 0;
-
-    // ============================
-    // FINAL SCORE (FOR LEADERBOARD)
-    // ============================
-    public int FinalScore = 0;
-
-    // ============================
-    // FINAL PLAYER NAME
-    // ============================
-    public string PlayerName = "";
-
-    // Update dari Endless Session (UNCHANGED)
     public void UpdateEndlessRun(int cycle, int flags)
     {
-        // Formula ringan: setiap cycle bernilai 2 poin + flags
         int score = cycle * 2 + flags;
 
-        // Save last run
         LastCycle = cycle;
         LastFlags = flags;
         LastEndlessScore = score;
@@ -66,4 +38,22 @@ public class GameData
 
         Debug.Log($"[GameData] Endless Run Updated | Last: C={cycle}, F={flags}, S={score} | BestImproved={improved}");
     }
+
+    // ============================
+    // SURVIVAL DATA (NEW)
+    // ============================
+    public int TotalActiveObjects = 0;   // nucleus
+    public int FinalSuns = 0;
+    public int CurrentFlags = 0;
+
+    // ============================
+    // PLAYER NAME (LEADERBOARD)
+    // ============================
+    public string PlayerName = "";
+
+    // ============================
+    // FINAL SCORE & RANK
+    // ============================
+    public int FinalScore = 0;
+    public int FinalRank = -1; // 0-based
 }

@@ -1597,7 +1597,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 128.2253}
+  m_AnchoredPosition: {x: 0, y: 92}
   m_SizeDelta: {x: 152.2, y: 51.0428}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1627066344
@@ -1620,7 +1620,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Stage 2
+  m_text: Endless
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
   m_sharedMaterial: {fileID: 3866023056381278409, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
@@ -2138,6 +2138,7 @@ MonoBehaviour:
     button: {fileID: 0}
     normalSprite: {fileID: -8507973731939059039, guid: 44a62602d0053f24dbac7f61fa7887e0, type: 3}
     hoverSprite: {fileID: 3490517037632188572, guid: 11fe544b7a0caee4bbd8bb329f7e8d44, type: 3}
+    textHoverEnabled: 1
     normalTextColor: {r: 0, g: 0, b: 0, a: 1}
     hoverTextColor: {r: 1, g: 1, b: 1, a: 1}
     playHoverSound: 0
@@ -2147,6 +2148,7 @@ MonoBehaviour:
     button: {fileID: 0}
     normalSprite: {fileID: -8507973731939059039, guid: 44a62602d0053f24dbac7f61fa7887e0, type: 3}
     hoverSprite: {fileID: 3490517037632188572, guid: 11fe544b7a0caee4bbd8bb329f7e8d44, type: 3}
+    textHoverEnabled: 1
     normalTextColor: {r: 0, g: 0, b: 0, a: 1}
     hoverTextColor: {r: 1, g: 1, b: 1, a: 1}
     playHoverSound: 0

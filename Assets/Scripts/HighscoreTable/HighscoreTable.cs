@@ -22,56 +22,30 @@ public class HighscoreTable : MonoBehaviour
 
         entryTemplate.gameObject.SetActive(false);
 
-        // Dummy testing leaderboard (Top 5)
-        /*
-        highscoreEntryList = new List<HighscoreEntry>()
-        {
-            new HighscoreEntry("RAF", 5, 120, 80),
-            new HighscoreEntry("KEN", 2,  90, 50),
-            new HighscoreEntry("JOE", 1, 150, 70),
-            new HighscoreEntry("MAX", 3, 110, 40),
-            new HighscoreEntry("RYU", 12, 200, 20),
-        };
-        */
-
-        // ============================
-        // LOAD PLAYER PREFS
-        // ============================
+        // Load PlayerPrefs
         string jsonString = PlayerPrefs.GetString("HighscoreTable", "");
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
 
-        // Null handling
         if (highscores == null || highscores.highscoreEntryList == null)
         {
             highscoreEntryList = new List<HighscoreEntry>();
-
-            Debug.Log("[HighscoreTable] Tidak ada data leaderboard (pertama kali run)");
         }
         else
         {
             highscoreEntryList = highscores.highscoreEntryList;
         }
 
-        // Sort score DESC (tinggi ke rendah)
+        // Sort DESC
         highscoreEntryList.Sort((a, b) => b.score.CompareTo(a.score));
 
-        // Display
-        highscoreEntryTransformList = new List<Transform>();
-        foreach (HighscoreEntry entry in highscoreEntryList)
-        {
-            CreateHighscoreEntryTransform(entry, entryContainer, highscoreEntryTransformList);
-        }
+        // Display only TOP 10
+        int displayCount = Mathf.Min(10, highscoreEntryList.Count);
 
-        // ============================
-        // SAVE PLAYER PREFS (COMMENTED)
-        // ============================
-        /*
-        Highscores highscores = new Highscores { highscoreEntryList = highscoreEntryList };
-        string json = JsonUtility.ToJson(highscores);
-        PlayerPrefs.SetString("HighscoreTable", json);
-        PlayerPrefs.Save();
-        Debug.Log(PlayerPrefs.GetString("HighscoreTable"));
-        */
+        highscoreEntryTransformList = new List<Transform>();
+        for (int i = 0; i < displayCount; i++)
+        {
+            CreateHighscoreEntryTransform(highscoreEntryList[i], entryContainer, highscoreEntryTransformList);
+        }
     }
 
     private void CreateHighscoreEntryTransform(HighscoreEntry highscoreEntry, Transform container, List<Transform> transformList)
@@ -83,7 +57,6 @@ public class HighscoreTable : MonoBehaviour
         entryRectTransform.anchoredPosition = new Vector2(0, -templateHeight * transformList.Count);
         entryTransform.gameObject.SetActive(true);
 
-        // Rank / Pos Display
         int rank = transformList.Count + 1;
         string rankString = rank switch
         {
@@ -93,14 +66,6 @@ public class HighscoreTable : MonoBehaviour
             _ => rank + "TH"
         };
 
-        // Data from entry (NO random)
-        string name = highscoreEntry.name;
-        int flag = highscoreEntry.flag;
-        int sun = highscoreEntry.sun;
-        int nucleus = highscoreEntry.nucleus;
-        int score = highscoreEntry.score;
-
-        // Ambil TMP Fields
         var posText     = entryTransform.Find("Pos").GetComponent<TextMeshProUGUI>();
         var nameText    = entryTransform.Find("Name").GetComponent<TextMeshProUGUI>();
         var flagText    = entryTransform.Find("Flag").GetComponent<TextMeshProUGUI>();
@@ -108,43 +73,41 @@ public class HighscoreTable : MonoBehaviour
         var nucleusText = entryTransform.Find("Nucleus").GetComponent<TextMeshProUGUI>();
         var scoreText   = entryTransform.Find("Score").GetComponent<TextMeshProUGUI>();
 
-        // Display Data
         posText.text     = rankString;
-        nameText.text    = name;
-        flagText.text    = flag.ToString();
-        sunText.text     = sun.ToString();
-        nucleusText.text = nucleus.ToString();
-        scoreText.text   = score.ToString();
+        nameText.text    = highscoreEntry.name;
+        flagText.text    = highscoreEntry.flag.ToString();
+        sunText.text     = highscoreEntry.sun.ToString();
+        nucleusText.text = highscoreEntry.nucleus.ToString();
+        scoreText.text   = highscoreEntry.score.ToString();
 
         transformList.Add(entryTransform);
     }
 
-    private void AddHighscoreEntry(string name, int flag, int sun, int nucleus)
+    // ==== INSERT + RANK (LOGIKA ARCADE) ====
+    public static int InsertAndGetRank(string name, int flag, int sun, int nucleus, int score)
     {
-        // Entry baru (score di-generate otomatis)
-        HighscoreEntry newEntry = new HighscoreEntry(name, flag, sun, nucleus);
-
-        // Load JSON
         string jsonString = PlayerPrefs.GetString("HighscoreTable", "");
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
 
-        // First-run handling
         if (highscores == null || highscores.highscoreEntryList == null)
         {
             highscores = new Highscores();
             highscores.highscoreEntryList = new List<HighscoreEntry>();
         }
 
-        // Tambah entry baru
+        HighscoreEntry newEntry = new HighscoreEntry(name, flag, sun, nucleus, score);
         highscores.highscoreEntryList.Add(newEntry);
 
-        // Sorting DESC by score
         highscores.highscoreEntryList.Sort((a, b) => b.score.CompareTo(a.score));
 
-        // Save kembali
+        int rank = highscores.highscoreEntryList.FindIndex(e =>
+            e.name == name && e.score == score);
+
         string json = JsonUtility.ToJson(highscores);
         PlayerPrefs.SetString("HighscoreTable", json);
         PlayerPrefs.Save();
+
+        return rank; // 0-based
     }
 
     [System.Serializable]
@@ -162,15 +125,13 @@ public class HighscoreTable : MonoBehaviour
         public int nucleus;
         public int score;
 
-        public HighscoreEntry(string name, int flag, int sun, int nucleus)
+        public HighscoreEntry(string name, int flag, int sun, int nucleus, int score)
         {
             this.name = name;
             this.flag = flag;
             this.sun = sun;
             this.nucleus = nucleus;
-
-            // Score formula survival endless (skala 0–1000)
-            score = (nucleus * 3) + (sun * 1) + (flag * 10);
+            this.score = score;
         }
     }
 }

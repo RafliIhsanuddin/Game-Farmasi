@@ -3,20 +3,12 @@ using TMPro;
 
 public class FinalResultDisplay : MonoBehaviour
 {
-    [Header("Final Flags Text")]
-    [SerializeField] private TextMeshProUGUI finalFlagText;
-
-    [Header("Final Nucleus Text")]
-    [SerializeField] private TextMeshProUGUI finalNucleusText;
-
-    [Header("Final Suns Text")]
-    [SerializeField] private TextMeshProUGUI finalSunsText;
-
-    [Header("Final Score Text")]
-    [SerializeField] private TextMeshProUGUI finalScoreText;
-
-    [Header("Final Player Name Text")]
-    [SerializeField] private TextMeshProUGUI finalPlayerNameText; // NEW
+    [Header("Final Flags Text")]    [SerializeField] private TextMeshProUGUI finalFlagText;
+    [Header("Final Nucleus Text")]  [SerializeField] private TextMeshProUGUI finalNucleusText;
+    [Header("Final Suns Text")]     [SerializeField] private TextMeshProUGUI finalSunsText;
+    [Header("Final Score Text")]    [SerializeField] private TextMeshProUGUI finalScoreText;
+    [Header("Final Player Name Text")] [SerializeField] private TextMeshProUGUI finalPlayerNameText;
+    [Header("Leaderboard Rank Text")] [SerializeField] private TextMeshProUGUI leaderboardRankText;
 
     private void Start()
     {
@@ -25,34 +17,28 @@ public class FinalResultDisplay : MonoBehaviour
 
     public void UpdateDisplay()
     {
-        // Ambil data dari GameData
         int flags   = GameData.Data.CurrentFlags;
         int nucleus = GameData.Data.TotalActiveObjects;
         int suns    = GameData.Data.FinalSuns;
+        int score   = GameData.Data.FinalScore;
+        int rank    = GameData.Data.FinalRank; // 0-based
 
-        // Display value
-        if (finalFlagText != null)
-            finalFlagText.text = $"total final flag : {flags}";
+        if (finalFlagText)     finalFlagText.text     = $"total final flag : {flags}";
+        if (finalNucleusText)  finalNucleusText.text  = $"total nucleus remain : {nucleus}";
+        if (finalSunsText)     finalSunsText.text     = $"total suns earned : {suns}";
+        if (finalScoreText)    finalScoreText.text    = $"total score : {score}";
+        if (finalPlayerNameText) finalPlayerNameText.text = $"player : {GameData.Data.PlayerName}";
 
-        if (finalNucleusText != null)
-            finalNucleusText.text = $"total nucleus remain : {nucleus}";
+        if (leaderboardRankText)
+        {
+            string msg = $"skor di leaderboard yang di tampilkan hanya urutan 1 sampai 10 : kamu urutan ke-{rank + 1}";
 
-        if (finalSunsText != null)
-            finalSunsText.text = $"total suns earned : {suns}";
+            if (rank >= 10)
+                msg += "\n(kamu tidak masuk 10 besar)";
+            else
+                msg += "\n(kamu masuk 10 besar)";
 
-        // ==== SCORE CALCULATION ====
-        int score = (flags * 150) + (nucleus * 50) + (suns * 1);
-
-        // Display Score
-        if (finalScoreText != null)
-            finalScoreText.text = $"total score : {score}";
-
-        // ==== SAVE SCORE FOR LEADERBOARD (NEW) ====
-        GameData.Data.FinalScore = score;
-
-        // ==== DISPLAY PLAYER NAME (NEW) ====
-        string playerName = GameData.Data.PlayerName;
-        if (finalPlayerNameText != null)
-            finalPlayerNameText.text = $"player : {playerName}";
+            leaderboardRankText.text = msg;
+        }
     }
 }

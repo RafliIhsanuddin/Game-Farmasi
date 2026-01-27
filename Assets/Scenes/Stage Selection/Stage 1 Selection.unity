@@ -2671,7 +2671,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: 163.5}
+  m_AnchoredPosition: {x: -10, y: 107}
   m_SizeDelta: {x: 152.2, y: 33.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1627066344
@@ -2694,7 +2694,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Stage 1
+  m_text: Tutorial
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
   m_sharedMaterial: {fileID: 3866023056381278409, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
@@ -2721,15 +2721,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 33.54
+  m_fontSizeBase: 33.54
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -3616,6 +3616,7 @@ MonoBehaviour:
     button: {fileID: 2094008672}
     normalSprite: {fileID: 3081898844155430518, guid: cc437b91cc1b32f4ea73ec9eb4ed439c, type: 3}
     hoverSprite: {fileID: 3490517037632188572, guid: 11fe544b7a0caee4bbd8bb329f7e8d44, type: 3}
+    textHoverEnabled: 1
     normalTextColor: {r: 0, g: 0, b: 0, a: 1}
     hoverTextColor: {r: 1, g: 1, b: 1, a: 1}
     playHoverSound: 0
@@ -3625,6 +3626,7 @@ MonoBehaviour:
     button: {fileID: 1692781418}
     normalSprite: {fileID: 3081898844155430518, guid: cc437b91cc1b32f4ea73ec9eb4ed439c, type: 3}
     hoverSprite: {fileID: 3490517037632188572, guid: 11fe544b7a0caee4bbd8bb329f7e8d44, type: 3}
+    textHoverEnabled: 1
     normalTextColor: {r: 0, g: 0, b: 0, a: 1}
     hoverTextColor: {r: 1, g: 1, b: 1, a: 1}
     playHoverSound: 0
@@ -3634,6 +3636,7 @@ MonoBehaviour:
     button: {fileID: 1917642543}
     normalSprite: {fileID: 3081898844155430518, guid: cc437b91cc1b32f4ea73ec9eb4ed439c, type: 3}
     hoverSprite: {fileID: 3490517037632188572, guid: 11fe544b7a0caee4bbd8bb329f7e8d44, type: 3}
+    textHoverEnabled: 1
     normalTextColor: {r: 0, g: 0, b: 0, a: 1}
     hoverTextColor: {r: 1, g: 1, b: 1, a: 1}
     playHoverSound: 0
@@ -3643,6 +3646,7 @@ MonoBehaviour:
     button: {fileID: 490551340}
     normalSprite: {fileID: 3081898844155430518, guid: cc437b91cc1b32f4ea73ec9eb4ed439c, type: 3}
     hoverSprite: {fileID: 3490517037632188572, guid: 11fe544b7a0caee4bbd8bb329f7e8d44, type: 3}
+    textHoverEnabled: 1
     normalTextColor: {r: 0, g: 0, b: 0, a: 1}
     hoverTextColor: {r: 1, g: 1, b: 1, a: 1}
     playHoverSound: 0
@@ -3652,6 +3656,7 @@ MonoBehaviour:
     button: {fileID: 126977299}
     normalSprite: {fileID: 3081898844155430518, guid: cc437b91cc1b32f4ea73ec9eb4ed439c, type: 3}
     hoverSprite: {fileID: 3490517037632188572, guid: 11fe544b7a0caee4bbd8bb329f7e8d44, type: 3}
+    textHoverEnabled: 1
     normalTextColor: {r: 0, g: 0, b: 0, a: 1}
     hoverTextColor: {r: 1, g: 1, b: 1, a: 1}
     playHoverSound: 0
@@ -3661,6 +3666,7 @@ MonoBehaviour:
     button: {fileID: 495171882}
     normalSprite: {fileID: 3081898844155430518, guid: cc437b91cc1b32f4ea73ec9eb4ed439c, type: 3}
     hoverSprite: {fileID: 3490517037632188572, guid: 11fe544b7a0caee4bbd8bb329f7e8d44, type: 3}
+    textHoverEnabled: 1
     normalTextColor: {r: 0, g: 0, b: 0, a: 1}
     hoverTextColor: {r: 1, g: 1, b: 1, a: 1}
     playHoverSound: 0
