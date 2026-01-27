@@ -12,7 +12,7 @@ public class UserManager : MonoBehaviour
     public List<string> Users = new();
     public string CurrentUser = "Player";
 
-    public event Action<string> OnUserChanged; // notify welcome panel
+    public event Action<string> OnUserChanged;
 
     private void Awake()
     {
@@ -25,21 +25,27 @@ public class UserManager : MonoBehaviour
         }
 
         LoadUsers();
+
+        // fail-safe: jika list kosong → tambahkan "Player"
+        if (Users.Count == 0)
+        {
+            Users.Add("Player");
+            SaveUsers();
+        }
     }
 
     public void LoadUsers()
     {
         string raw = PlayerPrefs.GetString(USERS_KEY, "");
         if (!string.IsNullOrEmpty(raw))
-        {
             Users = new List<string>(raw.Split('|'));
-        }
 
         string lastUser = PlayerPrefs.GetString(LAST_USER_KEY, "");
         if (!string.IsNullOrEmpty(lastUser))
             CurrentUser = lastUser;
+        else
+            CurrentUser = "Player";
 
-        // sync to GameData
         GameData.Data.PlayerName = CurrentUser;
     }
 
@@ -61,5 +67,39 @@ public class UserManager : MonoBehaviour
         Debug.Log($"[UserManager] CurrentUser changed to: {name}");
 
         OnUserChanged?.Invoke(name);
+    }
+
+    public bool DeleteUser(string name)
+    {
+        // fail-safe: tidak boleh hapus user terakhir
+        if (Users.Count <= 1)
+        {
+            Debug.LogWarning("[UserManager] Gagal delete karena minimal 1 user harus ada!");
+            return false;
+        }
+
+        // tidak boleh hapus user terakhir yang sedang aktif (kalau cuma 1)
+        if (Users.Count == 1 && name == CurrentUser)
+            return false;
+
+        bool removed = Users.Remove(name);
+        if (!removed)
+            return false;
+
+        SaveUsers();
+
+        // jika user terhapus adalah activeUser → switch ke user pertama
+        if (name == CurrentUser)
+        {
+            CurrentUser = Users[0];
+            PlayerPrefs.SetString(LAST_USER_KEY, CurrentUser);
+            PlayerPrefs.Save();
+
+            GameData.Data.PlayerName = CurrentUser;
+            OnUserChanged?.Invoke(CurrentUser);
+        }
+
+        Debug.Log($"[UserManager] Deleted user: {name}");
+        return true;
     }
 }
