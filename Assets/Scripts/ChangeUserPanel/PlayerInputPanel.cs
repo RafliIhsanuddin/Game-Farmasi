@@ -16,6 +16,11 @@ public class PlayerInputPanel : MonoBehaviour
     private const int maxChars = 15;
 
     public Action OnUserAdded;
+    
+    private void OnEnable()
+    {
+        if (feedbackText) feedbackText.text = "";
+    }
 
     public void Show()
     {

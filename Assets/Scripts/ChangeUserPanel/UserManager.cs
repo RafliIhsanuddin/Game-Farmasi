@@ -26,12 +26,15 @@ public class UserManager : MonoBehaviour
 
         LoadUsers();
 
-        // fail-safe: jika list kosong → tambahkan "Player"
+        // fail-safe: minimal 1 user
         if (Users.Count == 0)
         {
             Users.Add("Player");
             SaveUsers();
         }
+
+        // sinkron ke GameData
+        GameData.Data.PlayerName = CurrentUser;
     }
 
     public void LoadUsers()
@@ -39,9 +42,11 @@ public class UserManager : MonoBehaviour
         string raw = PlayerPrefs.GetString(USERS_KEY, "");
         if (!string.IsNullOrEmpty(raw))
             Users = new List<string>(raw.Split('|'));
+        else
+            Users = new List<string>() { "Player" };
 
         string lastUser = PlayerPrefs.GetString(LAST_USER_KEY, "");
-        if (!string.IsNullOrEmpty(lastUser))
+        if (!string.IsNullOrEmpty(lastUser) && Users.Contains(lastUser))
             CurrentUser = lastUser;
         else
             CurrentUser = "Player";
@@ -56,8 +61,14 @@ public class UserManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    public void SetUser(string name)
+    public bool SetUser(string name)
     {
+        if (!Users.Contains(name))
+        {
+            Debug.LogWarning($"[UserManager] Cannot set user '{name}' karena tidak ada!");
+            return false;
+        }
+
         CurrentUser = name;
         PlayerPrefs.SetString(LAST_USER_KEY, name);
         PlayerPrefs.Save();
@@ -67,36 +78,41 @@ public class UserManager : MonoBehaviour
         Debug.Log($"[UserManager] CurrentUser changed to: {name}");
 
         OnUserChanged?.Invoke(name);
+        return true;
+    }
+
+    // digunakan ChangeUserPanel untuk enable delete atau tidak
+    public bool CanDeleteUser(string name)
+    {
+        if (Users.Count <= 1) return false;      // minimal 1 user harus ada
+        if (name == "Player") return false;      // Player = fail-safe default
+        return true;
     }
 
     public bool DeleteUser(string name)
     {
-        // fail-safe: tidak boleh hapus user terakhir
-        if (Users.Count <= 1)
+        if (!CanDeleteUser(name))
         {
-            Debug.LogWarning("[UserManager] Gagal delete karena minimal 1 user harus ada!");
+            Debug.LogWarning($"[UserManager] DeleteUser blocked untuk: {name}");
             return false;
         }
 
-        // tidak boleh hapus user terakhir yang sedang aktif (kalau cuma 1)
-        if (Users.Count == 1 && name == CurrentUser)
-            return false;
-
         bool removed = Users.Remove(name);
-        if (!removed)
-            return false;
+        if (!removed) return false;
 
         SaveUsers();
 
-        // jika user terhapus adalah activeUser → switch ke user pertama
         if (name == CurrentUser)
         {
+            // switch fallback user
             CurrentUser = Users[0];
             PlayerPrefs.SetString(LAST_USER_KEY, CurrentUser);
             PlayerPrefs.Save();
 
             GameData.Data.PlayerName = CurrentUser;
             OnUserChanged?.Invoke(CurrentUser);
+
+            Debug.Log($"[UserManager] ActiveUser fallback ke: {CurrentUser}");
         }
 
         Debug.Log($"[UserManager] Deleted user: {name}");

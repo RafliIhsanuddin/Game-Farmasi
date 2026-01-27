@@ -4,8 +4,8 @@ using TMPro;
 
 public class ChangeUserPanel : MonoBehaviour
 {
-    [Header("Panel Root")]
-    [SerializeField] private GameObject panel;
+    [Header("Root Panel")]
+    [SerializeField] private GameObject panelRoot;
 
     [Header("Scroll Content")]
     [SerializeField] private Transform content;
@@ -13,57 +13,72 @@ public class ChangeUserPanel : MonoBehaviour
     [Header("User Button Prefab")]
     [SerializeField] private GameObject userButtonPrefab;
 
-    [Header("Delete Button")]
-    [SerializeField] private Button deleteButton;
-
-    [Header("Add Panel")]
+    [Header("Player Input Panel")]
     [SerializeField] private PlayerInputPanel playerInputPanel;
 
-    // Optional (sunnah)
-    [Header("Delete Confirm Panel (Optional)")]
+    [Header("Delete Confirm Panel")]
     [SerializeField] private GameObject confirmDeletePanel;
     [SerializeField] private TextMeshProUGUI confirmText;
+
+    [Header("Choose Button")]
+    [SerializeField] private Button chooseButton;
+
+    [Header("Delete Button")]
+    [SerializeField] private Button deleteButton;
 
     private string selectedUser = null;
 
     private void OnEnable()
     {
-        RefreshUserList();
+        Refresh();
     }
 
     public void Show()
     {
-        panel.SetActive(true);
-        RefreshUserList();
+        panelRoot.SetActive(true);
+        Refresh();
     }
 
     public void Hide()
     {
-        panel.SetActive(false);
+        panelRoot.SetActive(false);
     }
 
-    private void RefreshUserList()
+    public void Refresh()
     {
-        selectedUser = UserManager.Instance.CurrentUser;
+        selectedUser = null;
 
-        foreach (Transform child in content)
-            Destroy(child.gameObject);
+        foreach (Transform c in content)
+            Destroy(c.gameObject);
 
         foreach (var user in UserManager.Instance.Users)
         {
-            var btnObj = Instantiate(userButtonPrefab, content);
-            var txt = btnObj.GetComponentInChildren<TextMeshProUGUI>();
+            var obj = Instantiate(userButtonPrefab, content);
+            var txt = obj.GetComponentInChildren<TextMeshProUGUI>();
             txt.text = user;
 
-            var btn = btnObj.GetComponent<Button>();
-            btn.onClick.AddListener(() =>
+            var button = obj.GetComponent<Button>();
+            button.onClick.AddListener(() =>
             {
                 selectedUser = user;
-                UserManager.Instance.SetUser(user);
-                RefreshUserList();
+                UpdateButtonsState();   // update choose & delete visibility
+                RefreshHighlight();
             });
 
-            Highlight(btnObj, user == selectedUser);
+            Highlight(obj, user == selectedUser);
+        }
+
+        UpdateButtonsState();
+
+        if (confirmDeletePanel) confirmDeletePanel.SetActive(false);
+    }
+
+    private void RefreshHighlight()
+    {
+        foreach (Transform c in content)
+        {
+            var txt = c.GetComponentInChildren<TextMeshProUGUI>();
+            Highlight(c.gameObject, txt.text == selectedUser);
         }
     }
 
@@ -71,30 +86,72 @@ public class ChangeUserPanel : MonoBehaviour
     {
         var img = obj.GetComponent<Image>();
         if (img)
-            img.color = active ? new Color(0.3f, 0.75f, 0.3f) : Color.white;
+            img.color = active ? new Color(0.3f, 1f, 0.3f) : Color.white;
     }
 
-    // BUTTON ADD
-    public void OpenAddUser()
-    {
-        playerInputPanel.Show();
-        Hide();
-    }
+    // ====== BUTTON LOGIC ======
 
-    // BUTTON DELETE
-    public void DeleteSelectedUser()
+    private void UpdateButtonsState()
     {
-        if (string.IsNullOrEmpty(selectedUser))
+        // Choose
+        chooseButton.gameObject.SetActive(selectedUser != null);
+
+        // Delete (mode B hidden)
+        if (selectedUser == null)
         {
-            Debug.LogWarning("[ChangeUserPanel] tidak ada user terpilih");
+            deleteButton.gameObject.SetActive(false);
             return;
         }
 
-        bool success = UserManager.Instance.DeleteUser(selectedUser);
+        bool canDelete = UserManager.Instance.CanDeleteUser(selectedUser);
+        deleteButton.gameObject.SetActive(canDelete);
+    }
 
-        if (!success)
-            Debug.LogWarning("[ChangeUserPanel] delete gagal (fail-safe)");
+    public void OnChooseUser()
+    {
+        if (selectedUser == null) return;
 
-        RefreshUserList();
+        UserManager.Instance.SetUser(selectedUser);
+
+        Debug.Log($"[ChangeUserPanel] Chosen user: {selectedUser}");
+
+        RefreshHighlight();
+    }
+
+    public void RequestDeleteUser()
+    {
+        if (selectedUser == null) return;
+
+        if (!UserManager.Instance.CanDeleteUser(selectedUser))
+        {
+            Debug.Log($"[ChangeUserPanel] Tidak bisa hapus user: {selectedUser}");
+            return;
+        }
+
+        confirmText.text = $"Hapus user \"{selectedUser}\" ?";
+        confirmDeletePanel.SetActive(true);
+    }
+
+    public void ConfirmDeleteYes()
+    {
+        if (selectedUser != null)
+            UserManager.Instance.DeleteUser(selectedUser);
+
+        confirmDeletePanel.SetActive(false);
+        Refresh();
+    }
+
+    public void ConfirmDeleteNo()
+    {
+        confirmDeletePanel.SetActive(false);
+    }
+
+    public void OpenAddUserPanel()
+    {
+        playerInputPanel.Show();
+        playerInputPanel.OnUserAdded = () =>
+        {
+            Refresh();
+        };
     }
 }
