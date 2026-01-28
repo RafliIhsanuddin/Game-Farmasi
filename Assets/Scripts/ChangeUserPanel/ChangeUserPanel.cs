@@ -135,7 +135,10 @@ public class ChangeUserPanel : MonoBehaviour
     public void ConfirmDeleteYes()
     {
         if (selectedUser != null)
+        {
+            HighscoreTable.DeleteScoresByName(selectedUser);
             UserManager.Instance.DeleteUser(selectedUser);
+        }
 
         confirmDeletePanel.SetActive(false);
         Refresh();

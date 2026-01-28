@@ -6,8 +6,10 @@ public class HighscoreTable : MonoBehaviour
 {
     private Transform entryContainer;
     private Transform entryTemplate;
-    private List<HighscoreEntry> highscoreEntryList;
-    private List<Transform> highscoreEntryTransformList;
+    private List<HighscoreEntry> entryList;
+    private List<Transform> entryTransformList;
+
+    private const string PREF_KEY = "HighscoreTable";
 
     private void Awake()
     {
@@ -21,43 +23,45 @@ public class HighscoreTable : MonoBehaviour
         }
 
         entryTemplate.gameObject.SetActive(false);
+        LoadAndDisplay();
+    }
 
-        // Load PlayerPrefs
-        string jsonString = PlayerPrefs.GetString("HighscoreTable", "");
-        Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
+    private void LoadAndDisplay()
+    {
+        entryList = LoadEntries();
 
-        if (highscores == null || highscores.highscoreEntryList == null)
-        {
-            highscoreEntryList = new List<HighscoreEntry>();
-        }
-        else
-        {
-            highscoreEntryList = highscores.highscoreEntryList;
-        }
+        entryList.Sort((a, b) => b.score.CompareTo(a.score));
 
-        // Sort DESC
-        highscoreEntryList.Sort((a, b) => b.score.CompareTo(a.score));
+        int displayCount = Mathf.Min(10, entryList.Count);
+        entryTransformList = new List<Transform>();
 
-        // Display only TOP 10
-        int displayCount = Mathf.Min(10, highscoreEntryList.Count);
-
-        highscoreEntryTransformList = new List<Transform>();
         for (int i = 0; i < displayCount; i++)
         {
-            CreateHighscoreEntryTransform(highscoreEntryList[i], entryContainer, highscoreEntryTransformList);
+            CreateEntry(entryList[i], entryContainer, entryTransformList);
         }
     }
 
-    private void CreateHighscoreEntryTransform(HighscoreEntry highscoreEntry, Transform container, List<Transform> transformList)
+    private List<HighscoreEntry> LoadEntries()
     {
-        float templateHeight = 40f;
+        string json = PlayerPrefs.GetString(PREF_KEY, "");
+        Highscores highscores = JsonUtility.FromJson<Highscores>(json);
 
-        Transform entryTransform = Instantiate(entryTemplate, container);
-        RectTransform entryRectTransform = entryTransform.GetComponent<RectTransform>();
-        entryRectTransform.anchoredPosition = new Vector2(0, -templateHeight * transformList.Count);
-        entryTransform.gameObject.SetActive(true);
+        if (highscores == null || highscores.list == null)
+            return new List<HighscoreEntry>();
 
-        int rank = transformList.Count + 1;
+        return highscores.list;
+    }
+
+    private void CreateEntry(HighscoreEntry entry, Transform container, List<Transform> list)
+    {
+        float height = 40f;
+
+        Transform t = Instantiate(entryTemplate, container);
+        RectTransform rt = t.GetComponent<RectTransform>();
+        rt.anchoredPosition = new Vector2(0, -height * list.Count);
+        t.gameObject.SetActive(true);
+
+        int rank = list.Count + 1;
         string rankString = rank switch
         {
             1 => "1ST",
@@ -66,54 +70,79 @@ public class HighscoreTable : MonoBehaviour
             _ => rank + "TH"
         };
 
-        var posText     = entryTransform.Find("Pos").GetComponent<TextMeshProUGUI>();
-        var nameText    = entryTransform.Find("Name").GetComponent<TextMeshProUGUI>();
-        var flagText    = entryTransform.Find("Flag").GetComponent<TextMeshProUGUI>();
-        var sunText     = entryTransform.Find("Sun").GetComponent<TextMeshProUGUI>();
-        var nucleusText = entryTransform.Find("Nucleus").GetComponent<TextMeshProUGUI>();
-        var scoreText   = entryTransform.Find("Score").GetComponent<TextMeshProUGUI>();
+        t.Find("Pos").GetComponent<TextMeshProUGUI>().text = rankString;
+        t.Find("Name").GetComponent<TextMeshProUGUI>().text = entry.name;
+        t.Find("Flag").GetComponent<TextMeshProUGUI>().text = entry.flag.ToString();
+        t.Find("Sun").GetComponent<TextMeshProUGUI>().text = entry.sun.ToString();
+        t.Find("Nucleus").GetComponent<TextMeshProUGUI>().text = entry.nucleus.ToString();
+        t.Find("Score").GetComponent<TextMeshProUGUI>().text = entry.score.ToString();
 
-        posText.text     = rankString;
-        nameText.text    = highscoreEntry.name;
-        flagText.text    = highscoreEntry.flag.ToString();
-        sunText.text     = highscoreEntry.sun.ToString();
-        nucleusText.text = highscoreEntry.nucleus.ToString();
-        scoreText.text   = highscoreEntry.score.ToString();
-
-        transformList.Add(entryTransform);
+        list.Add(t);
     }
 
-    // ==== INSERT + RANK (LOGIKA ARCADE) ====
-    public static int InsertAndGetRank(string name, int flag, int sun, int nucleus, int score)
+    public static int Insert(string name, int flag, int sun, int nucleus, int score)
     {
-        string jsonString = PlayerPrefs.GetString("HighscoreTable", "");
-        Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
+        string json = PlayerPrefs.GetString(PREF_KEY, "");
+        Highscores highscores = JsonUtility.FromJson<Highscores>(json);
 
-        if (highscores == null || highscores.highscoreEntryList == null)
-        {
-            highscores = new Highscores();
-            highscores.highscoreEntryList = new List<HighscoreEntry>();
-        }
+        if (highscores == null || highscores.list == null)
+            highscores = new Highscores() { list = new List<HighscoreEntry>() };
 
-        HighscoreEntry newEntry = new HighscoreEntry(name, flag, sun, nucleus, score);
-        highscores.highscoreEntryList.Add(newEntry);
+        HighscoreEntry entry = new HighscoreEntry(name, flag, sun, nucleus, score);
+        highscores.list.Add(entry);
 
-        highscores.highscoreEntryList.Sort((a, b) => b.score.CompareTo(a.score));
+        highscores.list.Sort((a, b) => b.score.CompareTo(a.score));
 
-        int rank = highscores.highscoreEntryList.FindIndex(e =>
-            e.name == name && e.score == score);
+        int rank = highscores.list.FindIndex(x =>
+            x.name == name &&
+            x.flag == flag &&
+            x.sun == sun &&
+            x.nucleus == nucleus &&
+            x.score == score
+        );
 
-        string json = JsonUtility.ToJson(highscores);
-        PlayerPrefs.SetString("HighscoreTable", json);
+        json = JsonUtility.ToJson(highscores);
+        PlayerPrefs.SetString(PREF_KEY, json);
         PlayerPrefs.Save();
 
-        return rank; // 0-based
+        Debug.Log($"[HighscoreTable] Insert Score={score} Rank={rank + 1}");
+        return rank;
+    }
+
+    public static void ResetGlobal()
+    {
+        PlayerPrefs.DeleteKey(PREF_KEY);
+        PlayerPrefs.Save();
+        Debug.Log($"[HighscoreTable] ALL SCORE RESET!");
+    }
+
+    // ============= FUNGSI BARU =============
+    public static void DeleteScoresByName(string name)
+    {
+        string json = PlayerPrefs.GetString(PREF_KEY, "");
+        Highscores highscores = JsonUtility.FromJson<Highscores>(json);
+
+        if (highscores == null || highscores.list == null)
+            return;
+
+        int before = highscores.list.Count;
+
+        highscores.list.RemoveAll(e => e.name == name);
+
+        int after = highscores.list.Count;
+        int removed = before - after;
+
+        json = JsonUtility.ToJson(highscores);
+        PlayerPrefs.SetString(PREF_KEY, json);
+        PlayerPrefs.Save();
+
+        Debug.Log($"[HighscoreTable] Removed {removed} score entries milik '{name}'");
     }
 
     [System.Serializable]
     public class Highscores
     {
-        public List<HighscoreEntry> highscoreEntryList;
+        public List<HighscoreEntry> list;
     }
 
     [System.Serializable]

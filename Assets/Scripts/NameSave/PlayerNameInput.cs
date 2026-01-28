@@ -32,7 +32,7 @@ public class PlayerNameInput : MonoBehaviour
         Debug.Log($"[PlayerNameInput] Score Calculated | Flags={flags}, Suns={suns}, Nucleus={nucleus}, Score={score}");
 
         // === INSERT SCORE KE LEADERBOARD ===
-        int rank = HighscoreTable.InsertAndGetRank(
+        int rank = HighscoreTable.Insert(
             GameData.Data.PlayerName,
             flags,
             suns,
