@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class BioManager : MonoBehaviour
 {
-    [Header("Semua Canvas (Optional)")]
-    [SerializeField] private GameObject StageSelectionCanvas;
-    [SerializeField] private GameObject BioRangerCanvas;
-    [SerializeField] private GameObject BioEnemyCanvas;
-    [SerializeField] private GameObject HowToPlayCanvas;
+    [Header("Semua Panel / GameObject (Optional)")]
+    [SerializeField] private GameObject stageSelectionGO;
+    [SerializeField] private GameObject bioRangerGO;
+    [SerializeField] private GameObject bioEnemyGO;
+    [SerializeField] private GameObject howToPlayGO;
 
     [Header("Characters (Optional)")]
     [SerializeField] private GameObject whiteCharacter;
@@ -22,44 +22,44 @@ public class BioManager : MonoBehaviour
     }
 
     // =====================
-    // CANVAS BEHAVIOUR
+    // GAMEOBJECT / PANEL BEHAVIOUR
     // =====================
     public void ShowStageSelection()
     {
-        if (StageSelectionCanvas != null) StageSelectionCanvas.SetActive(true);
-        if (BioRangerCanvas != null) BioRangerCanvas.SetActive(false);
-        if (BioEnemyCanvas != null) BioEnemyCanvas.SetActive(false);
-        if (HowToPlayCanvas != null) HowToPlayCanvas.SetActive(false);
+        if (stageSelectionGO != null) stageSelectionGO.SetActive(true);
+        if (bioRangerGO != null) bioRangerGO.SetActive(false);
+        if (bioEnemyGO != null) bioEnemyGO.SetActive(false);
+        if (howToPlayGO != null) howToPlayGO.SetActive(false);
 
         DisableAllCharacters();
     }
 
     public void ShowBioRanger()
     {
-        if (StageSelectionCanvas != null) StageSelectionCanvas.SetActive(false);
-        if (BioRangerCanvas != null) BioRangerCanvas.SetActive(true);
-        if (BioEnemyCanvas != null) BioEnemyCanvas.SetActive(false);
-        if (HowToPlayCanvas != null) HowToPlayCanvas.SetActive(false);
+        if (stageSelectionGO != null) stageSelectionGO.SetActive(false);
+        if (bioRangerGO != null) bioRangerGO.SetActive(true);
+        if (bioEnemyGO != null) bioEnemyGO.SetActive(false);
+        if (howToPlayGO != null) howToPlayGO.SetActive(false);
 
         DisableAllCharacters();
     }
 
     public void ShowBioEnemy()
     {
-        if (StageSelectionCanvas != null) StageSelectionCanvas.SetActive(false);
-        if (BioRangerCanvas != null) BioRangerCanvas.SetActive(false);
-        if (BioEnemyCanvas != null) BioEnemyCanvas.SetActive(true);
-        if (HowToPlayCanvas != null) HowToPlayCanvas.SetActive(false);
+        if (stageSelectionGO != null) stageSelectionGO.SetActive(false);
+        if (bioRangerGO != null) bioRangerGO.SetActive(false);
+        if (bioEnemyGO != null) bioEnemyGO.SetActive(true);
+        if (howToPlayGO != null) howToPlayGO.SetActive(false);
 
         DisableAllCharacters();
     }
 
     public void ShowHowToPlay()
     {
-        if (StageSelectionCanvas != null) StageSelectionCanvas.SetActive(false);
-        if (BioRangerCanvas != null) BioRangerCanvas.SetActive(false);
-        if (BioEnemyCanvas != null) BioEnemyCanvas.SetActive(false);
-        if (HowToPlayCanvas != null) HowToPlayCanvas.SetActive(true);
+        if (stageSelectionGO != null) stageSelectionGO.SetActive(false);
+        if (bioRangerGO != null) bioRangerGO.SetActive(false);
+        if (bioEnemyGO != null) bioEnemyGO.SetActive(false);
+        if (howToPlayGO != null) howToPlayGO.SetActive(true);
 
         DisableAllCharacters();
     }
