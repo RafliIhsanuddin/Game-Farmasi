@@ -269,6 +269,12 @@ public class GameManager : MonoBehaviour
             orangeSoldier.ownerTile = tile;
             return;
         }
+        
+        if (capsule.TryGetComponent(out BasicShooterBlackSoldier blackSoldier))
+        {
+            blackSoldier.ownerTile = tile;
+            return;
+        }
 
         Debug.LogWarning($"[GameManager] Capsule/Soldier tidak dikenali: {capsule.name}");
     }

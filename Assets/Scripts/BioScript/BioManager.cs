@@ -8,13 +8,21 @@ public class BioManager : MonoBehaviour
     [SerializeField] private GameObject bioEnemyGO;
     [SerializeField] private GameObject howToPlayGO;
 
-    [Header("Characters (Optional)")]
+    [Header("Ranger Characters (Optional)")]
     [SerializeField] private GameObject whiteCharacter;
     [SerializeField] private GameObject blueCharacter;
     [SerializeField] private GameObject pinkCharacter;
     [SerializeField] private GameObject redCharacter;
     [SerializeField] private GameObject greenCharacter;
     [SerializeField] private GameObject yellowCharacter;
+
+    [Header("Enemy Characters (Optional)")]
+    [SerializeField] private GameObject purpleEnemy;
+    [SerializeField] private GameObject redEnemy;
+    [SerializeField] private GameObject fungiEnemy;
+    [SerializeField] private GameObject virusEnemy;
+    [SerializeField] private GameObject protozoaEnemy;
+    [SerializeField] private GameObject helminthEnemy;
 
     private void Start()
     {
@@ -31,7 +39,8 @@ public class BioManager : MonoBehaviour
         if (bioEnemyGO != null) bioEnemyGO.SetActive(false);
         if (howToPlayGO != null) howToPlayGO.SetActive(false);
 
-        DisableAllCharacters();
+        DisableAllRangers();
+        DisableAllEnemies();
     }
 
     public void ShowBioRanger()
@@ -41,7 +50,8 @@ public class BioManager : MonoBehaviour
         if (bioEnemyGO != null) bioEnemyGO.SetActive(false);
         if (howToPlayGO != null) howToPlayGO.SetActive(false);
 
-        DisableAllCharacters();
+        DisableAllRangers();
+        DisableAllEnemies();
     }
 
     public void ShowBioEnemy()
@@ -51,7 +61,8 @@ public class BioManager : MonoBehaviour
         if (bioEnemyGO != null) bioEnemyGO.SetActive(true);
         if (howToPlayGO != null) howToPlayGO.SetActive(false);
 
-        DisableAllCharacters();
+        DisableAllRangers();
+        DisableAllEnemies();
     }
 
     public void ShowHowToPlay()
@@ -61,13 +72,14 @@ public class BioManager : MonoBehaviour
         if (bioEnemyGO != null) bioEnemyGO.SetActive(false);
         if (howToPlayGO != null) howToPlayGO.SetActive(true);
 
-        DisableAllCharacters();
+        DisableAllRangers();
+        DisableAllEnemies();
     }
 
     // =====================
-    // CHARACTER BEHAVIOUR
+    // RANGER BEHAVIOUR
     // =====================
-    private void DisableAllCharacters()
+    private void DisableAllRangers()
     {
         if (whiteCharacter != null) whiteCharacter.SetActive(false);
         if (blueCharacter != null) blueCharacter.SetActive(false);
@@ -77,7 +89,7 @@ public class BioManager : MonoBehaviour
         if (yellowCharacter != null) yellowCharacter.SetActive(false);
     }
 
-    private void ShowOnlyCharacter(GameObject target)
+    private void ShowOnlyRanger(GameObject target)
     {
         if (whiteCharacter != null) whiteCharacter.SetActive(target == whiteCharacter);
         if (blueCharacter != null) blueCharacter.SetActive(target == blueCharacter);
@@ -87,10 +99,23 @@ public class BioManager : MonoBehaviour
         if (yellowCharacter != null) yellowCharacter.SetActive(target == yellowCharacter);
     }
 
-    public void ShowWhite() => ShowOnlyCharacter(whiteCharacter);
-    public void ShowBlue() => ShowOnlyCharacter(blueCharacter);
-    public void ShowPink() => ShowOnlyCharacter(pinkCharacter);
-    public void ShowRed() => ShowOnlyCharacter(redCharacter);
-    public void ShowGreen() => ShowOnlyCharacter(greenCharacter);
-    public void ShowYellow() => ShowOnlyCharacter(yellowCharacter);
+    public void ShowWhite()  => ShowOnlyRanger(whiteCharacter);
+    public void ShowBlue()   => ShowOnlyRanger(blueCharacter);
+    public void ShowPink()   => ShowOnlyRanger(pinkCharacter);
+    public void ShowRed()    => ShowOnlyRanger(redCharacter);
+    public void ShowGreen()  => ShowOnlyRanger(greenCharacter);
+    public void ShowYellow() => ShowOnlyRanger(yellowCharacter);
+
+    // =====================
+    // ENEMY BEHAVIOUR
+    // =====================
+    private void DisableAllEnemies()
+    {
+        if (purpleEnemy != null) purpleEnemy.SetActive(false);
+        if (redEnemy != null) redEnemy.SetActive(false);
+        if (fungiEnemy != null) fungiEnemy.SetActive(false);
+        if (virusEnemy != null) virusEnemy.SetActive(false);
+        if (protozoaEnemy != null) protozoaEnemy.SetActive(false);
+        if (helminthEnemy != null) helminthEnemy.SetActive(false);
+    }
 }
