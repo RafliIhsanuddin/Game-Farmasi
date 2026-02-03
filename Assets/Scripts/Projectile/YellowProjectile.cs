@@ -5,22 +5,34 @@ public class YellowProjectile : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float speed = 5f;
 
-    [Header("Damage Primary")]
+    // =========================
+    // 🦠 DAMAGE ALL BACTERIA
+    // =========================
+    [Header("Damage Bacteria")]
     [SerializeField] private int damagePurple = 1;
-
-    [Header("Damage Second")]
     [SerializeField] private int damageRed = 1;
+    [SerializeField] private int damageYellow = 1;
+    [SerializeField] private int damagePink = 1;
+    [SerializeField] private int damageOrange = 1;
     [SerializeField] private int damageGreen = 1;
+    [SerializeField] private int damageBlue = 1;
 
-    [Header("Damage Third")]
+    // =========================
+    // 🧬 DAMAGE VIRUS
+    // =========================
+    [Header("Damage Virus")]
+    [SerializeField] private int damageVirus = 1;
+
+    // =========================
+    // 👾 DAMAGE OTHER ENEMIES
+    // =========================
+    [Header("Damage Other Enemies")]
     [SerializeField] private int damageMushroom = 1;
     [SerializeField] private int damageProtozoa = 1;
     [SerializeField] private int damageHelminth = 1;
 
     [Header("Lifetime")]
     [SerializeField] private float lifeTime = 25f;
-
-    
 
     private void Start()
     {
@@ -34,7 +46,10 @@ public class YellowProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // TARGET UTAMA
+        // =========================
+        // 🦠 ALL BACTERIA (EXPLICIT)
+        // =========================
+
         if (other.TryGetComponent<BacteriaControllerPurple>(out var purple))
         {
             SoundManager.Instance?.PlayYellowHit();
@@ -43,11 +58,34 @@ public class YellowProjectile : MonoBehaviour
             return;
         }
 
-        // TARGET LAIN
         if (other.TryGetComponent<BacteriaControllerRed>(out var red))
         {
             SoundManager.Instance?.PlayYellowHit();
             red.ProjectileHit(damageRed);
+            Destroy(gameObject);
+            return;
+        }
+
+        if (other.TryGetComponent<BacteriaControllerYellow>(out var yellow))
+        {
+            SoundManager.Instance?.PlayYellowHit();
+            yellow.ProjectileHit(damageYellow);
+            Destroy(gameObject);
+            return;
+        }
+
+        if (other.TryGetComponent<BacteriaControllerPink>(out var pink))
+        {
+            SoundManager.Instance?.PlayYellowHit();
+            pink.ProjectileHit(damagePink);
+            Destroy(gameObject);
+            return;
+        }
+
+        if (other.TryGetComponent<BacteriaControllerOrange>(out var orange))
+        {
+            SoundManager.Instance?.PlayYellowHit();
+            orange.ProjectileHit(damageOrange);
             Destroy(gameObject);
             return;
         }
@@ -59,6 +97,30 @@ public class YellowProjectile : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        if (other.TryGetComponent<BacteriaControllerBlue>(out var blue))
+        {
+            SoundManager.Instance?.PlayYellowHit();
+            blue.ProjectileHit(damageBlue);
+            Destroy(gameObject);
+            return;
+        }
+
+        // =========================
+        // 🧬 VIRUS
+        // =========================
+
+        if (other.TryGetComponent<VirusController>(out var virus))
+        {
+            SoundManager.Instance?.PlayYellowHit();
+            virus.ProjectileHit(damageVirus);
+            Destroy(gameObject);
+            return;
+        }
+
+        // =========================
+        // 👾 OTHER ENEMIES
+        // =========================
 
         if (other.TryGetComponent<MushroomController>(out var mushroom))
         {

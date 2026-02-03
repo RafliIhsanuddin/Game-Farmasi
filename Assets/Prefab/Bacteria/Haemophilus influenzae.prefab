@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.005
   spawnPoint: {fileID: 0}
-  bacteriaVisual: {fileID: 254277185198658771}
+  bacteriaVisual: {fileID: 5468321675223011063}
   hitParticleEffect: {fileID: 1679775133954856216}
   health: 20
   atomPrefab: {fileID: 7919829580706015601, guid: 89b06313bb28c1b4a8d6b4658a33aabb, type: 3}

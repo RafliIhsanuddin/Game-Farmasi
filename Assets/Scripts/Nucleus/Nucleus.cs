@@ -6,7 +6,6 @@ public class Nucleus : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // 🔒 Hanya boleh bereaksi SATU KALI
         if (hasTriggered) return;
 
         // ===============================
@@ -16,6 +15,38 @@ public class Nucleus : MonoBehaviour
         {
             hasTriggered = true;
             green.Hit();
+            Destroy(gameObject);
+            return;
+        }
+
+        if (collision.TryGetComponent<BacteriaControllerYellow>(out var yellow))
+        {
+            hasTriggered = true;
+            yellow.Hit();
+            Destroy(gameObject);
+            return;
+        }
+
+        if (collision.TryGetComponent<BacteriaControllerPink>(out var pink))
+        {
+            hasTriggered = true;
+            pink.Hit();
+            Destroy(gameObject);
+            return;
+        }
+
+        if (collision.TryGetComponent<BacteriaControllerOrange>(out var orange))
+        {
+            hasTriggered = true;
+            orange.Hit();
+            Destroy(gameObject);
+            return;
+        }
+
+        if (collision.TryGetComponent<BacteriaControllerBlue>(out var blue))
+        {
+            hasTriggered = true;
+            blue.Hit();
             Destroy(gameObject);
             return;
         }

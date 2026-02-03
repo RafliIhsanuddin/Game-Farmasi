@@ -111,14 +111,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  damagePurple: 7
+  damagePurple: 20
   damageRed: 4
+  damageYellow: 10
+  damagePink: 4
+  damageOrange: 0
   damageGreen: 4
+  damageBlue: 5
   damageMushroom: 3
   damageProtozoa: 3
   damageHelminth: 3
   lifeTime: 25
-  hitYellowProjectileSfx: {fileID: 8300000, guid: 0efe8ad1e1190cb408780794468493c7, type: 3}
 --- !u!1 &5611937598076168823
 GameObject:
   m_ObjectHideFlags: 0

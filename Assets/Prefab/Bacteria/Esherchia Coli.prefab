@@ -19696,7 +19696,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7608728064955405233}
-  - component: {fileID: 6421598143109393138}
   - component: {fileID: 2745555461683239052}
   - component: {fileID: 9025071340321901502}
   m_Layer: 8
@@ -19723,25 +19722,6 @@ Transform:
   - {fileID: 5154416959987862258}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6421598143109393138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8659335391057523239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3677eae709305084da0aba1ee28eebcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.005
-  spawnPoint: {fileID: 0}
-  bacteriaVisual: {fileID: 8659335391057523239}
-  hitParticleEffect: {fileID: 5187709790183708122}
-  health: 20
-  atomPrefab: {fileID: 7919829580706015601, guid: 89b06313bb28c1b4a8d6b4658a33aabb, type: 3}
-  atomDropChance: 1
 --- !u!114 &2745555461683239052
 MonoBehaviour:
   m_ObjectHideFlags: 0

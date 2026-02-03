@@ -5,18 +5,31 @@ public class RedProjectile : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float speed = 5f;
 
-    [Header("Damage Primary")]
-    [SerializeField] private int damageGreen = 1;
-    
-    [Header("Damage Second")]
+    // =========================
+    // 🦠 DAMAGE ALL BACTERIA
+    // =========================
+    [Header("Damage Bacteria")]
     [SerializeField] private int damagePurple = 1;
-    [SerializeField] private int damageHelminth = 1;
-    
-    [Header("Damage Third")]
     [SerializeField] private int damageRed = 1;
+    [SerializeField] private int damageYellow = 1;
+    [SerializeField] private int damagePink = 1;
+    [SerializeField] private int damageOrange = 1;
+    [SerializeField] private int damageGreen = 1;
+    [SerializeField] private int damageBlue = 1;
+
+    // =========================
+    // 🧬 DAMAGE VIRUS
+    // =========================
+    [Header("Damage Virus")]
+    [SerializeField] private int damageVirus = 1;
+
+    // =========================
+    // 👾 DAMAGE OTHER ENEMIES
+    // =========================
+    [Header("Damage Other Enemies")]
     [SerializeField] private int damageMushroom = 1;
     [SerializeField] private int damageProtozoa = 1;
-    
+    [SerializeField] private int damageHelminth = 1;
 
     [Header("Lifetime")]
     [SerializeField] private float lifeTime = 25f;
@@ -33,34 +46,9 @@ public class RedProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // ===============================
-        // TARGET UTAMA : BACTERIA GREEN
-        // ===============================
-        /*if (other.TryGetComponent<BacteriaControllerGreen>(out var green))
-        {
-            green.ProjectileDead();   // 💀 mati langsung
-            Destroy(gameObject);
-            return;
-        }*/
-        
-        if (other.TryGetComponent<BacteriaControllerGreen>(out var green))
-        {
-            SoundManager.Instance?.PlayRedHit();
-            green.ProjectileHit(damageGreen);
-            Destroy(gameObject);
-            return;
-        }
-        
-        // ===============================
-        // TARGET LAIN (PAKAI DAMAGE)
-        // ===============================
-        if (other.TryGetComponent<BacteriaControllerRed>(out var red))
-        {
-            SoundManager.Instance?.PlayRedHit();
-            red.ProjectileHit(damageRed);
-            Destroy(gameObject);
-            return;
-        }
+        // =========================
+        // 🦠 ALL BACTERIA (EXPLICIT)
+        // =========================
 
         if (other.TryGetComponent<BacteriaControllerPurple>(out var purple))
         {
@@ -69,6 +57,70 @@ public class RedProjectile : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        if (other.TryGetComponent<BacteriaControllerRed>(out var red))
+        {
+            SoundManager.Instance?.PlayRedHit();
+            red.ProjectileHit(damageRed);
+            Destroy(gameObject);
+            return;
+        }
+
+        if (other.TryGetComponent<BacteriaControllerYellow>(out var yellow))
+        {
+            SoundManager.Instance?.PlayRedHit();
+            yellow.ProjectileHit(damageYellow);
+            Destroy(gameObject);
+            return;
+        }
+
+        if (other.TryGetComponent<BacteriaControllerPink>(out var pink))
+        {
+            SoundManager.Instance?.PlayRedHit();
+            pink.ProjectileHit(damagePink);
+            Destroy(gameObject);
+            return;
+        }
+
+        if (other.TryGetComponent<BacteriaControllerOrange>(out var orange))
+        {
+            SoundManager.Instance?.PlayRedHit();
+            orange.ProjectileHit(damageOrange);
+            Destroy(gameObject);
+            return;
+        }
+
+        if (other.TryGetComponent<BacteriaControllerGreen>(out var green))
+        {
+            SoundManager.Instance?.PlayRedHit();
+            green.ProjectileHit(damageGreen);
+            Destroy(gameObject);
+            return;
+        }
+
+        if (other.TryGetComponent<BacteriaControllerBlue>(out var blue))
+        {
+            SoundManager.Instance?.PlayRedHit();
+            blue.ProjectileHit(damageBlue);
+            Destroy(gameObject);
+            return;
+        }
+
+        // =========================
+        // 🧬 VIRUS
+        // =========================
+
+        if (other.TryGetComponent<VirusController>(out var virus))
+        {
+            SoundManager.Instance?.PlayRedHit();
+            virus.ProjectileHit(damageVirus);
+            Destroy(gameObject);
+            return;
+        }
+
+        // =========================
+        // 👾 OTHER ENEMIES
+        // =========================
 
         if (other.TryGetComponent<MushroomController>(out var mushroom))
         {
@@ -94,7 +146,4 @@ public class RedProjectile : MonoBehaviour
             return;
         }
     }
-    
-    
-    
 }

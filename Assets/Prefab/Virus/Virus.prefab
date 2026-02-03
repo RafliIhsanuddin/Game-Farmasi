@@ -14742,7 +14742,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4339644820817868822}
-  - component: {fileID: 835923781035559576}
+  - component: {fileID: 748782032894422570}
   - component: {fileID: 809364108760731623}
   m_Layer: 8
   m_Name: Virus
@@ -14768,7 +14768,7 @@ Transform:
   - {fileID: 991729206222448373}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &835923781035559576
+--- !u!114 &748782032894422570
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14777,16 +14777,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 5747463354546977687}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 171403648fe82af47b6eceb5f5f919ae, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a3c763db3d1a9c43a3233dbea82fb58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.003
   spawnPoint: {fileID: 0}
-  bacteriaVisual: {fileID: 2181007859898350770}
+  virusVisual: {fileID: 2181007859898350770}
   hitParticleEffect: {fileID: 2422812870958245913}
   health: 20
   atomPrefab: {fileID: 7919829580706015601, guid: 89b06313bb28c1b4a8d6b4658a33aabb, type: 3}
-  atomDropChance: 1
+  atomDropChance: 0.979
 --- !u!61 &809364108760731623
 BoxCollider2D:
   m_ObjectHideFlags: 0
