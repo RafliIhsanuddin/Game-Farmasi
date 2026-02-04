@@ -52,12 +52,7 @@ public class BacteriaControllerBlue : MonoBehaviour
     {
         if (isHit) return;
 
-        // ✅ SAMA SEPERTI YANG SEHARUSNYA (aman)
-        transform.position -= new Vector3(
-            speed * Time.fixedDeltaTime,
-            0f,
-            0f
-        );
+        transform.position -= new Vector3(speed, 0f, 0f);
     }
 
     // =========================

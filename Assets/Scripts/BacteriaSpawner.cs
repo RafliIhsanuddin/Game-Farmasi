@@ -1,8 +1,6 @@
 using UnityEngine;
-using System.Collections.Generic;
 using System.Collections;
-
-
+using System.Collections.Generic;
 
 public class BacteriaSpawner : MonoBehaviour
 {
@@ -31,7 +29,6 @@ public class BacteriaSpawner : MonoBehaviour
 
     public bool IsSpawning => isSpawning;
 
-    // ====== STATE UNTUK MODE GROUPED (Versi B) ======
     private int groupedTargetAmount = 0;
     private int groupedSpawned = 0;
 
@@ -84,7 +81,7 @@ public class BacteriaSpawner : MonoBehaviour
     }
 
     // ===============================
-    // COUNT ALL ALIVE (dipakai WaveManager)
+    // COUNT ALL ALIVE
     // ===============================
     public int CountAllAlive()
     {
@@ -92,6 +89,11 @@ public class BacteriaSpawner : MonoBehaviour
         total += FindObjectsByType<BacteriaControllerGreen>(FindObjectsSortMode.None).Length;
         total += FindObjectsByType<BacteriaControllerRed>(FindObjectsSortMode.None).Length;
         total += FindObjectsByType<BacteriaControllerPurple>(FindObjectsSortMode.None).Length;
+        total += FindObjectsByType<BacteriaControllerBlue>(FindObjectsSortMode.None).Length;
+        total += FindObjectsByType<BacteriaControllerOrange>(FindObjectsSortMode.None).Length;
+        total += FindObjectsByType<BacteriaControllerPink>(FindObjectsSortMode.None).Length;
+        total += FindObjectsByType<BacteriaControllerYellow>(FindObjectsSortMode.None).Length;
+        total += FindObjectsByType<VirusController>(FindObjectsSortMode.None).Length;
         total += FindObjectsByType<MushroomController>(FindObjectsSortMode.None).Length;
         total += FindObjectsByType<ProtozoaController>(FindObjectsSortMode.None).Length;
         total += FindObjectsByType<HelminthController>(FindObjectsSortMode.None).Length;
@@ -107,7 +109,7 @@ public class BacteriaSpawner : MonoBehaviour
         int spawned = 0;
 
         float noFreeLineTimer = 0f;
-        const float NO_FREE_LINE_RESYNC_AFTER = 2.0f;
+        const float NO_FREE_LINE_RESYNC_AFTER = 2f;
 
         while (!cancelRequested && spawned < amount)
         {
@@ -120,33 +122,22 @@ public class BacteriaSpawner : MonoBehaviour
                 if (free == null)
                 {
                     noFreeLineTimer += Time.deltaTime;
-
                     if (noFreeLineTimer >= NO_FREE_LINE_RESYNC_AFTER)
                     {
-                        Debug.Log("[Spawner] SinglePerLine stuck? Resync...");
                         SyncOccupiedStateFromScene();
                         noFreeLineTimer = 0f;
                     }
-
                     yield return null;
                     continue;
                 }
 
-                noFreeLineTimer = 0f;
                 SpawnEnemyAndLock(free);
                 spawned++;
                 yield return new WaitForSeconds(delay);
             }
             else
             {
-                if (spawnPoints.Count == 0)
-                {
-                    yield return null;
-                    continue;
-                }
-
-                SpawnPointSlot randomSlot = spawnPoints[Random.Range(0, spawnPoints.Count)];
-                SpawnEnemyNoLock(randomSlot);
+                SpawnEnemyNoLock(spawnPoints[Random.Range(0, spawnPoints.Count)]);
                 spawned++;
                 yield return new WaitForSeconds(delay);
             }
@@ -159,189 +150,89 @@ public class BacteriaSpawner : MonoBehaviour
     private SpawnPointSlot GetFreeLine()
     {
         foreach (var p in spawnPoints)
-        {
-            if (p == null) continue;
-            if (!p.occupied) return p;
-        }
+            if (p != null && !p.occupied)
+                return p;
         return null;
     }
 
     // ===============================
-    // GROUPED (VERSI B: per line, tunggu mati)
+    // GROUPED MODE
     // ===============================
     private IEnumerator SpawnGroupedPerLineFixedAmountCoroutine()
     {
         isSpawning = true;
 
-        if (spawnPoints.Count == 0)
-        {
-            isSpawning = false;
-            OnWaveSpawnComplete?.Invoke();
-            yield break;
-        }
-
-        Debug.Log("[Spawner] Mode MultiPerLineGrouped (Versi B) aktif.");
-
-        // Mulai loop per baris
         foreach (var line in spawnPoints)
-        {
-            if (line == null) continue;
-            StartCoroutine(HandleLineGroupLoop(line));
-        }
+            if (line != null)
+                StartCoroutine(HandleLineGroupLoop(line));
 
-        // Tunggu sampai semua jumlah spawn tercapai
         while (!cancelRequested && groupedSpawned < groupedTargetAmount)
             yield return null;
 
-        // Stop spawn baru
         cancelRequested = true;
-
         isSpawning = false;
-        Debug.Log("[Spawner] Wave Grouped selesai di-spawn semua bakteri!");
         OnWaveSpawnComplete?.Invoke();
     }
 
     private IEnumerator HandleLineGroupLoop(SpawnPointSlot line)
     {
-        while (!cancelRequested)
+        while (!cancelRequested && groupedSpawned < groupedTargetAmount)
         {
-            if (groupedSpawned >= groupedTargetAmount)
-                yield break;
+            GameObject prefab = bacteriaPrefabs[Random.Range(0, bacteriaPrefabs.Count)];
+            int count = Mathf.Min(Random.Range(minPerLine, maxPerLine + 1), groupedTargetAmount - groupedSpawned);
+            float delay = Random.Range(minDelayPerLine, maxDelayPerLine);
 
-            if (bacteriaPrefabs.Count == 0)
+            for (int i = 0; i < count; i++)
             {
-                yield return null;
-                continue;
-            }
-
-            // Pilih tipe bakteri acak untuk baris ini
-            GameObject selectedPrefab = bacteriaPrefabs[Random.Range(0, bacteriaPrefabs.Count)];
-
-            // Tentukan jumlah bakteri di baris ini
-            int perLineCount = Random.Range(minPerLine, maxPerLine + 1);
-
-            // Clamp supaya tidak melebihi target global
-            int remaining = groupedTargetAmount - groupedSpawned;
-            if (perLineCount > remaining)
-                perLineCount = remaining;
-
-            // Kalau sudah tidak ada yang perlu di-spawn, keluar
-            if (perLineCount <= 0)
-                yield break;
-
-            // Tentukan delay acak untuk baris ini
-            float lineDelay = Random.Range(minDelayPerLine, maxDelayPerLine);
-
-            Debug.Log($"[Spawner] {line.name}: Grup baru {perLineCount}x {selectedPrefab.name} | delay antar bakteri: {lineDelay:F2}s");
-
-            // Spawn batch di baris ini
-            for (int i = 0; i < perLineCount && !cancelRequested; i++)
-            {
-                GameObject newBacteria = Instantiate(selectedPrefab, line.transform.position, Quaternion.identity);
-                LinkSpawnPoint(line, newBacteria);
+                GameObject enemy = Instantiate(prefab, line.transform.position, Quaternion.identity);
+                LinkSpawnPoint(line, enemy);
                 groupedSpawned++;
-
-                if (groupedSpawned >= groupedTargetAmount)
-                    break;
-
-                yield return new WaitForSeconds(lineDelay);
+                yield return new WaitForSeconds(delay);
             }
 
-            // Tunggu semua bakteri tipe ini di baris ini mati sebelum lanjut grup baru
-            if (!cancelRequested)
-                yield return StartCoroutine(WaitUntilAllOfTypeInLineDead(line, selectedPrefab.name));
-
-            // Jeda antar grup
-            if (!cancelRequested)
-                yield return new WaitForSeconds(delayBetweenGroups);
+            yield return StartCoroutine(WaitUntilAllOfTypeInLineDead(line, prefab));
+            yield return new WaitForSeconds(delayBetweenGroups);
         }
     }
 
-    private IEnumerator WaitUntilAllOfTypeInLineDead(SpawnPointSlot line, string prefabName)
+    private IEnumerator WaitUntilAllOfTypeInLineDead(SpawnPointSlot line, GameObject prefab)
     {
-        while (!cancelRequested && CountAliveOfTypeInLine(line, prefabName) > 0)
+        while (!cancelRequested && CountAliveOfTypeInLine(line, prefab) > 0)
             yield return new WaitForSeconds(0.5f);
-
-        Debug.Log($"[Spawner] {line.name}: Semua {prefabName} di baris ini sudah mati. Grup baru siap!");
     }
 
-    private int CountAliveOfTypeInLine(SpawnPointSlot line, string prefabName)
+    // ===============================
+    // CORE SCRIPT-BASED
+    // ===============================
+    private int CountAliveOfTypeInLine(SpawnPointSlot line, GameObject prefab)
     {
         int count = 0;
 
-        if (prefabName.Contains("Green"))
+        void Count<T>() where T : MonoBehaviour
         {
-            var arr = FindObjectsByType<BacteriaControllerGreen>(FindObjectsSortMode.None);
-            foreach (var b in arr)
-                if (b.spawnPoint == line) count++;
+            foreach (var e in FindObjectsByType<T>(FindObjectsSortMode.None))
+            {
+                var f = typeof(T).GetField("spawnPoint");
+                if (f != null && (object)f.GetValue(e) == (object)line)
+                    count++;
+            }
         }
 
-        if (prefabName.Contains("Purple"))
-        {
-            var arr = FindObjectsByType<BacteriaControllerPurple>(FindObjectsSortMode.None);
-            foreach (var b in arr)
-                if (b.spawnPoint == line) count++;
-        }
-
-        if (prefabName.Contains("Red"))
-        {
-            var arr = FindObjectsByType<BacteriaControllerRed>(FindObjectsSortMode.None);
-            foreach (var b in arr)
-                if (b.spawnPoint == line) count++;
-        }
-
-        if (prefabName.Contains("Mushroom"))
-        {
-            var arr = FindObjectsByType<MushroomController>(FindObjectsSortMode.None);
-            foreach (var b in arr)
-                if (b.spawnPoint == line) count++;
-        }
-
-        if (prefabName.Contains("Protozoa"))
-        {
-            var arr = FindObjectsByType<ProtozoaController>(FindObjectsSortMode.None);
-            foreach (var b in arr)
-                if (b.spawnPoint == line) count++;
-        }
-
-        if (prefabName.Contains("Helminth"))
-        {
-            var arr = FindObjectsByType<HelminthController>(FindObjectsSortMode.None);
-            foreach (var b in arr)
-                if (b.spawnPoint == line) count++;
-        }
+        if (prefab.GetComponent<BacteriaControllerGreen>()) Count<BacteriaControllerGreen>();
+        if (prefab.GetComponent<BacteriaControllerRed>()) Count<BacteriaControllerRed>();
+        if (prefab.GetComponent<BacteriaControllerPurple>()) Count<BacteriaControllerPurple>();
+        if (prefab.GetComponent<BacteriaControllerBlue>()) Count<BacteriaControllerBlue>();
+        if (prefab.GetComponent<BacteriaControllerOrange>()) Count<BacteriaControllerOrange>();
+        if (prefab.GetComponent<BacteriaControllerPink>()) Count<BacteriaControllerPink>();
+        if (prefab.GetComponent<BacteriaControllerYellow>()) Count<BacteriaControllerYellow>();
+        if (prefab.GetComponent<VirusController>()) Count<VirusController>();
+        if (prefab.GetComponent<MushroomController>()) Count<MushroomController>();
+        if (prefab.GetComponent<ProtozoaController>()) Count<ProtozoaController>();
+        if (prefab.GetComponent<HelminthController>()) Count<HelminthController>();
 
         return count;
     }
 
-    // ===============================
-    // SPAWN HELPERS
-    // ===============================
-    private void SpawnEnemyNoLock(SpawnPointSlot slot)
-    {
-        if (slot == null || bacteriaPrefabs.Count == 0) return;
-
-        GameObject prefab = bacteriaPrefabs[Random.Range(0, bacteriaPrefabs.Count)];
-        GameObject enemy = Instantiate(prefab, slot.transform.position, Quaternion.identity);
-        LinkSpawnPoint(slot, enemy);
-    }
-
-    private void SpawnEnemyAndLock(SpawnPointSlot slot)
-    {
-        if (slot == null || bacteriaPrefabs.Count == 0) return;
-        if (slot.occupied) return;
-
-        GameObject prefab = bacteriaPrefabs[Random.Range(0, bacteriaPrefabs.Count)];
-        GameObject enemy = Instantiate(prefab, slot.transform.position, Quaternion.identity);
-        LinkSpawnPoint(slot, enemy);
-
-        slot.SetOccupied(enemy);
-        slotToEnemy[slot] = enemy;
-    }
-
-    // ===============================
-    // OCCUPIED MAINTENANCE
-    // ===============================
     private void CleanupDeadOccupancies()
     {
         if (slotToEnemy.Count == 0) return;
@@ -349,64 +240,70 @@ public class BacteriaSpawner : MonoBehaviour
         List<SpawnPointSlot> toClear = null;
 
         foreach (var kv in slotToEnemy)
-        {
-            SpawnPointSlot slot = kv.Key;
-            GameObject enemy = kv.Value;
-
-            if (slot == null || enemy == null)
-            {
-                toClear ??= new List<SpawnPointSlot>();
-                toClear.Add(slot);
-            }
-        }
+            if (kv.Key == null || kv.Value == null)
+                (toClear ??= new List<SpawnPointSlot>()).Add(kv.Key);
 
         if (toClear == null) return;
 
-        for (int i = 0; i < toClear.Count; i++)
+        foreach (var slot in toClear)
         {
-            SpawnPointSlot slot = toClear[i];
-            if (slot != null)
-                slot.ClearOccupied();
-
+            slot?.ClearOccupied();
             slotToEnemy.Remove(slot);
         }
+    }
+
+    private void SpawnEnemyNoLock(SpawnPointSlot slot)
+    {
+        if (slot == null || bacteriaPrefabs.Count == 0) return;
+        GameObject enemy = Instantiate(bacteriaPrefabs[Random.Range(0, bacteriaPrefabs.Count)], slot.transform.position, Quaternion.identity);
+        LinkSpawnPoint(slot, enemy);
+    }
+
+    private void SpawnEnemyAndLock(SpawnPointSlot slot)
+    {
+        if (slot == null || slot.occupied || bacteriaPrefabs.Count == 0) return;
+
+        GameObject enemy = Instantiate(bacteriaPrefabs[Random.Range(0, bacteriaPrefabs.Count)], slot.transform.position, Quaternion.identity);
+        LinkSpawnPoint(slot, enemy);
+        slot.SetOccupied(enemy);
+        slotToEnemy[slot] = enemy;
     }
 
     private void ForceClearInvalidOccupiedSlots()
     {
         foreach (var slot in spawnPoints)
         {
-            if (slot == null) continue;
-            if (!slot.occupied) continue;
+            if (slot == null || !slot.occupied) continue;
 
             bool found = false;
 
-            foreach (var g in FindObjectsByType<BacteriaControllerGreen>(FindObjectsSortMode.None))
-                if (g.spawnPoint == slot) { found = true; break; }
+            void Check<T>() where T : MonoBehaviour
+            {
+                foreach (var e in FindObjectsByType<T>(FindObjectsSortMode.None))
+                {
+                    var f = typeof(T).GetField("spawnPoint");
+                    if (f != null && (object)f.GetValue(e) == (object)slot)
+                    {
+                        found = true;
+                        return;
+                    }
+                }
+            }
 
-            if (!found)
-                foreach (var r in FindObjectsByType<BacteriaControllerRed>(FindObjectsSortMode.None))
-                    if (r.spawnPoint == slot) { found = true; break; }
-
-            if (!found)
-                foreach (var p in FindObjectsByType<BacteriaControllerPurple>(FindObjectsSortMode.None))
-                    if (p.spawnPoint == slot) { found = true; break; }
-
-            if (!found)
-                foreach (var m in FindObjectsByType<MushroomController>(FindObjectsSortMode.None))
-                    if (m.spawnPoint == slot) { found = true; break; }
-
-            if (!found)
-                foreach (var pr in FindObjectsByType<ProtozoaController>(FindObjectsSortMode.None))
-                    if (pr.spawnPoint == slot) { found = true; break; }
-
-            if (!found)
-                foreach (var h in FindObjectsByType<HelminthController>(FindObjectsSortMode.None))
-                    if (h.spawnPoint == slot) { found = true; break; }
+            Check<BacteriaControllerGreen>();
+            Check<BacteriaControllerRed>();
+            Check<BacteriaControllerPurple>();
+            Check<BacteriaControllerBlue>();
+            Check<BacteriaControllerOrange>();
+            Check<BacteriaControllerPink>();
+            Check<BacteriaControllerYellow>();
+            Check<VirusController>();
+            Check<MushroomController>();
+            Check<ProtozoaController>();
+            Check<HelminthController>();
 
             if (!found)
             {
-                Debug.LogWarning("[Spawner] Force cleared invalid slot.");
                 slot.ClearOccupied();
                 slotToEnemy.Remove(slot);
             }
@@ -418,35 +315,36 @@ public class BacteriaSpawner : MonoBehaviour
         slotToEnemy.Clear();
 
         foreach (var slot in spawnPoints)
+            slot?.ClearOccupied();
+
+        void Sync<T>() where T : MonoBehaviour
         {
-            if (slot == null) continue;
-            slot.ClearOccupied();
+            foreach (var e in FindObjectsByType<T>(FindObjectsSortMode.None))
+            {
+                var f = typeof(T).GetField("spawnPoint");
+                if (f == null) continue;
+
+                SpawnPointSlot slot = f.GetValue(e) as SpawnPointSlot;
+                if (slot == null) continue;
+
+                if (!slot.occupied)
+                    slot.SetOccupied(e.gameObject);
+
+                slotToEnemy[slot] = e.gameObject;
+            }
         }
 
-        foreach (var g in FindObjectsByType<BacteriaControllerGreen>(FindObjectsSortMode.None))
-            if (g.spawnPoint != null) ForceLock(g.spawnPoint, g.gameObject);
-
-        foreach (var r in FindObjectsByType<BacteriaControllerRed>(FindObjectsSortMode.None))
-            if (r.spawnPoint != null) ForceLock(r.spawnPoint, r.gameObject);
-
-        foreach (var p in FindObjectsByType<BacteriaControllerPurple>(FindObjectsSortMode.None))
-            if (p.spawnPoint != null) ForceLock(p.spawnPoint, p.gameObject);
-
-        foreach (var m in FindObjectsByType<MushroomController>(FindObjectsSortMode.None))
-            if (m.spawnPoint != null) ForceLock(m.spawnPoint, m.gameObject);
-
-        foreach (var pr in FindObjectsByType<ProtozoaController>(FindObjectsSortMode.None))
-            if (pr.spawnPoint != null) ForceLock(pr.spawnPoint, pr.gameObject);
-
-        foreach (var h in FindObjectsByType<HelminthController>(FindObjectsSortMode.None))
-            if (h.spawnPoint != null) ForceLock(h.spawnPoint, h.gameObject);
-    }
-
-    private void ForceLock(SpawnPointSlot slot, GameObject enemy)
-    {
-        if (slot == null || enemy == null) return;
-        if (!slot.occupied) slot.SetOccupied(enemy);
-        slotToEnemy[slot] = enemy;
+        Sync<BacteriaControllerGreen>();
+        Sync<BacteriaControllerRed>();
+        Sync<BacteriaControllerPurple>();
+        Sync<BacteriaControllerBlue>();
+        Sync<BacteriaControllerOrange>();
+        Sync<BacteriaControllerPink>();
+        Sync<BacteriaControllerYellow>();
+        Sync<VirusController>();
+        Sync<MushroomController>();
+        Sync<ProtozoaController>();
+        Sync<HelminthController>();
     }
 
     private void LinkSpawnPoint(SpawnPointSlot slot, GameObject obj)
@@ -454,9 +352,13 @@ public class BacteriaSpawner : MonoBehaviour
         if (obj.TryGetComponent(out BacteriaControllerGreen g)) g.spawnPoint = slot;
         if (obj.TryGetComponent(out BacteriaControllerRed r)) r.spawnPoint = slot;
         if (obj.TryGetComponent(out BacteriaControllerPurple p)) p.spawnPoint = slot;
+        if (obj.TryGetComponent(out BacteriaControllerBlue b)) b.spawnPoint = slot;
+        if (obj.TryGetComponent(out BacteriaControllerOrange o)) o.spawnPoint = slot;
+        if (obj.TryGetComponent(out BacteriaControllerPink pi)) pi.spawnPoint = slot;
+        if (obj.TryGetComponent(out BacteriaControllerYellow y)) y.spawnPoint = slot;
+        if (obj.TryGetComponent(out VirusController v)) v.spawnPoint = slot;
         if (obj.TryGetComponent(out MushroomController m)) m.spawnPoint = slot;
         if (obj.TryGetComponent(out ProtozoaController pr)) pr.spawnPoint = slot;
         if (obj.TryGetComponent(out HelminthController h)) h.spawnPoint = slot;
     }
-    
 }

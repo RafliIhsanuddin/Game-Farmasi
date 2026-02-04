@@ -19624,9 +19624,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 171403648fe82af47b6eceb5f5f919ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.01
+  speed: 0.006
   spawnPoint: {fileID: 0}
-  bacteriaVisual: {fileID: 0}
+  bacteriaVisual: {fileID: 8132376149365089866}
   hitParticleEffect: {fileID: 4381484223573992112}
   health: 3
   atomPrefab: {fileID: 7919829580706015601, guid: 89b06313bb28c1b4a8d6b4658a33aabb, type: 3}
