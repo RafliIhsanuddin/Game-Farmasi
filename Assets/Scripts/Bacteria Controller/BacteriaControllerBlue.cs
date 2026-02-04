@@ -52,8 +52,12 @@ public class BacteriaControllerBlue : MonoBehaviour
     {
         if (isHit) return;
 
-        // ❗ MOVEMENT TIDAK DIUBAH
-        transform.position -= new Vector3(speed, 0f, 0f);
+        // ✅ SAMA SEPERTI YANG SEHARUSNYA (aman)
+        transform.position -= new Vector3(
+            speed * Time.fixedDeltaTime,
+            0f,
+            0f
+        );
     }
 
     // =========================
@@ -89,15 +93,15 @@ public class BacteriaControllerBlue : MonoBehaviour
         }
 
         // =========================
-        // 🔵 DROP ATOM (TERINTEGRASI)
+        // 🔵 DROP ATOM
         // =========================
         TrySpawnAtom();
 
-        // Clear spawn slot
+        // Clear spawn slot (PERSIS SEPERTI RED & PURPLE)
         if (spawnPoint != null)
             spawnPoint.ClearOccupied();
 
-        // Register kill
+        // Register kill (HANYA DI SINI)
         WaveManager manager = FindFirstObjectByType<WaveManager>();
         if (manager != null)
             manager.RegisterKill();
@@ -107,7 +111,7 @@ public class BacteriaControllerBlue : MonoBehaviour
     }
 
     // =========================
-    // 🔵 ATOM DROP LOGIC (KUNCI)
+    // 🔵 ATOM DROP LOGIC
     // =========================
     private void TrySpawnAtom()
     {
@@ -123,19 +127,15 @@ public class BacteriaControllerBlue : MonoBehaviour
             return;
         }
 
-        // Spawn atom di posisi bakteri mati
         GameObject atom = Instantiate(
             atomPrefab,
             transform.position,
             Quaternion.identity
         );
 
-        // 🔑 KORELASI DENGAN SCRIPT Atom
         Atom atomScript = atom.GetComponent<Atom>();
         if (atomScript != null)
-        {
             atomScript.useRandomSpawn = false;
-        }
 
         Debug.Log("[DEBUG][Blue] Atom drop berhasil (mode bakteri)");
     }

@@ -198,10 +198,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  damageMushroom: 7
+  damagePurple: 4
   damageRed: 4
-  damageHelminth: 4
-  damagePurple: 3
+  damageYellow: 1
+  damagePink: 1
+  damageOrange: 1
   damageGreen: 3
+  damageBlue: 1
+  damageVirus: 1
+  damageMushroom: 7
   damageProtozoa: 3
+  damageHelminth: 4
   lifeTime: 25

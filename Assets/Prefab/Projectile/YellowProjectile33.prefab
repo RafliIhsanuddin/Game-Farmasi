@@ -116,8 +116,9 @@ MonoBehaviour:
   damageYellow: 10
   damagePink: 4
   damageOrange: 0
-  damageGreen: 4
+  damageGreen: 0
   damageBlue: 5
+  damageVirus: 1
   damageMushroom: 3
   damageProtozoa: 3
   damageHelminth: 3

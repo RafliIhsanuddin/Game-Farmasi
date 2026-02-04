@@ -9144,6 +9144,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangerGroup
       objectReference: {fileID: 0}
+    - target: {fileID: 9092442010405047914, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

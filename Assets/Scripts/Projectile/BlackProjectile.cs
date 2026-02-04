@@ -9,13 +9,13 @@ public class BlackProjectile : MonoBehaviour
     // 🦠 DAMAGE - BACTERIA
     // =========================
     [Header("Damage Primary (Bacteria)")]
-    [SerializeField] private int damagePurple = 1;
-    [SerializeField] private int damageRed = 1;
-    [SerializeField] private int damageYellow = 1;
-    [SerializeField] private int damagePink = 1;
-    [SerializeField] private int damageOrange = 1;
-    [SerializeField] private int damageGreen = 1;
-    [SerializeField] private int damageBlue = 1;
+    private int damagePurple = 5;
+    private int damageRed = 5;
+    private int damageYellow = 7;
+    private int damagePink = 10;
+    private int damageOrange = 7;
+    private int damageGreen = 0;
+    private int damageBlue = 5;
 
     // =========================
     // 🧬 DAMAGE - VIRUS

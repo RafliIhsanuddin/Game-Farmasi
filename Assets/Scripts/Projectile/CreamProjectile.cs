@@ -9,13 +9,13 @@ public class CreamProjectile : MonoBehaviour
     // 🦠 DAMAGE ALL BACTERIA
     // =========================
     [Header("Damage Bacteria")]
-    [SerializeField] private int damagePurple = 1;
-    [SerializeField] private int damageRed = 1;
-    [SerializeField] private int damageYellow = 1;
-    [SerializeField] private int damagePink = 1;
-    [SerializeField] private int damageOrange = 1;
-    [SerializeField] private int damageGreen = 1;
-    [SerializeField] private int damageBlue = 1;
+    private int damagePurple = 4;
+    private int damageRed = 7; 
+    private int damageYellow = 4;
+    private int damagePink = 20;
+    private int damageOrange = 0;
+    private int damageGreen = 1;
+    private int damageBlue = 10;
 
     // =========================
     // 🧬 DAMAGE VIRUS
