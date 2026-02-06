@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class WaveManager : MonoBehaviour
 {
@@ -10,7 +9,7 @@ public class WaveManager : MonoBehaviour
     {
         SinglePerLine,
         MultiPerLine,
-        MultiPerLineGrouped   // 👈 versi B (grup per line, tunggu mati)
+        MultiPerLineGrouped
     }
 
     [Header("Flags")]
@@ -31,21 +30,20 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private float waveDelaySeconds = 5f;
     [SerializeField] private GameObject waveIncomingUI;
 
-    [Header("Win Panel (Multiple UI)")]
+    [Header("Win Panel")]
     public List<GameObject> winUIs = new();
 
     [Header("Spawner")]
     public BacteriaSpawner spawner;
 
-    // === NEW ===
-    [Header("Win Actions (Opsional)")]
+    [Header("Win Actions")]
     public List<GameObject> enableOnWin = new();
     public List<GameObject> disableOnWin = new();
 
-    private int currentWaveIndex = 0;
-    private int remainingEnemiesInWave = 0;
-    private int totalKills = 0;
-    private int totalEnemiesInLevel = 0;
+    private int currentWaveIndex;
+    private int remainingEnemiesInWave;
+    private int totalKills;
+    private int totalEnemiesInLevel;
 
     private List<int> flagGoals = new();
     private Dictionary<int, FlagsManager> goalToFlag = new();
@@ -53,26 +51,18 @@ public class WaveManager : MonoBehaviour
 
     private int pendingFlagGoal = -1;
 
-    private bool isCheckingFailSafe = false;
-    public static bool isGameOver = false;
+    private bool isCheckingFailSafe;
+    public static bool isGameOver;
 
     public System.Action OnLevelComplete;
 
-    private void OnValidate()
-    {
-        int required = flagCount + 1;
-        AutoResize(enemiesPerWave, required, 5);
-        AutoResize(spawnModesPerWave, required, SpawnMode.SinglePerLine);
-    }
-
-    private void AutoResize<T>(List<T> list, int size, T defaultValue)
-    {
-        while (list.Count < size) list.Add(defaultValue);
-        while (list.Count > size) list.RemoveAt(list.Count - 1);
-    }
-
     private void Start()
     {
+        // 🔴 INTEGRASI AUDIO & TIMESCALE
+        Time.timeScale = 1f;
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.ResetForNewGame();
+
         foreach (var ui in winUIs)
             if (ui != null) ui.SetActive(false);
 
@@ -88,7 +78,6 @@ public class WaveManager : MonoBehaviour
 
         StartWave(0);
 
-        // === BGM LOOP START (ADD) ===
         if (SoundManager.Instance != null)
             SoundManager.Instance.PlayBgmLoop();
 
@@ -105,8 +94,8 @@ public class WaveManager : MonoBehaviour
 
     private void GenerateFlagGoals()
     {
-        flagGoals.Clear();
         int cumulative = 0;
+        flagGoals.Clear();
 
         for (int i = 0; i < flagCount; i++)
         {
@@ -125,20 +114,15 @@ public class WaveManager : MonoBehaviour
     private void SetupFlags()
     {
         goalToFlag.Clear();
-
-        if (flagContainer != null)
-        {
-            foreach (Transform child in flagContainer)
-                Destroy(child.gameObject);
-        }
-
         if (flagContainer == null || flagPrefab == null) return;
+
+        foreach (Transform child in flagContainer)
+            Destroy(child.gameObject);
 
         foreach (int goal in flagGoals)
         {
             GameObject flagObj = Instantiate(flagPrefab, flagContainer);
-            FlagsManager fm = flagObj.GetComponent<FlagsManager>();
-            goalToFlag[goal] = fm;
+            goalToFlag[goal] = flagObj.GetComponent<FlagsManager>();
 
             float t = (float)goal / Mathf.Max(1, totalEnemiesInLevel);
             RectTransform rt = flagObj.GetComponent<RectTransform>();
@@ -155,24 +139,17 @@ public class WaveManager : MonoBehaviour
         if (spawner != null)
             spawner.StopAllSpawning();
 
-        Debug.Log($"🚩 WAVE {waveIndex + 1} DIMULAI | Mode: {spawnModesPerWave[waveIndex]} | Spawn: {remainingEnemiesInWave}");
-
-        if (SoundManager.Instance != null && currentWaveIndex > 0)
-        {
+        if (SoundManager.Instance != null && waveIndex > 0)
             SoundManager.Instance.PlayWaveStartMusic();
-        }
 
-        // Panggil spawner sesuai mode
         switch (spawnModesPerWave[waveIndex])
         {
             case SpawnMode.SinglePerLine:
                 spawner.StartSinglePerLineWave(remainingEnemiesInWave);
                 break;
-
             case SpawnMode.MultiPerLine:
                 spawner.StartMultiPerLineWave(remainingEnemiesInWave);
                 break;
-
             case SpawnMode.MultiPerLineGrouped:
                 spawner.StartGroupedPerLineWave(remainingEnemiesInWave);
                 break;
@@ -184,7 +161,7 @@ public class WaveManager : MonoBehaviour
         if (isGameOver) return;
 
         totalKills++;
-        remainingEnemiesInWave = Mathf.Max(remainingEnemiesInWave - 1, 0);
+        remainingEnemiesInWave--;
 
         if (levelProgress != null)
             levelProgress.value = totalKills;
@@ -193,8 +170,8 @@ public class WaveManager : MonoBehaviour
         {
             if (totalKills >= goal && !triggeredGoals.Contains(goal))
             {
-                pendingFlagGoal = goal;
                 triggeredGoals.Add(goal);
+                pendingFlagGoal = goal;
                 break;
             }
         }
@@ -208,7 +185,7 @@ public class WaveManager : MonoBehaviour
         if (currentWaveIndex >= enemiesPerWave.Count - 1)
         {
             spawner.StopAllSpawning();
-            TryWin();
+            TriggerWin();
             return;
         }
 
@@ -231,13 +208,12 @@ public class WaveManager : MonoBehaviour
         if (waveIncomingUI != null)
             waveIncomingUI.SetActive(false);
 
-        if (pendingFlagGoal != -1 &&
-            goalToFlag.TryGetValue(pendingFlagGoal, out var fm))
+        if (pendingFlagGoal != -1 && goalToFlag.TryGetValue(pendingFlagGoal, out var fm))
         {
             if (SoundManager.Instance != null)
                 SoundManager.Instance.PlayWaveStartMusic();
 
-            fm?.Expand();
+            fm.Expand();
             pendingFlagGoal = -1;
         }
 
@@ -252,11 +228,8 @@ public class WaveManager : MonoBehaviour
         {
             yield return new WaitForSeconds(0.5f);
 
-            int alive = spawner != null ? spawner.CountAllAlive() : 0;
-
-            if (remainingEnemiesInWave > 0 && alive == 0)
+            if (remainingEnemiesInWave > 0 && spawner.CountAllAlive() == 0)
             {
-                Debug.LogWarning("⚠️ FAILSAFE: remainingEnemiesInWave > 0 tapi alive == 0. Paksa wave selesai.");
                 remainingEnemiesInWave = 0;
                 OnWaveCompleted();
             }
@@ -265,57 +238,16 @@ public class WaveManager : MonoBehaviour
         isCheckingFailSafe = false;
     }
 
-    private void TryWin()
-    {
-        if (totalKills < totalEnemiesInLevel) return;
-        StartCoroutine(WaitAllEnemyDeadThenWin());
-    }
-
-    private IEnumerator WaitAllEnemyDeadThenWin()
-    {
-        while (spawner != null && spawner.CountAllAlive() > 0)
-            yield return new WaitForSeconds(0.2f);
-
-        TriggerWin();
-    }
-
     private void TriggerWin()
     {
         if (isGameOver) return;
-
         isGameOver = true;
-        
+
         if (SoundManager.Instance != null)
-            SoundManager.Instance.StopBgmLoop();
-        
-        if (SoundManager.Instance != null)
-            SoundManager.Instance.PlayWin();
-
-        if (spawner != null)
-            spawner.StopAllSpawning();
-
-        if (levelProgress != null)
-            levelProgress.value = totalEnemiesInLevel;
-
-        Debug.Log("🏆 LEVEL SELESAI");
-
-        // === PROGRESSION: UNLOCK NEXT LEVEL (+1) ===
-        // Tanpa PlayerPrefs. Hanya naikkan angka global.
-        // (Clamp agar tidak melewati total level yang ada di GameData.LevelsPerStage)
-        int totalLevels = 0;
-        if (GameData.Data.LevelsPerStage != null)
         {
-            for (int i = 0; i < GameData.Data.LevelsPerStage.Length; i++)
-                totalLevels += GameData.Data.LevelsPerStage[i];
+            SoundManager.Instance.StopBgmLoop();
+            SoundManager.Instance.PlayWin();
         }
-
-        if (totalLevels > 0)
-            GameData.Data.UnlockedLevel = Mathf.Min(GameData.Data.UnlockedLevel + 1, totalLevels);
-        else
-            GameData.Data.UnlockedLevel = GameData.Data.UnlockedLevel + 1;
-        // === END PROGRESSION ===
-
-        OnLevelComplete?.Invoke();
 
         foreach (var ui in winUIs)
             if (ui != null) ui.SetActive(true);

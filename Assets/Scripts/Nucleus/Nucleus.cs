@@ -70,6 +70,14 @@ public class Nucleus : MonoBehaviour
         // ===============================
         // MUSUH LAIN
         // ===============================
+        if (collision.TryGetComponent<VirusController>(out var virus))
+        {
+            hasTriggered = true;
+            virus.Hit();
+            Destroy(gameObject);
+            return;
+        }
+
         if (collision.TryGetComponent<MushroomController>(out var mushroom))
         {
             hasTriggered = true;
