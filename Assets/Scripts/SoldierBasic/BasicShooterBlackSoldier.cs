@@ -12,7 +12,7 @@ public class BasicShooterBlackSoldier : MonoBehaviour
     public float cooldown = 1f;
 
     [Header("Animation")]
-    [SerializeField] private Animator animator; // Animator di CHILD (Visual)
+    [SerializeField] private Animator animator;
 
     [Header("Detection (LINE CHECK)")]
     public float range = 5f;
@@ -21,13 +21,10 @@ public class BasicShooterBlackSoldier : MonoBehaviour
     // =====================
     // INTERNAL STATE
     // =====================
-    private bool hasTriggered = false;   // 🔒 mati permanen
+    private bool hasTriggered = false;
     private bool canShoot = true;
     private Collider2D myCollider;
 
-    // =====================
-    // RUNTIME DEBUG DATA
-    // =====================
     private RaycastHit2D runtimeHit;
 
     private void Awake()
@@ -71,18 +68,16 @@ public class BasicShooterBlackSoldier : MonoBehaviour
 
         canShoot = false;
 
-        // 🔥 HANYA trigger animasi (spawn lewat Animation Event)
         if (animator != null)
             animator.SetTrigger("Shoot");
     }
 
     // ==================================================
-    // DIPANGGIL OLEH ShooterAnimationEventBlack (BRIDGE)
+    // DIPANGGIL OLEH ANIMATION EVENT
     // ==================================================
     public void FireProjectileFromAnimation()
     {
-        if (hasTriggered)
-            return;
+        if (hasTriggered) return;
 
         Instantiate(
             projectile,
@@ -102,31 +97,43 @@ public class BasicShooterBlackSoldier : MonoBehaviour
     }
 
     // =====================
-    // TRIGGER (ONE TIME)
+    // COLLISION → SHOOTER MATI
     // =====================
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (hasTriggered) return;
 
-        if (collision.TryGetComponent<BacteriaControllerPurple>(out BacteriaControllerPurple purple))
-        {
-            hasTriggered = true;
-            purple.Hit();
-            CleanupShooter();
-            return;
-        }
-
-        if (collision.TryGetComponent<BacteriaControllerRed>(out _) ||
-            collision.TryGetComponent<BacteriaControllerGreen>(out _) ||
-            collision.TryGetComponent<MushroomController>(out _) ||
-            collision.TryGetComponent<ProtozoaController>(out _) ||
-            collision.TryGetComponent<HelminthController>(out _))
+        if (IsEnemy(collision))
         {
             hasTriggered = true;
             CleanupShooter();
         }
     }
 
+    // =====================
+    // ENEMY CHECK (UNIVERSAL)
+    // =====================
+    private bool IsEnemy(Collider2D col)
+    {
+        return
+            col.GetComponent<VirusController>() != null ||
+
+            col.GetComponent<BacteriaControllerBlue>() != null ||
+            col.GetComponent<BacteriaControllerRed>() != null ||
+            col.GetComponent<BacteriaControllerGreen>() != null ||
+            col.GetComponent<BacteriaControllerYellow>() != null ||
+            col.GetComponent<BacteriaControllerPink>() != null ||
+            col.GetComponent<BacteriaControllerOrange>() != null ||
+            col.GetComponent<BacteriaControllerPurple>() != null ||
+
+            col.GetComponent<MushroomController>() != null ||
+            col.GetComponent<ProtozoaController>() != null ||
+            col.GetComponent<HelminthController>() != null;
+    }
+
+    // =====================
+    // CLEANUP SHOOTER
+    // =====================
     private void CleanupShooter()
     {
         canShoot = false;

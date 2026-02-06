@@ -71,7 +71,7 @@ public class BasicShooterGreenSoldier : MonoBehaviour
 
         canShoot = false;
 
-        // 🔥 Hanya trigger animasi
+        // 🔥 Trigger animasi saja (spawn lewat Animation Event)
         if (animator != null)
             animator.SetTrigger("Shoot");
     }
@@ -102,39 +102,45 @@ public class BasicShooterGreenSoldier : MonoBehaviour
     }
 
     // =====================
-    // TRIGGER (ONE TIME)
+    // COLLISION RULE
+    // Shooter MATI jika nabrak enemy apa pun
+    // Enemy TIDAK disentuh
     // =====================
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (hasTriggered) return;
 
-        // ===============================
-        // TARGET UTAMA: PROTOZOA
-        // ===============================
-        if (collision.TryGetComponent<ProtozoaController>(out var protozoa))
-        {
-            hasTriggered = true;
-            protozoa.Hit();        // 🔥 PROTOZOA MATI
-            CleanupShooter();
-            return;
-        }
-
-        // ===============================
-        // OBJEK LAIN (SHOOTER TETAP MATI)
-        // ===============================
-        if (collision.TryGetComponent<BacteriaControllerRed>(out _) ||
-            collision.TryGetComponent<BacteriaControllerGreen>(out _) ||
-            collision.TryGetComponent<BacteriaControllerPurple>(out _) ||
-            collision.TryGetComponent<MushroomController>(out _) ||
-            collision.TryGetComponent<HelminthController>(out _))
+        if (IsAnyEnemy(collision))
         {
             hasTriggered = true;
             CleanupShooter();
         }
     }
 
+    // =====================
+    // UNIVERSAL ENEMY CHECK
+    // =====================
+    private bool IsAnyEnemy(Collider2D col)
+    {
+        return
+            col.GetComponent<VirusController>() != null ||
+
+            col.GetComponent<BacteriaControllerBlue>() != null ||
+            col.GetComponent<BacteriaControllerRed>() != null ||
+            col.GetComponent<BacteriaControllerGreen>() != null ||
+            col.GetComponent<BacteriaControllerYellow>() != null ||
+            col.GetComponent<BacteriaControllerPink>() != null ||
+            col.GetComponent<BacteriaControllerOrange>() != null ||
+            col.GetComponent<BacteriaControllerPurple>() != null ||
+
+            col.GetComponent<MushroomController>() != null ||
+            col.GetComponent<ProtozoaController>() != null ||
+            col.GetComponent<HelminthController>() != null;
+    }
+
     private void CleanupShooter()
     {
+        // 🔒 MATIKAN SEMUA AKSI
         canShoot = false;
 
         if (myCollider != null)

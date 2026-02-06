@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 
-
 public class BasicShooterYellowSoldier : MonoBehaviour
 {
     [Header("Tile Ownership")]
@@ -22,7 +21,7 @@ public class BasicShooterYellowSoldier : MonoBehaviour
     // =====================
     // INTERNAL STATE
     // =====================
-    private bool hasTriggered = false;   // 🔒 mati permanen
+    private bool hasTriggered = false;   // 🔒 GLOBAL LOCK
     private bool canShoot = true;
     private Collider2D myCollider;
 
@@ -72,13 +71,13 @@ public class BasicShooterYellowSoldier : MonoBehaviour
 
         canShoot = false;
 
-        // 🔥 HANYA trigger animasi (spawn lewat Animation Event)
+        // 🔥 Trigger animasi saja (spawn lewat Animation Event)
         if (animator != null)
             animator.SetTrigger("Shoot");
     }
 
     // ==================================================
-    // DIPANGGIL OLEH ShooterAnimationEventYellow (BRIDGE)
+    // DIPANGGIL OLEH ShooterAnimationEventYellow
     // ==================================================
     public void FireProjectileFromAnimation()
     {
@@ -103,33 +102,45 @@ public class BasicShooterYellowSoldier : MonoBehaviour
     }
 
     // =====================
-    // TRIGGER (ONE TIME)
+    // COLLISION RULE
+    // Shooter MATI jika nabrak enemy apa pun
+    // Enemy TIDAK disentuh
     // =====================
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (hasTriggered) return;
 
-        if (collision.TryGetComponent<BacteriaControllerPurple>(out BacteriaControllerPurple purple))
-        {
-            hasTriggered = true;
-            purple.Hit();
-            CleanupShooter();
-            return;
-        }
-
-        if (collision.TryGetComponent<BacteriaControllerRed>(out _) ||
-            collision.TryGetComponent<BacteriaControllerGreen>(out _) ||
-            collision.TryGetComponent<MushroomController>(out _) ||
-            collision.TryGetComponent<ProtozoaController>(out _) ||
-            collision.TryGetComponent<HelminthController>(out _))
+        if (IsAnyEnemy(collision))
         {
             hasTriggered = true;
             CleanupShooter();
         }
     }
 
+    // =====================
+    // UNIVERSAL ENEMY CHECK
+    // =====================
+    private bool IsAnyEnemy(Collider2D col)
+    {
+        return
+            col.GetComponent<VirusController>() != null ||
+
+            col.GetComponent<BacteriaControllerBlue>() != null ||
+            col.GetComponent<BacteriaControllerRed>() != null ||
+            col.GetComponent<BacteriaControllerGreen>() != null ||
+            col.GetComponent<BacteriaControllerYellow>() != null ||
+            col.GetComponent<BacteriaControllerPink>() != null ||
+            col.GetComponent<BacteriaControllerOrange>() != null ||
+            col.GetComponent<BacteriaControllerPurple>() != null ||
+
+            col.GetComponent<MushroomController>() != null ||
+            col.GetComponent<ProtozoaController>() != null ||
+            col.GetComponent<HelminthController>() != null;
+    }
+
     private void CleanupShooter()
     {
+        // 🔒 MATIKAN SEMUA AKSI
         canShoot = false;
 
         if (myCollider != null)

@@ -19589,7 +19589,7 @@ GameObject:
   - component: {fileID: 3269798988024013709}
   - component: {fileID: 4228998963052702860}
   m_Layer: 8
-  m_Name: Bacteria Green
+  m_Name: Pseudomonas aeruginosa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
