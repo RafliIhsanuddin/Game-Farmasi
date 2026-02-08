@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class QuestionMarkManager : MonoBehaviour
 {
+    // ========================
+    // CANVAS
+    // ========================
     [Header("Canvas")]
     [SerializeField] private GameObject canvasDefault;
     [SerializeField] private GameObject canvasQuestionMark;
@@ -21,19 +24,34 @@ public class QuestionMarkManager : MonoBehaviour
     [SerializeField] private GameObject rangerYellowCanvas;
 
     // ========================
-    // ENEMY
+    // ENEMY BIO MODE
     // ========================
-    [Header("Enemy Panel Root")]
-    [SerializeField] private GameObject enemyPanelRoot;
+    [Header("Enemy Bio Manager")]
+    [SerializeField] private GameObject EnemyBioChoose;
+    [SerializeField] private GameObject enemyBacteriaBioManager;
+    [SerializeField] private GameObject enemyOtherBioManager;
 
-    [Header("Enemy Panel")]
+    // ========================
+    // ENEMY DETAIL PANELS
+    // ========================
+    [Header("Enemy Panels - Bacteria")]
     [SerializeField] private GameObject enemyPurplePanel;
     [SerializeField] private GameObject enemyRedPanel;
+    [SerializeField] private GameObject enemyBluePanel;
+    [SerializeField] private GameObject enemyPinkPanel;
+    [SerializeField] private GameObject enemyOrangePanel;
+    [SerializeField] private GameObject enemyYellowPanel;
+    [SerializeField] private GameObject enemyGreenPanel; // ✅ GREEN
+
+    [Header("Enemy Panels - Other")]
     [SerializeField] private GameObject enemyVirusPanel;
     [SerializeField] private GameObject enemyFungiPanel;
     [SerializeField] private GameObject enemyProtozoaPanel;
     [SerializeField] private GameObject enemyHelminthPanel;
 
+    // ========================
+    // BLOCKER
+    // ========================
     [Header("Blocker (Optional)")]
     [SerializeField] private GameObject blockCanvas;
 
@@ -43,145 +61,145 @@ public class QuestionMarkManager : MonoBehaviour
     }
 
     // ========================
-    // DEFAULT / QUESTION
+    // DEFAULT
     // ========================
     public void ShowDefault()
     {
         if (IsBlocked()) return;
 
+        DisableAllContent();
+
         canvasDefault?.SetActive(true);
         canvasQuestionMark?.SetActive(false);
-
-        DisableAllRanger();
-        DisableAllEnemy();
 
         Time.timeScale = 1f;
         SoundManager.Instance?.ResumeBgm();
     }
 
+    // ========================
+    // QUESTION MARK ONLY
+    // ========================
     public void ShowQuestionMark()
     {
         if (IsBlocked()) return;
 
+        DisableAllContent();
+
         canvasDefault?.SetActive(false);
         canvasQuestionMark?.SetActive(true);
-
-        DisableAllRanger();
-        DisableAllEnemy();
+        // ❌ EnemyBioChoose TIDAK AKTIF
 
         Time.timeScale = 0f;
         SoundManager.Instance?.PauseBgm();
     }
 
     // ========================
-    // RANGER (SATU AKTIF)
+    // ENEMY BIO CHOOSE (INI YANG BENAR)
     // ========================
-    public void ShowRangerWhite()
+    public void ShowEnemyBioChoose()
     {
-        DisableAllRanger();
-        DisableAllEnemy();
-        rangerWhiteCanvas?.SetActive(true);
-    }
+        if (IsBlocked()) return;
 
-    public void ShowRangerBlue()
-    {
-        DisableAllRanger();
-        DisableAllEnemy();
-        rangerBlueCanvas?.SetActive(true);
-    }
+        DisableAllContent();
 
-    public void ShowRangerPink()
-    {
-        DisableAllRanger();
-        DisableAllEnemy();
-        rangerPinkCanvas?.SetActive(true);
-    }
-
-    public void ShowRangerRed()
-    {
-        DisableAllRanger();
-        DisableAllEnemy();
-        rangerRedCanvas?.SetActive(true);
-    }
-
-    public void ShowRangerGreen()
-    {
-        DisableAllRanger();
-        DisableAllEnemy();
-        rangerGreenCanvas?.SetActive(true);
-    }
-
-    public void ShowRangerYellow()
-    {
-        DisableAllRanger();
-        DisableAllEnemy();
-        rangerYellowCanvas?.SetActive(true);
-    }
-
-    public void ShowRangerCanvasRoot()
-    {
-        DisableAllRanger();
-        DisableAllEnemy();
-        rangerCanvasRoot?.SetActive(true);
+        canvasQuestionMark?.SetActive(true);
+        EnemyBioChoose?.SetActive(true);
     }
 
     // ========================
-    // ENEMY (SATU AKTIF)
+    // BIO MODE
     // ========================
-    public void ShowEnemyPurple()
+    public void ShowEnemyBacteriaBioManager()
     {
-        DisableAllEnemy();
-        DisableAllRanger();
-        enemyPurplePanel?.SetActive(true);
+        if (IsBlocked()) return;
+
+        DisableAllContent();
+
+        canvasQuestionMark?.SetActive(true);
+        EnemyBioChoose?.SetActive(true);
+        enemyBacteriaBioManager?.SetActive(true);
     }
 
-    public void ShowEnemyRed()
+    public void ShowEnemyOtherBioManager()
     {
-        DisableAllEnemy();
-        DisableAllRanger();
-        enemyRedPanel?.SetActive(true);
-    }
+        if (IsBlocked()) return;
 
-    public void ShowEnemyVirus()
-    {
-        DisableAllEnemy();
-        DisableAllRanger();
-        enemyVirusPanel?.SetActive(true);
-    }
+        DisableAllContent();
 
-    public void ShowEnemyFungi()
-    {
-        DisableAllEnemy();
-        DisableAllRanger();
-        enemyFungiPanel?.SetActive(true);
-    }
-
-    public void ShowEnemyProtozoa()
-    {
-        DisableAllEnemy();
-        DisableAllRanger();
-        enemyProtozoaPanel?.SetActive(true);
-    }
-
-    public void ShowEnemyHelminth()
-    {
-        DisableAllEnemy();
-        DisableAllRanger();
-        enemyHelminthPanel?.SetActive(true);
-    }
-
-    public void ShowEnemyPanelRoot()
-    {
-        DisableAllEnemy();
-        DisableAllRanger();
-        enemyPanelRoot?.SetActive(true);
+        canvasQuestionMark?.SetActive(true);
+        EnemyBioChoose?.SetActive(true);
+        enemyOtherBioManager?.SetActive(true);
     }
 
     // ========================
-    // DISABLE
+    // ENEMY DETAIL
     // ========================
-    private void DisableAllRanger()
+    public void ShowEnemy(GameObject enemyPanel)
     {
+        if (IsBlocked()) return;
+
+        DisableAllContent();
+
+        canvasQuestionMark?.SetActive(true);
+        enemyPanel?.SetActive(true);
+    }
+
+    public void ShowEnemyPurple() => ShowEnemy(enemyPurplePanel);
+    public void ShowEnemyRed() => ShowEnemy(enemyRedPanel);
+    public void ShowEnemyBlue() => ShowEnemy(enemyBluePanel);
+    public void ShowEnemyPink() => ShowEnemy(enemyPinkPanel);
+    public void ShowEnemyOrange() => ShowEnemy(enemyOrangePanel);
+    public void ShowEnemyYellow() => ShowEnemy(enemyYellowPanel);
+    public void ShowEnemyGreen() => ShowEnemy(enemyGreenPanel);
+    public void ShowEnemyVirus() => ShowEnemy(enemyVirusPanel);
+    public void ShowEnemyFungi() => ShowEnemy(enemyFungiPanel);
+    public void ShowEnemyProtozoa() => ShowEnemy(enemyProtozoaPanel);
+    public void ShowEnemyHelminth() => ShowEnemy(enemyHelminthPanel);
+
+    // ========================
+    // RANGER
+    // ========================
+    public void ShowRanger(GameObject ranger)
+    {
+        if (IsBlocked()) return;
+
+        DisableAllContent();
+
+        canvasQuestionMark?.SetActive(false);
+        canvasDefault?.SetActive(false);
+
+        ranger?.SetActive(true);
+    }
+
+    public void ShowRangerRoot() => ShowRanger(rangerCanvasRoot);
+    public void ShowRangerWhite() => ShowRanger(rangerWhiteCanvas);
+    public void ShowRangerBlue() => ShowRanger(rangerBlueCanvas);
+    public void ShowRangerPink() => ShowRanger(rangerPinkCanvas);
+    public void ShowRangerRed() => ShowRanger(rangerRedCanvas);
+    public void ShowRangerGreen() => ShowRanger(rangerGreenCanvas);
+    public void ShowRangerYellow() => ShowRanger(rangerYellowCanvas);
+
+    // ========================
+    // DISABLE CONTENT ONLY
+    // ========================
+    private void DisableAllContent()
+    {
+        EnemyBioChoose?.SetActive(false);
+        enemyBacteriaBioManager?.SetActive(false);
+        enemyOtherBioManager?.SetActive(false);
+
+        enemyPurplePanel?.SetActive(false);
+        enemyRedPanel?.SetActive(false);
+        enemyBluePanel?.SetActive(false);
+        enemyPinkPanel?.SetActive(false);
+        enemyOrangePanel?.SetActive(false);
+        enemyYellowPanel?.SetActive(false);
+        enemyGreenPanel?.SetActive(false);
+        enemyVirusPanel?.SetActive(false);
+        enemyFungiPanel?.SetActive(false);
+        enemyProtozoaPanel?.SetActive(false);
+        enemyHelminthPanel?.SetActive(false);
+
         rangerCanvasRoot?.SetActive(false);
         rangerWhiteCanvas?.SetActive(false);
         rangerBlueCanvas?.SetActive(false);
@@ -189,17 +207,6 @@ public class QuestionMarkManager : MonoBehaviour
         rangerRedCanvas?.SetActive(false);
         rangerGreenCanvas?.SetActive(false);
         rangerYellowCanvas?.SetActive(false);
-    }
-
-    private void DisableAllEnemy()
-    {
-        enemyPanelRoot?.SetActive(false);
-        enemyPurplePanel?.SetActive(false);
-        enemyRedPanel?.SetActive(false);
-        enemyVirusPanel?.SetActive(false);
-        enemyFungiPanel?.SetActive(false);
-        enemyProtozoaPanel?.SetActive(false);
-        enemyHelminthPanel?.SetActive(false);
     }
 
     private bool IsBlocked()
