@@ -9,7 +9,7 @@ public class BioManager : MonoBehaviour
     [SerializeField] private GameObject howToPlayGO;
 
     // =====================
-    // ENEMY BIO SUB PANELS (NEW)
+    // ENEMY BIO SUB PANELS
     // =====================
     [Header("Enemy Bio Panels")]
     [SerializeField] private GameObject ChooseEnemyBioPanel;
@@ -24,9 +24,22 @@ public class BioManager : MonoBehaviour
     [SerializeField] private GameObject greenCharacter;
     [SerializeField] private GameObject yellowCharacter;
 
-    [Header("Enemy Characters (Optional)")]
-    [SerializeField] private GameObject purpleEnemy;
-    [SerializeField] private GameObject redEnemy;
+    // =====================
+    // BACTERIA ENEMIES
+    // =====================
+    [Header("Bacteria Enemies (Optional)")]
+    [SerializeField] private GameObject bacteriaPurple;
+    [SerializeField] private GameObject bacteriaRed;
+    [SerializeField] private GameObject bacteriaYellow;
+    [SerializeField] private GameObject bacteriaOrange;
+    [SerializeField] private GameObject bacteriaPink;
+    [SerializeField] private GameObject bacteriaBlue;
+    [SerializeField] private GameObject bacteriaGreen;
+
+    // =====================
+    // OTHER ENEMIES
+    // =====================
+    [Header("Other Enemies (Optional)")]
     [SerializeField] private GameObject fungiEnemy;
     [SerializeField] private GameObject virusEnemy;
     [SerializeField] private GameObject protozoaEnemy;
@@ -123,8 +136,14 @@ public class BioManager : MonoBehaviour
     // =====================
     private void DisableAllEnemies()
     {
-        if (purpleEnemy != null) purpleEnemy.SetActive(false);
-        if (redEnemy != null) redEnemy.SetActive(false);
+        if (bacteriaPurple != null) bacteriaPurple.SetActive(false);
+        if (bacteriaRed != null) bacteriaRed.SetActive(false);
+        if (bacteriaYellow != null) bacteriaYellow.SetActive(false);
+        if (bacteriaOrange != null) bacteriaOrange.SetActive(false);
+        if (bacteriaPink != null) bacteriaPink.SetActive(false);
+        if (bacteriaBlue != null) bacteriaBlue.SetActive(false);
+        if (bacteriaGreen != null) bacteriaGreen.SetActive(false);
+
         if (fungiEnemy != null) fungiEnemy.SetActive(false);
         if (virusEnemy != null) virusEnemy.SetActive(false);
         if (protozoaEnemy != null) protozoaEnemy.SetActive(false);
@@ -132,7 +151,7 @@ public class BioManager : MonoBehaviour
     }
 
     // =====================
-    // ENEMY BIO PANEL BEHAVIOUR (NEW)
+    // ENEMY BIO PANEL BEHAVIOUR
     // =====================
     private void DisableAllEnemyBioPanels()
     {
@@ -144,18 +163,21 @@ public class BioManager : MonoBehaviour
     public void ShowChooseEnemyBioPanel()
     {
         DisableAllEnemyBioPanels();
+        DisableAllEnemies();
         if (ChooseEnemyBioPanel != null) ChooseEnemyBioPanel.SetActive(true);
     }
 
     public void ShowEnemyOtherBioPanel()
     {
         DisableAllEnemyBioPanels();
+        DisableAllEnemies();
         if (EnemyOtherBioPanel != null) EnemyOtherBioPanel.SetActive(true);
     }
 
     public void ShowEnemyBacteriaBioPanel()
     {
         DisableAllEnemyBioPanels();
+        DisableAllEnemies();
         if (EnemyBacteriaBioPanel != null) EnemyBacteriaBioPanel.SetActive(true);
     }
 }

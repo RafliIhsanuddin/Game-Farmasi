@@ -4,8 +4,21 @@ public class EnemyGameObjectManager : MonoBehaviour
 {
     [Header("All Enemy GameObjects")]
     [SerializeField] private GameObject defaultEnemy;
-    [SerializeField] private GameObject purpleEnemy;
-    [SerializeField] private GameObject redEnemy;
+
+    // =====================
+    // BACTERIA
+    // =====================
+    [SerializeField] private GameObject bacteriaPurple;
+    [SerializeField] private GameObject bacteriaRed;
+    [SerializeField] private GameObject bacteriaYellow;
+    [SerializeField] private GameObject bacteriaOrange;
+    [SerializeField] private GameObject bacteriaPink;
+    [SerializeField] private GameObject bacteriaBlue;
+    [SerializeField] private GameObject bacteriaGreen;
+
+    // =====================
+    // OTHER ENEMIES
+    // =====================
     [SerializeField] private GameObject fungiEnemy;
     [SerializeField] private GameObject virusEnemy;
     [SerializeField] private GameObject protozoaEnemy;
@@ -21,8 +34,15 @@ public class EnemyGameObjectManager : MonoBehaviour
         allEnemies = new GameObject[]
         {
             defaultEnemy,
-            purpleEnemy,
-            redEnemy,
+
+            bacteriaPurple,
+            bacteriaRed,
+            bacteriaYellow,
+            bacteriaOrange,
+            bacteriaPink,
+            bacteriaBlue,
+            bacteriaGreen,
+
             fungiEnemy,
             virusEnemy,
             protozoaEnemy,
@@ -44,11 +64,27 @@ public class EnemyGameObjectManager : MonoBehaviour
         }
     }
 
-    public void ShowDefaultEnemy()   => ShowOnly(defaultEnemy);
-    public void ShowPurpleEnemy()    => ShowOnly(purpleEnemy);
-    public void ShowRedEnemy()       => ShowOnly(redEnemy);
-    public void ShowFungiEnemy()     => ShowOnly(fungiEnemy);
-    public void ShowVirusEnemy()     => ShowOnly(virusEnemy);
-    public void ShowProtozoaEnemy()  => ShowOnly(protozoaEnemy);
-    public void ShowHelminthEnemy()  => ShowOnly(helminthEnemy);
+    // =====================
+    // DEFAULT
+    // =====================
+    public void ShowDefaultEnemy() => ShowOnly(defaultEnemy);
+
+    // =====================
+    // BACTERIA SHOW
+    // =====================
+    public void ShowBacteriaPurple() => ShowOnly(bacteriaPurple);
+    public void ShowBacteriaRed()    => ShowOnly(bacteriaRed);
+    public void ShowBacteriaYellow() => ShowOnly(bacteriaYellow);
+    public void ShowBacteriaOrange() => ShowOnly(bacteriaOrange);
+    public void ShowBacteriaPink()   => ShowOnly(bacteriaPink);
+    public void ShowBacteriaBlue()   => ShowOnly(bacteriaBlue);
+    public void ShowBacteriaGreen()  => ShowOnly(bacteriaGreen);
+
+    // =====================
+    // OTHER ENEMY SHOW
+    // =====================
+    public void ShowFungiEnemy()    => ShowOnly(fungiEnemy);
+    public void ShowVirusEnemy()    => ShowOnly(virusEnemy);
+    public void ShowProtozoaEnemy() => ShowOnly(protozoaEnemy);
+    public void ShowHelminthEnemy() => ShowOnly(helminthEnemy);
 }

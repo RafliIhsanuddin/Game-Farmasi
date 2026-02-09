@@ -53,6 +53,9 @@ public class HoverTextColorManager : MonoBehaviour
             data.targetText.raycastTarget = false;
 
             AddHoverEvents(data);
+
+            // ✅ TAMBAHAN: reset warna saat tombol diklik
+            data.targetButton.onClick.AddListener(() => OnButtonClicked(data));
         }
     }
 
@@ -92,6 +95,14 @@ public class HoverTextColorManager : MonoBehaviour
     }
 
     private void OnHoverExit(HoverTextData data)
+    {
+        data.targetText.color = data.normalTextColor;
+    }
+
+    // =========================
+    // ✅ TAMBAHAN BARU
+    // =========================
+    private void OnButtonClicked(HoverTextData data)
     {
         data.targetText.color = data.normalTextColor;
     }
