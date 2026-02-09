@@ -10,9 +10,10 @@ public class RangerCanvasManager : MonoBehaviour
     [SerializeField] private GameObject redCanvas;
     [SerializeField] private GameObject greenCanvas;
     [SerializeField] private GameObject yellowCanvas;
+    [SerializeField] private GameObject blackCanvas; // NEW
 
     [Header("Settings")]
-    [SerializeField] private bool showDefaultOnStart = true; // NEW
+    [SerializeField] private bool showDefaultOnStart = true;
 
     private GameObject[] allCanvases;
 
@@ -26,7 +27,8 @@ public class RangerCanvasManager : MonoBehaviour
             pinkCanvas,
             redCanvas,
             greenCanvas,
-            yellowCanvas
+            yellowCanvas,
+            blackCanvas // NEW
         };
 
         if (showDefaultOnStart)
@@ -51,4 +53,5 @@ public class RangerCanvasManager : MonoBehaviour
     public void ShowRedCanvas()     => ShowOnly(redCanvas);
     public void ShowGreenCanvas()   => ShowOnly(greenCanvas);
     public void ShowYellowCanvas()  => ShowOnly(yellowCanvas);
+    public void ShowBlackCanvas()   => ShowOnly(blackCanvas); // NEW
 }

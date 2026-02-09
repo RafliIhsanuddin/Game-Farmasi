@@ -22,6 +22,7 @@ public class QuestionMarkManager : MonoBehaviour
     [SerializeField] private GameObject rangerRedCanvas;
     [SerializeField] private GameObject rangerGreenCanvas;
     [SerializeField] private GameObject rangerYellowCanvas;
+    [SerializeField] private GameObject rangerBlackCanvas; // ✅ BLACK (NEW)
 
     // ========================
     // ENEMY BIO MODE
@@ -144,15 +145,15 @@ public class QuestionMarkManager : MonoBehaviour
         enemyPanel?.SetActive(true);
     }
 
-    public void ShowEnemyPurple() => ShowEnemy(enemyPurplePanel);
-    public void ShowEnemyRed() => ShowEnemy(enemyRedPanel);
-    public void ShowEnemyBlue() => ShowEnemy(enemyBluePanel);
-    public void ShowEnemyPink() => ShowEnemy(enemyPinkPanel);
-    public void ShowEnemyOrange() => ShowEnemy(enemyOrangePanel);
-    public void ShowEnemyYellow() => ShowEnemy(enemyYellowPanel);
-    public void ShowEnemyGreen() => ShowEnemy(enemyGreenPanel);
-    public void ShowEnemyVirus() => ShowEnemy(enemyVirusPanel);
-    public void ShowEnemyFungi() => ShowEnemy(enemyFungiPanel);
+    public void ShowEnemyPurple()   => ShowEnemy(enemyPurplePanel);
+    public void ShowEnemyRed()      => ShowEnemy(enemyRedPanel);
+    public void ShowEnemyBlue()     => ShowEnemy(enemyBluePanel);
+    public void ShowEnemyPink()     => ShowEnemy(enemyPinkPanel);
+    public void ShowEnemyOrange()   => ShowEnemy(enemyOrangePanel);
+    public void ShowEnemyYellow()   => ShowEnemy(enemyYellowPanel);
+    public void ShowEnemyGreen()    => ShowEnemy(enemyGreenPanel);
+    public void ShowEnemyVirus()    => ShowEnemy(enemyVirusPanel);
+    public void ShowEnemyFungi()    => ShowEnemy(enemyFungiPanel);
     public void ShowEnemyProtozoa() => ShowEnemy(enemyProtozoaPanel);
     public void ShowEnemyHelminth() => ShowEnemy(enemyHelminthPanel);
 
@@ -171,13 +172,14 @@ public class QuestionMarkManager : MonoBehaviour
         ranger?.SetActive(true);
     }
 
-    public void ShowRangerRoot() => ShowRanger(rangerCanvasRoot);
-    public void ShowRangerWhite() => ShowRanger(rangerWhiteCanvas);
-    public void ShowRangerBlue() => ShowRanger(rangerBlueCanvas);
-    public void ShowRangerPink() => ShowRanger(rangerPinkCanvas);
-    public void ShowRangerRed() => ShowRanger(rangerRedCanvas);
-    public void ShowRangerGreen() => ShowRanger(rangerGreenCanvas);
+    public void ShowRangerRoot()   => ShowRanger(rangerCanvasRoot);
+    public void ShowRangerWhite()  => ShowRanger(rangerWhiteCanvas);
+    public void ShowRangerBlue()   => ShowRanger(rangerBlueCanvas);
+    public void ShowRangerPink()   => ShowRanger(rangerPinkCanvas);
+    public void ShowRangerRed()    => ShowRanger(rangerRedCanvas);
+    public void ShowRangerGreen()  => ShowRanger(rangerGreenCanvas);
     public void ShowRangerYellow() => ShowRanger(rangerYellowCanvas);
+    public void ShowRangerBlack()  => ShowRanger(rangerBlackCanvas); // ✅ BLACK (NEW)
 
     // ========================
     // DISABLE CONTENT ONLY
@@ -207,6 +209,7 @@ public class QuestionMarkManager : MonoBehaviour
         rangerRedCanvas?.SetActive(false);
         rangerGreenCanvas?.SetActive(false);
         rangerYellowCanvas?.SetActive(false);
+        rangerBlackCanvas?.SetActive(false); // ✅ BLACK (NEW)
     }
 
     private bool IsBlocked()

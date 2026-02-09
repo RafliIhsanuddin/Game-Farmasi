@@ -16,6 +16,9 @@ public class BioManager : MonoBehaviour
     [SerializeField] private GameObject EnemyOtherBioPanel;
     [SerializeField] private GameObject EnemyBacteriaBioPanel;
 
+    // =====================
+    // RANGER CHARACTERS (Optional)
+    // =====================
     [Header("Ranger Characters (Optional)")]
     [SerializeField] private GameObject whiteCharacter;
     [SerializeField] private GameObject blueCharacter;
@@ -23,6 +26,7 @@ public class BioManager : MonoBehaviour
     [SerializeField] private GameObject redCharacter;
     [SerializeField] private GameObject greenCharacter;
     [SerializeField] private GameObject yellowCharacter;
+    [SerializeField] private GameObject blackCharacter; // ✅ NEW
 
     // =====================
     // BACTERIA ENEMIES
@@ -112,6 +116,7 @@ public class BioManager : MonoBehaviour
         if (redCharacter != null) redCharacter.SetActive(false);
         if (greenCharacter != null) greenCharacter.SetActive(false);
         if (yellowCharacter != null) yellowCharacter.SetActive(false);
+        if (blackCharacter != null) blackCharacter.SetActive(false); // ✅ NEW
     }
 
     private void ShowOnlyRanger(GameObject target)
@@ -122,6 +127,7 @@ public class BioManager : MonoBehaviour
         if (redCharacter != null) redCharacter.SetActive(target == redCharacter);
         if (greenCharacter != null) greenCharacter.SetActive(target == greenCharacter);
         if (yellowCharacter != null) yellowCharacter.SetActive(target == yellowCharacter);
+        if (blackCharacter != null) blackCharacter.SetActive(target == blackCharacter); // ✅ NEW
     }
 
     public void ShowWhite()  => ShowOnlyRanger(whiteCharacter);
@@ -130,6 +136,7 @@ public class BioManager : MonoBehaviour
     public void ShowRed()    => ShowOnlyRanger(redCharacter);
     public void ShowGreen()  => ShowOnlyRanger(greenCharacter);
     public void ShowYellow() => ShowOnlyRanger(yellowCharacter);
+    public void ShowBlack()  => ShowOnlyRanger(blackCharacter); // ✅ NEW
 
     // =====================
     // ENEMY BEHAVIOUR

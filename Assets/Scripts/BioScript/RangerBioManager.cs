@@ -25,12 +25,23 @@ public class RangerBioManager : MonoBehaviour
     [SerializeField] private CharacterData Red;
     [SerializeField] private CharacterData Green;
     [SerializeField] private CharacterData Yellow;
+    [SerializeField] private CharacterData Black; // ✅ tambahan
 
     private CharacterData[] allCharacters;
 
     private void Start()
     {
-        allCharacters = new CharacterData[] { White, Blue, Pink, Red, Green, Yellow };
+        allCharacters = new CharacterData[]
+        {
+            White,
+            Blue,
+            Pink,
+            Red,
+            Green,
+            Yellow,
+            Black // ✅ tambahan
+        };
+
         ShowWhite();
     }
 
@@ -65,4 +76,5 @@ public class RangerBioManager : MonoBehaviour
     public void ShowRed() => ApplyCharacter(Red);
     public void ShowGreen() => ApplyCharacter(Green);
     public void ShowYellow() => ApplyCharacter(Yellow);
+    public void ShowBlack() => ApplyCharacter(Black); // ✅ tambahan
 }
