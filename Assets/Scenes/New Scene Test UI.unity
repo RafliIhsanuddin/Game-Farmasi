@@ -119,63 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &51223224 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5447658029128402159, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &220941004 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2027758279900911699, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &240284196 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6336556172752738994, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &242642545 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4363625245403444716, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &319534965 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4138026983991364248, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &346915208 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 226813381867439493, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &364701984 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3483179645857220715, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &374733424 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2124710324201481682, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &443943742 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5755659573892703082, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,22 +256,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &523020007 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7120240270027525034, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &531181774 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4399360938947415797, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8676db7e3d0815649968086b168a2bf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,53 +340,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &644476348 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5159424536136139391, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &764583929 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5009619812786079259, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &784895943 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d33394b016351649a55fffbe3ae6ec4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &806598910 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4035966312402954656, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &881602483 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8975694019613207343, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &933381393 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6159747992217584384, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1125611397 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4280900825574770516, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8c823e79b28e764ab0c934c38d1e97a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1126850781
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,16 +419,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1131035400 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4732942665252285622, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1214144675 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 326741767771928152, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1292983857
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,52 +520,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1305426591 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6801145361291954009, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1305472029 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5503171024189938755, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1349560413 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8283956535950751658, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1445017725 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1371654942257380391, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1540423657 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 379794954888318601, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &1555095624 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1655161808747248314, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1673198972 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8756076850458666530, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1687546030 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1962311643236862873, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1752545910
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -704,293 +528,97 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 199231405042234052, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 210036322769058795, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 784895943}
-    - target: {fileID: 210036322769058795, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowBacteriaPink
-      objectReference: {fileID: 0}
-    - target: {fileID: 210036322769058795, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemyBacteriaBioManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 226813381867439493, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 326741767771928152, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 360204862739662107, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_Padding.m_Top
-      value: 51
-      objectReference: {fileID: 0}
-    - target: {fileID: 454598899911987421, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1125611397}
-    - target: {fileID: 454598899911987421, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowFungi
-      objectReference: {fileID: 0}
-    - target: {fileID: 454598899911987421, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemyOtherBioManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 523251269844151921, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1125611397}
-    - target: {fileID: 523251269844151921, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowProtozoa
-      objectReference: {fileID: 0}
-    - target: {fileID: 523251269844151921, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemyOtherBioManager, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 597960796563696184, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 597960796563696184, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 597960796563696184, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 597960796563696184, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 597960796563696184, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 204.51999
       objectReference: {fileID: 0}
     - target: {fileID: 597960796563696184, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -131
-      objectReference: {fileID: 0}
-    - target: {fileID: 664617205626996711, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 664617205626996711, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
+    - target: {fileID: 1537318634844969402, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.99999994
-      objectReference: {fileID: 0}
-    - target: {fileID: 664617205626996711, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.99999994
-      objectReference: {fileID: 0}
-    - target: {fileID: 785539466037368789, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 785539466037368789, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyBioChoose
-      objectReference: {fileID: 0}
-    - target: {fileID: 785539466037368789, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: QuestionMarkManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 790259275236257792, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 6152eb3da0799ed4cacae10a81c7f47a, type: 2}
-    - target: {fileID: 933173376765662591, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 933173376765662591, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 933173376765662591, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1040492741959166249, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 1040492741959166249, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyBacteriaBioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 1124398381022585086, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 1124398381022585086, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyOtherBioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 1371654942257380391, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1434416922144954690, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 1434416922144954690, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyBioChoose
-      objectReference: {fileID: 0}
-    - target: {fileID: 1434416922144954690, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: QuestionMarkManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1537318634844969402, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1537318634844969402, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1537318634844969402, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 1537318634844969402, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 1537318634844969402, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -117
       objectReference: {fileID: 0}
     - target: {fileID: 1537318634844969402, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -455.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 1585406332565888969, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 1585406332565888969, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyOtherBioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 1585406332565888969, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: QuestionMarkManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1585406332565888969, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1670815839905515056, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1704295459719169899, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 784895943}
-    - target: {fileID: 1704295459719169899, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowBacteriaOrange
-      objectReference: {fileID: 0}
-    - target: {fileID: 1704295459719169899, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemyBacteriaBioManager, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 1724328390386607585, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1935921210619587266, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 1935921210619587266, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyBioChoose
-      objectReference: {fileID: 0}
-    - target: {fileID: 1935921210619587266, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: QuestionMarkManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2025946648285971660, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2103210400337058762, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 2103210400337058762, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyBacteriaBioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 2124710324201481682, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_fontSize
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 2124710324201481682, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 2194351941152333605, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyBioChoose
-      objectReference: {fileID: 0}
-    - target: {fileID: 2286398402061115191, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
+    - target: {fileID: 2097646485489295741, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2286398402061115191, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
+    - target: {fileID: 2097646485489295741, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.99999994
       objectReference: {fileID: 0}
-    - target: {fileID: 2286398402061115191, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
+    - target: {fileID: 2097646485489295741, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2390812214417571995, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowRangerRoot
-      objectReference: {fileID: 0}
-    - target: {fileID: 2432886015474906302, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      value: 0.99999994
       objectReference: {fileID: 0}
     - target: {fileID: 2841511879688988623, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2841511879688988623, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2841511879688988623, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 2841511879688988623, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 2841511879688988623, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 43.76
       objectReference: {fileID: 0}
     - target: {fileID: 2841511879688988623, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -293.37
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3069038422151079776, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_IsActive
@@ -1038,887 +666,157 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3464539583780554598, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3464539583780554598, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3464539583780554598, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 3464539583780554598, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 3464539583780554598, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 204.51999
       objectReference: {fileID: 0}
     - target: {fileID: 3464539583780554598, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -293.37
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3623557815493448193, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3623557815493448193, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3623557815493448193, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3660731331954635170, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 3660731331954635170, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyPurple
-      objectReference: {fileID: 0}
-    - target: {fileID: 3709070423103004575, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 3709070423103004575, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyOtherBioManager
+      value: -2.79
       objectReference: {fileID: 0}
     - target: {fileID: 3752947203281568265, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3752947203281568265, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.9649492
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3752947203281568265, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.035050742
-      objectReference: {fileID: 0}
-    - target: {fileID: 3809755833373946573, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 3809755833373946573, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyBacteriaBioManager
+      value: 0.03505081
       objectReference: {fileID: 0}
     - target: {fileID: 3855631658625473557, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3874411535698401632, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 3874411535698401632, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyGreen
-      objectReference: {fileID: 0}
-    - target: {fileID: 4050249979077880311, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 4050249979077880311, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyOtherBioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 4081288426032171982, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 4081288426032171982, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyBacteriaBioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 4280900825574770516, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: slotName
-      value: 
-      objectReference: {fileID: 2028543572}
-    - target: {fileID: 4280900825574770516, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: Fungi.name
-      value: Fungi
-      objectReference: {fileID: 0}
-    - target: {fileID: 4280900825574770516, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: Virus.name
-      value: Virus
-      objectReference: {fileID: 0}
-    - target: {fileID: 4280900825574770516, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: Fungi.button
-      value: 
-      objectReference: {fileID: 1687546030}
-    - target: {fileID: 4280900825574770516, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: Virus.button
-      value: 
-      objectReference: {fileID: 1555095624}
-    - target: {fileID: 4280900825574770516, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: Helminth.name
-      value: Helminth
-      objectReference: {fileID: 0}
-    - target: {fileID: 4280900825574770516, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: Protozoa.name
-      value: Protozoa
-      objectReference: {fileID: 0}
-    - target: {fileID: 4280900825574770516, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: Helminth.button
-      value: 
-      objectReference: {fileID: 319534965}
-    - target: {fileID: 4280900825574770516, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: Protozoa.button
-      value: 
-      objectReference: {fileID: 1131035400}
-    - target: {fileID: 4280900825574770516, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: slotDescription
-      value: 
-      objectReference: {fileID: 240284196}
-    - target: {fileID: 4280900825574770516, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: Fungi.pictureObj
-      value: 
-      objectReference: {fileID: 1349560413}
-    - target: {fileID: 4280900825574770516, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: Virus.pictureObj
-      value: 
-      objectReference: {fileID: 1983196955}
-    - target: {fileID: 4280900825574770516, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: Fungi.description
-      value: Fungi were once silent scavengers that thrived on decay, breaking down
-        what was already dead and returning it to the ground. When imbalance spread
-        across the land, they evolved into something more dangerous feeding not only
-        on rot, but on weakness itself. Wherever battles leave scars, Fungi grow
-        rapidly, releasing invisible spores that drain strength and slow resistance
-        from anything nearby. They do not attack with force, but with persistence,
-        spreading quietly, overwhelming defenses over time, and turning neglect into
-        collapse. In this world, Fungi are a reminder that what is ignored for too
-        long can become the hardest threat to remove.
-      objectReference: {fileID: 0}
-    - target: {fileID: 4280900825574770516, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: Virus.description
-      value: Virus are the smallest enemies on the battlefield, yet the most deceptive.
-        Invisible to the naked eye, they slip through defenses with ease, hijacking
-        what they touch and forcing it to serve their own replication. Unlike other
-        threats, Virus do not rely on strength or numbers alone they rely on speed,
-        mutation, and surprise. Once they breach a line, they adapt rapidly, becoming
-        harder to contain with every moment they survive. In this world, Virus embody
-        the danger of unseen threats, proving that even the smallest enemy can cause
-        the greatest collapse if left unchecked.
-      objectReference: {fileID: 0}
-    - target: {fileID: 4280900825574770516, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: Helminth.pictureObj
-      value: 
-      objectReference: {fileID: 443943742}
-    - target: {fileID: 4280900825574770516, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: Protozoa.pictureObj
-      value: 
-      objectReference: {fileID: 1673198972}
-    - target: {fileID: 4280900825574770516, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: Helminth.description
-      value: Helminth are massive parasitic creatures that advance slowly but relentlessly,
-        burrowing through the battlefield with unwavering persistence. They do not
-        rush their prey instead, they drain resources and stability over time, weakening
-        defenses from within. Protected by thick layers and sheer endurance, Helminth
-        are difficult to eliminate once they take hold. Their presence turns long
-        battles into wars of attrition, where patience favors the enemy. In this
-        world, Helminth symbolize the danger of prolonged neglect, showing that threats
-        allowed to grow quietly can become nearly impossible to remove.
-      objectReference: {fileID: 0}
-    - target: {fileID: 4280900825574770516, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: Protozoa.description
-      value: "Protozoa are ancient lifeforms that existed long before the battlefield
-        was ever formed, surviving through constant adaptation and cunning. Unlike
-        mindless threats, they move with intention, sensing openings and exploiting
-        weak points in defenses. Protozoa thrive in unstable environments, shifting
-        their behavior when threatened and retreating only to strike again from a
-        safer angle. Their strength lies not in raw power, but in intelligence and
-        survival instinct, making them unpredictable opponents. In this world, Protozoa
-        represent resilience through adaptation\u2014enemies that endure by learning
-        how to survive every encounter."
-      objectReference: {fileID: 0}
-    - target: {fileID: 4363625245403444716, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4399360938947415797, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: canvasDefault
       value: 
       objectReference: {fileID: 1292983857}
-    - target: {fileID: 4399360938947415797, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: EnemyBioChoose
-      value: 
-      objectReference: {fileID: 2103577478}
-    - target: {fileID: 4399360938947415797, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: enemyBluePanel
-      value: 
-      objectReference: {fileID: 2056098549}
-    - target: {fileID: 4399360938947415797, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: enemyPinkPanel
-      value: 
-      objectReference: {fileID: 523020007}
-    - target: {fileID: 4399360938947415797, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: enemyGreenPanel
-      value: 
-      objectReference: {fileID: 1305472029}
-    - target: {fileID: 4399360938947415797, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: enemyOrangePanel
-      value: 
-      objectReference: {fileID: 644476348}
-    - target: {fileID: 4399360938947415797, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: enemyYellowPanel
-      value: 
-      objectReference: {fileID: 1857222654}
-    - target: {fileID: 4487173857030051232, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 600
-      objectReference: {fileID: 0}
-    - target: {fileID: 4503998989877755964, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4522702596427753448, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4701878083168353599, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 4701878083168353599, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyBioChoose
-      objectReference: {fileID: 0}
-    - target: {fileID: 4701878083168353599, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: QuestionMarkManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4745324719091568725, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4766979737267313206, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 784895943}
-    - target: {fileID: 4766979737267313206, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowBacteriaBlue
-      objectReference: {fileID: 0}
-    - target: {fileID: 4766979737267313206, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemyBacteriaBioManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4785445798335737273, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 784895943}
-    - target: {fileID: 4785445798335737273, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowBacteriaGreen
-      objectReference: {fileID: 0}
-    - target: {fileID: 4785445798335737273, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemyBacteriaBioManager, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 4843526069214671795, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4843526069214671795, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4843526069214671795, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 4843526069214671795, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 4843526069214671795, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 43.76
       objectReference: {fileID: 0}
     - target: {fileID: 4843526069214671795, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -131
-      objectReference: {fileID: 0}
-    - target: {fileID: 4863129950930060938, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 4863129950930060938, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyBioChoose
-      objectReference: {fileID: 0}
-    - target: {fileID: 4863129950930060938, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: QuestionMarkManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 4971946443951738087, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 4971946443951738087, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyOrange
-      objectReference: {fileID: 0}
-    - target: {fileID: 5009619812786079259, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5096849567422469414, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5096849567422469414, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5096849567422469414, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 5096849567422469414, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 5096849567422469414, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -117
       objectReference: {fileID: 0}
     - target: {fileID: 5096849567422469414, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -293.37
-      objectReference: {fileID: 0}
-    - target: {fileID: 5174118959889465974, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5503171024189938755, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5535982585741447272, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 784895943}
-    - target: {fileID: 5535982585741447272, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowBacteriaPurple
-      objectReference: {fileID: 0}
-    - target: {fileID: 5535982585741447272, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemyBacteriaBioManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5582236863431860442, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
+    - target: {fileID: 5634526594348478695, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5811714160097645736, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5811714160097645736, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5811714160097645736, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5811714160097645736, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyBioChoose
-      objectReference: {fileID: 0}
-    - target: {fileID: 5811714160097645736, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: QuestionMarkManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6159747992217584384, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6324997972049853042, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 535.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 6324997972049853042, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.000015258789
-      objectReference: {fileID: 0}
-    - target: {fileID: 6475732826528771471, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 6475732826528771471, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyPink
-      objectReference: {fileID: 0}
-    - target: {fileID: 6544744256851862608, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 6544744256851862608, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyBioChoose
-      objectReference: {fileID: 0}
-    - target: {fileID: 6544744256851862608, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: QuestionMarkManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6801145361291954009, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6970769526787883782, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 6970769526787883782, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyBioChoose
-      objectReference: {fileID: 0}
-    - target: {fileID: 6970769526787883782, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: QuestionMarkManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7324569102540788294, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 7324569102540788294, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyBacteriaBioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 7404199933123470950, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 7404199933123470950, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyBioChoose
-      objectReference: {fileID: 0}
-    - target: {fileID: 7404199933123470950, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: QuestionMarkManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7411504566801937543, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 7411504566801937543, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyBioChoose
-      objectReference: {fileID: 0}
-    - target: {fileID: 7411504566801937543, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: QuestionMarkManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7522825544667809295, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 7522825544667809295, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyYellow
-      objectReference: {fileID: 0}
-    - target: {fileID: 7560169904684089925, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 784895943}
-    - target: {fileID: 7560169904684089925, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowBacteriaYellow
-      objectReference: {fileID: 0}
-    - target: {fileID: 7560169904684089925, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemyBacteriaBioManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7571289824123071556, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 7571289824123071556, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyBacteriaBioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 7675222548691946787, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 7675222548691946787, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyRed
-      objectReference: {fileID: 0}
-    - target: {fileID: 7748995886270493216, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 7748995886270493216, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyBacteriaBioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 7788819462102438218, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 7788819462102438218, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyOtherBioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 7796499308621579365, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyBioChoose
-      objectReference: {fileID: 0}
-    - target: {fileID: 7860482944221182181, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 7860482944221182181, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyBlue
-      objectReference: {fileID: 0}
-    - target: {fileID: 7980360371476126406, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 7980360371476126406, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyBioChoose
-      objectReference: {fileID: 0}
-    - target: {fileID: 7980360371476126406, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: QuestionMarkManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8006096224500347529, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8006096224500347529, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8006096224500347529, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 8006096224500347529, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8006096224500347529, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyBacteriaBioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 8006096224500347529, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: QuestionMarkManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8006096224500347529, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: slotName
-      value: 
-      objectReference: {fileID: 374733424}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: slotDescription
-      value: 
-      objectReference: {fileID: 1540423657}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaRed.name
-      value: Moracella xataralis
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaBlue.name
-      value: Haemophilus influenzae
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaPink.name
-      value: Esherchia Coli
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaGreen.name
-      value: Pseudomonas aeruginosa
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaRed.button
-      value: 
-      objectReference: {fileID: 51223224}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaBlue.button
-      value: 
-      objectReference: {fileID: 1305426591}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaOrange.name
-      value: Methicillin-Resistant Staphylococcus aureus (MRSA)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaPink.button
-      value: 
-      objectReference: {fileID: 346915208}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaPurple.name
-      value: Streptococcus pneumonia
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaYellow.name
-      value: Staphylloccocus aureus
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaGreen.button
-      value: 
-      objectReference: {fileID: 242642545}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaOrange.button
-      value: 
-      objectReference: {fileID: 2048087497}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaPurple.button
-      value: 
-      objectReference: {fileID: 806598910}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaYellow.button
-      value: 
-      objectReference: {fileID: 1445017725}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaRed.pictureObj
-      value: 
-      objectReference: {fileID: 220941004}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaBlue.pictureObj
-      value: 
-      objectReference: {fileID: 1982791933}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaPink.pictureObj
-      value: 
-      objectReference: {fileID: 764583929}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaRed.description
-      value: "Moraxella catarrhalis appears in the game as an opportunistic enemy
-        hiding in the upper airways. It remains quiet and unnoticed, blending into
-        its surroundings while waiting for the host\u2019s defenses to weaken. When
-        the moment comes, it turns aggressive and spreads through the sinuses, ears,
-        and lungs. This enemy causes persistent inflammation that clogs passages
-        and slows recovery. Moraxella catarrhalis teaches players that threats which
-        seem harmless can become dangerous when vigilance fades."
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaBlue.description
-      value: Haemophilus influenzae appears in the game as a cunning enemy that exploits
-        crowded airways and weakened defenses. It moves quickly through the respiratory
-        passages, causing swelling and obstruction. Once established, it can trigger
-        a chain of infections spreading toward the lungs. Subtle but dangerous, it
-        strikes early and quietly. Haemophilus influenzae teaches players that ignoring
-        small threats can shape the entire battle.
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaGreen.pictureObj
-      value: 
-      objectReference: {fileID: 933381393}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaPink.description
-      value: Escherichia coli is introduced in the game as a deceptive enemy that
-        normally exists in balance but turns dangerous when it crosses forbidden
-        boundaries. Once it escapes its usual territory, it unleashes powerful toxins
-        that disrupt vital systems, causing chaos and rapid damage from within. This
-        enemy spreads quickly through contaminated paths, overwhelming defenses before
-        they can fully respond. Unpredictable and versatile, Escherichia coli symbolizes
-        how familiar forces can become deadly threats when order is broken and control
-        is lost.
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaGreen.description
-      value: Pseudomonas aeruginosa appears in the game as a ruthless and highly
-        adaptable enemy that thrives in harsh environments. It spreads through wounds
-        and weakened systems, forming resilient colonies that are hard to eliminate.
-        This pathogen releases toxic substances that slowly overwhelm defenses. Resistant
-        and persistent, it refuses to retreat once established. Pseudomonas aeruginosa
-        represents a dangerous late-game threat that punishes careless strategy.
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaOrange.pictureObj
-      value: 
-      objectReference: {fileID: 1214144675}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaPurple.pictureObj
-      value: 
-      objectReference: {fileID: 364701984}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaYellow.pictureObj
-      value: 
-      objectReference: {fileID: 881602483}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaOrange.description
-      value: Methicillin-Resistant Staphylococcus aureus (MRSA) appears in the game
-        as a hardened elite enemy shaped by countless failed attempts to destroy
-        it. It resists conventional attacks and adapts rapidly to incoming threats.
-        Entering through wounds and close contact, it builds fortified strongholds
-        that are difficult to break. Relentless and unforgiving, MRSA tests both
-        strategy and patience. It represents the danger of enemies forged through
-        resistance.
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaPurple.description
-      value: "Streptococcus pneumonia is known in the game world as a silent invader
-        that strikes when defenses grow weak. It drifts through the air unnoticed,
-        settling deep within the lungs where it multiplies rapidly and clouds the
-        battlefield with infection. Once ignored, it spreads beyond its first foothold,
-        triggering fever, breathlessness, and confusion as it drains the host\u2019s
-        strength from within. Clever and resilient, this enemy thrives on vulnerability,
-        turning a moment of neglect into a full-scale assault, reminding players
-        that even the smallest unseen foe can become a devastating threat if left
-        unchecked."
-      objectReference: {fileID: 0}
-    - target: {fileID: 8053858591361123635, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: BacteriaYellow.description
-      value: Staphylococcus aureus appears in the game as a versatile and aggressive
-        enemy that exploits close contact and exposed weaknesses. It enters through
-        small wounds, multiplies rapidly, and releases damaging toxins. Though it
-        seems manageable at first, it can quickly escalate into severe infections
-        if ignored. Adaptable and relentless, it overwhelms the battlefield with
-        pressure. Staphylococcus aureus teaches players not to underestimate common
-        enemies.
-      objectReference: {fileID: 0}
-    - target: {fileID: 8073782142175667681, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 531181774}
-    - target: {fileID: 8073782142175667681, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowEnemyBioChoose
-      objectReference: {fileID: 0}
-    - target: {fileID: 8073782142175667681, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: QuestionMarkManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8073973059115940375, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1125611397}
-    - target: {fileID: 8073973059115940375, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowVirus
-      objectReference: {fileID: 0}
-    - target: {fileID: 8073973059115940375, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemyOtherBioManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8106605614358078059, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8226977180623781164, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 784895943}
-    - target: {fileID: 8226977180623781164, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowBacteriaRed
-      objectReference: {fileID: 0}
-    - target: {fileID: 8226977180623781164, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemyBacteriaBioManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8477688823525800267, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
+    - target: {fileID: 7837182088767883138, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8579669010609087907, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1125611397}
-    - target: {fileID: 8579669010609087907, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowHelminth
-      objectReference: {fileID: 0}
-    - target: {fileID: 8579669010609087907, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EnemyOtherBioManager, Assembly-CSharp
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8972241252374527805, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8972241252374527805, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8972241252374527805, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 8972241252374527805, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 8972241252374527805, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -117
       objectReference: {fileID: 0}
     - target: {fileID: 8972241252374527805, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -131
-      objectReference: {fileID: 0}
-    - target: {fileID: 8975694019613207343, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9092442010405047914, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_Name
       value: RangerGroup
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092442010405047914, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
---- !u!1 &1857222654 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5662255956423353669, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1982791933 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4503998989877755964, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1983196955 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8645365087351766091, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2028543572 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7711577342761821782, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &2048087497 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5582236863431860442, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2056098549 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6654613667726367339, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2103577478 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3069038422151079776, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
-  m_PrefabInstance: {fileID: 1752545910}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

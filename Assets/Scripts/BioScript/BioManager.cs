@@ -8,6 +8,14 @@ public class BioManager : MonoBehaviour
     [SerializeField] private GameObject bioEnemyGO;
     [SerializeField] private GameObject howToPlayGO;
 
+    // =====================
+    // ENEMY BIO SUB PANELS (NEW)
+    // =====================
+    [Header("Enemy Bio Panels")]
+    [SerializeField] private GameObject ChooseEnemyBioPanel;
+    [SerializeField] private GameObject EnemyOtherBioPanel;
+    [SerializeField] private GameObject EnemyBacteriaBioPanel;
+
     [Header("Ranger Characters (Optional)")]
     [SerializeField] private GameObject whiteCharacter;
     [SerializeField] private GameObject blueCharacter;
@@ -41,6 +49,7 @@ public class BioManager : MonoBehaviour
 
         DisableAllRangers();
         DisableAllEnemies();
+        DisableAllEnemyBioPanels();
     }
 
     public void ShowBioRanger()
@@ -52,6 +61,7 @@ public class BioManager : MonoBehaviour
 
         DisableAllRangers();
         DisableAllEnemies();
+        DisableAllEnemyBioPanels();
     }
 
     public void ShowBioEnemy()
@@ -63,6 +73,7 @@ public class BioManager : MonoBehaviour
 
         DisableAllRangers();
         DisableAllEnemies();
+        DisableAllEnemyBioPanels();
     }
 
     public void ShowHowToPlay()
@@ -74,6 +85,7 @@ public class BioManager : MonoBehaviour
 
         DisableAllRangers();
         DisableAllEnemies();
+        DisableAllEnemyBioPanels();
     }
 
     // =====================
@@ -117,5 +129,33 @@ public class BioManager : MonoBehaviour
         if (virusEnemy != null) virusEnemy.SetActive(false);
         if (protozoaEnemy != null) protozoaEnemy.SetActive(false);
         if (helminthEnemy != null) helminthEnemy.SetActive(false);
+    }
+
+    // =====================
+    // ENEMY BIO PANEL BEHAVIOUR (NEW)
+    // =====================
+    private void DisableAllEnemyBioPanels()
+    {
+        if (ChooseEnemyBioPanel != null) ChooseEnemyBioPanel.SetActive(false);
+        if (EnemyOtherBioPanel != null) EnemyOtherBioPanel.SetActive(false);
+        if (EnemyBacteriaBioPanel != null) EnemyBacteriaBioPanel.SetActive(false);
+    }
+
+    public void ShowChooseEnemyBioPanel()
+    {
+        DisableAllEnemyBioPanels();
+        if (ChooseEnemyBioPanel != null) ChooseEnemyBioPanel.SetActive(true);
+    }
+
+    public void ShowEnemyOtherBioPanel()
+    {
+        DisableAllEnemyBioPanels();
+        if (EnemyOtherBioPanel != null) EnemyOtherBioPanel.SetActive(true);
+    }
+
+    public void ShowEnemyBacteriaBioPanel()
+    {
+        DisableAllEnemyBioPanels();
+        if (EnemyBacteriaBioPanel != null) EnemyBacteriaBioPanel.SetActive(true);
     }
 }
