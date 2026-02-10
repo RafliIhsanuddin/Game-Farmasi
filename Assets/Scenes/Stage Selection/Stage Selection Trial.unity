@@ -4855,7 +4855,7 @@ MonoBehaviour:
     Proteus mirabilis, Haemophilus influenzae, Neisseria gonorrhoeae, Salmonella
     typhi\r\n\r\n<b>Adverse Drug Reactions (ADR):</b>\r\nDiarrhea, nausea, vomiting,
     abdominal pain, skin rash, hypersensitivity reactions\r\n\r\n<b>LINK:</b>\n<link=\"https://www.rxlist.com/suprax-drug.htm\">\n 
-    https://www.rxlist.com/suprax-drug.htm\n</link>"
+    Click here to see more\n</link>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -4882,8 +4882,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10228,6 +10228,7 @@ GameObject:
   - component: {fileID: 293787941}
   - component: {fileID: 293787943}
   - component: {fileID: 293787942}
+  - component: {fileID: 293787944}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -10251,7 +10252,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00021362, y: -936.79663}
+  m_AnchoredPosition: {x: 0.00021362, y: -936.7969}
   m_SizeDelta: {x: 1331, y: 1873.5933}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &293787942
@@ -10274,27 +10275,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Blue is a character to Red, yang hadir sebagai penyejuk di tengah intensitas
-    dan energi kuat milik Red; kehadiran Blue memberikan ruang bagi ketenangan, ketelitian,
-    dan refleksi yang kontras dengan gairah, dorongan spontan, serta daya dorong
-    emosional yang dibawa oleh Red. Perbedaan keduanya bukan sekadar kontras visual,
-    tetapi juga simbolik, seakan Blue menata kembali peta emosi yang mudah meledak
-    akibat pengaruh Red. Blue mempersilakan jeda di sela denyut energi, memperhalus
-    ketegangan agar suasana tetap dapat dibaca dan dimaknai. Dalam hubungan keduanya,
-    Blue berperan sebagai pemikir dan penimbang yang menahan laju Red agar tidak
-    melampaui batas bukan untuk melemahkan Red, tetapi untuk memastikan bahwa dorongan
-    dan intensitas Red tidak kehilangan arah. Ketelitian Blue mengubah dorongan impulsif
-    menjadi strategi; ketenangan Blue mengubah provokasi menjadi percakapan; kejernihan
-    Blue mengubah teriakan menjadi pernyataan yang tepat waktu. Di titik inilah interaksi
-    Red\u2013Blue tidak menjadi pertentangan, melainkan koreksi yang saling menguatkan.
-    Pada akhirnya, Blue memperkuat pesan dan makna yang ingin disampaikan Red melalui
-    kekuatan warnanya. Red cenderung ingin didengar, sementara Blue ingin dipahami;
-    keduanya bersinggungan pada ruang dimana kekuatan Red mampu mencapai audiens
-    dengan sikap yang lebih terukur, dan ketenangan Blue memperoleh bobot emosional
-    yang lebih besar. Mereka adalah dua karakter yang membangun keseimbangan bukan
-    demi kompromi, namun demi keutuhan narasi. Red memberi nyawa dan keberanian,
-    Blue memberi arah dan ketenangan, menjadikan kehadiran keduanya saling melengkapi
-    dalam satu garis cerita yang utuh."
+  m_text: "<b>Class:</b> Glycopeptide antibiotic\r\n\r\n<b>Indications:</b>\r\nTreatment
+    of serious Gram-positive bacterial infections, including methicillin-resistant
+    Staphylococcus aureus (MRSA), endocarditis, pneumonia, bone and joint infections,
+    and Clostridioides difficile-associated colitis\r\n\r\n<b>Target Bacteria:</b>\r\nStaphylococcus
+    aureus (including MRSA), Streptococcus spp., Enterococcus spp., Clostridioides
+    difficile\r\n\r\n<b>Adverse Drug Reactions (ADR):</b>\r\nNephrotoxicity, ototoxicity,
+    infusion-related reactions (red man syndrome), phlebitis, skin rash\r\n\r\n<b>LINK:</b>\n<link=\"https://www.rxlist.com/vancocin-drug.htm\">\n 
+    Click here to see more\n</link>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -10321,8 +10309,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10373,6 +10361,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 293787940}
   m_CullTransparentMesh: 1
+--- !u!114 &293787944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293787940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5e772746f775542b8d6cec4497d035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tmpText: {fileID: 293787942}
 --- !u!1 &304632946
 GameObject:
   m_ObjectHideFlags: 0
@@ -11296,8 +11297,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1818921224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.99999994}
+  m_AnchorMax: {x: 1, y: 0.99999994}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -13213,6 +13214,7 @@ GameObject:
   - component: {fileID: 396163684}
   - component: {fileID: 396163686}
   - component: {fileID: 396163685}
+  - component: {fileID: 396163687}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -13259,28 +13261,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Yellow is a character to fight Helmith, hadir sebagai simbol determinasi
-    yang cerah, cepat, dan waspada dalam menghadapi serangan parasit yang lentur,
-    licin, dan mampu bertahan di lingkungan yang kompleks. Jika Helmith menunjukkan
-    ketahanan biologis dan kemampuan menginvasi secara perlahan namun pasti, maka
-    Yellow menghadirkan respons taktis yang gesit, penuh antisipasi, dan mengandalkan
-    kejernihan persepsi dalam pertempuran yang berlangsung di medan yang tidak selalu
-    terlihat secara kasat mata. Di balik warna yang identik dengan cahaya, tanda,
-    dan peringatan, Yellow membawa disiplin tersendiri dalam membaca arah gerak lawan,
-    menghitung jeda, serta menentukan kapan harus bertindak cepat dan kapan harus
-    menahan diri agar strategi tidak menjadi sia-sia. Pertarungan ini bukan hanya
-    soal kekuatan, tetapi soal memahami pola, ritme, dan kecerdasan biologis Helmith
-    yang kerap bersembunyi dalam lapisan proses yang lambat tetapi stabil. Yellow
-    merespons kelicinan dan daya tahan Helmith dengan ketelitian yang tidak kalah
-    tangguh, bahkan menjadikan kecepatan sebagai mekanisme observasi sekaligus eksekusi.
-    Ketika Helmith membangun ketahanan lewat parasitisme yang terstruktur, Yellow
-    menembus struktur itu dengan kehati-hatian yang agresif, mempersempit ruang gerak
-    lawan dan memaksa Helmith untuk keluar dari zona invasinya. Dalam hubungan keduanya,
-    Yellow tidak hanya mengimbangi Helmith melalui energi dan kecepatan, tetapi juga
-    mengubah arena konflik menjadi proses pembelajaran yang berkelanjutan, mendorong
-    adaptasi, keberanian, dan penajaman strategi hingga kemenangan dapat dicapai
-    bukan sebagai kejadian tiba-tiba, tetapi sebagai hasil dari proses panjang yang
-    mempertimbangkan waktu, ketahanan, dan kecerdikan.
+  m_text: "<b>Class:</b>\r\nCombination antibiotic; folate synthesis inhibitor\r\n\r\n<b>Indications:</b>\r\nTreatment
+    of urinary tract infections, bacterial diarrhea, Pneumocystis jirovecii pneumonia,
+    skin and soft tissue infections, and toxoplasmosis\r\n\r\n<b>Target Bacteria:</b>\r\nEscherichia
+    coli, Klebsiella spp., Staphylococcus aureus, Pneumocystis jirovecii, Toxoplasma
+    gondii\r\n\r\n<b>Adverse Drug Reactions (ADR):</b>\r\nNausea, vomiting, skin
+    rash, Stevens\u2013Johnson syndrome, bone marrow suppression\r\n\r\n<b>LINK:</b>\r\n<link=\"https://www.rxlist.com/bactrim-drug.htm\">\n 
+    Click here to see more\n</link>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -13307,8 +13294,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -13359,6 +13346,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 396163683}
   m_CullTransparentMesh: 1
+--- !u!114 &396163687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396163683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5e772746f775542b8d6cec4497d035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tmpText: {fileID: 396163685}
 --- !u!1 &397955343
 GameObject:
   m_ObjectHideFlags: 0
@@ -32311,7 +32311,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &981431296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33198,6 +33198,7 @@ GameObject:
   - component: {fileID: 1008756088}
   - component: {fileID: 1008756090}
   - component: {fileID: 1008756089}
+  - component: {fileID: 1008756091}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -33244,26 +33245,44 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Green is a character to fight Protozoa, muncul sebagai representasi energi
-    hidup, ketahanan, dan adaptasi yang tangguh di tengah ancaman mikroorganisme
-    yang licin dan sulit ditebak. Jika Protozoa bergerak dengan strategi halus dan
-    kemampuan bertahan yang kompleks, maka Green tampil sebagai simbol pertumbuhan,
-    regenerasi, dan respon agresif yang cerdas dalam menghadapi serangan biologis.
-    Green tidak hanya hadir sebagai warna atau identitas, melainkan sebagai kekuatan
-    yang terus memperbaharui diri, memperkuat pertahanan, dan mempertajam kemampuan
-    membaca perubahan pola dari musuhnya. Dalam konteks tersebut, Green memperlakukan
-    Protozoa bukan sebagai sekadar ancaman pasif, tetapi sebagai lawan yang memaksa
-    tubuh atau sistem untuk meningkatkan kecerdikan dan kemampuan bertahan. Dinamika
-    ini menonjolkan bahwa pertarungan melawan Protozoa tidak bersifat linear, tetapi
-    berlangsung dalam gelombang adaptasi, observasi, dan respons yang terus berkembang.
-    Ketika Protozoa mengandalkan kelicinan dan kemampuan menyesuaikan lingkungan
-    mikro, Green menandingi dengan agresi strategis yang tidak hanya bereaksi, tetapi
-    juga mengantisipasi. Pertumbuhan menjadi senjata, regenerasi menjadi benteng,
-    dan pembelajaran menjadi mekanisme untuk menutup celah yang dimanfaatkan Protozoa.
-    Dalam hubungan keduanya, Green menegaskan dirinya sebagai kekuatan yang bukan
-    hanya bertahan tetapi juga mengendalikan ritme dan arah pertarungan, menjadikan
-    konflik ini sebagai proses evolusi yang memperbesar peluang kemenangan sekaligus
-    memperdalam pemahaman tentang cara menghadapi ancaman biologis yang tak terlihat.
+  m_text: '<b>Class:</b>
+
+    Fluoroquinolone antibiotic (second generation)
+
+    
+
+    <b>Indications:</b>
+
+    Treatment
+    of urinary tract infections, gastrointestinal infections, bone and joint infections,
+    skin and soft tissue infections, Gram-negative pneumonia, and anthrax
+
+    
+
+    <b>Target
+    Bacteria:</b>
+
+    Escherichia coli, Pseudomonas aeruginosa, Klebsiella spp.,
+    Salmonella spp., Shigella spp.
+
+    
+
+    <b>Adverse Drug Reactions (ADR):</b>
+
+    Nausea,
+    diarrhea, dizziness, photosensitivity, increased risk of tendonitis and tendon
+    rupture
+
+    
+
+    <b>LINK:</b>
+
+    <link="https://www.rxlist.com/cipro-drug.htm">
+
+    Click
+    here to see more
+
+    </link>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -33290,8 +33309,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -33342,6 +33361,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1008756087}
   m_CullTransparentMesh: 1
+--- !u!114 &1008756091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008756087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5e772746f775542b8d6cec4497d035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tmpText: {fileID: 1008756089}
 --- !u!1 &1020661589
 GameObject:
   m_ObjectHideFlags: 0
@@ -33374,8 +33406,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1036033104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -46622,7 +46654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1417021630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51968,6 +52000,7 @@ GameObject:
   - component: {fileID: 1552307320}
   - component: {fileID: 1552307322}
   - component: {fileID: 1552307321}
+  - component: {fileID: 1552307323}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -52014,27 +52047,42 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Red is a character to Blue Virus, hadir sebagai warna yang membawa ketegasan,
-    peringatan, dan dorongan instingtif untuk bereaksi terhadap sesuatu yang dianggap
-    berbahaya. Jika Blue Virus memiliki kesan dingin, sistematis, dan hampir klinis
-    dalam cara ia menyebar atau beroperasi, maka Red menjadi penanda emosional yang
-    mengaktifkan persepsi ancaman dalam kesadaran. Red seperti lonceng alarm yang
-    mengganggu kefokusan Blue Virus yang tenang, sehingga kehadiran objek itu tidak
-    lagi netral atau abstrak, melainkan sarat dengan makna risiko dan bahaya. Dalam
-    hubungan keduanya, Red mempersonifikasikan respon defensif atau bahkan agresif
-    terhadap dominasi Blue Virus yang tampak metodis dan tak tergesa-gesa. Blue Virus
-    bertindak seolah mengikuti prosedur, memanfaatkan celah dan sistem dengan cara
-    yang dingin, sedangkan Red mendorong diskursus tentang perlawanan, pencegahan,
-    dan penyikapan emosional. Kontras ini bukan hanya visual, tetapi juga konseptual,
-    karena Red mengubah Blue Virus dari fenomena tak terlihat menjadi ancaman yang
-    dapat dirasakan, dibicarakan, dan ditanggapi. Pada akhirnya, Red memberi penekanan
-    dramatis yang mempertegas identitas Blue Virus sebagai sesuatu yang perlu dihadapi
-    dengan kewaspadaan. Tanpa Red, mungkin Blue Virus akan diperlakukan sekadar sebagai
-    mekanisme biologis atau entitas medis yang netral, tetapi dengan Red, ia memperoleh
-    narasi tentang konflik, ketegangan, urgensi, serta dorongan untuk memahami atau
-    melawannya. Kedua karakter warna ini menciptakan dinamika yang memperkaya persepsi,
-    menjadikan ancaman bukan hanya fakta tetapi juga pengalaman yang memiliki bobot
-    emosional.
+  m_text: '<b>Class:</b> Macrolide antibiotic
+
+    
+
+    <b>Indications:</b>
+
+    Treatment
+    of upper and lower respiratory tract infections, acute otitis media, skin and
+    soft tissue infections, sexually transmitted infections (chlamydia), and typhoid
+    fever
+
+    
+
+    <b>Target Bacteria:</b>
+
+    Streptococcus pneumoniae, Haemophilus
+    influenzae, Mycoplasma pneumoniae, Chlamydia trachomatis, Legionella pneumophila
+
+    
+
+    <b>Adverse
+    Drug Reactions (ADR):</b>
+
+    Gastrointestinal disturbances, headache, dizziness,
+    QT interval prolongation
+
+    
+
+    <b>LINK:</b>
+
+    <link="https://www.rxlist.com/zithromax-drug.htm">
+
+    Click
+    here to see more
+
+    </link>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -52061,8 +52109,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -52113,6 +52161,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1552307319}
   m_CullTransparentMesh: 1
+--- !u!114 &1552307323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552307319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5e772746f775542b8d6cec4497d035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tmpText: {fileID: 1552307321}
 --- !u!1 &1554441266
 GameObject:
   m_ObjectHideFlags: 0
@@ -54785,7 +54846,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 104628912}
   m_HandleRect: {fileID: 104628911}
   m_Direction: 2
-  m_Value: 1.0000001
+  m_Value: 1.0000002
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -57665,6 +57726,7 @@ GameObject:
   - component: {fileID: 1677832132}
   - component: {fileID: 1677832134}
   - component: {fileID: 1677832133}
+  - component: {fileID: 1677832135}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -57711,28 +57773,40 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Yellow is a character to fight Helmith, hadir sebagai simbol determinasi
-    yang cerah, cepat, dan waspada dalam menghadapi serangan parasit yang lentur,
-    licin, dan mampu bertahan di lingkungan yang kompleks. Jika Helmith menunjukkan
-    ketahanan biologis dan kemampuan menginvasi secara perlahan namun pasti, maka
-    Yellow menghadirkan respons taktis yang gesit, penuh antisipasi, dan mengandalkan
-    kejernihan persepsi dalam pertempuran yang berlangsung di medan yang tidak selalu
-    terlihat secara kasat mata. Di balik warna yang identik dengan cahaya, tanda,
-    dan peringatan, Yellow membawa disiplin tersendiri dalam membaca arah gerak lawan,
-    menghitung jeda, serta menentukan kapan harus bertindak cepat dan kapan harus
-    menahan diri agar strategi tidak menjadi sia-sia. Pertarungan ini bukan hanya
-    soal kekuatan, tetapi soal memahami pola, ritme, dan kecerdasan biologis Helmith
-    yang kerap bersembunyi dalam lapisan proses yang lambat tetapi stabil. Yellow
-    merespons kelicinan dan daya tahan Helmith dengan ketelitian yang tidak kalah
-    tangguh, bahkan menjadikan kecepatan sebagai mekanisme observasi sekaligus eksekusi.
-    Ketika Helmith membangun ketahanan lewat parasitisme yang terstruktur, Yellow
-    menembus struktur itu dengan kehati-hatian yang agresif, mempersempit ruang gerak
-    lawan dan memaksa Helmith untuk keluar dari zona invasinya. Dalam hubungan keduanya,
-    Yellow tidak hanya mengimbangi Helmith melalui energi dan kecepatan, tetapi juga
-    mengubah arena konflik menjadi proses pembelajaran yang berkelanjutan, mendorong
-    adaptasi, keberanian, dan penajaman strategi hingga kemenangan dapat dicapai
-    bukan sebagai kejadian tiba-tiba, tetapi sebagai hasil dari proses panjang yang
-    mempertimbangkan waktu, ketahanan, dan kecerdikan.
+  m_text: '<b>Class:</b> Fluoroquinolone antibiotic (third generation)
+
+    
+
+    <b>Indications:</b>
+
+    Treatment
+    of community-acquired pneumonia, acute bacterial sinusitis, acute exacerbations
+    of chronic bronchitis, urinary tract infections, and skin and soft tissue infections
+
+    
+
+    <b>Target
+    Bacteria:</b>
+
+    Streptococcus pneumoniae, Haemophilus influenzae, Escherichia
+    coli, Klebsiella pneumoniae, Legionella pneumophila
+
+    
+
+    <b>Adverse Drug
+    Reactions (ADR):</b>
+
+    Gastrointestinal disturbances, dizziness, insomnia,
+    QT interval prolongation, increased risk of tendon rupture
+
+    
+
+    <b>LINK:</b>
+
+    <link="https://www.rxlist.com/levaquin-drug.htm">
+
+    Click
+    here to see more</link>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -57811,6 +57885,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1677832131}
   m_CullTransparentMesh: 1
+--- !u!114 &1677832135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677832131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5e772746f775542b8d6cec4497d035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tmpText: {fileID: 1677832133}
 --- !u!1 &1687620229
 GameObject:
   m_ObjectHideFlags: 0
@@ -63692,6 +63779,7 @@ GameObject:
   - component: {fileID: 1850676754}
   - component: {fileID: 1850676756}
   - component: {fileID: 1850676755}
+  - component: {fileID: 1850676757}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -63738,16 +63826,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<b>Class:<b> \u03B2-lactam antibiotic; aminopenicillin\r\n<b>Indications:<b>\nTreatment
+  m_text: "<b>Class:</b> \u03B2-lactam antibiotic; aminopenicillin\r\n\r\n<b>Indications:</b>\r\nTreatment
     of acute otitis media, pharyngitis and tonsillitis, lower respiratory tract infections,
     skin and skin structure infections, urinary tract infections, acute uncomplicated
     gonorrhea, typhoid fever, Helicobacter pylori infection, and duodenal ulcer disease
-    (as part of combination therapy)\n\r\n<b>Target Bacteria:<b>\nStreptococcus pneumoniae,
-    Streptococcus pyogenes, Enterococcus faecalis, Haemophilus influenzae, Escherichia
-    coli, Helicobacter pylori\n\r\n<b>Adverse Drug Reactions (ADR):<b>\r\nNausea,
+    (as part of combination therapy)\r\n\r\n<b>Target Bacteria:</b>\r\nStreptococcus
+    pneumoniae, Streptococcus pyogenes, Enterococcus faecalis, Haemophilus influenzae,
+    Escherichia coli, Helicobacter pylori\r\n\r\n<b>Adverse Drug Reactions (ADR):</b>\r\nNausea,
     vomiting, diarrhea, skin rash, hypersensitivity reactions, including anaphylaxis
-    (rare)\n\r\n<b>LINK:<b>\r\n\n\n<link=\"https://www.rxlist.com/amoxicillin/generic-drug.htm\"><color=#3ABEFF><u>
-    https://www.rxlist.com/amoxicillin/generic-drug.htm</u></color></link>"
+    (rare)\r\n\r\n<b>LINK:</b>\n\n\r\n<link=\"https://www.rxlist.com/amoxicillin/generic-drug.htm\">Click
+    here to see more</link>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -63826,6 +63914,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1850676753}
   m_CullTransparentMesh: 1
+--- !u!114 &1850676757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850676753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5e772746f775542b8d6cec4497d035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tmpText: {fileID: 1850676755}
 --- !u!1 &1850829749
 GameObject:
   m_ObjectHideFlags: 0
