@@ -1,47 +1,50 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class MainMenuManager : MonoBehaviour
 {
-    [Header("Semua Canvas (Optional)")]
+    [Header("Semua Canvas")]
     [SerializeField] private GameObject mainMenuCanvas;
-    [SerializeField] private GameObject BioRangerCanvas;
-    [SerializeField] private GameObject BioEnemyCanvas;
-    [SerializeField] private GameObject HowToPlayCanvas;
+    [SerializeField] private GameObject infeksiParuCanvas;
+    [SerializeField] private GameObject infeksiUsusCanvas;
+    [SerializeField] private GameObject infeksiKulitCanvas;
 
     private void Start()
     {
+        // Saat pertama kali play, hanya MainMenu yang aktif
         ShowMainMenu();
     }
 
     public void ShowMainMenu()
     {
-        if (mainMenuCanvas != null) mainMenuCanvas.SetActive(true);
-        if (BioRangerCanvas != null) BioRangerCanvas.SetActive(false);
-        if (BioEnemyCanvas != null) BioEnemyCanvas.SetActive(false);
-        if (HowToPlayCanvas != null) HowToPlayCanvas.SetActive(false);
+        mainMenuCanvas.SetActive(true);
+        infeksiParuCanvas.SetActive(false);
+        infeksiUsusCanvas.SetActive(false);
+        infeksiKulitCanvas.SetActive(false);
     }
 
-    public void ShowBioRanger()
+    public void ShowInfeksiParu()
     {
-        if (mainMenuCanvas != null) mainMenuCanvas.SetActive(false);
-        if (BioRangerCanvas != null) BioRangerCanvas.SetActive(true);
-        if (BioEnemyCanvas != null) BioEnemyCanvas.SetActive(false);
-        if (HowToPlayCanvas != null) HowToPlayCanvas.SetActive(false);
+        mainMenuCanvas.SetActive(false);
+        infeksiParuCanvas.SetActive(true);
+        infeksiUsusCanvas.SetActive(false);
+        infeksiKulitCanvas.SetActive(false);
     }
 
-    public void ShowBioEnemy()
+    public void ShowInfeksiUsus()
     {
-        if (mainMenuCanvas != null) mainMenuCanvas.SetActive(false);
-        if (BioRangerCanvas != null) BioRangerCanvas.SetActive(false);
-        if (BioEnemyCanvas != null) BioEnemyCanvas.SetActive(true);
-        if (HowToPlayCanvas != null) HowToPlayCanvas.SetActive(false);
+        mainMenuCanvas.SetActive(false);
+        infeksiParuCanvas.SetActive(false);
+        infeksiUsusCanvas.SetActive(true);
+        infeksiKulitCanvas.SetActive(false);
     }
 
-    public void ShowHowToPlay()
+    public void ShowInfeksiKulit()
     {
-        if (mainMenuCanvas != null) mainMenuCanvas.SetActive(false);
-        if (BioRangerCanvas != null) BioRangerCanvas.SetActive(false);
-        if (BioEnemyCanvas != null) BioEnemyCanvas.SetActive(false);
-        if (HowToPlayCanvas != null) HowToPlayCanvas.SetActive(true);
+        mainMenuCanvas.SetActive(false);
+        infeksiParuCanvas.SetActive(false);
+        infeksiUsusCanvas.SetActive(false);
+        infeksiKulitCanvas.SetActive(true);
     }
 }

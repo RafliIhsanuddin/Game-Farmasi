@@ -7954,9 +7954,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenuCanvas: {fileID: 210432254}
-  BioRangerCanvas: {fileID: 0}
-  BioEnemyCanvas: {fileID: 0}
-  HowToPlayCanvas: {fileID: 0}
+  infeksiParuCanvas: {fileID: 836042532}
+  infeksiUsusCanvas: {fileID: 564539306}
+  infeksiKulitCanvas: {fileID: 1198139481}
 --- !u!4 &2123231981
 Transform:
   m_ObjectHideFlags: 0
