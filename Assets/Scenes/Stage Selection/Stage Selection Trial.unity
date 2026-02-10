@@ -155,9 +155,9 @@ RectTransform:
   m_Father: {fileID: 1563240594}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -2.79, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &37964
 MonoBehaviour:
@@ -3005,10 +3005,10 @@ RectTransform:
   - {fileID: 1507469304}
   m_Father: {fileID: 1563223091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 204.51999, y: -114}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &87469187
 MonoBehaviour:
@@ -3308,7 +3308,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1408239723}
   m_HandleRect: {fileID: 1408239722}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 1.0000002
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3760,8 +3760,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1887826316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4801,6 +4801,7 @@ GameObject:
   - component: {fileID: 134377348}
   - component: {fileID: 134377350}
   - component: {fileID: 134377349}
+  - component: {fileID: 134377351}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -4847,28 +4848,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Pink is a character to Mushroom, menghadirkan nuansa lembut, hangat, dan
-    hidup pada bentuk serta kehadiran Mushroom yang biasanya diasosiasikan dengan
-    alam, tanah, dan keteduhan. Warna Pink memberi sentuhan personalitas yang manis
-    dan hampir lugu, seakan mengangkat Mushroom dari sekadar objek organisme menjadi
-    sosok yang dapat dirasakan kehadirannya. Dalam sentuhan itu terdapat rasa penasaran
-    yang pelan, yang membuat Mushroom bukan hanya bagian dari lanskap tetapi menjadi
-    tokoh kecil yang menandai suasana. Pink memberi Mushroom sisi playful dan imajinatif,
-    namun tidak mencabut identitas organiknya. Kesan tanah, lembap, dan hening khas
-    Mushroom justru menjadi kanvas bagi Pink untuk mengekspresikan kehangatan dan
-    keriangan, menghasilkan perpaduan yang tak terduga antara kesederhanaan dunia
-    alam dan kejenakaan warna. Melalui hubungan ini, Mushroom menjadi lebih mudah
-    diterima secara emosional, lebih mudah diingat, dan lebih dekat dengan karakter
-    manusiawi tanpa kehilangan akar ekologisnya. Dalam hubungan keduanya, Pink berfungsi
-    sebagai penyeimbang yang memperkaya cerita visual, menyampaikan bahwa kehadiran
-    sesuatu yang lembut tidak selalu berarti rapuh dan kehadiran sesuatu yang membumi
-    tidak selalu berarti keras. Pink menambahkan daya tarik yang menyentuh, membuat
-    Mushroom memperoleh ekspresi dan makna baru, seakan memberi ruang bagi penonton
-    untuk menafsirkan Mushroom sebagai sosok dengan perasaan, bukan hanya bentuk.
-    Hasilnya, Mushroom tampil bukan sekadar elemen alam, tetapi karakter yang memiliki
-    daya tarik, emosi, dan narasi.
-
-'
+  m_text: "<b>Class:</b> \u03B2-lactam antibiotic; third-generation cephalosporin\r\n\r\n<b>Indications:</b>\r\nTreatment
+    of urinary tract infections, acute otitis media, pharyngitis and tonsillitis,
+    bronchitis, mild community-acquired pneumonia, typhoid fever, and uncomplicated
+    gonorrhea\r\n\r\n<b>Target Bacteria:</b>\r\nEscherichia coli, Klebsiella pneumoniae,
+    Proteus mirabilis, Haemophilus influenzae, Neisseria gonorrhoeae, Salmonella
+    typhi\r\n\r\n<b>Adverse Drug Reactions (ADR):</b>\r\nDiarrhea, nausea, vomiting,
+    abdominal pain, skin rash, hypersensitivity reactions\r\n\r\n<b>LINK:</b>\n<link=\"https://www.rxlist.com/suprax-drug.htm\">\n 
+    https://www.rxlist.com/suprax-drug.htm\n</link>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -4947,6 +4934,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134377347}
   m_CullTransparentMesh: 1
+--- !u!114 &134377351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134377347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5e772746f775542b8d6cec4497d035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tmpText: {fileID: 134377349}
 --- !u!1 &151412153
 GameObject:
   m_ObjectHideFlags: 0
@@ -5162,7 +5162,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1559744375}
   m_HandleRect: {fileID: 1559744374}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 1.0000001
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -6160,8 +6160,8 @@ MonoBehaviour:
     visual yang memperkaya satu sama lain, menghadirkan kontras yang lembut dan harmoni
     yang tidak dipaksakan.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
-  m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3914de223fa8efc4787902589e5d6968, type: 2}
+  m_sharedMaterial: {fileID: 4947494457033249829, guid: 3914de223fa8efc4787902589e5d6968, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6185,8 +6185,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6548,8 +6548,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187394681}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.881934}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6575,7 +6575,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 698.93335, y: 337.61237}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &202534603
@@ -8492,8 +8492,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 255172014}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.881934}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8519,7 +8519,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 698.93335, y: 337.61237}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &258233946
@@ -9286,7 +9286,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: White
+  m_text: Amoxicillin
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -9497,7 +9497,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Yellow
+  m_text: Cotrimoxazole
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -11090,10 +11090,10 @@ RectTransform:
   - {fileID: 1126431201}
   m_Father: {fileID: 1563223091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 43.76, y: -276.37}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &316761535
 MonoBehaviour:
@@ -11296,8 +11296,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1818921224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.99999994}
-  m_AnchorMax: {x: 1, y: 0.99999994}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -12964,8 +12964,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 22
+  m_fontSizeBase: 22
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -13611,7 +13611,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Yellow
+  m_text: Levofloksasin
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -18914,8 +18914,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 575107433}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.881934}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -18941,7 +18941,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 698.93335, y: 337.61237}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &575546604
@@ -22480,10 +22480,10 @@ RectTransform:
   - {fileID: 1147351640}
   m_Father: {fileID: 1563223091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -117, y: -114}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &662760700
 MonoBehaviour:
@@ -26132,7 +26132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &799727871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29794,7 +29794,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1545278095}
   m_HandleRect: {fileID: 1545278094}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 1.0000001
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -34784,10 +34784,10 @@ RectTransform:
   - {fileID: 1076722656}
   m_Father: {fileID: 1563223091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 204.51999, y: -276.37}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1062256297
 MonoBehaviour:
@@ -35705,10 +35705,10 @@ RectTransform:
   - {fileID: 687756481}
   m_Father: {fileID: 1563223091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -117, y: -276.37}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1083145944
 MonoBehaviour:
@@ -43844,8 +43844,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 487872134}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.019813554}
-  m_AnchorMax: {x: 1, y: 0.9801863}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -46622,7 +46622,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1417021630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50081,10 +50081,10 @@ RectTransform:
   - {fileID: 2002172620}
   m_Father: {fileID: 1563223091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -117, y: -438.74}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1517608804
 MonoBehaviour:
@@ -51106,7 +51106,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Blue
+  m_text: Vancomisin
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -52474,7 +52474,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0.0000076293945}
-  m_SizeDelta: {x: 91, y: 518.74}
+  m_SizeDelta: {x: 91, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1563223092
 MonoBehaviour:
@@ -54785,7 +54785,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 104628912}
   m_HandleRect: {fileID: 104628911}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 1.0000001
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -56637,9 +56637,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Green
-
-'
+  m_text: Ciprofloxacin
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
   m_sharedMaterial: {fileID: 3866023056381278409, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
@@ -58412,8 +58410,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1696274441}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.881934}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -58439,7 +58437,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 698.93335, y: 337.61237}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &1696581589
@@ -62457,12 +62455,12 @@ MonoBehaviour:
   ChooseEnemyBioPanel: {fileID: 1264789743}
   EnemyOtherBioPanel: {fileID: 1673625179}
   EnemyBacteriaBioPanel: {fileID: 1838528799}
-  whiteCharacter: {fileID: 1501681657}
-  blueCharacter: {fileID: 591013613}
-  pinkCharacter: {fileID: 1511545156}
-  redCharacter: {fileID: 834050719}
-  greenCharacter: {fileID: 428739340}
-  yellowCharacter: {fileID: 290440324}
+  whiteCharacter: {fileID: 187394681}
+  blueCharacter: {fileID: 1696274441}
+  pinkCharacter: {fileID: 1417021629}
+  redCharacter: {fileID: 870468066}
+  greenCharacter: {fileID: 575107433}
+  yellowCharacter: {fileID: 255172014}
   blackCharacter: {fileID: 981431295}
   bacteriaPurple: {fileID: 1756202357}
   bacteriaRed: {fileID: 1082923307}
@@ -63268,87 +63266,82 @@ MonoBehaviour:
   White:
     pictureObj: {fileID: 1081847651}
     button: {fileID: 1310795756}
-    name: White
-    description: White is a character to purple, White digambarkan sebagai sebuah
-      karakter yang kontras namun tetap seirama dengan Purple. Keberadaannya memberi
-      kesan bersih, jernih, dan netral dalam komposisi. Sementara Purple hadir sebagai
-      karakter yang penuh nuansa emosional dan intensitas warna. Hubungan keduanya
-      menciptakan keseimbangan antara ketenangan dan kedalaman.
+    name: Amoxicillin
+    description: "Amoxicillin is a steadfast guardian on the battlefield, standing
+      firm against waves of invading bacteria. Forged from the principles of classic
+      antibiotics, it works by weakening bacterial defenses from within, preventing
+      them from growing and overwhelming the frontline. Though it does not strike
+      with explosive force, Amoxicillin excels at protection and control, slowing
+      the enemy\u2019s advance and giving other defenders the time they need to fight
+      back. In prolonged battles, its presence can mean the difference between a
+      breached line and a fortified defense."
   Blue:
     pictureObj: {fileID: 628028673}
     button: {fileID: 107526619}
-    name: Blue
-    description: Blue is a character to Red, yang hadir sebagai penyejuk di tengah
-      intensitas dan energi kuat milik Red; kehadiran Blue memberikan ruang bagi
-      ketenangan, ketelitian, dan refleksi yang kontras dengan gairah, dorongan spontan,
-      serta daya dorong emosional yang dibawa oleh Red. Dalam hubungan keduanya,
-      Blue berperan sebagai pemikir dan penimbang yang menahan laju Red agar tidak
-      melampaui batas, sekaligus memperkuat pesan dan makna yang ingin disampaikan
-      Red melalui kekuatan warnanya.
+    name: Vancomisin
+    description: "Vancomisin is a last-line defender, deployed only when the battlefield
+      faces the most resilient bacterial threats. Unlike common guardians, it strikes
+      directly at the enemy\u2019s structural core, tearing apart their defenses
+      and halting even the toughest bacteria in their tracks. Slow to deploy but
+      devastatingly effective, Vancomycin excels at stopping powerful invasions that
+      lesser treatments cannot contain. When the frontline is close to collapse,
+      its presence becomes a symbol of resolve unyielding, precise, and relentless
+      in protecting the final defense."
   Pink:
     pictureObj: {fileID: 2048549255}
     button: {fileID: 1504884448}
-    name: Pink
-    description: Pink is a character to Mushroom, menghadirkan nuansa lembut, hangat,
-      dan hidup pada bentuk serta kehadiran Mushroom yang biasanya diasosiasikan
-      dengan alam, tanah, dan keteduhan. Pink memberi sentuhan kepribadian yang manis
-      dan hampir lugu, menonjolkan sisi playful dan imajinatif tanpa menghilangkan
-      identitas organik Mushroom. Dalam hubungan keduanya, Pink berfungsi sebagai
-      penyeimbang yang menambahkan daya tarik visual, memperkaya cerita, dan memberi
-      karakter yang lebih mudah diingat pada Mushroom, seakan menjadikannya bukan
-      sekadar objek alam tetapi sosok yang memiliki ekspresi dan makna.
+    name: Cefixime
+    description: Cefixime is a versatile defender designed to maintain control when
+      bacterial attacks become unpredictable. It disrupts bacterial growth with steady
+      precision, making it especially effective against enemies that slip past basic
+      defenses. Not as heavy as last-line guardians, yet more refined than early
+      treatments, Cefixime excels at stabilizing the battlefield and preventing sudden
+      breakthroughs. In extended engagements, its balanced strength and reliability
+      allow the defense line to adapt and endure against evolving bacterial waves.
   Red:
     pictureObj: {fileID: 1881120081}
     button: {fileID: 729447680}
-    name: Red
-    description: Red is a character to Blue Virus, hadir sebagai warna yang membawa
-      ketegasan, peringatan, dan dorongan instingtif untuk bereaksi terhadap sesuatu
-      yang berbahaya. Jika Blue Virus memiliki kesan dingin, sistematis, dan hampir
-      klinis dalam cara ia menyebar atau beroperasi, maka Red menjadi kontras yang
-      mengingatkan tentang urgensi, pertahanan, dan respon emosional tubuh ataupun
-      kesadaran manusia terhadap ancaman. Dalam hubungan keduanya, Red memberi penekanan
-      dramatis yang memperkuat identitas Blue Virus, menjadikannya bukan sekadar
-      entitas yang bekerja diam-diam, tetapi sesuatu yang dihadapi dengan kewaspadaan,
-      ketegangan, dan dorongan untuk memahami atau melawannya.
+    name: Azitromisin
+    description: Azitromisin is a swift and adaptive defender, excelling at controlling
+      bacterial forces before they can fully overwhelm the field. Rather than relying
+      on brute force, it disrupts enemy coordination, slowing their advance and weakening
+      their ability to multiply. Its strength lies in timing and efficiency, allowing
+      the defense line to respond quickly to sudden waves or scattered invasions.
+      When speed and control matter more than raw power, Azithromycin becomes the
+      quiet force that keeps the battlefield in balance.
   Green:
     pictureObj: {fileID: 360464608}
     button: {fileID: 2059051473}
-    name: Green
-    description: Green is a character to fight Protozoa, muncul sebagai representasi
-      energi hidup, ketahanan, dan adaptasi yang tangguh di tengah ancaman mikroorganisme
-      yang licin dan sulit ditebak. Jika Protozoa bergerak dengan strategi halus
-      dan kemampuan bertahan yang kompleks, maka Green tampil sebagai simbol pertumbuhan,
-      regenerasi, dan respon agresif yang cerdas dalam menghadapi serangan biologis.
-      Dalam hubungan keduanya, Green menegaskan dirinya sebagai kekuatan yang tidak
-      hanya bereaksi, tetapi juga mengendalikan dan mempelajari pola lawan, menjadikan
-      pertarungan melawan Protozoa sebagai proses evolusi dan pembelajaran yang menunjang
-      peluang kemenangan.
+    name: Ciprofloxacin
+    description: Ciprofloxacin is a precision enforcer, engineered to hunt down fast-moving
+      and hard-to-control bacterial threats. It strikes swiftly at the core of bacterial
+      activity, disrupting their ability to spread and regroup across the battlefield.
+      While not meant for reckless deployment, its focused power makes it highly
+      effective against aggressive waves that rely on speed and momentum. When enemies
+      push forward with relentless pressure, Ciprofloxacin answers with calculated
+      force, restoring control through decisive and targeted defense.
   Yellow:
     pictureObj: {fileID: 1696581589}
     button: {fileID: 519272216}
-    name: Yellow
-    description: Yellow is a character to fight Helmith, hadir sebagai simbol determinasi
-      yang cerah, cepat, dan waspada dalam menghadapi serangan parasit yang lentur,
-      licin, dan mampu bertahan di lingkungan yang kompleks. Jika Helmith menunjukkan
-      ketahanan biologis dan kemampuan menginvasi secara perlahan namun pasti, maka
-      Yellow menghadirkan respons taktis yang gesit, penuh antisipasi, dan mengandalkan
-      kejernihan persepsi dalam pertempuran. Dalam hubungan keduanya, Yellow tidak
-      hanya mengimbangi Helmith melalui energi dan kecepatan, tetapi juga mengubah
-      arena konflik menjadi proses pembelajaran yang mendorong adaptasi, keberanian,
-      dan penajaman strategi hingga kemenangan dapat dicapai.
+    name: Levofloksasin
+    description: Levofloksasin is an advanced guardian refined for absolute control
+      on the battlefield. Building upon precision based defenses, it delivers sustained
+      pressure that disrupts bacterial movement and prevents coordinated advances.
+      More stable and consistent than its predecessors, Levofloxacin excels in prolonged
+      encounters where control and reliability determine survival. When waves grow
+      relentless and chaos threatens the defense line, its calm and calculated force
+      restores order and secures the field.
   Black:
     pictureObj: {fileID: 1905381018}
     button: {fileID: 1257601606}
-    name: Black
-    description: Black is a character to fight Helmith, hadir sebagai simbol determinasi
-      yang cerah, cepat, dan waspada dalam menghadapi serangan parasit yang lentur,
-      licin, dan mampu bertahan di lingkungan yang kompleks. Jika Helmith menunjukkan
-      ketahanan biologis dan kemampuan menginvasi secara perlahan namun pasti, maka
-      Yellow menghadirkan respons taktis yang gesit, penuh antisipasi, dan mengandalkan
-      kejernihan persepsi dalam pertempuran. Dalam hubungan keduanya, Yellow tidak
-      hanya mengimbangi Helmith melalui energi dan kecepatan, tetapi juga mengubah
-      arena konflik menjadi proses pembelajaran yang mendorong adaptasi, keberanian,
-      dan penajaman strategi hingga kemenangan dapat dicapai.
+    name: Cotrimoxazole
+    description: Cotrimoxazole is a coordinated defender that strikes through synergy
+      rather than single force. By combining two complementary mechanisms, it blocks
+      bacterial survival from multiple directions, leaving enemies with little room
+      to adapt or recover. Its strength lies in persistence wearing down waves that
+      rely on endurance and gradual advancement. On the battlefield, Cotrimoxazole
+      excels at breaking prolonged assaults, proving that cooperation and balance
+      can be just as powerful as raw strength in defending the final line.
 --- !u!4 &1830847650
 Transform:
   m_ObjectHideFlags: 0
@@ -63745,27 +63738,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: White is a character to Purple, White digambarkan sebagai sebuah karakter
-    yang kontras namun tetap seirama dengan Purple. Keberadaannya memberi kesan bersih,
-    jernih, dan netral dalam komposisi, seolah-olah menjadi ruang kosong yang memungkinkan
-    warna lain bernapas dan menampilkan dirinya secara utuh. White hadir dengan kualitas
-    yang tenang, tidak mendominasi, tetapi tetap memiliki kekuatan visual yang signifikan.
-    Dalam konteks hubungan antar karakter, White dapat dipandang sebagai fondasi,
-    elemen dasar yang menjaga struktur sekaligus memberikan fleksibilitas bagi dinamika
-    warna yang lebih kompleks. Sementara Purple hadir sebagai karakter yang penuh
-    nuansa emosional dan intensitas warna. Ia membawa kedalaman, misteri, dan lapisan
-    makna yang tidak selalu langsung terlihat pada pandangan pertama. Purple dapat
-    merepresentasikan imajinasi, spiritualitas, atau kompleksitas psikologis yang
-    kaya, sehingga membuat komposisi yang melibatkan dirinya terasa lebih berat,
-    lebih dalam, dan lebih penuh resonansi emosional. Ketika Purple bergerak dalam
-    satu ruang dengan White, muncul kesan percakapan antara keheningan dengan suara
-    batin, antara keterbukaan dengan introspeksi. Hubungan keduanya menciptakan keseimbangan
-    antara ketenangan dan kedalaman. White menenangkan intensitas Purple tanpa menghilangkan
-    karakter dasarnya, sementara Purple menambah dimensi emosional dan makna terhadap
-    White tanpa membuatnya kehilangan kejernihan. Pada akhirnya, keberadaan mereka
-    dalam satu komposisi bukanlah bentuk pertentangan, melainkan sebuah simbiosis
-    visual yang memperkaya satu sama lain, menghadirkan kontras yang lembut dan harmoni
-    yang tidak dipaksakan.
+  m_text: "<b>Class:<b> \u03B2-lactam antibiotic; aminopenicillin\r\n<b>Indications:<b>\nTreatment
+    of acute otitis media, pharyngitis and tonsillitis, lower respiratory tract infections,
+    skin and skin structure infections, urinary tract infections, acute uncomplicated
+    gonorrhea, typhoid fever, Helicobacter pylori infection, and duodenal ulcer disease
+    (as part of combination therapy)\n\r\n<b>Target Bacteria:<b>\nStreptococcus pneumoniae,
+    Streptococcus pyogenes, Enterococcus faecalis, Haemophilus influenzae, Escherichia
+    coli, Helicobacter pylori\n\r\n<b>Adverse Drug Reactions (ADR):<b>\r\nNausea,
+    vomiting, diarrhea, skin rash, hypersensitivity reactions, including anaphylaxis
+    (rare)\n\r\n<b>LINK:<b>\r\n\n\n<link=\"https://www.rxlist.com/amoxicillin/generic-drug.htm\"><color=#3ABEFF><u>
+    https://www.rxlist.com/amoxicillin/generic-drug.htm</u></color></link>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -63792,8 +63774,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -67575,10 +67557,10 @@ RectTransform:
   - {fileID: 1056185152}
   m_Father: {fileID: 1563223091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 43.76, y: -114}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1954663140
 MonoBehaviour:
@@ -69698,7 +69680,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Red
+  m_text: Azitromisin
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}

@@ -1564,30 +1564,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: White is a character to Purple, White digambarkan sebagai sebuah karakter
-    yang kontras namun tetap seirama dengan Purple. Keberadaannya memberi kesan bersih,
-    jernih, dan netral dalam komposisi, seolah-olah menjadi ruang kosong yang memungkinkan
-    warna lain bernapas dan menampilkan dirinya secara utuh. White hadir dengan kualitas
-    yang tenang, tidak mendominasi, tetapi tetap memiliki kekuatan visual yang signifikan.
-    Dalam konteks hubungan antar karakter, White dapat dipandang sebagai fondasi,
-    elemen dasar yang menjaga struktur sekaligus memberikan fleksibilitas bagi dinamika
-    warna yang lebih kompleks. Sementara Purple hadir sebagai karakter yang penuh
-    nuansa emosional dan intensitas warna. Ia membawa kedalaman, misteri, dan lapisan
-    makna yang tidak selalu langsung terlihat pada pandangan pertama. Purple dapat
-    merepresentasikan imajinasi, spiritualitas, atau kompleksitas psikologis yang
-    kaya, sehingga membuat komposisi yang melibatkan dirinya terasa lebih berat,
-    lebih dalam, dan lebih penuh resonansi emosional. Ketika Purple bergerak dalam
-    satu ruang dengan White, muncul kesan percakapan antara keheningan dengan suara
-    batin, antara keterbukaan dengan introspeksi. Hubungan keduanya menciptakan keseimbangan
-    antara ketenangan dan kedalaman. White menenangkan intensitas Purple tanpa menghilangkan
-    karakter dasarnya, sementara Purple menambah dimensi emosional dan makna terhadap
-    White tanpa membuatnya kehilangan kejernihan. Pada akhirnya, keberadaan mereka
-    dalam satu komposisi bukanlah bentuk pertentangan, melainkan sebuah simbiosis
-    visual yang memperkaya satu sama lain, menghadirkan kontras yang lembut dan harmoni
-    yang tidak dipaksakan.
+  m_text: "Pneumonia developing > 48 hours after hospital admission. Hospital-acquired
+    pneumonia (HAP) occurs most commonly in critically ill patients and is usually
+    caused by bacteria. Hospital-acquired pneumonia is predominantly caused by gram-negative\r\naerobic
+    bacilli or S. aureus and is much more likely to be caused by a MDR isolate. Collectively,
+    the non-lactose fermenting gram-negative bacilli P. aeruginosa and Acinetobacter
+    spp. are the most common cause of HAP (about 25%\u2013 45%). Enteric gram-negative
+    bacilli such as K. pneumoniae and E. coli are also common (13%\u201320%). S.
+    aureus is also common (12%\u201321%) with approximately half of these isolates
+    methicillin-resistant.\r\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
-  m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3914de223fa8efc4787902589e5d6968, type: 2}
+  m_sharedMaterial: {fileID: 4947494457033249829, guid: 3914de223fa8efc4787902589e5d6968, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1611,8 +1599,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2853,30 +2841,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: White is a character to Purple, White digambarkan sebagai sebuah karakter
-    yang kontras namun tetap seirama dengan Purple. Keberadaannya memberi kesan bersih,
-    jernih, dan netral dalam komposisi, seolah-olah menjadi ruang kosong yang memungkinkan
-    warna lain bernapas dan menampilkan dirinya secara utuh. White hadir dengan kualitas
-    yang tenang, tidak mendominasi, tetapi tetap memiliki kekuatan visual yang signifikan.
-    Dalam konteks hubungan antar karakter, White dapat dipandang sebagai fondasi,
-    elemen dasar yang menjaga struktur sekaligus memberikan fleksibilitas bagi dinamika
-    warna yang lebih kompleks. Sementara Purple hadir sebagai karakter yang penuh
-    nuansa emosional dan intensitas warna. Ia membawa kedalaman, misteri, dan lapisan
-    makna yang tidak selalu langsung terlihat pada pandangan pertama. Purple dapat
-    merepresentasikan imajinasi, spiritualitas, atau kompleksitas psikologis yang
-    kaya, sehingga membuat komposisi yang melibatkan dirinya terasa lebih berat,
-    lebih dalam, dan lebih penuh resonansi emosional. Ketika Purple bergerak dalam
-    satu ruang dengan White, muncul kesan percakapan antara keheningan dengan suara
-    batin, antara keterbukaan dengan introspeksi. Hubungan keduanya menciptakan keseimbangan
-    antara ketenangan dan kedalaman. White menenangkan intensitas Purple tanpa menghilangkan
-    karakter dasarnya, sementara Purple menambah dimensi emosional dan makna terhadap
-    White tanpa membuatnya kehilangan kejernihan. Pada akhirnya, keberadaan mereka
-    dalam satu komposisi bukanlah bentuk pertentangan, melainkan sebuah simbiosis
-    visual yang memperkaya satu sama lain, menghadirkan kontras yang lembut dan harmoni
-    yang tidak dipaksakan.
+  m_text: "The term otitis media comes from the Latin oto- for \u201Cear,\u201D itis
+    for \u201Cinflammation,\u201D and medi- for \u201Cmiddle\u201D; otitis media,
+    then, is an inflammation\r\nof the middle ear. There are three subtypes of otitis
+    media: acute otitis media, otitis media with effusion, and chronic otitis media.
+    Acute otitis media is the subtype with the greatest role for antibiotics and
+    will be discussed in detail.\r\n\r\nCommon bacterial pathogens include Streptococcus
+    pneumoniae (S. pneumoniae), nontypeable Haemophilus influenzae (H. influenzae),
+    and\r\nMoraxella catarrhalis (M. catarrhalis).\r\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
-  m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3914de223fa8efc4787902589e5d6968, type: 2}
+  m_sharedMaterial: {fileID: 4947494457033249829, guid: 3914de223fa8efc4787902589e5d6968, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2900,8 +2875,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6143,30 +6118,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: White is a character to Purple, White digambarkan sebagai sebuah karakter
-    yang kontras namun tetap seirama dengan Purple. Keberadaannya memberi kesan bersih,
-    jernih, dan netral dalam komposisi, seolah-olah menjadi ruang kosong yang memungkinkan
-    warna lain bernapas dan menampilkan dirinya secara utuh. White hadir dengan kualitas
-    yang tenang, tidak mendominasi, tetapi tetap memiliki kekuatan visual yang signifikan.
-    Dalam konteks hubungan antar karakter, White dapat dipandang sebagai fondasi,
-    elemen dasar yang menjaga struktur sekaligus memberikan fleksibilitas bagi dinamika
-    warna yang lebih kompleks. Sementara Purple hadir sebagai karakter yang penuh
-    nuansa emosional dan intensitas warna. Ia membawa kedalaman, misteri, dan lapisan
-    makna yang tidak selalu langsung terlihat pada pandangan pertama. Purple dapat
-    merepresentasikan imajinasi, spiritualitas, atau kompleksitas psikologis yang
-    kaya, sehingga membuat komposisi yang melibatkan dirinya terasa lebih berat,
-    lebih dalam, dan lebih penuh resonansi emosional. Ketika Purple bergerak dalam
-    satu ruang dengan White, muncul kesan percakapan antara keheningan dengan suara
-    batin, antara keterbukaan dengan introspeksi. Hubungan keduanya menciptakan keseimbangan
-    antara ketenangan dan kedalaman. White menenangkan intensitas Purple tanpa menghilangkan
-    karakter dasarnya, sementara Purple menambah dimensi emosional dan makna terhadap
-    White tanpa membuatnya kehilangan kejernihan. Pada akhirnya, keberadaan mereka
-    dalam satu komposisi bukanlah bentuk pertentangan, melainkan sebuah simbiosis
-    visual yang memperkaya satu sama lain, menghadirkan kontras yang lembut dan harmoni
-    yang tidak dipaksakan.
+  m_text: "Chronic bronchitis is caused by several interacting factors, including
+    inhalation of noxious agents (most prominent are cigarette smoke and\r\nexposure
+    to occupational dusts, fumes, and environmental pollution) and host factors including
+    genetic factors and bacterial (and possibly viral)\r\ninfections. The hallmark
+    of this disease is a chronic cough, accompanied by excessive production, and
+    expectoration of sputum with a persistent presence of microorganisms in the patient\u2019s
+    sputum.\r\n\r\nCommon bacterial pathogens include Haemophilus influenzae (H.
+    influenzae), Moraxella catarrhalis (M. catarrhalis), and Streptococcus pneumoniae
+    (S. pneumoniae).\r\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
-  m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3914de223fa8efc4787902589e5d6968, type: 2}
+  m_sharedMaterial: {fileID: 4947494457033249829, guid: 3914de223fa8efc4787902589e5d6968, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6190,8 +6153,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6299,30 +6262,33 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: White is a character to Purple, White digambarkan sebagai sebuah karakter
-    yang kontras namun tetap seirama dengan Purple. Keberadaannya memberi kesan bersih,
-    jernih, dan netral dalam komposisi, seolah-olah menjadi ruang kosong yang memungkinkan
-    warna lain bernapas dan menampilkan dirinya secara utuh. White hadir dengan kualitas
-    yang tenang, tidak mendominasi, tetapi tetap memiliki kekuatan visual yang signifikan.
-    Dalam konteks hubungan antar karakter, White dapat dipandang sebagai fondasi,
-    elemen dasar yang menjaga struktur sekaligus memberikan fleksibilitas bagi dinamika
-    warna yang lebih kompleks. Sementara Purple hadir sebagai karakter yang penuh
-    nuansa emosional dan intensitas warna. Ia membawa kedalaman, misteri, dan lapisan
-    makna yang tidak selalu langsung terlihat pada pandangan pertama. Purple dapat
-    merepresentasikan imajinasi, spiritualitas, atau kompleksitas psikologis yang
-    kaya, sehingga membuat komposisi yang melibatkan dirinya terasa lebih berat,
-    lebih dalam, dan lebih penuh resonansi emosional. Ketika Purple bergerak dalam
-    satu ruang dengan White, muncul kesan percakapan antara keheningan dengan suara
-    batin, antara keterbukaan dengan introspeksi. Hubungan keduanya menciptakan keseimbangan
-    antara ketenangan dan kedalaman. White menenangkan intensitas Purple tanpa menghilangkan
-    karakter dasarnya, sementara Purple menambah dimensi emosional dan makna terhadap
-    White tanpa membuatnya kehilangan kejernihan. Pada akhirnya, keberadaan mereka
-    dalam satu komposisi bukanlah bentuk pertentangan, melainkan sebuah simbiosis
-    visual yang memperkaya satu sama lain, menghadirkan kontras yang lembut dan harmoni
-    yang tidak dipaksakan.
+  m_text: 'A UTI is defined as the presence of microorganisms in the urinary tract
+    that cannot be accounted for by contamination. The organisms present have the
+    potential to invade the tissues of the urinary tract and adjacent structures.
+    Infection may be limited to the growth of bacteria in the urine, which frequently
+    may not produce symptoms. A UTI can present as several syndromes associated with
+    an inflammatory response to microbial invasion and can range from asymptomatic
+    bacteriuria (ASB) to pyelonephritis with bacteremia or sepsis. UTIs are classified
+    by lower and upper UTIs. Typically, they have been described by anatomic site
+    of involvement. Lower tract infections correspond to cystitis (bladder), and
+    pyelonephritis (an infection involving the kidneys) represents upper tract infection.
+
+    
+
+    The
+    bacteria causing UTIs usually originate from bowel flora of the host. Although
+    virtually every organism is associated with UTIs, certain organisms predominate
+    as a result of specific virulence factors. The most common cause of uncomplicated
+    UTIs is Escherichia coli, which accounts for 80% to 90% of community-acquired
+    infections. Additional causative organisms in uncomplicated infections include
+    Staphylococcus saprophyticus, Klebsiella pneumoniae, Proteus spp., Pseudomonas
+    aeruginosa, and Enterococcus spp. Because S. epidermidis is frequently isolated
+    from the urinary tract, it should be considered initially a contaminant
+
+'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
-  m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3914de223fa8efc4787902589e5d6968, type: 2}
+  m_sharedMaterial: {fileID: 4947494457033249829, guid: 3914de223fa8efc4787902589e5d6968, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6346,8 +6312,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8785,7 +8751,7 @@ GameObject:
   - component: {fileID: 1754505156}
   - component: {fileID: 1754505155}
   m_Layer: 0
-  m_Name: Scroll Area (1)
+  m_Name: Scroll Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10645,30 +10611,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: White is a character to Purple, White digambarkan sebagai sebuah karakter
-    yang kontras namun tetap seirama dengan Purple. Keberadaannya memberi kesan bersih,
-    jernih, dan netral dalam komposisi, seolah-olah menjadi ruang kosong yang memungkinkan
-    warna lain bernapas dan menampilkan dirinya secara utuh. White hadir dengan kualitas
-    yang tenang, tidak mendominasi, tetapi tetap memiliki kekuatan visual yang signifikan.
-    Dalam konteks hubungan antar karakter, White dapat dipandang sebagai fondasi,
-    elemen dasar yang menjaga struktur sekaligus memberikan fleksibilitas bagi dinamika
-    warna yang lebih kompleks. Sementara Purple hadir sebagai karakter yang penuh
-    nuansa emosional dan intensitas warna. Ia membawa kedalaman, misteri, dan lapisan
-    makna yang tidak selalu langsung terlihat pada pandangan pertama. Purple dapat
-    merepresentasikan imajinasi, spiritualitas, atau kompleksitas psikologis yang
-    kaya, sehingga membuat komposisi yang melibatkan dirinya terasa lebih berat,
-    lebih dalam, dan lebih penuh resonansi emosional. Ketika Purple bergerak dalam
-    satu ruang dengan White, muncul kesan percakapan antara keheningan dengan suara
-    batin, antara keterbukaan dengan introspeksi. Hubungan keduanya menciptakan keseimbangan
-    antara ketenangan dan kedalaman. White menenangkan intensitas Purple tanpa menghilangkan
-    karakter dasarnya, sementara Purple menambah dimensi emosional dan makna terhadap
-    White tanpa membuatnya kehilangan kejernihan. Pada akhirnya, keberadaan mereka
-    dalam satu komposisi bukanlah bentuk pertentangan, melainkan sebuah simbiosis
-    visual yang memperkaya satu sama lain, menghadirkan kontras yang lembut dan harmoni
-    yang tidak dipaksakan.
+  m_text: "Pneumonia developing outside the hospital or <48 hours after hospital
+    admission. The causative pathogen in CAP in adult patients is most commonly viral,
+    with human rhinovirus and influenza most common. The most prominent bacterial
+    pathogen causing CAP in otherwise healthy adults is S. pneumoniae accounting
+    for up to 35% of all acute cases.  Other common pathogens include H. influenzae
+    (2.5%\u201345%) and the atypical pathogens M. pneumoniae, Legionella species,
+    and C. pneumoniae (about 20%)."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
-  m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3914de223fa8efc4787902589e5d6968, type: 2}
+  m_sharedMaterial: {fileID: 4947494457033249829, guid: 3914de223fa8efc4787902589e5d6968, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10692,8 +10644,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10876,30 +10828,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: White is a character to Purple, White digambarkan sebagai sebuah karakter
-    yang kontras namun tetap seirama dengan Purple. Keberadaannya memberi kesan bersih,
-    jernih, dan netral dalam komposisi, seolah-olah menjadi ruang kosong yang memungkinkan
-    warna lain bernapas dan menampilkan dirinya secara utuh. White hadir dengan kualitas
-    yang tenang, tidak mendominasi, tetapi tetap memiliki kekuatan visual yang signifikan.
-    Dalam konteks hubungan antar karakter, White dapat dipandang sebagai fondasi,
-    elemen dasar yang menjaga struktur sekaligus memberikan fleksibilitas bagi dinamika
-    warna yang lebih kompleks. Sementara Purple hadir sebagai karakter yang penuh
-    nuansa emosional dan intensitas warna. Ia membawa kedalaman, misteri, dan lapisan
-    makna yang tidak selalu langsung terlihat pada pandangan pertama. Purple dapat
-    merepresentasikan imajinasi, spiritualitas, atau kompleksitas psikologis yang
-    kaya, sehingga membuat komposisi yang melibatkan dirinya terasa lebih berat,
-    lebih dalam, dan lebih penuh resonansi emosional. Ketika Purple bergerak dalam
-    satu ruang dengan White, muncul kesan percakapan antara keheningan dengan suara
-    batin, antara keterbukaan dengan introspeksi. Hubungan keduanya menciptakan keseimbangan
-    antara ketenangan dan kedalaman. White menenangkan intensitas Purple tanpa menghilangkan
-    karakter dasarnya, sementara Purple menambah dimensi emosional dan makna terhadap
-    White tanpa membuatnya kehilangan kejernihan. Pada akhirnya, keberadaan mereka
-    dalam satu komposisi bukanlah bentuk pertentangan, melainkan sebuah simbiosis
-    visual yang memperkaya satu sama lain, menghadirkan kontras yang lembut dan harmoni
-    yang tidak dipaksakan.
+  m_text: "Pharyngitis is an acute infection of the oropharynx or nasopharynx. It
+    is responsible for 6% of visits by children to their primary care provider annually.
+    Although viral causes are most common, group A \u03B2-hemolytic Streptococcus
+    (GABHS, also known as S. pyogenes) is the primary bacterial cause pharyngitis
+    due to GABHS is commonly known as \u201Cstrep throat\u201D.\r\n\r\nViruses cause
+    the majority of acute pharyngitis cases. GABHS (Group A Beta-Hemolytic Streptococcus)
+    is the most common (10%-30% of persons of all ages with pharyngitis) and is the
+    only commonly occurring form of acute pharyngitis for which antibiotic\r\ntherapy
+    is indicated.\r\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
-  m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3914de223fa8efc4787902589e5d6968, type: 2}
+  m_sharedMaterial: {fileID: 4947494457033249829, guid: 3914de223fa8efc4787902589e5d6968, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10923,8 +10863,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
