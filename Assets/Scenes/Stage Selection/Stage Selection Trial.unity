@@ -155,9 +155,9 @@ RectTransform:
   m_Father: {fileID: 1563240594}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -2.79, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &37964
 MonoBehaviour:
@@ -2547,27 +2547,28 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: White is a character to Purple, White digambarkan sebagai sebuah karakter
-    yang kontras namun tetap seirama dengan Purple. Keberadaannya memberi kesan bersih,
-    jernih, dan netral dalam komposisi, seolah-olah menjadi ruang kosong yang memungkinkan
-    warna lain bernapas dan menampilkan dirinya secara utuh. White hadir dengan kualitas
-    yang tenang, tidak mendominasi, tetapi tetap memiliki kekuatan visual yang signifikan.
-    Dalam konteks hubungan antar karakter, White dapat dipandang sebagai fondasi,
-    elemen dasar yang menjaga struktur sekaligus memberikan fleksibilitas bagi dinamika
-    warna yang lebih kompleks. Sementara Purple hadir sebagai karakter yang penuh
-    nuansa emosional dan intensitas warna. Ia membawa kedalaman, misteri, dan lapisan
-    makna yang tidak selalu langsung terlihat pada pandangan pertama. Purple dapat
-    merepresentasikan imajinasi, spiritualitas, atau kompleksitas psikologis yang
-    kaya, sehingga membuat komposisi yang melibatkan dirinya terasa lebih berat,
-    lebih dalam, dan lebih penuh resonansi emosional. Ketika Purple bergerak dalam
-    satu ruang dengan White, muncul kesan percakapan antara keheningan dengan suara
-    batin, antara keterbukaan dengan introspeksi. Hubungan keduanya menciptakan keseimbangan
-    antara ketenangan dan kedalaman. White menenangkan intensitas Purple tanpa menghilangkan
-    karakter dasarnya, sementara Purple menambah dimensi emosional dan makna terhadap
-    White tanpa membuatnya kehilangan kejernihan. Pada akhirnya, keberadaan mereka
-    dalam satu komposisi bukanlah bentuk pertentangan, melainkan sebuah simbiosis
-    visual yang memperkaya satu sama lain, menghadirkan kontras yang lembut dan harmoni
-    yang tidak dipaksakan.
+  m_text: 'Helminth moves across the battlefield as a slow but persistent invader,
+    burrowing through defenses and draining strength over time. It does not rely
+    on speed, but on endurance, tightening its grip while steadily advancing toward
+    its target. If left unchecked, Helminth can weaken the entire line, forcing players
+    to react before the damage becomes overwhelming.
+
+    
+
+    Helminth attacks
+    by absorbing resources and disrupting the stability of nearby units, representing
+    parasitic infection that slowly exhausts its host. Unlike fast-striking enemies,
+    it pressures players with gradual but continuous harm, demanding strategic placement
+    of protective medicines. Its presence teaches that not all threats are explosive
+    some are dangerous because they last.
+
+    
+
+    Helminth can be countered
+    by carefully deployed antiparasitic medicines that break its hold and restore
+    balance to the field. When treated properly, its endurance fades and it loses
+    the strength that made it so persistent. Helminth reminds players that sustained
+    protection and timely treatment are the key to overcoming long-term infections.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -2594,8 +2595,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3005,10 +3006,10 @@ RectTransform:
   - {fileID: 1507469304}
   m_Father: {fileID: 1563223091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 204.51999, y: -114}
+  m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &87469187
 MonoBehaviour:
@@ -10173,7 +10174,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1108038748}
   m_HandleRect: {fileID: 1108038747}
   m_Direction: 2
-  m_Value: 1.0000001
+  m_Value: 1
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -11091,10 +11092,10 @@ RectTransform:
   - {fileID: 1126431201}
   m_Father: {fileID: 1563223091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 43.76, y: -276.37}
+  m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &316761535
 MonoBehaviour:
@@ -12091,7 +12092,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Bacteria Purple
+  m_text: Streptococcus pneumonia
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
   m_sharedMaterial: {fileID: 3866023056381278409, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
@@ -12292,7 +12293,7 @@ MonoBehaviour:
     pictureObj: {fileID: 849999934}
     button: {fileID: 1897353583}
     name: Moracella xataralis
-    description: "Moraxella catarrhalis appears in the game as an opportunistic enemy
+    description: "Moracella xataralis appears in the game as an opportunistic enemy
       hiding in the upper airways. It remains quiet and unnoticed, blending into
       its surroundings while waiting for the host\u2019s defenses to weaken. When
       the moment comes, it turns aggressive and spreads through the sinuses, ears,
@@ -12344,13 +12345,14 @@ MonoBehaviour:
   BacteriaYellow:
     pictureObj: {fileID: 388676070}
     button: {fileID: 931636918}
-    name: Staphylloccocus aureus
-    description: Staphylococcus aureus appears in the game as a versatile and aggressive
-      enemy that exploits close contact and exposed weaknesses. It enters through
-      small wounds, multiplies rapidly, and releases damaging toxins. Though it seems
-      manageable at first, it can quickly escalate into severe infections if ignored.
-      Adaptable and relentless, it overwhelms the battlefield with pressure. Staphylococcus
-      aureus teaches players not to underestimate common enemies.
+    name: "MSSA\u2013Methicillin Sensitive Staphylococcus aureus"
+    description: "MSSA\u2013Methicillin Sensitive Staphylococcus aureus appears in
+      the game as a versatile and aggressive enemy that exploits close contact and
+      exposed weaknesses. It enters through small wounds, multiplies rapidly, and
+      releases damaging toxins. Though it seems manageable at first, it can quickly
+      escalate into severe infections if ignored. Adaptable and relentless, it overwhelms
+      the battlefield with pressure. Staphylococcus aureus teaches players not to
+      underestimate common enemies."
 --- !u!4 &336415449
 Transform:
   m_ObjectHideFlags: 0
@@ -15355,7 +15357,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Bacteria Yellow
+  m_text: Haemophilus influenzae
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
   m_sharedMaterial: {fileID: 3866023056381278409, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
@@ -19778,8 +19780,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00021362, y: -936.79675}
-  m_SizeDelta: {x: 1331, y: 1873.5933}
+  m_AnchoredPosition: {x: 0.00021362, y: -1164.8186}
+  m_SizeDelta: {x: 1331, y: 2329.637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &596951327
 MonoBehaviour:
@@ -19801,27 +19803,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: White is a character to Purple, White digambarkan sebagai sebuah karakter
-    yang kontras namun tetap seirama dengan Purple. Keberadaannya memberi kesan bersih,
-    jernih, dan netral dalam komposisi, seolah-olah menjadi ruang kosong yang memungkinkan
-    warna lain bernapas dan menampilkan dirinya secara utuh. White hadir dengan kualitas
-    yang tenang, tidak mendominasi, tetapi tetap memiliki kekuatan visual yang signifikan.
-    Dalam konteks hubungan antar karakter, White dapat dipandang sebagai fondasi,
-    elemen dasar yang menjaga struktur sekaligus memberikan fleksibilitas bagi dinamika
-    warna yang lebih kompleks. Sementara Purple hadir sebagai karakter yang penuh
-    nuansa emosional dan intensitas warna. Ia membawa kedalaman, misteri, dan lapisan
-    makna yang tidak selalu langsung terlihat pada pandangan pertama. Purple dapat
-    merepresentasikan imajinasi, spiritualitas, atau kompleksitas psikologis yang
-    kaya, sehingga membuat komposisi yang melibatkan dirinya terasa lebih berat,
-    lebih dalam, dan lebih penuh resonansi emosional. Ketika Purple bergerak dalam
-    satu ruang dengan White, muncul kesan percakapan antara keheningan dengan suara
-    batin, antara keterbukaan dengan introspeksi. Hubungan keduanya menciptakan keseimbangan
-    antara ketenangan dan kedalaman. White menenangkan intensitas Purple tanpa menghilangkan
-    karakter dasarnya, sementara Purple menambah dimensi emosional dan makna terhadap
-    White tanpa membuatnya kehilangan kejernihan. Pada akhirnya, keberadaan mereka
-    dalam satu komposisi bukanlah bentuk pertentangan, melainkan sebuah simbiosis
-    visual yang memperkaya satu sama lain, menghadirkan kontras yang lembut dan harmoni
-    yang tidak dipaksakan.
+  m_text: "<b>Escherichia coli (Gram-negative)</b>\r\n\r\n<b>Brief Characteristics:</b>\r\n\r\n-
+    Gram-negative bacilli\r\n\r\n- Facultative anaerobe\r\n\r\n<b>Habitat:</b>\r\n\r\n-
+    Normal intestinal flora\r\n\r\n<b>Major Diseases:</b>\r\n\r\n- Urinary tract
+    infections (UTIs)\r\n\r\n- Sepsis\r\n\r\n- Diarrhea\r\n\r\n- Neonatal meningitis\r\n\r\n-
+    Intra-abdominal infections\r\n\r\n<b>Effective Antibiotics:</b>\r\n\r\n- Ceftriaxone\r\n\r\n-
+    Cefixime\r\n\r\n- Ciprofloxacin\r\n\r\n- Levofloxacin\r\n\r\n- Trimethoprim\u2013sulfamethoxazole\r\n\r\n-
+    Carbapenems (for ESBL-producing strains)\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -19848,8 +19836,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -22137,8 +22125,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00021362, y: -936.79663}
-  m_SizeDelta: {x: 1331, y: 1873.5933}
+  m_AnchoredPosition: {x: 0.00021362, y: -1122.6876}
+  m_SizeDelta: {x: 1331, y: 2245.375}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &655641525
 MonoBehaviour:
@@ -22160,27 +22148,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: White is a character to Purple, White digambarkan sebagai sebuah karakter
-    yang kontras namun tetap seirama dengan Purple. Keberadaannya memberi kesan bersih,
-    jernih, dan netral dalam komposisi, seolah-olah menjadi ruang kosong yang memungkinkan
-    warna lain bernapas dan menampilkan dirinya secara utuh. White hadir dengan kualitas
-    yang tenang, tidak mendominasi, tetapi tetap memiliki kekuatan visual yang signifikan.
-    Dalam konteks hubungan antar karakter, White dapat dipandang sebagai fondasi,
-    elemen dasar yang menjaga struktur sekaligus memberikan fleksibilitas bagi dinamika
-    warna yang lebih kompleks. Sementara Purple hadir sebagai karakter yang penuh
-    nuansa emosional dan intensitas warna. Ia membawa kedalaman, misteri, dan lapisan
-    makna yang tidak selalu langsung terlihat pada pandangan pertama. Purple dapat
-    merepresentasikan imajinasi, spiritualitas, atau kompleksitas psikologis yang
-    kaya, sehingga membuat komposisi yang melibatkan dirinya terasa lebih berat,
-    lebih dalam, dan lebih penuh resonansi emosional. Ketika Purple bergerak dalam
-    satu ruang dengan White, muncul kesan percakapan antara keheningan dengan suara
-    batin, antara keterbukaan dengan introspeksi. Hubungan keduanya menciptakan keseimbangan
-    antara ketenangan dan kedalaman. White menenangkan intensitas Purple tanpa menghilangkan
-    karakter dasarnya, sementara Purple menambah dimensi emosional dan makna terhadap
-    White tanpa membuatnya kehilangan kejernihan. Pada akhirnya, keberadaan mereka
-    dalam satu komposisi bukanlah bentuk pertentangan, melainkan sebuah simbiosis
-    visual yang memperkaya satu sama lain, menghadirkan kontras yang lembut dan harmoni
-    yang tidak dipaksakan.
+  m_text: "<b>Moraxella catarrhalis (Gram-negative)</b>\r\n\r\n<b>Brief Characteristics:</b>\r\n\r\n-
+    Gram-negative diplococci\r\n\r\n- Produces \u03B2-lactamase\r\n\r\n<b>Habitat:</b>\r\n\r\n-
+    Upper respiratory tract\r\n\r\n<b>Major Diseases:</b>\r\n\r\n- Otitis media\r\n\r\n-
+    Sinusitis\r\n\r\n- Acute exacerbations of COPD\r\n\r\n- Bronchitis\r\n\r\n<b>Effective
+    Antibiotics:</b>\r\n\r\n- Amoxicillin\u2013clavulanate\r\n\r\n- Cefixime / Ceftriaxone\r\n\r\n-
+    Azithromycin\r\n\r\n- Levofloxacin\r\n\r\n- Ciprofloxacin\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -22207,8 +22180,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -22480,10 +22453,10 @@ RectTransform:
   - {fileID: 1147351640}
   m_Father: {fileID: 1563223091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -117, y: -114}
+  m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &662760700
 MonoBehaviour:
@@ -26132,7 +26105,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &799727871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29114,8 +29087,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00021362, y: -936.79675}
-  m_SizeDelta: {x: 1331, y: 1873.5933}
+  m_AnchoredPosition: {x: 0.00021362, y: -1473.3774}
+  m_SizeDelta: {x: 1331, y: 2946.755}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &881286562
 MonoBehaviour:
@@ -29137,27 +29110,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: White is a character to Purple, White digambarkan sebagai sebuah karakter
-    yang kontras namun tetap seirama dengan Purple. Keberadaannya memberi kesan bersih,
-    jernih, dan netral dalam komposisi, seolah-olah menjadi ruang kosong yang memungkinkan
-    warna lain bernapas dan menampilkan dirinya secara utuh. White hadir dengan kualitas
-    yang tenang, tidak mendominasi, tetapi tetap memiliki kekuatan visual yang signifikan.
-    Dalam konteks hubungan antar karakter, White dapat dipandang sebagai fondasi,
-    elemen dasar yang menjaga struktur sekaligus memberikan fleksibilitas bagi dinamika
-    warna yang lebih kompleks. Sementara Purple hadir sebagai karakter yang penuh
-    nuansa emosional dan intensitas warna. Ia membawa kedalaman, misteri, dan lapisan
-    makna yang tidak selalu langsung terlihat pada pandangan pertama. Purple dapat
-    merepresentasikan imajinasi, spiritualitas, atau kompleksitas psikologis yang
-    kaya, sehingga membuat komposisi yang melibatkan dirinya terasa lebih berat,
-    lebih dalam, dan lebih penuh resonansi emosional. Ketika Purple bergerak dalam
-    satu ruang dengan White, muncul kesan percakapan antara keheningan dengan suara
-    batin, antara keterbukaan dengan introspeksi. Hubungan keduanya menciptakan keseimbangan
-    antara ketenangan dan kedalaman. White menenangkan intensitas Purple tanpa menghilangkan
-    karakter dasarnya, sementara Purple menambah dimensi emosional dan makna terhadap
-    White tanpa membuatnya kehilangan kejernihan. Pada akhirnya, keberadaan mereka
-    dalam satu komposisi bukanlah bentuk pertentangan, melainkan sebuah simbiosis
-    visual yang memperkaya satu sama lain, menghadirkan kontras yang lembut dan harmoni
-    yang tidak dipaksakan.
+  m_text: "<b>Pseudomonas aeruginosa (Gram-negative)</b>\r\n\r\n<b>Brief Characteristics:</b>\r\n\r\n-
+    Gram-negative bacilli  \r\n\r\n- Opportunistic pathogen  \r\n\r\n- Strong biofilm
+    formation \r\n \r\n- Characteristic grape-like odor  \r\n\r\n<b>Habitat:</b>\r\n\r\n-
+    Water  \r\n\r\n- Hospital environments \r\n \r\n- Medical devices  \r\n\r\n<b>Major
+    Diseases:</b>\r\n\r\n- Nosocomial pneumonia  \r\n\r\n- Burn wound infections 
+    \r\n\r\n- Catheter-associated urinary tract infections  \r\n\r\n- Sepsis  \r\n\r\n-
+    Malignant otitis externa  \r\n\r\n<b>Effective Antibiotics:</b>\r\n\r\n- Ciprofloxacin 
+    \r\n\r\n- Levofloxacin  \r\n\r\n- Ceftazidime  \r\n\r\n- Cefepime  \r\n\r\n-
+    Piperacillin\u2013tazobactam  \r\n\r\n- Meropenem  "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -29184,8 +29145,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -29953,8 +29914,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 586124356}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.99999994}
-  m_AnchorMax: {x: 1, y: 0.99999994}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -31340,8 +31301,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00021362, y: -936.79675}
-  m_SizeDelta: {x: 1331, y: 1873.5933}
+  m_AnchoredPosition: {x: 0.00021362, y: -1197.1271}
+  m_SizeDelta: {x: 1331, y: 2394.254}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &954970016
 MonoBehaviour:
@@ -31363,27 +31324,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: White is a character to Purple, White digambarkan sebagai sebuah karakter
-    yang kontras namun tetap seirama dengan Purple. Keberadaannya memberi kesan bersih,
-    jernih, dan netral dalam komposisi, seolah-olah menjadi ruang kosong yang memungkinkan
-    warna lain bernapas dan menampilkan dirinya secara utuh. White hadir dengan kualitas
-    yang tenang, tidak mendominasi, tetapi tetap memiliki kekuatan visual yang signifikan.
-    Dalam konteks hubungan antar karakter, White dapat dipandang sebagai fondasi,
-    elemen dasar yang menjaga struktur sekaligus memberikan fleksibilitas bagi dinamika
-    warna yang lebih kompleks. Sementara Purple hadir sebagai karakter yang penuh
-    nuansa emosional dan intensitas warna. Ia membawa kedalaman, misteri, dan lapisan
-    makna yang tidak selalu langsung terlihat pada pandangan pertama. Purple dapat
-    merepresentasikan imajinasi, spiritualitas, atau kompleksitas psikologis yang
-    kaya, sehingga membuat komposisi yang melibatkan dirinya terasa lebih berat,
-    lebih dalam, dan lebih penuh resonansi emosional. Ketika Purple bergerak dalam
-    satu ruang dengan White, muncul kesan percakapan antara keheningan dengan suara
-    batin, antara keterbukaan dengan introspeksi. Hubungan keduanya menciptakan keseimbangan
-    antara ketenangan dan kedalaman. White menenangkan intensitas Purple tanpa menghilangkan
-    karakter dasarnya, sementara Purple menambah dimensi emosional dan makna terhadap
-    White tanpa membuatnya kehilangan kejernihan. Pada akhirnya, keberadaan mereka
-    dalam satu komposisi bukanlah bentuk pertentangan, melainkan sebuah simbiosis
-    visual yang memperkaya satu sama lain, menghadirkan kontras yang lembut dan harmoni
-    yang tidak dipaksakan.
+  m_text: "<b>MSSA \u2013 Methicillin-Sensitive Staphylococcus aureus (Gram-positive)</b>\r\n\r\n<b>Brief
+    Characteristics:</b>\r\n\r\n- Gram-positive cocci\r\n\r\n- Cluster-forming cocci
+    (grape-like appearance)\r\n\r\n- Coagulase-positive\r\n\r\n<b>Habitat:</b>\r\n\r\n-
+    Skin\r\n\r\n- Nasal mucosa (anterior nares)\r\n\r\n<b>Major Diseases:</b>\r\n\r\n-
+    Skin and soft tissue infections (abscesses, cellulitis)\r\n\r\n- Pneumonia\r\n\r\n-
+    Osteomyelitis\r\n\r\n- Endocarditis\r\n\r\n- Sepsis\r\n\r\n<b>Effective Antibiotics:</b>\r\n\r\n-
+    Cefazolin\r\n\r\n- Oxacillin / Nafcillin\r\n\r\n- Amoxicillin\u2013clavulanate\r\n\r\n-
+    Clindamycin\r\n\r\n- Levofloxacin\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -31410,8 +31358,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -32311,7 +32259,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &981431296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33249,7 +33197,7 @@ MonoBehaviour:
 
     Fluoroquinolone antibiotic (second generation)
 
-    
+
 
     <b>Indications:</b>
 
@@ -33257,7 +33205,7 @@ MonoBehaviour:
     of urinary tract infections, gastrointestinal infections, bone and joint infections,
     skin and soft tissue infections, Gram-negative pneumonia, and anthrax
 
-    
+
 
     <b>Target
     Bacteria:</b>
@@ -33265,7 +33213,7 @@ MonoBehaviour:
     Escherichia coli, Pseudomonas aeruginosa, Klebsiella spp.,
     Salmonella spp., Shigella spp.
 
-    
+
 
     <b>Adverse Drug Reactions (ADR):</b>
 
@@ -33273,7 +33221,7 @@ MonoBehaviour:
     diarrhea, dizziness, photosensitivity, increased risk of tendonitis and tendon
     rupture
 
-    
+
 
     <b>LINK:</b>
 
@@ -33406,8 +33354,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1036033104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -34816,10 +34764,10 @@ RectTransform:
   - {fileID: 1076722656}
   m_Father: {fileID: 1563223091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 204.51999, y: -276.37}
+  m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1062256297
 MonoBehaviour:
@@ -35737,10 +35685,10 @@ RectTransform:
   - {fileID: 687756481}
   m_Father: {fileID: 1563223091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -117, y: -276.37}
+  m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1083145944
 MonoBehaviour:
@@ -35976,7 +35924,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Bacteria Green
+  m_text: Pseudomonas aeruginosa
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
   m_sharedMaterial: {fileID: 3866023056381278409, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
@@ -36187,27 +36135,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: White is a character to Purple, White digambarkan sebagai sebuah karakter
-    yang kontras namun tetap seirama dengan Purple. Keberadaannya memberi kesan bersih,
-    jernih, dan netral dalam komposisi, seolah-olah menjadi ruang kosong yang memungkinkan
-    warna lain bernapas dan menampilkan dirinya secara utuh. White hadir dengan kualitas
-    yang tenang, tidak mendominasi, tetapi tetap memiliki kekuatan visual yang signifikan.
-    Dalam konteks hubungan antar karakter, White dapat dipandang sebagai fondasi,
-    elemen dasar yang menjaga struktur sekaligus memberikan fleksibilitas bagi dinamika
-    warna yang lebih kompleks. Sementara Purple hadir sebagai karakter yang penuh
-    nuansa emosional dan intensitas warna. Ia membawa kedalaman, misteri, dan lapisan
-    makna yang tidak selalu langsung terlihat pada pandangan pertama. Purple dapat
-    merepresentasikan imajinasi, spiritualitas, atau kompleksitas psikologis yang
-    kaya, sehingga membuat komposisi yang melibatkan dirinya terasa lebih berat,
-    lebih dalam, dan lebih penuh resonansi emosional. Ketika Purple bergerak dalam
-    satu ruang dengan White, muncul kesan percakapan antara keheningan dengan suara
-    batin, antara keterbukaan dengan introspeksi. Hubungan keduanya menciptakan keseimbangan
-    antara ketenangan dan kedalaman. White menenangkan intensitas Purple tanpa menghilangkan
-    karakter dasarnya, sementara Purple menambah dimensi emosional dan makna terhadap
-    White tanpa membuatnya kehilangan kejernihan. Pada akhirnya, keberadaan mereka
-    dalam satu komposisi bukanlah bentuk pertentangan, melainkan sebuah simbiosis
-    visual yang memperkaya satu sama lain, menghadirkan kontras yang lembut dan harmoni
-    yang tidak dipaksakan.
+  m_text: "<b>MRSA \u2013 Methicillin-Resistant Staphylococcus aureus (Gram-positive)</b>\r\n\r\n<b>Brief
+    Characteristics:</b>\r\n\r\n- Gram-positive cocci\r\n\r\n- Cluster-forming cocci
+    (grape-like appearance)\r\n\r\n- Resistant to \u03B2-lactam antibiotics\r\n\r\n-
+    Similar morphology to MSSA\r\n\r\n<b>Habitat:</b>\r\n\r\n- Skin\r\n\r\n- Hospitals
+    (HA-MRSA)\r\n\r\n- Community settings (CA-MRSA)\r\n\r\n<b>Major Diseases:</b>\r\n\r\n-
+    Skin abscesses\r\n\r\n- Severe pneumonia\r\n\r\n- Endocarditis\r\n\r\n- Sepsis\r\n\r\n<b>Effective
+    Antibiotics:</b>\r\n\r\n- Vancomycin (gold standard)\r\n\r\n- Linezolid\r\n\r\n-
+    Daptomycin (not for pneumonia)\r\n\r\n- Clindamycin (if susceptible)\r\n\r\n-
+    Trimethoprim\u2013sulfamethoxazole (mild infections)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -36234,8 +36170,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -36477,12 +36413,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bacteria Yellow is a resilient and unpredictable microorganism that represents
-    a higher-level threat compared to common bacteria, characterized by its ability
-    to survive longer under pressure and disrupt the balance of its surrounding environment.
-    It moves with irregular patterns that make it difficult to anticipate, forcing
-    defenders to stay alert and adapt their strategies rather than relying on fixed
-    placements or single attack types. '
+  m_text: "MSSA\u2013Methicillin Sensitive Staphylococcus aureus appears in the game
+    as a versatile and aggressive enemy that exploits close contact and exposed weaknesses.
+    It enters through small wounds, multiplies rapidly, and releases damaging toxins.
+    Though it seems manageable at first, it can quickly escalate into severe infections
+    if ignored. Adaptable and relentless, it overwhelms the battlefield with pressure.
+    Staphylococcus aureus teaches players not to underestimate common enemies."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
   m_sharedMaterial: {fileID: 3866023056381278409, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
@@ -39002,52 +38938,42 @@ MonoBehaviour:
     pictureObj: {fileID: 1392805154}
     button: {fileID: 1787281413}
     name: Fungi
-    description: Fungi were once silent scavengers that thrived on decay, breaking
-      down what was already dead and returning it to the ground. When imbalance spread
-      across the land, they evolved into something more dangerous feeding not only
-      on rot, but on weakness itself. Wherever battles leave scars, Fungi grow rapidly,
-      releasing invisible spores that drain strength and slow resistance from anything
-      nearby. They do not attack with force, but with persistence, spreading quietly,
-      overwhelming defenses over time, and turning neglect into collapse. In this
-      world, Fungi are a reminder that what is ignored for too long can become the
-      hardest threat to remove.
+    description: Fungi spread silently across the battlefield, releasing spores that
+      weaken defenses and overwhelm protected zones. Unlike fast-moving bacteria,
+      they thrive by lingering, slowly draining strength from anything they infect.
+      If left unchecked, Fungi colonies can overrun the area, forcing the protective
+      medicines to stand firm and stop their advance before the spores take control.
   Virus:
     pictureObj: {fileID: 893199564}
     button: {fileID: 966196162}
     name: Virus
-    description: Virus are the smallest enemies on the battlefield, yet the most
-      deceptive. Invisible to the naked eye, they slip through defenses with ease,
-      hijacking what they touch and forcing it to serve their own replication. Unlike
-      other threats, Virus do not rely on strength or numbers alone they rely on
-      speed, mutation, and surprise. Once they breach a line, they adapt rapidly,
-      becoming harder to contain with every moment they survive. In this world, Virus
-      embody the danger of unseen threats, proving that even the smallest enemy can
-      cause the greatest collapse if left unchecked.
+    description: Virus spreads relentlessly across the battlefield, slipping through
+      defenses and overwhelming cells with rapid infection, much like an unstoppable
+      wave in a PVZ-style war. It attacks by multiplying quickly and weakening every
+      line it touches, forcing defenders to react fast or be consumed. Only the right
+      medicines, standing firm as guardians, can slow its advance, block its spread,
+      and protect the body from falling into total chaos.
   Protozoa:
     pictureObj: {fileID: 1332664965}
     button: {fileID: 228220921}
     name: Protozoa
-    description: "Protozoa are ancient lifeforms that existed long before the battlefield
-      was ever formed, surviving through constant adaptation and cunning. Unlike
-      mindless threats, they move with intention, sensing openings and exploiting
-      weak points in defenses. Protozoa thrive in unstable environments, shifting
-      their behavior when threatened and retreating only to strike again from a safer
-      angle. Their strength lies not in raw power, but in intelligence and survival
-      instinct, making them unpredictable opponents. In this world, Protozoa represent
-      resilience through adaptation\u2014enemies that endure by learning how to survive
-      every encounter."
+    description: Protozoa are cunning single-celled invaders that slip through defenses
+      with deceptive simplicity, multiplying rapidly as they advance toward the heart
+      of the system. Though small, their coordinated attacks weaken vital lines,
+      forcing protectors to stay alert and responsive. Only the timely deployment
+      of the right medicine can halt their spread, forming a protective barrier that
+      restores balance and pushes these microscopic aggressors back into the shadows.
   Helminth:
     pictureObj: {fileID: 1662908243}
     button: {fileID: 607798924}
     name: Helminth
-    description: Helminth are massive parasitic creatures that advance slowly but
-      relentlessly, burrowing through the battlefield with unwavering persistence.
-      They do not rush their prey instead, they drain resources and stability over
-      time, weakening defenses from within. Protected by thick layers and sheer endurance,
-      Helminth are difficult to eliminate once they take hold. Their presence turns
-      long battles into wars of attrition, where patience favors the enemy. In this
-      world, Helminth symbolize the danger of prolonged neglect, showing that threats
-      allowed to grow quietly can become nearly impossible to remove.
+    description: "Helminth emerges from the depths as a silent but persistent invader,
+      slowly advancing through the body\u2019s defenses while draining strength with
+      every step. Its presence represents a parasitic threat that attacks relentlessly,
+      testing the resilience of the system it inhabits. Only the timely deployment
+      of protective medicine can halt its progress, forming a barrier that weakens
+      the parasite and prevents further damage before it overwhelms everything in
+      its path."
 --- !u!4 &1178431496
 Transform:
   m_ObjectHideFlags: 0
@@ -39998,8 +39924,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00021362, y: -936.79675}
-  m_SizeDelta: {x: 1331, y: 1873.5933}
+  m_AnchoredPosition: {x: 0.00021362, y: -1054.8881}
+  m_SizeDelta: {x: 1331, y: 2109.776}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1237512912
 MonoBehaviour:
@@ -40021,27 +39947,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: White is a character to Purple, White digambarkan sebagai sebuah karakter
-    yang kontras namun tetap seirama dengan Purple. Keberadaannya memberi kesan bersih,
-    jernih, dan netral dalam komposisi, seolah-olah menjadi ruang kosong yang memungkinkan
-    warna lain bernapas dan menampilkan dirinya secara utuh. White hadir dengan kualitas
-    yang tenang, tidak mendominasi, tetapi tetap memiliki kekuatan visual yang signifikan.
-    Dalam konteks hubungan antar karakter, White dapat dipandang sebagai fondasi,
-    elemen dasar yang menjaga struktur sekaligus memberikan fleksibilitas bagi dinamika
-    warna yang lebih kompleks. Sementara Purple hadir sebagai karakter yang penuh
-    nuansa emosional dan intensitas warna. Ia membawa kedalaman, misteri, dan lapisan
-    makna yang tidak selalu langsung terlihat pada pandangan pertama. Purple dapat
-    merepresentasikan imajinasi, spiritualitas, atau kompleksitas psikologis yang
-    kaya, sehingga membuat komposisi yang melibatkan dirinya terasa lebih berat,
-    lebih dalam, dan lebih penuh resonansi emosional. Ketika Purple bergerak dalam
-    satu ruang dengan White, muncul kesan percakapan antara keheningan dengan suara
-    batin, antara keterbukaan dengan introspeksi. Hubungan keduanya menciptakan keseimbangan
-    antara ketenangan dan kedalaman. White menenangkan intensitas Purple tanpa menghilangkan
-    karakter dasarnya, sementara Purple menambah dimensi emosional dan makna terhadap
-    White tanpa membuatnya kehilangan kejernihan. Pada akhirnya, keberadaan mereka
-    dalam satu komposisi bukanlah bentuk pertentangan, melainkan sebuah simbiosis
-    visual yang memperkaya satu sama lain, menghadirkan kontras yang lembut dan harmoni
-    yang tidak dipaksakan.
+  m_text: "<b>Haemophilus influenzae (Gram-negative)</b>\r\n\r\n<b>Brief Characteristics:</b>\r\n\r\n-
+    Coccobacilli\r\n\r\n- Requires factor X and V\r\n\r\n- Type b is the most virulent\r\n\r\n<b>Habitat:</b>\r\n\r\n-
+    Nasopharynx\r\n\r\n<b>Major Diseases:</b>\r\n\r\n- Pneumonia\r\n\r\n- Epiglottitis\r\n\r\n-
+    Otitis media\r\n\r\n- Sinusitis\r\n\r\n- Meningitis (type b)\r\n\r\n<b>Effective
+    Antibiotics:</b>\r\n\r\n- Amoxicillin\u2013clavulanate\r\n\r\n- Ceftriaxone /
+    Cefotaxime\r\n\r\n- Azithromycin\r\n\r\n- Levofloxacin\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -40068,8 +39979,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -40716,12 +40627,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bacteria Green is a resilient and unpredictable microorganism that represents
-    a higher-level threat compared to common bacteria, characterized by its ability
-    to survive longer under pressure and disrupt the balance of its surrounding environment.
-    It moves with irregular patterns that make it difficult to anticipate, forcing
-    defenders to stay alert and adapt their strategies rather than relying on fixed
-    placements or single attack types. '
+  m_text: Pseudomonas aeruginosa appears in the game as a ruthless and highly adaptable
+    enemy that thrives in harsh environments. It spreads through wounds and weakened
+    systems, forming resilient colonies that are hard to eliminate. This pathogen
+    releases toxic substances that slowly overwhelm defenses. Resistant and persistent,
+    it refuses to retreat once established. Pseudomonas aeruginosa represents a dangerous
+    late-game threat that punishes careless strategy.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
   m_sharedMaterial: {fileID: 3866023056381278409, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
@@ -43876,8 +43787,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 487872134}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.019813554}
+  m_AnchorMax: {x: 1, y: 0.9801863}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -45317,27 +45228,22 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: White is a character to Purple, White digambarkan sebagai sebuah karakter
-    yang kontras namun tetap seirama dengan Purple. Keberadaannya memberi kesan bersih,
-    jernih, dan netral dalam komposisi, seolah-olah menjadi ruang kosong yang memungkinkan
-    warna lain bernapas dan menampilkan dirinya secara utuh. White hadir dengan kualitas
-    yang tenang, tidak mendominasi, tetapi tetap memiliki kekuatan visual yang signifikan.
-    Dalam konteks hubungan antar karakter, White dapat dipandang sebagai fondasi,
-    elemen dasar yang menjaga struktur sekaligus memberikan fleksibilitas bagi dinamika
-    warna yang lebih kompleks. Sementara Purple hadir sebagai karakter yang penuh
-    nuansa emosional dan intensitas warna. Ia membawa kedalaman, misteri, dan lapisan
-    makna yang tidak selalu langsung terlihat pada pandangan pertama. Purple dapat
-    merepresentasikan imajinasi, spiritualitas, atau kompleksitas psikologis yang
-    kaya, sehingga membuat komposisi yang melibatkan dirinya terasa lebih berat,
-    lebih dalam, dan lebih penuh resonansi emosional. Ketika Purple bergerak dalam
-    satu ruang dengan White, muncul kesan percakapan antara keheningan dengan suara
-    batin, antara keterbukaan dengan introspeksi. Hubungan keduanya menciptakan keseimbangan
-    antara ketenangan dan kedalaman. White menenangkan intensitas Purple tanpa menghilangkan
-    karakter dasarnya, sementara Purple menambah dimensi emosional dan makna terhadap
-    White tanpa membuatnya kehilangan kejernihan. Pada akhirnya, keberadaan mereka
-    dalam satu komposisi bukanlah bentuk pertentangan, melainkan sebuah simbiosis
-    visual yang memperkaya satu sama lain, menghadirkan kontras yang lembut dan harmoni
-    yang tidak dipaksakan.
+  m_text: "Protozoa emerges in the game as a cunning microscopic invader that advances
+    steadily across the battlefield, seeking to infiltrate and weaken the body\u2019s
+    defenses. Though single-celled, it is highly adaptable, capable of surviving
+    in harsh conditions and exploiting any gap in protection. Protozoa functions
+    as an attacking force, slipping past unguarded lines and draining strength over
+    time if left unchecked.\n\nProtozoa thrives in environments where protection
+    is poorly organized, multiplying quietly before launching a coordinated assault.
+    Some variants move quickly, while others endure heavy damage, forcing players
+    to carefully deploy the right medicine units to counter its advance. Its unpredictable
+    behavior teaches that even the smallest enemy can become dangerous when underestimated.\n\nProtozoa
+    can be controlled only when the correct treatments are positioned strategically
+    to block and eliminate it. Antiprotozoal medicines act as guardians, forming
+    a protective barrier that neutralizes its spread and restores balance to the
+    system. Through its presence, Protozoa reminds players that precision, timing,
+    and proper medication are essential to maintaining defense against microscopic
+    threats."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -45364,8 +45270,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -46480,9 +46386,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Bacteria Red is a fast spreading bacterial enemy that represents highly
-    aggressive pathogens capable of multiplying rapidly and overwhelming their environment
-    when left.
+  m_text: "Moracella xataralis appears in the game as an opportunistic enemy hiding
+    in the upper airways. It remains quiet and unnoticed, blending into its surroundings
+    while waiting for the host\u2019s defenses to weaken. When the moment comes,
+    it turns aggressive and spreads through the sinuses, ears, and lungs. This enemy
+    causes persistent inflammation that clogs passages and slows recovery. Moraxella
+    catarrhalis teaches players that threats which seem harmless can become dangerous
+    when vigilance fades."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
   m_sharedMaterial: {fileID: 3866023056381278409, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
@@ -47728,7 +47638,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Bacteria Yellow
+  m_text: "MSSA\u2013Methicillin Sensitive Staphylococcus aureus"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
   m_sharedMaterial: {fileID: 3866023056381278409, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
@@ -47755,8 +47665,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26
-  m_fontSizeBase: 26
+  m_fontSize: 17.13
+  m_fontSizeBase: 17.13
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -50113,10 +50023,10 @@ RectTransform:
   - {fileID: 2002172620}
   m_Father: {fileID: 1563223091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -117, y: -438.74}
+  m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1517608804
 MonoBehaviour:
@@ -50982,27 +50892,21 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: White is a character to Purple, White digambarkan sebagai sebuah karakter
-    yang kontras namun tetap seirama dengan Purple. Keberadaannya memberi kesan bersih,
-    jernih, dan netral dalam komposisi, seolah-olah menjadi ruang kosong yang memungkinkan
-    warna lain bernapas dan menampilkan dirinya secara utuh. White hadir dengan kualitas
-    yang tenang, tidak mendominasi, tetapi tetap memiliki kekuatan visual yang signifikan.
-    Dalam konteks hubungan antar karakter, White dapat dipandang sebagai fondasi,
-    elemen dasar yang menjaga struktur sekaligus memberikan fleksibilitas bagi dinamika
-    warna yang lebih kompleks. Sementara Purple hadir sebagai karakter yang penuh
-    nuansa emosional dan intensitas warna. Ia membawa kedalaman, misteri, dan lapisan
-    makna yang tidak selalu langsung terlihat pada pandangan pertama. Purple dapat
-    merepresentasikan imajinasi, spiritualitas, atau kompleksitas psikologis yang
-    kaya, sehingga membuat komposisi yang melibatkan dirinya terasa lebih berat,
-    lebih dalam, dan lebih penuh resonansi emosional. Ketika Purple bergerak dalam
-    satu ruang dengan White, muncul kesan percakapan antara keheningan dengan suara
-    batin, antara keterbukaan dengan introspeksi. Hubungan keduanya menciptakan keseimbangan
-    antara ketenangan dan kedalaman. White menenangkan intensitas Purple tanpa menghilangkan
-    karakter dasarnya, sementara Purple menambah dimensi emosional dan makna terhadap
-    White tanpa membuatnya kehilangan kejernihan. Pada akhirnya, keberadaan mereka
-    dalam satu komposisi bukanlah bentuk pertentangan, melainkan sebuah simbiosis
-    visual yang memperkaya satu sama lain, menghadirkan kontras yang lembut dan harmoni
-    yang tidak dipaksakan.
+  m_text: "Virus enters the battlefield as a stealthy and adaptive enemy that cannot
+    survive on its own but becomes dangerous once it invades living cells. It spreads
+    quickly across lanes, hijacking healthy structures and forcing them to produce
+    more copies of itself. Unlike ordinary bacteria, Virus relies on infiltration
+    rather than brute strength, making it a fast and unpredictable attacker that
+    pressures the player\u2019s defenses.\n\nVirus functions as a wave-based invader
+    whose strength increases when left unchecked. It moves silently at first, then
+    suddenly multiplies, overwhelming protective units if not countered in time.
+    Some strains may resist basic treatments, forcing players to deploy the correct
+    antiviral or supportive medicine units to stop replication and prevent further
+    spread.\n\nVirus teaches players the importance of strategic protection rather
+    than direct confrontation. Defensive medicines act as shields and targeted responses,
+    blocking entry and suppressing replication before it spirals out of control.
+    When the right medical defenders are placed wisely, Virus loses its advantage
+    and the battlefield gradually returns to balance."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -51029,8 +50933,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -52024,7 +51928,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00021362, y: -911.49817}
+  m_AnchoredPosition: {x: 0.00021362, y: -936.79736}
   m_SizeDelta: {x: 1331, y: 1873.5933}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1552307321
@@ -52049,7 +51953,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '<b>Class:</b> Macrolide antibiotic
 
-    
+
 
     <b>Indications:</b>
 
@@ -52058,14 +51962,14 @@ MonoBehaviour:
     soft tissue infections, sexually transmitted infections (chlamydia), and typhoid
     fever
 
-    
+
 
     <b>Target Bacteria:</b>
 
     Streptococcus pneumoniae, Haemophilus
     influenzae, Mycoplasma pneumoniae, Chlamydia trachomatis, Legionella pneumophila
 
-    
+
 
     <b>Adverse
     Drug Reactions (ADR):</b>
@@ -52073,7 +51977,7 @@ MonoBehaviour:
     Gastrointestinal disturbances, headache, dizziness,
     QT interval prolongation
 
-    
+
 
     <b>LINK:</b>
 
@@ -52535,7 +52439,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0.0000076293945}
-  m_SizeDelta: {x: 91, y: 0}
+  m_SizeDelta: {x: 91, y: 518.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1563223092
 MonoBehaviour:
@@ -54088,8 +53992,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00021362, y: -936.79663}
-  m_SizeDelta: {x: 1331, y: 1873.5933}
+  m_AnchoredPosition: {x: 0.00021362, y: -1093.53}
+  m_SizeDelta: {x: 1331, y: 2187.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1588628601
 MonoBehaviour:
@@ -54111,27 +54015,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: White is a character to Purple, White digambarkan sebagai sebuah karakter
-    yang kontras namun tetap seirama dengan Purple. Keberadaannya memberi kesan bersih,
-    jernih, dan netral dalam komposisi, seolah-olah menjadi ruang kosong yang memungkinkan
-    warna lain bernapas dan menampilkan dirinya secara utuh. White hadir dengan kualitas
-    yang tenang, tidak mendominasi, tetapi tetap memiliki kekuatan visual yang signifikan.
-    Dalam konteks hubungan antar karakter, White dapat dipandang sebagai fondasi,
-    elemen dasar yang menjaga struktur sekaligus memberikan fleksibilitas bagi dinamika
-    warna yang lebih kompleks. Sementara Purple hadir sebagai karakter yang penuh
-    nuansa emosional dan intensitas warna. Ia membawa kedalaman, misteri, dan lapisan
-    makna yang tidak selalu langsung terlihat pada pandangan pertama. Purple dapat
-    merepresentasikan imajinasi, spiritualitas, atau kompleksitas psikologis yang
-    kaya, sehingga membuat komposisi yang melibatkan dirinya terasa lebih berat,
-    lebih dalam, dan lebih penuh resonansi emosional. Ketika Purple bergerak dalam
-    satu ruang dengan White, muncul kesan percakapan antara keheningan dengan suara
-    batin, antara keterbukaan dengan introspeksi. Hubungan keduanya menciptakan keseimbangan
-    antara ketenangan dan kedalaman. White menenangkan intensitas Purple tanpa menghilangkan
-    karakter dasarnya, sementara Purple menambah dimensi emosional dan makna terhadap
-    White tanpa membuatnya kehilangan kejernihan. Pada akhirnya, keberadaan mereka
-    dalam satu komposisi bukanlah bentuk pertentangan, melainkan sebuah simbiosis
-    visual yang memperkaya satu sama lain, menghadirkan kontras yang lembut dan harmoni
-    yang tidak dipaksakan.
+  m_text: "<b>Streptococcus pneumoniae (Gram-positive)</b>\n\n<b>Brief Characteristics:</b>\n\n-
+    Diplococci\n\n- Encapsulated\n\n- Alpha-hemolytic\n\n<b>Habitat:</b>\n\n- Normal
+    flora of the nasopharynx\n\n<b>Major Diseases:</b>\n\n- Community-acquired pneumonia
+    (CAP)\n\n- Otitis media\n\n- Sinusitis\n\n- Meningitis\n\n- Bacteremia\n\n<b>Effective
+    Antibiotics:</b>\n\n- Amoxicillin / Amoxicillin\u2013clavulanate\n\n- Penicillin
+    (if susceptible)\n\n- Ceftriaxone / Cefotaxime\n\n- Levofloxacin\n\n- Azithromycin
+    (increasing resistance)\n\n- Vancomycin (severe or resistant cases)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -54158,8 +54048,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -57148,7 +57038,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2051347724}
   m_HandleRect: {fileID: 2051347723}
   m_Direction: 2
-  m_Value: 0.98649734
+  m_Value: 1.0000005
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -57775,7 +57665,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '<b>Class:</b> Fluoroquinolone antibiotic (third generation)
 
-    
+
 
     <b>Indications:</b>
 
@@ -57783,7 +57673,7 @@ MonoBehaviour:
     of community-acquired pneumonia, acute bacterial sinusitis, acute exacerbations
     of chronic bronchitis, urinary tract infections, and skin and soft tissue infections
 
-    
+
 
     <b>Target
     Bacteria:</b>
@@ -57791,15 +57681,15 @@ MonoBehaviour:
     Streptococcus pneumoniae, Haemophilus influenzae, Escherichia
     coli, Klebsiella pneumoniae, Legionella pneumophila
 
-    
 
-    <b>Adverse Drug
-    Reactions (ADR):</b>
 
-    Gastrointestinal disturbances, dizziness, insomnia,
-    QT interval prolongation, increased risk of tendon rupture
+    <b>Adverse Drug Reactions
+    (ADR):</b>
 
-    
+    Gastrointestinal disturbances, dizziness, insomnia, QT interval
+    prolongation, increased risk of tendon rupture
+
+
 
     <b>LINK:</b>
 
@@ -57833,8 +57723,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -58249,12 +58139,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bacteria Yellow is a resilient and unpredictable microorganism that represents
-    a higher-level threat compared to common bacteria, characterized by its ability
-    to survive longer under pressure and disrupt the balance of its surrounding environment.
-    It moves with irregular patterns that make it difficult to anticipate, forcing
-    defenders to stay alert and adapt their strategies rather than relying on fixed
-    placements or single attack types. '
+  m_text: Escherichia coli is introduced in the game as a deceptive enemy that normally
+    exists in balance but turns dangerous when it crosses forbidden boundaries. Once
+    it escapes its usual territory, it unleashes powerful toxins that disrupt vital
+    systems, causing chaos and rapid damage from within. This enemy spreads quickly
+    through contaminated paths, overwhelming defenses before they can fully respond.
+    Unpredictable and versatile, Escherichia coli symbolizes how familiar forces
+    can become deadly threats when order is broken and control is lost.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
   m_sharedMaterial: {fileID: 3866023056381278409, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
@@ -59162,7 +59053,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 897000166}
   m_HandleRect: {fileID: 897000165}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 1.0000001
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -59872,12 +59763,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bacteria Yellow is a resilient and unpredictable microorganism that represents
-    a higher-level threat compared to common bacteria, characterized by its ability
-    to survive longer under pressure and disrupt the balance of its surrounding environment.
-    It moves with irregular patterns that make it difficult to anticipate, forcing
-    defenders to stay alert and adapt their strategies rather than relying on fixed
-    placements or single attack types. '
+  m_text: Methicillin-Resistant Staphylococcus aureus (MRSA) appears in the game
+    as a hardened elite enemy shaped by countless failed attempts to destroy it.
+    It resists conventional attacks and adapts rapidly to incoming threats. Entering
+    through wounds and close contact, it builds fortified strongholds that are difficult
+    to break. Relentless and unforgiving, MRSA tests both strategy and patience.
+    It represents the danger of enemies forged through resistance.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
   m_sharedMaterial: {fileID: 3866023056381278409, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
@@ -60088,12 +59979,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bacteria Purple is a resilient and unpredictable microorganism that represents
-    a higher-level threat compared to common bacteria, characterized by its ability
-    to survive longer under pressure and disrupt the balance of its surrounding environment.
-    It moves with irregular patterns that make it difficult to anticipate, forcing
-    defenders to stay alert and adapt their strategies rather than relying on fixed
-    placements or single attack types. '
+  m_text: "Streptococcus pneumonia is known in the game world as a silent invader
+    that strikes when defenses grow weak. It drifts through the air unnoticed, settling
+    deep within the lungs where it multiplies rapidly and clouds the battlefield
+    with infection. Once ignored, it spreads beyond its first foothold, triggering
+    fever, breathlessness, and confusion as it drains the host\u2019s strength from
+    within. Clever and resilient, this enemy thrives on vulnerability, turning a
+    moment of neglect into a full-scale assault, reminding players that even the
+    smallest unseen foe can become a devastating threat if left unchecked."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
   m_sharedMaterial: {fileID: 3866023056381278409, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
@@ -60120,8 +60013,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 13
-  m_fontSizeBase: 13
+  m_fontSize: 12.25
+  m_fontSizeBase: 12.25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -62337,7 +62230,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Bacteria Yellow
+  m_text: Esherchia Coli
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
   m_sharedMaterial: {fileID: 3866023056381278409, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
@@ -65315,7 +65208,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Bacteria Yellow
+  m_text: Methicillin-Resistant Staphylococcus aureus (MRSA)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
   m_sharedMaterial: {fileID: 3866023056381278409, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
@@ -65342,8 +65235,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26
-  m_fontSizeBase: 26
+  m_fontSize: 17
+  m_fontSizeBase: 17
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -66837,7 +66730,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1240094611}
   m_HandleRect: {fileID: 1240094610}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 1.0000001
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -67539,12 +67432,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bacteria Yellow is a resilient and unpredictable microorganism that represents
-    a higher-level threat compared to common bacteria, characterized by its ability
-    to survive longer under pressure and disrupt the balance of its surrounding environment.
-    It moves with irregular patterns that make it difficult to anticipate, forcing
-    defenders to stay alert and adapt their strategies rather than relying on fixed
-    placements or single attack types. '
+  m_text: Haemophilus influenzae moves quietly across the battlefield, slipping through
+    defenses and targeting the vulnerable with calculated precision. This fast-spreading
+    bacterium weakens protective lines by causing respiratory assaults and sudden
+    flare-ups, forcing players to respond quickly before it multiplies out of control.
+    Though smaller and less intimidating at first glance, Haemophilus influenzae
+    becomes dangerous when left unchecked, testing the strength and timing of the
+    medicines deployed to block its advance and protect the frontline.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
   m_sharedMaterial: {fileID: 3866023056381278409, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
@@ -67658,10 +67552,10 @@ RectTransform:
   - {fileID: 1056185152}
   m_Father: {fileID: 1563223091}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 43.76, y: -114}
+  m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1954663140
 MonoBehaviour:
@@ -69106,12 +69000,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 700192119}
+  - {fileID: 235794231}
   - {fileID: 251568946}
   - {fileID: 1880737516}
   - {fileID: 1725369597}
   - {fileID: 536285787}
   - {fileID: 525085356}
-  - {fileID: 235794231}
   m_Father: {fileID: 210432258}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -70313,8 +70207,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00021362, y: -936.79663}
-  m_SizeDelta: {x: 1331, y: 1873.5933}
+  m_AnchoredPosition: {x: 0.00021362, y: -999.9503}
+  m_SizeDelta: {x: 1331, y: 1999.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2025550974
 MonoBehaviour:
@@ -70336,27 +70230,29 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: White is a character to Purple, White digambarkan sebagai sebuah karakter
-    yang kontras namun tetap seirama dengan Purple. Keberadaannya memberi kesan bersih,
-    jernih, dan netral dalam komposisi, seolah-olah menjadi ruang kosong yang memungkinkan
-    warna lain bernapas dan menampilkan dirinya secara utuh. White hadir dengan kualitas
-    yang tenang, tidak mendominasi, tetapi tetap memiliki kekuatan visual yang signifikan.
-    Dalam konteks hubungan antar karakter, White dapat dipandang sebagai fondasi,
-    elemen dasar yang menjaga struktur sekaligus memberikan fleksibilitas bagi dinamika
-    warna yang lebih kompleks. Sementara Purple hadir sebagai karakter yang penuh
-    nuansa emosional dan intensitas warna. Ia membawa kedalaman, misteri, dan lapisan
-    makna yang tidak selalu langsung terlihat pada pandangan pertama. Purple dapat
-    merepresentasikan imajinasi, spiritualitas, atau kompleksitas psikologis yang
-    kaya, sehingga membuat komposisi yang melibatkan dirinya terasa lebih berat,
-    lebih dalam, dan lebih penuh resonansi emosional. Ketika Purple bergerak dalam
-    satu ruang dengan White, muncul kesan percakapan antara keheningan dengan suara
-    batin, antara keterbukaan dengan introspeksi. Hubungan keduanya menciptakan keseimbangan
-    antara ketenangan dan kedalaman. White menenangkan intensitas Purple tanpa menghilangkan
-    karakter dasarnya, sementara Purple menambah dimensi emosional dan makna terhadap
-    White tanpa membuatnya kehilangan kejernihan. Pada akhirnya, keberadaan mereka
-    dalam satu komposisi bukanlah bentuk pertentangan, melainkan sebuah simbiosis
-    visual yang memperkaya satu sama lain, menghadirkan kontras yang lembut dan harmoni
-    yang tidak dipaksakan.
+  m_text: 'Fungi emerge in the game as creeping invaders that spread silently across
+    the battlefield. Fungi release spores that drift through the air, slowly infecting
+    nearby defenses and weakening protective units over time. Unlike fast attackers,
+    they rely on persistence, covering the ground with toxic growth and turning safe
+    zones into dangerous territory. Their slow but steady advance forces players
+    to respond quickly before the infection overwhelms everything.
+
+
+    Fungi thrive
+    in damp and neglected spaces, multiplying in clusters that become harder to eliminate
+    once established. Fungi can corrupt nearby structures, reducing their effectiveness
+    and allowing other enemies to push forward. Their presence creates pressure not
+    through speed, but through continuous contamination. If ignored, they transform
+    small footholds into widespread infestations that are difficult to reverse.
+
+
+    Fungi
+    can be countered by specialized medicines that target their cell walls and disrupt
+    their growth. Antifungal defenders act as protective guardians, cleansing infected
+    areas and restoring balance to the field. With the right treatment deployed at
+    the right time, the creeping spread of Fungi can be contained. Players quickly
+    learn that controlling the environment and applying proper medicine is the key
+    to stopping their silent expansion.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -70383,8 +70279,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -70781,8 +70677,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1569755153}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.98649734}
-  m_AnchorMax: {x: 1, y: 0.98649734}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -72107,7 +72003,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Bacteria Red
+  m_text: Moracella xataralis
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
   m_sharedMaterial: {fileID: 3866023056381278409, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
@@ -73828,7 +73724,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 414147667}
   m_HandleRect: {fileID: 414147666}
   m_Direction: 2
-  m_Value: 1.0000001
+  m_Value: 1
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -73954,7 +73850,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1807991957}
   m_HandleRect: {fileID: 1807991956}
   m_Direction: 2
-  m_Value: 1.0000001
+  m_Value: 1
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
