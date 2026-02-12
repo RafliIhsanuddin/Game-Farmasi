@@ -17526,12 +17526,12 @@ RectTransform:
   m_Children:
   - {fileID: 765895708}
   - {fileID: 860679696}
+  - {fileID: 131711368}
+  - {fileID: 1225680821}
   - {fileID: 1165016945}
   - {fileID: 258138232}
   - {fileID: 1310755712}
   - {fileID: 1767849607}
-  - {fileID: 131711368}
-  - {fileID: 1225680821}
   - {fileID: 577563618}
   - {fileID: 1548649237}
   - {fileID: 1183394059}
@@ -56013,6 +56013,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1670815839905515056, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3187483763431521130, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_LocalPosition.x
       value: 698.93335
@@ -56067,7 +56071,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9092442010405047914, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
