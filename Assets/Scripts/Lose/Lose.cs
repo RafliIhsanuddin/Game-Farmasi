@@ -5,16 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class Lose : MonoBehaviour
 {
-    [Header("Animator Settings")]
+    [Header("Animator Settings (Optional)")]
     [SerializeField] private Animator animator;
 
-    [Header("GameObjects To Activate After Delay")]
+    [Header("GameObjects To Activate After Delay (Optional)")]
     [SerializeField] private List<GameObject> objectsToActivate = new List<GameObject>();
+
+    [Header("GameObjects To Disable On Lose (Optional)")]
+    [SerializeField] private List<GameObject> objectsToDisableOnLose = new List<GameObject>();
 
     [Header("Delay Settings")]
     [SerializeField] private float activationDelay = 2f;
 
-    [Header("Enemy Layer Mask (Dropdown)")]
+    [Header("Enemy Layer Mask (Required)")]
     [SerializeField] private LayerMask enemyLayerMask;
 
     [Header("Pause Delay After Trigger (Seconds)")]
@@ -24,10 +27,14 @@ public class Lose : MonoBehaviour
 
     private void Start()
     {
-        foreach (GameObject obj in objectsToActivate)
+        // Aman walaupun kosong
+        if (objectsToActivate != null && objectsToActivate.Count > 0)
         {
-            if (obj != null)
-                obj.SetActive(false);
+            foreach (GameObject obj in objectsToActivate)
+            {
+                if (obj != null)
+                    obj.SetActive(false);
+            }
         }
     }
 
@@ -43,13 +50,17 @@ public class Lose : MonoBehaviour
 
             Debug.Log("[Lose] Triggered by: " + other.gameObject.name);
 
-            // 🔴 STOP MUSIC LANGSUNG
+            // 🔴 STOP MUSIC LANGSUNG (Optional)
             if (SoundManager.Instance != null)
             {
                 SoundManager.Instance.StopBgmLoop();
                 Debug.Log("[Lose] BGM stopped immediately.");
             }
 
+            // 🔴 NONAKTIFKAN OBJECT LIST (Optional)
+            DisableObjectsOnLose();
+
+            // 🔴 Play Animation (Optional)
             if (animator != null)
             {
                 animator.Play("DeathAnimation");
@@ -61,8 +72,25 @@ public class Lose : MonoBehaviour
         }
     }
 
+    private void DisableObjectsOnLose()
+    {
+        if (objectsToDisableOnLose == null || objectsToDisableOnLose.Count == 0)
+            return; // Sunnah, tidak wajib
+
+        foreach (GameObject obj in objectsToDisableOnLose)
+        {
+            if (obj != null)
+                obj.SetActive(false);
+        }
+
+        Debug.Log("[Lose] Objects disabled.");
+    }
+
     private IEnumerator ActivateObjectsAfterDelay()
     {
+        if (objectsToActivate == null || objectsToActivate.Count == 0)
+            yield break;
+
         yield return new WaitForSeconds(activationDelay);
 
         foreach (GameObject obj in objectsToActivate)

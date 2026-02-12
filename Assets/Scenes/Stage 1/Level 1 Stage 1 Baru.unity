@@ -15931,6 +15931,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 720205324}
   m_CullTransparentMesh: 1
+--- !u!1 &737470197 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7370723132174973548, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
+  m_PrefabInstance: {fileID: 8993547222663560723}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &752060213 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3550130841629510924, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
@@ -18154,6 +18159,7 @@ MonoBehaviour:
   - {fileID: 1225680820}
   - {fileID: 577563617}
   - {fileID: 131711367}
+  - {fileID: 737470197}
 --- !u!4 &1027275887
 Transform:
   m_ObjectHideFlags: 0
@@ -27846,6 +27852,8 @@ MonoBehaviour:
   objectsToActivate:
   - {fileID: 2012990689}
   - {fileID: 471938009}
+  objectsToDisableOnLose:
+  - {fileID: 737470197}
   activationDelay: 2
   enemyLayerMask:
     serializedVersion: 2
@@ -56421,6 +56429,14 @@ PrefabInstance:
       propertyPath: canvasDefault
       value: 
       objectReference: {fileID: 1002158819}
+    - target: {fileID: 4617022096690908677, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7370723132174973548, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9092442010405047914, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_Name
       value: RangerGroup

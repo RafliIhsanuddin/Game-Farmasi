@@ -18366,6 +18366,7 @@ MonoBehaviour:
   - {fileID: 1037267974}
   - {fileID: 490893830}
   - {fileID: 571438479}
+  - {fileID: 8993547222663560724}
 --- !u!4 &1027275887
 Transform:
   m_ObjectHideFlags: 0
@@ -28490,6 +28491,8 @@ MonoBehaviour:
   objectsToActivate:
   - {fileID: 2012990689}
   - {fileID: 471938009}
+  objectsToDisableOnLose:
+  - {fileID: 8993547222663560724}
   activationDelay: 2
   enemyLayerMask:
     serializedVersion: 2
@@ -57145,13 +57148,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9092442010405047914, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
+--- !u!1 &8993547222663560724 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7370723132174973548, guid: 5d1623387756b224fa0dcb0162e8a627, type: 3}
+  m_PrefabInstance: {fileID: 8993547222663560723}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &9036314189899517330
 Animator:
   serializedVersion: 7
