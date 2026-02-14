@@ -15592,21 +15592,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1680809546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55385168337cacc4795e717f0eb61e04, type: 3}
+  m_Script: {fileID: 11500000, guid: 09d993ce2e4adc74bb137fadf30fdcb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1083282209}
   objectsToActivate:
   - {fileID: 1995232754}
   - {fileID: 1089010857}
-  - {fileID: 1985348935}
-  - {fileID: 724625393}
   objectsToDisableOnLose: []
   activationDelay: 2
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  pauseDelay: 7
+  pauseDelay: 4
 --- !u!1 &1696312513
 GameObject:
   m_ObjectHideFlags: 0
@@ -18811,7 +18809,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Stage 2 Selection
+          m_StringArgument: Stage 2 Selection Trial
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1995232757
@@ -20002,7 +20000,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Stage 1 Selection
+          m_StringArgument: Stage 2 Selection Trial
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2103077970
