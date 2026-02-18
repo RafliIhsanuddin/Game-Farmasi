@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 public class PauseManager : MonoBehaviour
 {
-    [Header("UI Pause Panel")]
+    [Header("Pause UI")]
     [SerializeField] private GameObject pauseUI;
 
-    [Header("Settings")]
+    [Header("Pause Key")]
     [SerializeField] private KeyCode pauseKey = KeyCode.Escape;
 
-    [Header("Blockers (Optional, Sunnah)")]
+    [Header("Block Objects")]
     [SerializeField] private List<GameObject> blockObjects = new();
 
     private bool isPaused = false;
@@ -18,8 +18,6 @@ public class PauseManager : MonoBehaviour
     {
         if (pauseUI != null)
             pauseUI.SetActive(false);
-        else
-            Debug.LogWarning("[PauseManager] Pause UI belum diassign di Inspector!");
     }
 
     void Update()
@@ -41,53 +39,47 @@ public class PauseManager : MonoBehaviour
     {
         if (IsBlocked()) return;
 
+        isPaused = true;
+
+        Time.timeScale = 0f;
+
         if (pauseUI != null)
             pauseUI.SetActive(true);
 
-        Time.timeScale = 0f;
-        isPaused = true;
-
-        if (SoundManager.Instance != null)
-            SoundManager.Instance.PauseBgm();
+        SoundManager.Instance?.PauseBgm();
     }
 
     public void ResumeGame()
     {
         if (IsBlocked()) return;
 
+        isPaused = false;
+
+        Time.timeScale = 1f;
+
         if (pauseUI != null)
             pauseUI.SetActive(false);
 
-        Time.timeScale = 1f;
-        isPaused = false;
-
-        if (SoundManager.Instance != null)
-            SoundManager.Instance.ResumeBgm();
+        SoundManager.Instance?.ResumeBgm();
     }
 
     public void OnResumeButton()
     {
-        if (IsBlocked()) return;
         ResumeGame();
     }
 
     public void OnQuitButton()
     {
-        if (IsBlocked()) return;
         Application.Quit();
     }
 
     private bool IsBlocked()
     {
-        if (blockObjects == null || blockObjects.Count == 0)
-            return false;
-
         foreach (var obj in blockObjects)
         {
             if (obj != null && obj.activeSelf)
                 return true;
         }
-
         return false;
     }
 }
