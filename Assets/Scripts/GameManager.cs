@@ -2,7 +2,6 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -18,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     private Camera mainCam;
     private Tile currentTile;
-    
+
     [Header("Atom Reward Values")]
     [SerializeField] private List<int> atomRewardValues = new List<int>()
     {
@@ -31,7 +30,7 @@ public class GameManager : MonoBehaviour
     public int suns;
     public TextMeshProUGUI sunsText;
 
-    [SerializeField] private TextMeshProUGUI sunsEndingText; 
+    [SerializeField] private TextMeshProUGUI sunsEndingText;
 
     private int selectedPrice;
 
@@ -40,32 +39,54 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform atomValueTarget;
     [SerializeField] private float atomMoveSpeed = 6f;
 
-    void Start()
+    private void Start()
     {
         mainCam = Camera.main;
     }
 
-    void Update()
+    private void Update()
     {
-        sunsText.text = suns.ToString();
+        // UI Suns
+        if (sunsText != null)
+            sunsText.text = suns.ToString();
 
         if (sunsEndingText != null)
             sunsEndingText.text = $"final sun value : {suns}";
 
         GameData.Data.FinalSuns = suns;
 
+        // Kalau tidak ada kamera, stop
+        if (mainCam == null) return;
+
         Vector3 mouseWorld = mainCam.ScreenToWorldPoint(Input.mousePosition);
         mouseWorld.z = 0f;
 
+        // Klik atom juga ikut block
         HandleAtomClick(mouseWorld);
 
-        if (currentCapsule == null)
+        // Kalau pause / game over: block semua interaksi placement & preview
+        if (IsInteractionBlocked())
         {
-            if (previewInstance != null)
-                previewInstance.SetActive(false);
+            HidePreview();
+            currentTile = null;
             return;
         }
 
+        // Kalau belum pilih capsule
+        if (currentCapsule == null)
+        {
+            HidePreview();
+            return;
+        }
+
+        // Pastikan previewInstance ada
+        if (previewInstance == null)
+        {
+            // Safety: kalau currentCapsule ter-set tapi preview belum kebuat
+            CreatePreviewInstance();
+        }
+
+        // Raycast ke tile
         RaycastHit2D hit = Physics2D.Raycast(mouseWorld, Vector2.zero, Mathf.Infinity, tileMask);
 
         if (hit.collider)
@@ -80,10 +101,11 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                previewInstance.SetActive(false);
+                HidePreview();
                 currentTile = null;
             }
 
+            // Place capsule
             if (Input.GetMouseButtonDown(0) && currentTile != null && !currentTile.hasCapsule)
             {
                 if (suns >= selectedPrice)
@@ -102,29 +124,44 @@ public class GameManager : MonoBehaviour
                     currentTile.currentCapsule = newCapsule;
 
                     AssignOwnerTileToCapsule(newCapsule, currentTile);
+
                     CancelSelection();
                 }
             }
         }
         else
         {
-            if (previewInstance != null)
-                previewInstance.SetActive(false);
+            HidePreview();
             currentTile = null;
         }
     }
 
-    public void SelectPlant(GameObject capsule, Sprite sprite, int price)
+    private bool IsInteractionBlocked()
     {
-        currentCapsule = capsule;
-        currentCapsuleSprite = sprite;
-        selectedPrice = price;
+        // Block saat pause
+        if (PauseManager.IsPaused) return true;
+
+        // Block saat win/game over
+        if (WaveManager.isGameOver) return true;
+
+        return false;
+    }
+
+    private void HidePreview()
+    {
+        if (previewInstance != null)
+            previewInstance.SetActive(false);
+    }
+
+    private void CreatePreviewInstance()
+    {
+        if (currentCapsule == null) return;
 
         if (previewInstance != null)
             Destroy(previewInstance);
 
         previewInstance = Instantiate(currentCapsule);
-        previewInstance.name = "Preview_" + capsule.name;
+        previewInstance.name = "Preview_" + currentCapsule.name;
 
         var sr = previewInstance.GetComponent<SpriteRenderer>();
         if (sr != null)
@@ -137,6 +174,18 @@ public class GameManager : MonoBehaviour
         previewInstance.SetActive(false);
     }
 
+    public void SelectPlant(GameObject capsule, Sprite sprite, int price)
+    {
+        // Block saat pause/gameover supaya tidak bisa pilih saat pause
+        if (IsInteractionBlocked()) return;
+
+        currentCapsule = capsule;
+        currentCapsuleSprite = sprite;
+        selectedPrice = price;
+
+        CreatePreviewInstance();
+    }
+
     public void CancelSelection()
     {
         if (previewInstance != null)
@@ -146,134 +195,40 @@ public class GameManager : MonoBehaviour
         currentCapsule = null;
         currentCapsuleSprite = null;
         selectedPrice = 0;
+        currentTile = null;
     }
 
     private void AssignOwnerTileToCapsule(GameObject capsule, Tile tile)
     {
-        if (capsule.TryGetComponent(out CapsuleRed red))
-        {
-            red.ownerTile = tile;
-            return;
-        }
+        if (capsule.TryGetComponent(out CapsuleRed red)) { red.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out CapsuleBlue blue)) { blue.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out CapsuleYellow yellow)) { yellow.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out CapsuleCream cream)) { cream.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out CapsuleGreen green)) { green.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out CapsuleOrange orange)) { orange.ownerTile = tile; return; }
 
-        if (capsule.TryGetComponent(out CapsuleBlue blue))
-        {
-            blue.ownerTile = tile;
-            return;
-        }
+        if (capsule.TryGetComponent(out BasicShooterBlue shooterBlue)) { shooterBlue.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out BasicShooterYellow shooterYellow)) { shooterYellow.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out BasicShooterRed shooterRed)) { shooterRed.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out BasicShooterCream shooterCream)) { shooterCream.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out BasicShooterGreen shooterGreen)) { shooterGreen.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out BasicShooterOrange shooterOrange)) { shooterOrange.ownerTile = tile; return; }
 
-        if (capsule.TryGetComponent(out CapsuleYellow yellow))
-        {
-            yellow.ownerTile = tile;
-            return;
-        }
-
-        if (capsule.TryGetComponent(out CapsuleCream cream))
-        {
-            cream.ownerTile = tile;
-            return;
-        }
-
-        if (capsule.TryGetComponent(out CapsuleGreen green))
-        {
-            green.ownerTile = tile;
-            return;
-        }
-
-        if (capsule.TryGetComponent(out CapsuleOrange orange))
-        {
-            orange.ownerTile = tile;
-            return;
-        }
-
-        if (capsule.TryGetComponent(out BasicShooterBlue shooterBlue))
-        {
-            shooterBlue.ownerTile = tile;
-            return;
-        }
-
-        if (capsule.TryGetComponent(out BasicShooterYellow shooterYellow))
-        {
-            shooterYellow.ownerTile = tile;
-            return;
-        }
-        
-        if (capsule.TryGetComponent(out BasicShooterRed shooterRed))
-        {
-            shooterRed.ownerTile = tile;
-            return;
-        }
-
-        if (capsule.TryGetComponent(out BasicShooterCream shooterCream))
-        {
-            shooterCream.ownerTile = tile;
-            return;
-        }
-        
-        if (capsule.TryGetComponent(out BasicShooterGreen shooterGreen))
-        {
-            shooterGreen.ownerTile = tile;
-            return;
-        }
-
-        if (capsule.TryGetComponent(out BasicShooterOrange shooterOrange))
-        {
-            shooterOrange.ownerTile = tile;
-            return;
-        }
-
-        if (capsule.TryGetComponent(out BasicShooterYellowSoldier yellowSoldier))
-        {
-            yellowSoldier.ownerTile = tile;
-            return;
-        }
-
-        if (capsule.TryGetComponent(out BasicShooterRedSoldier redSoldier))
-        {
-            redSoldier.ownerTile = tile;
-            return;
-        }
-
-        if (capsule.TryGetComponent(out BasicShooterGreenSoldier greenSoldier))
-        {
-            greenSoldier.ownerTile = tile;
-            return;
-        }
-
-        if (capsule.TryGetComponent(out BasicShooterBlueSoldier blueSoldier))
-        {
-            blueSoldier.ownerTile = tile;
-            return;
-        }
-
-        if (capsule.TryGetComponent(out BasicShooterCreamSoldier creamSoldier))
-        {
-            creamSoldier.ownerTile = tile;
-            return;
-        }
-
-        if (capsule.TryGetComponent(out BasicShooterOrangeSoldier orangeSoldier))
-        {
-            orangeSoldier.ownerTile = tile;
-            return;
-        }
-        
-        if (capsule.TryGetComponent(out BasicShooterBlackSoldier blackSoldier))
-        {
-            blackSoldier.ownerTile = tile;
-            return;
-        }
+        if (capsule.TryGetComponent(out BasicShooterYellowSoldier yellowSoldier)) { yellowSoldier.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out BasicShooterRedSoldier redSoldier)) { redSoldier.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out BasicShooterGreenSoldier greenSoldier)) { greenSoldier.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out BasicShooterBlueSoldier blueSoldier)) { blueSoldier.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out BasicShooterCreamSoldier creamSoldier)) { creamSoldier.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out BasicShooterOrangeSoldier orangeSoldier)) { orangeSoldier.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out BasicShooterBlackSoldier blackSoldier)) { blackSoldier.ownerTile = tile; return; }
 
         Debug.LogWarning($"[GameManager] Capsule/Soldier tidak dikenali: {capsule.name}");
     }
 
     private void HandleAtomClick(Vector3 mouseWorld)
     {
-        // BLOCK saat pause
-        if (PauseManager.IsPaused) return;
-
-        // BLOCK saat win / game over
-        if (WaveManager.isGameOver) return;
+        // BLOCK saat pause / gameover
+        if (IsInteractionBlocked()) return;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -291,7 +246,6 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
 
     private IEnumerator MoveAtomToTargetAndDestroy(GameObject atom, Vector3 targetPos)
     {

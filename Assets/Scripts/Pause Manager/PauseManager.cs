@@ -1,9 +1,13 @@
 using UnityEngine;
+using System;
 using System.Collections.Generic;
 
 public class PauseManager : MonoBehaviour
 {
     public static bool IsPaused { get; private set; } = false;
+
+    // 🔹 Event: semua UI/logic bisa subscribe
+    public static event Action<bool> OnPauseChanged;
 
     [Header("Pause UI")]
     [SerializeField] private GameObject pauseUI;
@@ -16,35 +20,32 @@ public class PauseManager : MonoBehaviour
 
     private bool isPaused = false;
 
-    void Start()
+    private void Start()
     {
         if (pauseUI != null)
             pauseUI.SetActive(false);
 
-        IsPaused = false;
+        SetPaused(false);
     }
 
-    void Update()
+    private void Update()
     {
         if (IsBlocked()) return;
-
         if (WaveManager.isGameOver) return;
 
         if (Input.GetKeyDown(pauseKey))
         {
-            if (isPaused)
-                ResumeGame();
-            else
-                PauseGame();
+            if (isPaused) ResumeGame();
+            else PauseGame();
         }
     }
 
     public void PauseGame()
     {
         if (IsBlocked()) return;
+        if (WaveManager.isGameOver) return;
 
-        isPaused = true;
-        IsPaused = true;
+        SetPaused(true);
 
         Time.timeScale = 0f;
 
@@ -56,10 +57,12 @@ public class PauseManager : MonoBehaviour
 
     public void ResumeGame()
     {
+        // Resume sebaiknya boleh walau pauseUI lagi aktif,
+        // tapi tetap hormati blockObjects kalau kamu memang mau.
         if (IsBlocked()) return;
+        if (WaveManager.isGameOver) return;
 
-        isPaused = false;
-        IsPaused = false;
+        SetPaused(false);
 
         Time.timeScale = 1f;
 
@@ -77,6 +80,15 @@ public class PauseManager : MonoBehaviour
     public void OnQuitButton()
     {
         Application.Quit();
+    }
+
+    private void SetPaused(bool paused)
+    {
+        isPaused = paused;
+        IsPaused = paused;
+
+        // 🔹 Broadcast event
+        OnPauseChanged?.Invoke(paused);
     }
 
     private bool IsBlocked()

@@ -18,7 +18,7 @@ public class ReadyButton : MonoBehaviour
     [SerializeField] private EndlessWaveManager endlessWaveManager;   // tidak dipakai langsung, biarkan saja
     [SerializeField] private EndlessUIController ui;
     [SerializeField] private SpawnPreviewHelper preview;
-    [SerializeField] private BacteriaSpawner spawner;
+    [SerializeField] private BacteriaSpawnerEndless spawner;
 
     private bool selectionLocked = false;
 

@@ -17,17 +17,16 @@ public class BacteriaControllerRed : MonoBehaviour
     [Header("Stats")]
     public int health = 3;
 
-    // =========================
-    // 🟡 ATOM DROP SETTINGS (TAMBAHAN)
-    // =========================
     [Header("Atom Drop On Death")]
     [SerializeField] private GameObject atomPrefab;
+
     [Range(0f, 1f)]
     [SerializeField] private float atomDropChance = 1f;
 
     // =========================
     // INTERNAL STATE
     // =========================
+
     private bool isHit = false;
     private Collider2D myCollider;
     private ParticleSystem hitPS;
@@ -35,6 +34,7 @@ public class BacteriaControllerRed : MonoBehaviour
     // =========================
     // UNITY EVENTS
     // =========================
+
     private void Awake()
     {
         myCollider = GetComponent<Collider2D>();
@@ -52,13 +52,13 @@ public class BacteriaControllerRed : MonoBehaviour
     {
         if (isHit) return;
 
-        // ❗ MOVEMENT TIDAK DIUBAH
         transform.position -= new Vector3(speed, 0f, 0f);
     }
 
     // =========================
     // MAIN DEATH HANDLER
     // =========================
+
     public void Hit()
     {
         if (isHit)
@@ -70,19 +70,18 @@ public class BacteriaControllerRed : MonoBehaviour
         Debug.Log($"[DEBUG][Red] Hit() dieksekusi untuk {name}");
 
         isHit = true;
+
         speed = 0f;
 
         // Disable collider
         if (myCollider != null)
             myCollider.enabled = false;
 
-        // Hide visual sprite
+        // Hide visual
         if (bacteriaVisual != null)
             bacteriaVisual.SetActive(false);
 
-        // =========================
-        // AKTIFKAN & PLAY VFX
-        // =========================
+        // Play hit VFX
         if (hitParticleEffect != null && hitPS != null)
         {
             hitParticleEffect.SetActive(true);
@@ -90,34 +89,47 @@ public class BacteriaControllerRed : MonoBehaviour
             hitPS.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
             hitPS.Play(true);
 
-            Debug.Log($"[DEBUG][Red] VFX DISET ACTIVE & PLAY → isPlaying={hitPS.isPlaying}");
+            Debug.Log($"[DEBUG][Red] VFX PLAY → isPlaying={hitPS.isPlaying}");
         }
         else
         {
             Debug.LogError("[DEBUG][Red] VFX tidak valid / belum di-assign!");
         }
 
-        // =========================
-        // 🟡 DROP ATOM (TERINTEGRASI)
-        // =========================
+        // Drop atom
         TrySpawnAtom();
-
-        // Clear spawn slot
-        if (spawnPoint != null)
-            spawnPoint.ClearOccupied();
 
         // Register kill
         WaveManager manager = FindFirstObjectByType<WaveManager>();
+
         if (manager != null)
             manager.RegisterKill();
 
+        // Destroy after delay
         Destroy(gameObject, 3f);
+
         Debug.Log("[DEBUG][Red] Bakteri akan dihancurkan 3 detik lagi");
     }
 
     // =========================
-    // 🟡 ATOM DROP LOGIC
+    // CLEAR SLOT SAFELY
     // =========================
+
+    private void OnDestroy()
+    {
+        if (spawnPoint != null)
+        {
+            spawnPoint.ClearOccupied();
+            spawnPoint = null;
+
+            Debug.Log("[DEBUG][Red] Spawn slot cleared safely on destroy");
+        }
+    }
+
+    // =========================
+    // ATOM DROP LOGIC
+    // =========================
+
     private void TrySpawnAtom()
     {
         if (atomPrefab == null)
@@ -132,19 +144,16 @@ public class BacteriaControllerRed : MonoBehaviour
             return;
         }
 
-        // Spawn atom di posisi bakteri mati
         GameObject atom = Instantiate(
             atomPrefab,
             transform.position,
             Quaternion.identity
         );
 
-        // 🔑 KORELASI DENGAN SCRIPT Atom
         Atom atomScript = atom.GetComponent<Atom>();
+
         if (atomScript != null)
-        {
             atomScript.useRandomSpawn = false;
-        }
 
         Debug.Log("[DEBUG][Red] Atom drop berhasil (mode bakteri)");
     }
@@ -152,11 +161,13 @@ public class BacteriaControllerRed : MonoBehaviour
     // =========================
     // PROJECTILE EVENTS
     // =========================
+
     public void ProjectileHit(int damage)
     {
         if (isHit) return;
 
         health -= damage;
+
         Debug.Log($"[DEBUG][Red] Damage={damage}, HP sisa={health}");
 
         if (health <= 0)
@@ -168,6 +179,7 @@ public class BacteriaControllerRed : MonoBehaviour
         if (isHit) return;
 
         Debug.Log("[DEBUG][Red] ProjectileDead()");
+
         Hit();
     }
 }

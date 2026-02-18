@@ -6,9 +6,12 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
 
-    [Header("Audio Source Prefab")]
+    [Header("Audio Source Prefab (One-Shot SFX)")]
     [SerializeField] private GameObject audioSourcePrefab;
 
+    // =====================================================
+    // PROJECTILE SFX
+    // =====================================================
     [Header("Projectile Hit Clips")]
     [SerializeField] private AudioClip hitYellowProjectileSfx;
     [SerializeField] private AudioClip hitBlueProjectileSfx;
@@ -17,58 +20,49 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip hitGreenProjectileSfx;
     [SerializeField] private AudioClip hitOrangeProjectileSfx;
 
-    [Header("Big Wave SFX")]
+    // =====================================================
+    // UI / SYSTEM SFX
+    // =====================================================
+    [Header("UI / System Clips")]
+    [SerializeField] private AudioClip wrongSfx;
+    [SerializeField] private AudioClip atomClickSfx;
     [SerializeField] private AudioClip bigWaveWarningSfx;
-
-    [Header("Wave Start Music")]
     [SerializeField] private AudioClip waveStartMusic;
 
-    [Header("UI / Validation")]
-    [SerializeField] private AudioClip wrongSfx;
-
-    [Header("Atom SFX")]
-    [SerializeField] private AudioClip atomClickSfx;
-
-    [Header("Destroy Delay")]
-    [SerializeField] private float destroyDelay = 3f;
-
-    // =========================
-    // BGM LOOP
-    // =========================
-    [Header("BGM Loop")]
-    [SerializeField] private AudioClip bgmLoopClip;
-    [SerializeField] private bool useBgmLoopDelay = true;
-    [SerializeField] private float bgmLoopDelaySeconds = 2f;
-
-    private AudioSource bgmLoopSource;
-    private Coroutine bgmCoroutine;
-
-    // =========================
-    // TRACK ALL ACTIVE AUDIO SOURCES
-    // =========================
-    private readonly List<AudioSource> activeSources = new();
-
-    // =========================
-    // VOLUME
-    // =========================
-    [Header("Volumes")]
-    [Range(0f, 1f)] [SerializeField] private float bigWaveVolume = 1f;
-    [Range(0f, 1f)] [SerializeField] private float sirenVolume = 1f;
-
-    // =========================
-    // WIN
-    // =========================
+    // =====================================================
+    // WIN SFX
+    // =====================================================
     [Header("Win SFX")]
     [SerializeField] private AudioClip winSfx;
-    [Range(0f, 3f)] [SerializeField] private float winVolume = 1.5f;
-    [Range(1f, 3f)] [SerializeField] private float winBoostMultiplier = 1.8f;
+    [SerializeField] private float winVolume = 1.5f;
+    [SerializeField] private float winBoostMultiplier = 1.8f;
 
-    // =========================
+    // =====================================================
+    // BGM LOOP (BEST PRACTICE)
+    // =====================================================
+    [Header("BGM Loop")]
+    [SerializeField] private AudioClip bgmLoopClip;
+    [SerializeField][Range(0f, 1f)] private float bgmVolume = 1f;
+
+    private AudioSource bgmSource;
+
+    // =====================================================
+    // TRACK ACTIVE SOURCES
+    // =====================================================
+    private readonly List<AudioSource> activeSources = new();
+
+    [Header("Destroy Delay")]
+    [SerializeField] private float destroyDelay = 2f;
+
+    // =====================================================
     // STATE
-    // =========================
+    // =====================================================
     private bool isGamePaused = false;
     private bool isGameWin = false;
 
+    // =====================================================
+    // INIT
+    // =====================================================
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -78,23 +72,30 @@ public class SoundManager : MonoBehaviour
         }
 
         Instance = this;
+
         DontDestroyOnLoad(gameObject);
 
-        bgmLoopSource = gameObject.AddComponent<AudioSource>();
-        bgmLoopSource.loop = false;
-        bgmLoopSource.playOnAwake = false;
-        bgmLoopSource.volume = 1f;
+        CreateBgmSource();
+    }
 
-        activeSources.Add(bgmLoopSource);
+    private void CreateBgmSource()
+    {
+        bgmSource = gameObject.AddComponent<AudioSource>();
+
+        bgmSource.loop = true;
+        bgmSource.playOnAwake = false;
+        bgmSource.volume = bgmVolume;
+
+        activeSources.Add(bgmSource);
     }
 
     // =====================================================
-    // RESET
+    // RESET FOR NEW GAME
     // =====================================================
     public void ResetForNewGame()
     {
-        isGameWin = false;
         isGamePaused = false;
+        isGameWin = false;
 
         StopAllCoroutines();
 
@@ -105,12 +106,33 @@ public class SoundManager : MonoBehaviour
         }
 
         activeSources.Clear();
-        activeSources.Add(bgmLoopSource);
+
+        if (bgmSource != null)
+            activeSources.Add(bgmSource);
     }
 
     // =====================================================
-    // PAUSE ALL AUDIO
+    // BGM CONTROL (BEST PRACTICE)
     // =====================================================
+    public void PlayBgmLoop()
+    {
+        if (bgmLoopClip == null) return;
+        if (bgmSource.isPlaying) return;
+
+        bgmSource.clip = bgmLoopClip;
+        bgmSource.volume = bgmVolume;
+        bgmSource.loop = true;
+
+        bgmSource.Play();
+    }
+
+    public void StopBgmLoop()
+    {
+        if (bgmSource == null) return;
+
+        bgmSource.Stop();
+    }
+
     public void PauseBgm()
     {
         if (isGamePaused) return;
@@ -138,37 +160,6 @@ public class SoundManager : MonoBehaviour
     }
 
     // =====================================================
-    // PROJECTILE
-    // =====================================================
-    public void PlayYellowHit() => PlayClip(hitYellowProjectileSfx);
-    public void PlayBlueHit() => PlayClip(hitBlueProjectileSfx);
-    public void PlayCreamHit() => PlayClip(hitCreamProjectileSfx);
-    public void PlayRedHit() => PlayClip(hitRedProjectileSfx);
-    public void PlayGreenHit() => PlayClip(hitGreenProjectileSfx);
-    public void PlayOrangeHit() => PlayClip(hitOrangeProjectileSfx);
-
-    // =====================================================
-    // BIG WAVE
-    // =====================================================
-    public void PlayBigWaveWarning()
-    {
-        if (bigWaveWarningSfx == null) return;
-        PlayOneShot(bigWaveWarningSfx, bigWaveVolume);
-    }
-
-    public void PlayWaveStartMusic()
-    {
-        if (waveStartMusic == null) return;
-        PlayOneShot(waveStartMusic, sirenVolume);
-    }
-
-    // =====================================================
-    // UI
-    // =====================================================
-    public void PlayWrong() => PlayClip(wrongSfx);
-    public void PlayAtomClick() => PlayClip(atomClickSfx);
-
-    // =====================================================
     // WIN
     // =====================================================
     public void PlayWin()
@@ -179,68 +170,59 @@ public class SoundManager : MonoBehaviour
 
         StopBgmLoop();
 
-        float boosted = Mathf.Clamp(winVolume * winBoostMultiplier, 0f, 3f);
+        float boostedVolume =
+            Mathf.Clamp(winVolume * winBoostMultiplier, 0f, 3f);
 
-        PlayOneShot(winSfx, boosted);
+        PlayOneShot(winSfx, boostedVolume);
     }
 
     // =====================================================
-    // BGM LOOP
+    // PROJECTILE SFX
     // =====================================================
-    public void PlayBgmLoop()
-    {
-        if (bgmLoopClip == null || bgmCoroutine != null) return;
-
-        bgmCoroutine = StartCoroutine(BgmCoroutine());
-    }
-
-    public void StopBgmLoop()
-    {
-        if (bgmCoroutine != null)
-        {
-            StopCoroutine(bgmCoroutine);
-            bgmCoroutine = null;
-        }
-
-        if (bgmLoopSource != null)
-            bgmLoopSource.Stop();
-    }
-
-    private IEnumerator BgmCoroutine()
-    {
-        while (true)
-        {
-            if (isGameWin) yield break;
-
-            bgmLoopSource.clip = bgmLoopClip;
-            bgmLoopSource.Play();
-
-            yield return new WaitForSecondsRealtime(bgmLoopClip.length);
-
-            if (useBgmLoopDelay)
-                yield return new WaitForSecondsRealtime(bgmLoopDelaySeconds);
-        }
-    }
+    public void PlayYellowHit() => PlayClip(hitYellowProjectileSfx);
+    public void PlayBlueHit() => PlayClip(hitBlueProjectileSfx);
+    public void PlayCreamHit() => PlayClip(hitCreamProjectileSfx);
+    public void PlayRedHit() => PlayClip(hitRedProjectileSfx);
+    public void PlayGreenHit() => PlayClip(hitGreenProjectileSfx);
+    public void PlayOrangeHit() => PlayClip(hitOrangeProjectileSfx);
 
     // =====================================================
-    // CORE AUDIO SPAWN SYSTEM
+    // UI SFX
+    // =====================================================
+    public void PlayWrong() => PlayClip(wrongSfx);
+
+    public void PlayAtomClick() => PlayClip(atomClickSfx);
+
+    public void PlayBigWaveWarning()
+        => PlayOneShot(bigWaveWarningSfx, 1f);
+
+    public void PlayWaveStartMusic()
+        => PlayOneShot(waveStartMusic, 1f);
+
+    // =====================================================
+    // CORE ONE-SHOT SYSTEM
     // =====================================================
     private void PlayClip(AudioClip clip)
     {
         if (clip == null) return;
+
         PlayOneShot(clip, 1f);
     }
 
     private void PlayOneShot(AudioClip clip, float volume)
     {
+        if (clip == null) return;
         if (audioSourcePrefab == null) return;
 
-        GameObject go = Instantiate(audioSourcePrefab, transform);
+        GameObject go =
+            Instantiate(audioSourcePrefab, transform);
 
-        AudioSource src = go.GetComponent<AudioSource>();
+        AudioSource src =
+            go.GetComponent<AudioSource>();
 
-        src.volume = volume;
         src.clip = clip;
+        src.volume = volume;
+        src.loop = false;
 
         activeSources.Add(src);
 
@@ -249,9 +231,12 @@ public class SoundManager : MonoBehaviour
         StartCoroutine(RemoveAfterPlay(src, go));
     }
 
-    private IEnumerator RemoveAfterPlay(AudioSource src, GameObject go)
+    private IEnumerator RemoveAfterPlay(
+        AudioSource src,
+        GameObject go)
     {
-        yield return new WaitForSecondsRealtime(src.clip.length + destroyDelay);
+        yield return new WaitForSecondsRealtime(
+            src.clip.length + destroyDelay);
 
         activeSources.Remove(src);
 

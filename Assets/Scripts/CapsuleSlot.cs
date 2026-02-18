@@ -2,10 +2,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-
+[RequireComponent(typeof(Button))]
 public class CapsuleSlot : MonoBehaviour
 {
-
     [Header("Slot Data")]
     public Sprite capsuleSprite;
     public GameObject capsuleObject;
@@ -16,8 +15,8 @@ public class CapsuleSlot : MonoBehaviour
     public Image icon;
 
     [Header("Card Visuals (Gelap Saat Dipilih)")]
-    [SerializeField] private Image cardImage;       // 🔹 latar belakang kartu kapsul
-    [SerializeField] private Image capsuleImage;    // 🔹 ikon kapsul
+    [SerializeField] private Image cardImage;       
+    [SerializeField] private Image capsuleImage;    
     [SerializeField] private TextMeshProUGUI priceTextVisual;
     [SerializeField, Range(0f, 1f)] private float selectedDarkAlpha = 0.5f;
 
@@ -31,6 +30,19 @@ public class CapsuleSlot : MonoBehaviour
     private void Awake()
     {
         btn = GetComponent<Button>();
+        btn.onClick.RemoveListener(SelectPlant);
+        btn.onClick.AddListener(SelectPlant);
+    }
+
+    private void OnEnable()
+    {
+        // Subscribe event pause supaya UI langsung update saat pause/resume
+        PauseManager.OnPauseChanged += HandlePauseChanged;
+    }
+
+    private void OnDisable()
+    {
+        PauseManager.OnPauseChanged -= HandlePauseChanged;
     }
 
     private void Start()
@@ -38,18 +50,28 @@ public class CapsuleSlot : MonoBehaviour
         if (gms == null)
             gms = GameObject.Find("GameManager")?.GetComponent<GameManager>();
 
-        btn.onClick.RemoveListener(SelectPlant);
-        btn.onClick.AddListener(SelectPlant);
-
         ApplyStaticUI();
-        ApplyAffordability();
-        ApplySelectionVisual(); // 🔹 sync awal
+        RefreshAllVisuals();
     }
 
     private void Update()
     {
+        // Suns bisa berubah tiap frame, jadi affordability tetap refresh
+        // (tapi pause/resume sudah di-handle event juga)
         ApplyAffordability();
-        ApplySelectionVisual(); // 🔹 update efek visual sesuai seleksi global
+        ApplySelectionVisual();
+    }
+
+    private void HandlePauseChanged(bool paused)
+    {
+        // Saat pause/resume: update interactable & visual
+        RefreshAllVisuals();
+    }
+
+    private void RefreshAllVisuals()
+    {
+        ApplyAffordability();
+        ApplySelectionVisual();
     }
 
     private void ApplyStaticUI()
@@ -75,15 +97,20 @@ public class CapsuleSlot : MonoBehaviour
     {
         if (gms == null) return;
 
+        bool paused = PauseManager.IsPaused;
+        bool gameOver = WaveManager.isGameOver;
+
         bool canAfford = gms.suns >= Price;
+        bool canInteract = canAfford && !paused && !gameOver;
 
         if (btn != null)
-            btn.interactable = canAfford;
+            btn.interactable = canInteract;
 
+        // Visual alpha kalau tidak cukup / paused / gameover
         if (slotButtonImage != null)
         {
             Color c = slotButtonImage.color;
-            c.a = canAfford ? 1f : notEnoughAlpha;
+            c.a = canInteract ? 1f : notEnoughAlpha;
             slotButtonImage.color = c;
         }
     }
@@ -91,6 +118,10 @@ public class CapsuleSlot : MonoBehaviour
     public void SelectPlant()
     {
         if (gms == null) return;
+
+        // BLOCK saat pause / game over
+        if (PauseManager.IsPaused) return;
+        if (WaveManager.isGameOver) return;
 
         if (gms.suns < Price)
         {
@@ -110,15 +141,10 @@ public class CapsuleSlot : MonoBehaviour
             Debug.Log($"[CapsuleSlot] Selected: {capsuleObject?.name} (Price: {Price})");
         }
 
-        // 🔹 Visual akan otomatis sinkron di Update()
+        // visual akan tersync
+        ApplySelectionVisual();
     }
 
-    /// <summary>
-    /// 🔹 Efek visual saat slot dipilih — dibandingkan langsung dengan GameManager.currentCapsule
-    /// </summary>
-    /// <summary>
-    /// 🔹 Efek visual saat slot dipilih — dibandingkan langsung dengan GameManager.currentCapsule
-    /// </summary>
     private void ApplySelectionVisual()
     {
         if (gms == null) return;

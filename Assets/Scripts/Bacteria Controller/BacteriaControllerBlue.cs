@@ -17,17 +17,12 @@ public class BacteriaControllerBlue : MonoBehaviour
     [Header("Stats")]
     public int health = 3;
 
-    // =========================
-    // 🔵 ATOM DROP SETTINGS
-    // =========================
     [Header("Atom Drop On Death")]
     [SerializeField] private GameObject atomPrefab;
+
     [Range(0f, 1f)]
     [SerializeField] private float atomDropChance = 1f;
 
-    // =========================
-    // INTERNAL STATE
-    // =========================
     private bool isHit = false;
     private Collider2D myCollider;
     private ParticleSystem hitPS;
@@ -35,6 +30,7 @@ public class BacteriaControllerBlue : MonoBehaviour
     // =========================
     // UNITY EVENTS
     // =========================
+
     private void Awake()
     {
         myCollider = GetComponent<Collider2D>();
@@ -44,8 +40,6 @@ public class BacteriaControllerBlue : MonoBehaviour
             hitPS = hitParticleEffect.GetComponent<ParticleSystem>();
             hitParticleEffect.SetActive(false);
         }
-
-        Debug.Log($"[DEBUG][Blue] Awake → VFX ready: {hitPS != null}");
     }
 
     private void FixedUpdate()
@@ -56,30 +50,23 @@ public class BacteriaControllerBlue : MonoBehaviour
     }
 
     // =========================
-    // MAIN DEATH HANDLER
+    // HIT / DEATH
     // =========================
+
     public void Hit()
     {
-        if (isHit)
-        {
-            Debug.Log("[DEBUG][Blue] Hit() diabaikan (isHit == true)");
-            return;
-        }
+        if (isHit) return;
 
         isHit = true;
+
         speed = 0f;
 
-        // Disable collider
         if (myCollider != null)
             myCollider.enabled = false;
 
-        // Hide visual
         if (bacteriaVisual != null)
             bacteriaVisual.SetActive(false);
 
-        // =========================
-        // PLAY HIT VFX
-        // =========================
         if (hitParticleEffect != null && hitPS != null)
         {
             hitParticleEffect.SetActive(true);
@@ -87,40 +74,39 @@ public class BacteriaControllerBlue : MonoBehaviour
             hitPS.Play(true);
         }
 
-        // =========================
-        // 🔵 DROP ATOM
-        // =========================
         TrySpawnAtom();
 
-        // Clear spawn slot (PERSIS SEPERTI RED & PURPLE)
-        if (spawnPoint != null)
-            spawnPoint.ClearOccupied();
-
-        // Register kill (HANYA DI SINI)
         WaveManager manager = FindFirstObjectByType<WaveManager>();
         if (manager != null)
             manager.RegisterKill();
 
         Destroy(gameObject, 3f);
-        Debug.Log("[DEBUG][Blue] Bakteri akan dihancurkan 3 detik lagi");
     }
 
     // =========================
-    // 🔵 ATOM DROP LOGIC
+    // CLEAR SLOT SAFELY
     // =========================
+
+    private void OnDestroy()
+    {
+        if (spawnPoint != null)
+        {
+            spawnPoint.ClearOccupied();
+            spawnPoint = null;
+        }
+    }
+
+    // =========================
+    // ATOM DROP
+    // =========================
+
     private void TrySpawnAtom()
     {
         if (atomPrefab == null)
-        {
-            Debug.LogWarning("[DEBUG][Blue] atomPrefab belum di-assign");
             return;
-        }
 
         if (Random.value > atomDropChance)
-        {
-            Debug.Log("[DEBUG][Blue] Atom tidak drop (chance gagal)");
             return;
-        }
 
         GameObject atom = Instantiate(
             atomPrefab,
@@ -129,21 +115,20 @@ public class BacteriaControllerBlue : MonoBehaviour
         );
 
         Atom atomScript = atom.GetComponent<Atom>();
+
         if (atomScript != null)
             atomScript.useRandomSpawn = false;
-
-        Debug.Log("[DEBUG][Blue] Atom drop berhasil (mode bakteri)");
     }
 
     // =========================
     // PROJECTILE EVENTS
     // =========================
+
     public void ProjectileHit(int damage)
     {
         if (isHit) return;
 
         health -= damage;
-        Debug.Log($"[DEBUG][Blue] Damage={damage}, HP sisa={health}");
 
         if (health <= 0)
             Hit();
@@ -153,7 +138,6 @@ public class BacteriaControllerBlue : MonoBehaviour
     {
         if (isHit) return;
 
-        Debug.Log("[DEBUG][Blue] ProjectileDead()");
         Hit();
     }
 }
