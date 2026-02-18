@@ -31,9 +31,7 @@ public class GameManager : MonoBehaviour
     public int suns;
     public TextMeshProUGUI sunsText;
 
-    // ==== PENAMBAHAN SUNNAH ====
     [SerializeField] private TextMeshProUGUI sunsEndingText; 
-    // ==========================
 
     private int selectedPrice;
 
@@ -51,14 +49,10 @@ public class GameManager : MonoBehaviour
     {
         sunsText.text = suns.ToString();
 
-        // ==== PENAMBAHAN DISPLAY ENDING SUN ====
         if (sunsEndingText != null)
             sunsEndingText.text = $"final sun value : {suns}";
-        // ========================================
 
-        // ==== SUNNAH: SAVE FINAL SUN ====
         GameData.Data.FinalSuns = suns;
-        // =================================
 
         Vector3 mouseWorld = mainCam.ScreenToWorldPoint(Input.mousePosition);
         mouseWorld.z = 0f;
@@ -120,9 +114,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // ===============================
-    // UI PLANT SELECTION
-    // ===============================
     public void SelectPlant(GameObject capsule, Sprite sprite, int price)
     {
         currentCapsule = capsule;
@@ -157,9 +148,6 @@ public class GameManager : MonoBehaviour
         selectedPrice = 0;
     }
 
-    // ===============================
-    // ASSIGN OWNER TILE (LENGKAP)
-    // ===============================
     private void AssignOwnerTileToCapsule(GameObject capsule, Tile tile)
     {
         if (capsule.TryGetComponent(out CapsuleRed red))
@@ -279,23 +267,31 @@ public class GameManager : MonoBehaviour
         Debug.LogWarning($"[GameManager] Capsule/Soldier tidak dikenali: {capsule.name}");
     }
 
-    // ===============================
-    // ATOM HANDLING
-    // ===============================
     private void HandleAtomClick(Vector3 mouseWorld)
     {
+        // BLOCK saat pause
+        if (PauseManager.IsPaused) return;
+
+        // BLOCK saat win / game over
+        if (WaveManager.isGameOver) return;
+
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit2D hit = Physics2D.Raycast(mouseWorld, Vector2.zero, Mathf.Infinity, AtomLayer);
             if (hit.collider != null)
             {
                 SoundManager.Instance?.PlayAtomClick();
+
                 StartCoroutine(
-                    MoveAtomToTargetAndDestroy(hit.collider.gameObject, atomValueTarget.position)
+                    MoveAtomToTargetAndDestroy(
+                        hit.collider.gameObject,
+                        atomValueTarget.position
+                    )
                 );
             }
         }
     }
+
 
     private IEnumerator MoveAtomToTargetAndDestroy(GameObject atom, Vector3 targetPos)
     {

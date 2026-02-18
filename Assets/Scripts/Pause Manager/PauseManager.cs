@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class PauseManager : MonoBehaviour
 {
+    public static bool IsPaused { get; private set; } = false;
+
     [Header("Pause UI")]
     [SerializeField] private GameObject pauseUI;
 
@@ -18,6 +20,8 @@ public class PauseManager : MonoBehaviour
     {
         if (pauseUI != null)
             pauseUI.SetActive(false);
+
+        IsPaused = false;
     }
 
     void Update()
@@ -40,6 +44,7 @@ public class PauseManager : MonoBehaviour
         if (IsBlocked()) return;
 
         isPaused = true;
+        IsPaused = true;
 
         Time.timeScale = 0f;
 
@@ -54,6 +59,7 @@ public class PauseManager : MonoBehaviour
         if (IsBlocked()) return;
 
         isPaused = false;
+        IsPaused = false;
 
         Time.timeScale = 1f;
 

@@ -27,7 +27,6 @@ public class Lose : MonoBehaviour
 
     private void Start()
     {
-        // Aman walaupun kosong
         if (objectsToActivate != null && objectsToActivate.Count > 0)
         {
             foreach (GameObject obj in objectsToActivate)
@@ -46,21 +45,19 @@ public class Lose : MonoBehaviour
         {
             hasTriggered = true;
 
+            // 🔴 SET GAME OVER LANGSUNG (INI YANG MEMBLOCK ATOM CLICK)
             WaveManager.isGameOver = true;
 
             Debug.Log("[Lose] Triggered by: " + other.gameObject.name);
 
-            // 🔴 STOP MUSIC LANGSUNG (Optional)
             if (SoundManager.Instance != null)
             {
                 SoundManager.Instance.StopBgmLoop();
                 Debug.Log("[Lose] BGM stopped immediately.");
             }
 
-            // 🔴 NONAKTIFKAN OBJECT LIST (Optional)
             DisableObjectsOnLose();
 
-            // 🔴 Play Animation (Optional)
             if (animator != null)
             {
                 animator.Play("DeathAnimation");
@@ -75,7 +72,7 @@ public class Lose : MonoBehaviour
     private void DisableObjectsOnLose()
     {
         if (objectsToDisableOnLose == null || objectsToDisableOnLose.Count == 0)
-            return; // Sunnah, tidak wajib
+            return;
 
         foreach (GameObject obj in objectsToDisableOnLose)
         {
@@ -120,6 +117,8 @@ public class Lose : MonoBehaviour
         string currentSceneName = SceneManager.GetActiveScene().name;
 
         Time.timeScale = 1f;
+
+        // 🔴 RESET GAME OVER STATE AGAR ATOM BISA DIKLIK LAGI DI LEVEL BARU
         WaveManager.isGameOver = false;
 
         SceneManager.LoadScene(currentSceneName);
