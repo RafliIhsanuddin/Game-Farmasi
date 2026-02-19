@@ -12,13 +12,10 @@ public class WaveManager : MonoBehaviour
         MultiPerLineGrouped
     }
 
-    [Header("Flags")]
-    public int flagCount = 1;
-
-    [Header("Wave Configuration (AUTO = flag + 1)")]
+    [Header("Wave Configuration (Flags AUTO = waveCount - 1)")]
     public List<int> enemiesPerWave = new();
 
-    [Header("Spawn Mode per Wave")]
+    [Header("Spawn Mode per Wave (AUTO sync with enemiesPerWave)")]
     public List<SpawnMode> spawnModesPerWave = new();
 
     [Header("UI")]
@@ -56,10 +53,19 @@ public class WaveManager : MonoBehaviour
 
     public System.Action OnLevelComplete;
 
+    // 🔴 NEW: track last sizes to detect which list changed
+    private int lastEnemiesCount = -1;
+    private int lastSpawnModesCount = -1;
+
+    private void OnValidate()
+    {
+        SyncWaveListsBidirectional();
+    }
+
     private void Start()
     {
-        // 🔴 INTEGRASI AUDIO & TIMESCALE
         Time.timeScale = 1f;
+
         if (SoundManager.Instance != null)
             SoundManager.Instance.ResetForNewGame();
 
@@ -70,6 +76,8 @@ public class WaveManager : MonoBehaviour
             waveIncomingUI.SetActive(false);
 
         isGameOver = false;
+
+        SyncWaveListsBidirectional();
 
         CalculateTotalEnemies();
         GenerateFlagGoals();
@@ -85,6 +93,82 @@ public class WaveManager : MonoBehaviour
             StartCoroutine(FailSafeChecker());
     }
 
+    // 🔴 FIXED: fully bidirectional sync with add AND remove support
+    private void SyncWaveListsBidirectional()
+    {
+        if (enemiesPerWave == null)
+            enemiesPerWave = new List<int>();
+
+        if (spawnModesPerWave == null)
+            spawnModesPerWave = new List<SpawnMode>();
+
+        int enemiesCount = enemiesPerWave.Count;
+        int spawnCount = spawnModesPerWave.Count;
+
+        // First time initialization
+        if (lastEnemiesCount == -1 && lastSpawnModesCount == -1)
+        {
+            int target = Mathf.Max(enemiesCount, spawnCount);
+
+            if (target == 0)
+                target = 1;
+
+            ResizeEnemies(target);
+            ResizeSpawnModes(target);
+        }
+        else
+        {
+            // Detect which list changed
+
+            if (enemiesCount != lastEnemiesCount)
+            {
+                ResizeSpawnModes(enemiesCount);
+            }
+            else if (spawnCount != lastSpawnModesCount)
+            {
+                ResizeEnemies(spawnCount);
+            }
+        }
+
+        lastEnemiesCount = enemiesPerWave.Count;
+        lastSpawnModesCount = spawnModesPerWave.Count;
+    }
+
+    private void ResizeEnemies(int target)
+    {
+        if (target < 0) target = 0;
+
+        while (enemiesPerWave.Count < target)
+        {
+            int last = enemiesPerWave.Count > 0 ? enemiesPerWave[enemiesPerWave.Count - 1] : 0;
+            enemiesPerWave.Add(last);
+        }
+
+        while (enemiesPerWave.Count > target)
+        {
+            enemiesPerWave.RemoveAt(enemiesPerWave.Count - 1);
+        }
+    }
+
+    private void ResizeSpawnModes(int target)
+    {
+        if (target < 0) target = 0;
+
+        while (spawnModesPerWave.Count < target)
+        {
+            SpawnMode last = spawnModesPerWave.Count > 0
+                ? spawnModesPerWave[spawnModesPerWave.Count - 1]
+                : SpawnMode.SinglePerLine;
+
+            spawnModesPerWave.Add(last);
+        }
+
+        while (spawnModesPerWave.Count > target)
+        {
+            spawnModesPerWave.RemoveAt(spawnModesPerWave.Count - 1);
+        }
+    }
+
     private void CalculateTotalEnemies()
     {
         totalEnemiesInLevel = 0;
@@ -97,7 +181,9 @@ public class WaveManager : MonoBehaviour
         int cumulative = 0;
         flagGoals.Clear();
 
-        for (int i = 0; i < flagCount; i++)
+        int waveCount = enemiesPerWave.Count;
+
+        for (int i = 0; i < waveCount - 1; i++)
         {
             cumulative += enemiesPerWave[i];
             flagGoals.Add(cumulative);
@@ -107,6 +193,7 @@ public class WaveManager : MonoBehaviour
     private void SetupProgressUI()
     {
         if (levelProgress == null) return;
+
         levelProgress.maxValue = totalEnemiesInLevel;
         levelProgress.value = 0;
     }
@@ -114,7 +201,13 @@ public class WaveManager : MonoBehaviour
     private void SetupFlags()
     {
         goalToFlag.Clear();
-        if (flagContainer == null || flagPrefab == null) return;
+
+        if (flagContainer == null || flagPrefab == null)
+            return;
+
+        Canvas.ForceUpdateCanvases();
+
+        float width = flagContainer.rect.width;
 
         foreach (Transform child in flagContainer)
             Destroy(child.gameObject);
@@ -122,18 +215,39 @@ public class WaveManager : MonoBehaviour
         foreach (int goal in flagGoals)
         {
             GameObject flagObj = Instantiate(flagPrefab, flagContainer);
-            goalToFlag[goal] = flagObj.GetComponent<FlagsManager>();
 
-            float t = (float)goal / Mathf.Max(1, totalEnemiesInLevel);
+            FlagsManager fm = flagObj.GetComponent<FlagsManager>();
+
+            if (fm != null)
+                goalToFlag.Add(goal, fm);
+
             RectTransform rt = flagObj.GetComponent<RectTransform>();
-            rt.anchorMin = rt.anchorMax = new Vector2(t, 0.5f);
-            rt.anchoredPosition = Vector2.zero;
+
+            // WAJIB: set ukuran dan scale sesuai permintaan
+            rt.localScale = new Vector3(0.4f, 0.4f, 1f);
+            rt.sizeDelta = new Vector2(30f, 60f);
+
+            // pivot di kanan supaya positioning dari kanan
+            rt.pivot = new Vector2(0.5f, 0.5f);
+
+            // anchor di kanan
+            rt.anchorMin = new Vector2(1f, 0.5f);
+            rt.anchorMax = new Vector2(1f, 0.5f);
+
+            // hitung normalized progress
+            float normalized = (float)goal / Mathf.Max(1, totalEnemiesInLevel);
+
+            // karena kanan → kiri, posisi negatif dari kanan
+            float posX = -width * normalized;
+
+            rt.anchoredPosition = new Vector2(posX, 0f);
         }
     }
 
     private void StartWave(int waveIndex)
     {
         currentWaveIndex = waveIndex;
+
         remainingEnemiesInWave = enemiesPerWave[waveIndex];
 
         if (spawner != null)
@@ -147,9 +261,11 @@ public class WaveManager : MonoBehaviour
             case SpawnMode.SinglePerLine:
                 spawner.StartSinglePerLineWave(remainingEnemiesInWave);
                 break;
+
             case SpawnMode.MultiPerLine:
                 spawner.StartMultiPerLineWave(remainingEnemiesInWave);
                 break;
+
             case SpawnMode.MultiPerLineGrouped:
                 spawner.StartGroupedPerLineWave(remainingEnemiesInWave);
                 break;
@@ -158,9 +274,11 @@ public class WaveManager : MonoBehaviour
 
     public void RegisterKill()
     {
-        if (isGameOver) return;
+        if (isGameOver)
+            return;
 
         totalKills++;
+
         remainingEnemiesInWave--;
 
         if (levelProgress != null)
@@ -214,6 +332,7 @@ public class WaveManager : MonoBehaviour
                 SoundManager.Instance.PlayWaveStartMusic();
 
             fm.Expand();
+
             pendingFlagGoal = -1;
         }
 
@@ -240,7 +359,9 @@ public class WaveManager : MonoBehaviour
 
     private void TriggerWin()
     {
-        if (isGameOver) return;
+        if (isGameOver)
+            return;
+
         isGameOver = true;
 
         if (SoundManager.Instance != null)

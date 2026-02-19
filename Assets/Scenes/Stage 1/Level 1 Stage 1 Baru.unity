@@ -15734,19 +15734,16 @@ MonoBehaviour:
   hitRedProjectileSfx: {fileID: 8300000, guid: 0efe8ad1e1190cb408780794468493c7, type: 3}
   hitGreenProjectileSfx: {fileID: 8300000, guid: 0efe8ad1e1190cb408780794468493c7, type: 3}
   hitOrangeProjectileSfx: {fileID: 8300000, guid: 0efe8ad1e1190cb408780794468493c7, type: 3}
-  bigWaveWarningSfx: {fileID: 8300000, guid: 57e8bcbff97a79d43aac771c936c8f13, type: 3}
-  waveStartMusic: {fileID: 8300000, guid: 5cc0101b9760c944a9a9c599aac5c679, type: 3}
   wrongSfx: {fileID: 8300000, guid: 2db469c140a36414199b900359fdf8ad, type: 3}
   atomClickSfx: {fileID: 8300000, guid: 93ccc572286eca1449cdb59a9cf8856f, type: 3}
-  destroyDelay: 6
-  bgmLoopClip: {fileID: 8300000, guid: bbd6acd96d81bd945929a4f5f28a5f25, type: 3}
-  useBgmLoopDelay: 0
-  bgmLoopDelaySeconds: 0.2
-  bigWaveVolume: 0.5
-  sirenVolume: 0.3
+  bigWaveWarningSfx: {fileID: 8300000, guid: 57e8bcbff97a79d43aac771c936c8f13, type: 3}
+  waveStartMusic: {fileID: 8300000, guid: 5cc0101b9760c944a9a9c599aac5c679, type: 3}
   winSfx: {fileID: 8300000, guid: b66fbe93d5adf604192cfe6dce398981, type: 3}
   winVolume: 2
   winBoostMultiplier: 3
+  bgmLoopClip: {fileID: 8300000, guid: bbd6acd96d81bd945929a4f5f28a5f25, type: 3}
+  bgmVolume: 1
+  destroyDelay: 6
 --- !u!4 &698203291
 Transform:
   m_ObjectHideFlags: 0
@@ -18137,9 +18134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f978e37b6578d2343a52c5b863f10257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flagCount: 1
-  enemiesPerWave: 0a0000000f000000
-  spawnModesPerWave: 0000000001000000
+  enemiesPerWave: 0a0000000f00000014000000
+  spawnModesPerWave: 000000000100000001000000
   levelProgress: {fileID: 1183394060}
   flagContainer: {fileID: 1942895426}
   flagPrefab: {fileID: 8785165802296183215, guid: 84bee79144f2b9849a8c0597de3dd722, type: 3}
@@ -34886,7 +34882,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1942895426}
-  - component: {fileID: 1942895427}
+  - component: {fileID: 1942895428}
   m_Layer: 5
   m_Name: Flag grid
   m_TagString: Untagged
@@ -34903,17 +34899,17 @@ RectTransform:
   m_GameObject: {fileID: 1942895425}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0177, y: 1.0177, z: 1.0177}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1183394059}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.008293152, y: 0.07599163}
-  m_SizeDelta: {x: -10.017, y: -6.4722}
+  m_AnchorMin: {x: 0, y: 0.25}
+  m_AnchorMax: {x: 1, y: 0.75}
+  m_AnchoredPosition: {x: 5, y: 0}
+  m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1942895427
+--- !u!114 &1942895428
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -34922,23 +34918,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1942895425}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad405bc12a219d498ee8174cecdf1c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 7
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 1
-  m_ChildScaleHeight: 1
-  m_ReverseArrangement: 1
+  fillArea: {fileID: 955850561}
 --- !u!1 &1987501430
 GameObject:
   m_ObjectHideFlags: 0
