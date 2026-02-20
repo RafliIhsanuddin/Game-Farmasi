@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class CardSelectionManager : MonoBehaviour
 {
-        [Header("Cards & Slots")]
+    [Header("Cards & Slots")]
     [SerializeField] private List<CardSelectable> allCards;
     [SerializeField] private List<CardSlot> slots;
 
@@ -73,6 +73,9 @@ public class CardSelectionManager : MonoBehaviour
         empty.occupiedCard = card;
         card.MoveToSlot(empty.transform);
         currentSelected++;
+
+        // ✅ Setelah add: langsung compact + urut berdasarkan Price (PVZ-style)
+        CompactSlots();
     }
 
     void RemoveFromSlot(CardSlot slot)
@@ -86,6 +89,7 @@ public class CardSelectionManager : MonoBehaviour
         CompactSlots();
     }
 
+    // ✅ Compact + SORT berdasarkan CapsuleSlot.Price (kecil -> besar)
     void CompactSlots()
     {
         List<CardSelectable> temp = new List<CardSelectable>();
@@ -94,11 +98,50 @@ public class CardSelectionManager : MonoBehaviour
             if (s.occupiedCard != null)
                 temp.Add(s.occupiedCard);
 
+        // clear dulu
         foreach (var s in slots)
             s.occupiedCard = null;
 
-        for (int i = 0; i < temp.Count; i++)
+        // sort by Price, tie-breaker pakai urutan di allCards (biar stabil / konsisten)
+        temp.Sort((a, b) =>
+        {
+            int pa = GetCardPrice(a);
+            int pb = GetCardPrice(b);
+
+            if (pa != pb) return pa.CompareTo(pb);
+
+            int ia = GetCardIndexInAllCards(a);
+            int ib = GetCardIndexInAllCards(b);
+            return ia.CompareTo(ib);
+        });
+
+        // isi slot dari awal sesuai hasil sort
+        for (int i = 0; i < temp.Count && i < slots.Count; i++)
+        {
             slots[i].occupiedCard = temp[i];
+
+            // ✅ update target slot-nya, supaya MoveToSlot tetap akurat setelah reorder
+            if (slots[i].occupiedCard != null)
+                slots[i].occupiedCard.MoveToSlot(slots[i].transform);
+        }
+    }
+
+    int GetCardPrice(CardSelectable card)
+    {
+        if (card == null) return int.MaxValue;
+
+        var cap = card.GetComponent<CapsuleSlot>();
+        if (cap == null) return int.MaxValue;
+
+        return cap.Price;
+    }
+
+    int GetCardIndexInAllCards(CardSelectable card)
+    {
+        if (card == null || allCards == null) return int.MaxValue;
+
+        int idx = allCards.IndexOf(card);
+        return (idx >= 0) ? idx : int.MaxValue;
     }
 
     void SmoothCompactAnimation()
@@ -129,8 +172,8 @@ public class CardSelectionManager : MonoBehaviour
             if (s.occupiedCard == null) continue;
 
             var card = s.occupiedCard;
-            var btn  = card.GetComponent<Button>();
-            var cap  = card.GetComponent<CapsuleSlot>();
+            var btn = card.GetComponent<Button>();
+            var cap = card.GetComponent<CapsuleSlot>();
 
             if (btn != null)
             {

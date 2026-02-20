@@ -1439,6 +1439,9 @@ MonoBehaviour:
   speedScaler: {fileID: 1018909588}
   bigWaveDelay: 3
   checkInterval: 0.25
+  levelProgress: {fileID: 1183394060}
+  flagContainer: {fileID: 1942895426}
+  flagPrefab: {fileID: 8785165802296183215, guid: 84bee79144f2b9849a8c0597de3dd722, type: 3}
 --- !u!1 &219516988
 GameObject:
   m_ObjectHideFlags: 0
@@ -7339,8 +7342,8 @@ GameObject:
   - component: {fileID: 931309853}
   - component: {fileID: 931309852}
   - component: {fileID: 931309851}
-  - component: {fileID: 931309850}
   - component: {fileID: 931309854}
+  - component: {fileID: 931309850}
   m_Layer: 5
   m_Name: card character orange Soldier
   m_TagString: Untagged
