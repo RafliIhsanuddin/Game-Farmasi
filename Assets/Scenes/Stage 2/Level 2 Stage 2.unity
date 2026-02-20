@@ -1439,9 +1439,6 @@ MonoBehaviour:
   speedScaler: {fileID: 1018909588}
   bigWaveDelay: 3
   checkInterval: 0.25
-  levelProgress: {fileID: 1183394060}
-  flagContainer: {fileID: 1942895426}
-  flagPrefab: {fileID: 8785165802296183215, guid: 84bee79144f2b9849a8c0597de3dd722, type: 3}
 --- !u!1 &219516988
 GameObject:
   m_ObjectHideFlags: 0
@@ -7007,11 +7004,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseWave1Count: 10
   baseWave2Count: 12
+  baseWave3Count: 24
   growthMode: 1
   wave1Increment: 3
   wave2Increment: 5
-  wave1Multiplier: 3
-  wave2Multiplier: 3
+  wave3Increment: 7
+  wave1Multiplier: 1.1
+  wave2Multiplier: 1.1
+  wave3Multiplier: 1.1
 --- !u!1 &882681105
 GameObject:
   m_ObjectHideFlags: 0

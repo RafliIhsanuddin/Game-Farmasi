@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 
 public class EndlessWaveManager : MonoBehaviour
 {
@@ -23,134 +22,100 @@ public class EndlessWaveManager : MonoBehaviour
     [SerializeField] private float bigWaveDelay = 3f;
     [SerializeField] private float checkInterval = 0.1f;
 
-    [Header("Progress UI")]
-    [SerializeField] private Slider levelProgress;
-    [SerializeField] private RectTransform flagContainer;
-    [SerializeField] private GameObject flagPrefab;
-
-    private int totalEnemiesInCycle;
     private int totalKills;
-    private int totalSpawned;
     private int lastAlive;
 
-    private List<int> flagGoals = new();
-    private Dictionary<int, FlagsManager> goalToFlag = new();
-    private HashSet<int> triggeredGoals = new();
+    public bool IsGameOver { get; private set; }
 
-    private int pendingFlagGoal = -1;
-
-    public bool IsGameOver { get; private set; } = false;
-
+    // =====================================================
+    // MAIN CYCLE
+    // =====================================================
     public IEnumerator RunSingleCycle()
     {
         totalKills = 0;
-        totalSpawned = 0;
         lastAlive = 0;
 
         int cycleNum = difficulty.CurrentCycle + 1;
+
         int w1 = difficulty.GetWave1Count();
         int w2 = difficulty.GetWave2Count();
+        int w3 = difficulty.GetWave3Count();
 
-        totalEnemiesInCycle = w1 + w2;
-
-        SetupProgressUI();
-        GenerateFlagGoals(w1, w2);
-        SetupFlags();
-
-        ui.SetupNewCycle(w1, w2);
+        // UI handles ALL progress logic
+        ui.SetupNewCycle(w1, w2, w3);
 
         spawner.SetCycle(cycleNum);
 
         yield return WaitAllEnemiesDead();
 
-        yield return RunWave(w1, 1, spawner.StartSinglePerLineWave);
+        // ========================
+        // WAVE 1
+        // ========================
 
-        ExpandFlagIfPending();
+        yield return RunWave(
+            w1,
+            1,
+            spawner.StartSinglePerLineWave);
 
         ui.MarkWaveComplete(0);
 
         yield return WaitAllEnemiesDead();
 
+        // ========================
+        // WAVE 2
+        // ========================
+
         ui.ShowBigWave(true);
+
         SoundManager.Instance?.PlayBigWaveWarning();
 
         yield return new WaitForSeconds(bigWaveDelay);
 
         ui.ShowBigWave(false);
 
-        yield return RunWave(w2, 2,
-            difficulty.CurrentCycle == 0
-                ? spawner.StartSinglePerLineWave
-                : spawner.StartGroupedPerLineWave);
-
-        ExpandFlagIfPending();
+        yield return RunWave(
+            w2,
+            2,
+            spawner.StartGroupedPerLineWave);
 
         ui.MarkWaveComplete(1);
 
         yield return WaitAllEnemiesDead();
 
+        // ========================
+        // WAVE 3
+        // ========================
+
+        ui.ShowBigWave(true);
+
+        SoundManager.Instance?.PlayBigWaveWarning();
+
+        yield return new WaitForSeconds(bigWaveDelay);
+
+        ui.ShowBigWave(false);
+
+        yield return RunWave(
+            w3,
+            3,
+            spawner.StartGroupedPerLineWave);
+
+        ui.MarkWaveComplete(2);
+
+        yield return WaitAllEnemiesDead();
+
         difficulty.AdvanceCycle();
 
-        phase.StartCoroutine(phase.SmoothBackToSelect());
+        phase.StartCoroutine(
+            phase.SmoothBackToSelect());
     }
 
-    private void SetupProgressUI()
-    {
-        if (levelProgress == null) return;
-
-        levelProgress.minValue = 0;
-        levelProgress.maxValue = totalEnemiesInCycle;
-        levelProgress.value = 0;
-        levelProgress.direction = Slider.Direction.RightToLeft;
-    }
-
-    private void GenerateFlagGoals(int wave1, int wave2)
-    {
-        flagGoals.Clear();
-        flagGoals.Add(wave1);
-    }
-
-    private void SetupFlags()
-    {
-        goalToFlag.Clear();
-
-        if (flagContainer == null || flagPrefab == null)
-            return;
-
-        Canvas.ForceUpdateCanvases();
-
-        float width = flagContainer.rect.width;
-
-        foreach (Transform child in flagContainer)
-            Destroy(child.gameObject);
-
-        foreach (int goal in flagGoals)
-        {
-            GameObject flagObj = Instantiate(flagPrefab, flagContainer);
-
-            FlagsManager fm = flagObj.GetComponent<FlagsManager>();
-
-            if (fm != null)
-                goalToFlag.Add(goal, fm);
-
-            RectTransform rt = flagObj.GetComponent<RectTransform>();
-
-            rt.localScale = new Vector3(0.4f, 0.4f, 1f);
-            rt.sizeDelta = new Vector2(30f, 60f);
-
-            rt.anchorMin = new Vector2(1f, 0.5f);
-            rt.anchorMax = new Vector2(1f, 0.5f);
-            rt.pivot = new Vector2(0.5f, 0.5f);
-
-            float normalized = (float)goal / totalEnemiesInCycle;
-
-            float posX = -width * normalized;
-
-            rt.anchoredPosition = new Vector2(posX, 0f);
-        }
-    }
-
-    private IEnumerator RunWave(int count, int waveNumber, System.Action<int> startFunc)
+    // =====================================================
+    // RUN WAVE
+    // =====================================================
+    private IEnumerator RunWave(
+        int count,
+        int waveNumber,
+        System.Action<int> startFunc)
     {
         spawner.StopAllSpawning();
 
@@ -160,27 +125,28 @@ public class EndlessWaveManager : MonoBehaviour
 
         bool spawnDone = false;
 
-        spawner.OnWaveSpawnComplete = () => spawnDone = true;
+        spawner.OnWaveSpawnComplete =
+            () => spawnDone = true;
 
         startFunc(count);
 
-        totalSpawned += count;
-
-        lastAlive = spawner.CountAllAlive();
+        lastAlive =
+            spawner.CountAllAlive();
 
         while (!IsGameOver)
         {
-            int alive = spawner.CountAllAlive();
+            int alive =
+                spawner.CountAllAlive();
 
-            int killedNow = lastAlive - alive;
+            int killedNow =
+                lastAlive - alive;
 
             if (killedNow > 0)
             {
                 totalKills += killedNow;
 
-                levelProgress.value = totalKills;
-
-                CheckFlagProgress();
+                // ONLY notify UI
+                ui.AddKills(killedNow);
             }
 
             lastAlive = alive;
@@ -192,43 +158,25 @@ public class EndlessWaveManager : MonoBehaviour
         }
     }
 
-    private void CheckFlagProgress()
-    {
-        foreach (int goal in flagGoals)
-        {
-            if (totalKills >= goal && !triggeredGoals.Contains(goal))
-            {
-                triggeredGoals.Add(goal);
-
-                pendingFlagGoal = goal;
-
-                break;
-            }
-        }
-    }
-
-    private void ExpandFlagIfPending()
-    {
-        if (pendingFlagGoal != -1)
-        {
-            if (goalToFlag.TryGetValue(pendingFlagGoal, out FlagsManager fm))
-            {
-                fm.Expand();
-            }
-
-            pendingFlagGoal = -1;
-        }
-    }
-
+    // =====================================================
+    // WAIT HELPERS
+    // =====================================================
     private IEnumerator WaitAllEnemiesDead()
     {
-        while (!IsGameOver && spawner.CountAllAlive() > 0)
+        while (!IsGameOver &&
+               spawner.CountAllAlive() > 0)
+        {
             yield return new WaitForSeconds(checkInterval);
+        }
     }
 
+    // =====================================================
+    // GAME OVER
+    // =====================================================
     public void TriggerGameOver()
     {
-        if (IsGameOver) return;
+        if (IsGameOver)
+            return;
 
         IsGameOver = true;
 
