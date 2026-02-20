@@ -22,9 +22,7 @@ public class EndlessUIController : MonoBehaviour
     private int currentCycleVisual = 0;
 
     private readonly List<int> flagGoals = new();
-    private readonly Dictionary<int, FlagsManager> goalToFlag = new();
-
-    private RectTransform fillAreaRect;
+    private readonly List<FlagsManager> flagsOrdered = new();
 
     public int TotalFlags => totalFlagsAllCycles;
     public int CurrentCycle => currentCycleVisual;
@@ -36,9 +34,6 @@ public class EndlessUIController : MonoBehaviour
     private void Awake()
     {
         slider.direction = Slider.Direction.RightToLeft;
-
-        fillAreaRect =
-            slider.fillRect.parent as RectTransform;
     }
 
     private void Start()
@@ -49,26 +44,20 @@ public class EndlessUIController : MonoBehaviour
         GameData.Data.CurrentFlags = 0;
 
         UpdateTotalFlagsText();
-        UpdateSelectText();
+        EnterSelectPhase();
     }
 
     public void EnterSelectPhase()
     {
-        UpdateSelectText();
+        if (!cycleText) return;
+
+        int next = currentCycleVisual + 1;
+        cycleText.text = $"Click Ready to enter Cycle {next}";
     }
 
     public void OnPlayPhaseStart()
     {
-    }
-
-    private void UpdateSelectText()
-    {
-        if (!cycleText) return;
-
-        int next = currentCycleVisual + 1;
-
-        cycleText.text =
-            $"Click Ready to enter Cycle {next}";
+        // intentionally empty (compatibility with EndlessPhaseController)
     }
 
     // =====================================================
@@ -80,11 +69,9 @@ public class EndlessUIController : MonoBehaviour
         currentCycleVisual++;
 
         if (cycleText)
-            cycleText.text =
-                $"Cycle {currentCycleVisual}";
+            cycleText.text = $"Cycle {currentCycleVisual}";
 
-        totalEnemiesThisCycle =
-            wave1 + wave2 + wave3;
+        totalEnemiesThisCycle = wave1 + wave2 + wave3;
 
         totalKillsThisCycle = 0;
 
@@ -98,7 +85,7 @@ public class EndlessUIController : MonoBehaviour
     }
 
     // =====================================================
-    // FLAG GOALS (3 wave → 2 flag)
+    // FLAG GOALS (3 wave = 2 flag)
     // =====================================================
 
     private void GenerateFlagGoals(int wave1, int wave2)
@@ -113,12 +100,12 @@ public class EndlessUIController : MonoBehaviour
     }
 
     // =====================================================
-    // BUILD FLAGS (RIGHT → LEFT PERFECT)
+    // BUILD FLAGS (RIGHT → LEFT PERFECT, NO DRIFT)
     // =====================================================
 
     private void BuildFlags()
     {
-        goalToFlag.Clear();
+        flagsOrdered.Clear();
 
         foreach (Transform child in flagContainer)
             Destroy(child.gameObject);
@@ -142,9 +129,6 @@ public class EndlessUIController : MonoBehaviour
             float normalized =
                 (float)goal / totalEnemiesThisCycle;
 
-            // INI KUNCI PERBAIKAN
-            // gunakan anchor, bukan position
-
             float anchor =
                 1f - normalized;
 
@@ -160,14 +144,16 @@ public class EndlessUIController : MonoBehaviour
             rt.anchoredPosition =
                 Vector2.zero;
 
-            goalToFlag.Add(
-                goal,
-                flag.GetComponent<FlagsManager>());
+            FlagsManager fm =
+                flag.GetComponent<FlagsManager>();
+
+            flagsOrdered.Add(fm);
         }
     }
 
     // =====================================================
     // ACCURATE PROGRESS UPDATE
+    // (dipanggil EndlessWaveManager berdasarkan alive difference)
     // =====================================================
 
     public void AddKills(int amount)
@@ -175,22 +161,21 @@ public class EndlessUIController : MonoBehaviour
         totalKillsThisCycle += amount;
 
         slider.value = totalKillsThisCycle;
-
-        foreach (var pair in goalToFlag)
-        {
-            if (totalKillsThisCycle >= pair.Key)
-            {
-                pair.Value.Expand();
-            }
-        }
     }
 
     // =====================================================
     // WAVE COMPLETE
+    // INI YANG MENGUBAH FLAG MENJADI MERAH
+    // dipanggil EndlessWaveManager setelah waveMusicStart
     // =====================================================
 
     public void MarkWaveComplete(int waveIndex)
     {
+        if (waveIndex >= 0 && waveIndex < flagsOrdered.Count)
+        {
+            flagsOrdered[waveIndex].Expand();
+        }
+
         totalFlagsAllCycles++;
 
         GameData.Data.CurrentFlags =
@@ -200,7 +185,7 @@ public class EndlessUIController : MonoBehaviour
     }
 
     // =====================================================
-    // BIG WAVE
+    // BIG WAVE WARNING
     // =====================================================
 
     public void ShowBigWave(bool state)
@@ -238,6 +223,6 @@ public class EndlessUIController : MonoBehaviour
         slider.value = 0;
 
         UpdateTotalFlagsText();
-        UpdateSelectText();
+        EnterSelectPhase();
     }
 }
