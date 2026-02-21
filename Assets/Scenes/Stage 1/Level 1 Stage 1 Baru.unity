@@ -6000,7 +6000,7 @@ MonoBehaviour:
   priceTextVisual: {fileID: 19971641}
   selectedColor: {r: 0.6666667, g: 1, b: 0.6666667, a: 1}
   darkOverlay: {fileID: 175648892}
-  cooldownDuration: 5
+  cooldownDuration: 1.7
   cooldownMask: {fileID: 1933100479}
 --- !u!114 &131711371
 MonoBehaviour:
@@ -9886,7 +9886,7 @@ MonoBehaviour:
   priceTextVisual: {fileID: 501922993}
   selectedColor: {r: 0.6666667, g: 1, b: 0.6666667, a: 1}
   darkOverlay: {fileID: 1160175708}
-  cooldownDuration: 5
+  cooldownDuration: 2.1
   cooldownMask: {fileID: 469718517}
 --- !u!114 &577563621
 MonoBehaviour:
@@ -20539,7 +20539,7 @@ MonoBehaviour:
   priceTextVisual: {fileID: 836520930}
   selectedColor: {r: 0.6666667, g: 1, b: 0.6666667, a: 1}
   darkOverlay: {fileID: 2063697490}
-  cooldownDuration: 5
+  cooldownDuration: 3
   cooldownMask: {fileID: 11963446}
 --- !u!114 &1225680824
 MonoBehaviour:

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 
 public class EndlessPhaseController : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class EndlessPhaseController : MonoBehaviour
 
     [Header("Spawner Endless")]
     [SerializeField] private BacteriaSpawnerEndless spawner;
-    
+
     [Header("UI Ref")]
     [SerializeField] private EndlessUIController ui;
 
@@ -47,12 +48,28 @@ public class EndlessPhaseController : MonoBehaviour
     [Header("Objects Active On Play Slot (Sunnah)")]
     [SerializeField] private List<GameObject> playSlot = new List<GameObject>();
 
+    // =====================================================
+    // NEW — SAFETY: RESET WaveManager.isGameOver (ENDLESS MODE)
+    // =====================================================
+
+    [Header("WaveManager Safety (Endless)")]
+    [Tooltip("Jika true, EndlessPhaseController akan memastikan WaveManager.isGameOver tidak nyangkut TRUE saat masuk SELECT/PLAY.")]
+    [SerializeField] private bool forceResetWaveManagerGameOver = true;
+
     private void Start()
     {
         Debug.Log("<color=cyan>[PHASE] Scene START → SELECT phase</color>");
 
+        // =====================================================
+        // NEW — CHECK & FIX GAMEOVER STATE ON SELECT START
+        // =====================================================
+        EnsureWaveManagerNotGameOver("START/SELECT");
+
         SnapCamera(selectCameraX);
         ApplySelectObjects();
+
+        // DEBUG (SELECT MOMENT)
+        PhaseDebug("AFTER ApplySelectObjects (START)");
 
         if (ui != null)
             ui.EnterSelectPhase();
@@ -79,12 +96,26 @@ public class EndlessPhaseController : MonoBehaviour
     {
         Debug.Log("<color=orange>[PHASE] StartPlayPhase called</color>");
 
+        // =====================================================
+        // NEW — CHECK & FIX GAMEOVER STATE BEFORE MOVING TO PLAY
+        // =====================================================
+        EnsureWaveManagerNotGameOver("BEFORE PLAY MOVE");
+
         Debug.Log("<color=grey>[PHASE] Camera SELECT → PLAY moving...</color>");
         yield return MoveCameraSmooth(playCameraX);
 
         Debug.Log("<color=lime>[PHASE] Camera arrived at PLAY</color>");
 
         ApplyPlayObjects();
+
+        // =====================================================
+        // NEW — CHECK & FIX GAMEOVER STATE AFTER PLAY OBJECTS ENABLED
+        // (ini titik yang kamu buktikan jadi TRUE)
+        // =====================================================
+        EnsureWaveManagerNotGameOver("AFTER ApplyPlayObjects (PLAY)");
+
+        // DEBUG (PLAY MOMENT)
+        PhaseDebug("AFTER ApplyPlayObjects (PLAY)");
 
         if (readyButtonObj != null)
         {
@@ -131,6 +162,14 @@ public class EndlessPhaseController : MonoBehaviour
         Debug.Log("<color=lime>[PHASE] Camera arrived at SELECT</color>");
 
         ApplySelectObjects();
+
+        // =====================================================
+        // NEW — CHECK & FIX GAMEOVER STATE WHEN BACK TO SELECT
+        // =====================================================
+        EnsureWaveManagerNotGameOver("BACK TO SELECT");
+
+        // DEBUG (SELECT MOMENT)
+        PhaseDebug("AFTER ApplySelectObjects (BACK)");
 
         ClearAllTiles();
         ClearAllAtoms();
@@ -302,5 +341,86 @@ public class EndlessPhaseController : MonoBehaviour
             Destroy(a.gameObject);
 
         Debug.Log("<color=magenta>[PHASE] Semua ATOM dihapus (SELECT)</color>");
+    }
+
+    // =====================================================
+    // NEW — DEBUG HELPER (NO BEHAVIOUR CHANGE)
+    // =====================================================
+    private void PhaseDebug(string context)
+    {
+        Debug.Log($"<color=white>[PHASE DEBUG] ({context})</color> WaveManager.isGameOver = <color=yellow>{WaveManager.isGameOver}</color>");
+        Debug.Log($"<color=white>[PHASE DEBUG] ({context})</color> PauseManager.IsPaused = <color=yellow>{PauseManager.IsPaused}</color>");
+        Debug.Log($"<color=white>[PHASE DEBUG] ({context})</color> Time.timeScale = <color=yellow>{Time.timeScale}</color>");
+    }
+
+    // =====================================================
+    // NEW — SAFETY FIX FOR ENDLESS MODE
+    // - Jika WaveManager.isGameOver nyangkut TRUE, reset jadi FALSE
+    // - Dipanggil saat SELECT & PLAY moment
+    // =====================================================
+    private void EnsureWaveManagerNotGameOver(string context)
+    {
+        if (!forceResetWaveManagerGameOver)
+            return;
+
+        if (!WaveManager.isGameOver)
+            return;
+
+        Debug.LogWarning($"<color=red>[PHASE FIX]</color> WaveManager.isGameOver TRUE saat {context}. Mencoba reset ke FALSE agar input tidak mati.");
+
+        // 1) Coba reset langsung via reflection (paling kompatibel kalau isGameOver private/static)
+        bool resetSuccess = TryForceSetWaveManagerGameOverFalseByReflection();
+
+        // 2) Kalau gagal, minimal kasih info jelas
+        if (!resetSuccess)
+        {
+            Debug.LogError("<color=red>[PHASE FIX]</color> Gagal reset WaveManager.isGameOver via reflection. " +
+                           "Solusi paling bersih: nonaktifkan GameObject WaveManager di scene Endless atau buat method reset di WaveManager.");
+        }
+        else
+        {
+            Debug.Log($"<color=green>[PHASE FIX]</color> WaveManager.isGameOver berhasil di-reset → {WaveManager.isGameOver}");
+        }
+    }
+
+    private bool TryForceSetWaveManagerGameOverFalseByReflection()
+    {
+        try
+        {
+            // WaveManager.isGameOver di project kamu tampaknya static.
+            // Kita coba cari field bernama "isGameOver" pada type WaveManager.
+            var t = typeof(WaveManager);
+
+            // Coba Field (static)
+            FieldInfo f =
+                t.GetField("isGameOver", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
+
+            if (f != null && f.FieldType == typeof(bool))
+            {
+                f.SetValue(null, false);
+                return true;
+            }
+
+            // Kalau ternyata property (jarang untuk static property dengan backing),
+            // kita coba property set (jika ada setter non-public).
+            PropertyInfo p =
+                t.GetProperty("isGameOver", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
+
+            if (p != null && p.PropertyType == typeof(bool))
+            {
+                var setMethod = p.GetSetMethod(true);
+                if (setMethod != null)
+                {
+                    setMethod.Invoke(null, new object[] { false });
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }

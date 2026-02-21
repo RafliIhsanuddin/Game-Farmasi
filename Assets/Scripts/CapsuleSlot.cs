@@ -43,6 +43,15 @@ public class CapsuleSlot : MonoBehaviour
     private Color originalPriceColor;
 
     // =====================================================
+    // SUNNAH — EndlessPhaseController Integration
+    // =====================================================
+
+    private EndlessPhaseController endlessPhase;
+    private Transform endlessCamera;
+    private float lastCameraX;
+    private bool wasInPlayPhase;
+
+    // =====================================================
     // INIT
     // =====================================================
 
@@ -67,7 +76,28 @@ public class CapsuleSlot : MonoBehaviour
         if (darkOverlay)
             darkOverlay.gameObject.SetActive(false);
 
+        // ORIGINAL BEHAVIOUR
         StartCooldown();
+
+        // =====================================================
+        // SUNNAH INIT — Cari EndlessPhaseController jika ada
+        // =====================================================
+
+        endlessPhase = FindFirstObjectByType<EndlessPhaseController>();
+
+        if (endlessPhase != null)
+        {
+            endlessCamera = Camera.main?.transform;
+
+            if (endlessCamera != null)
+                lastCameraX = endlessCamera.position.x;
+
+            Debug.Log("<color=cyan>[CapsuleSlot] EndlessPhaseController detected (SUNNAH ACTIVE)</color>");
+        }
+        else
+        {
+            Debug.Log("<color=grey>[CapsuleSlot] EndlessPhaseController NOT found (SUNNAH SKIPPED)</color>");
+        }
     }
 
     private void Update()
@@ -75,6 +105,38 @@ public class CapsuleSlot : MonoBehaviour
         UpdateCooldown();
         ApplyAffordability();
         ApplySelectionVisual();
+
+        // SUNNAH CHECK PLAY PHASE
+        CheckPlayPhaseSunnah();
+    }
+
+    // =====================================================
+    // SUNNAH — DETECT PLAY PHASE VIA CAMERA MOVE
+    // =====================================================
+
+    private void CheckPlayPhaseSunnah()
+    {
+        if (endlessPhase == null)
+            return;
+
+        if (endlessCamera == null)
+            return;
+
+        float currentX = endlessCamera.position.x;
+
+        bool isPlayPhase =
+            Mathf.Abs(currentX - lastCameraX) > 0.001f &&
+            currentX < lastCameraX;
+
+        // Detect entering play phase
+        if (isPlayPhase && !wasInPlayPhase)
+        {
+            Debug.Log($"<color=orange>[CapsuleSlot] PLAY PHASE detected → Reset cooldown for {capsuleObject.name}</color>");
+            StartCooldown();
+        }
+
+        wasInPlayPhase = isPlayPhase;
+        lastCameraX = currentX;
     }
 
     // =====================================================
