@@ -14,182 +14,233 @@ public class CapsuleSlot : MonoBehaviour
     public TextMeshProUGUI priceText;
     public Image icon;
 
-    [Header("Card Visuals (Gelap Saat Dipilih)")]
-    [SerializeField] private Image cardImage;       
-    [SerializeField] private Image capsuleImage;    
+    [Header("Card Visuals")]
+    [SerializeField] private Image cardImage;
+    [SerializeField] private Image capsuleImage;
     [SerializeField] private TextMeshProUGUI priceTextVisual;
-    [SerializeField, Range(0f, 1f)] private float selectedDarkAlpha = 0.5f;
 
-    [Header("Optional Visuals")]
-    public Image slotButtonImage;
-    [Range(0.2f, 1f)] public float notEnoughAlpha = 0.5f;
+    [Header("Selection Visual")]
+    [SerializeField] private Color selectedColor = Color.green;
+
+    [Header("Dark Overlay")]
+    [SerializeField] private Image darkOverlay;
+
+    [Header("Cooldown Settings")]
+    [SerializeField] private float cooldownDuration = 5f;
+
+    [Header("Cooldown Mask (Vertical Bottom → Top)")]
+    [SerializeField] private Image cooldownMask;
+
+    private float cooldownTimer;
+    private bool isCoolingDown;
+    private float debugTimer;
 
     private GameManager gms;
     private Button btn;
 
+    private Color originalCardColor;
+    private Color originalCapsuleColor;
+    private Color originalPriceColor;
+
+    // =====================================================
+    // INIT
+    // =====================================================
+
     private void Awake()
     {
         btn = GetComponent<Button>();
+
         btn.onClick.RemoveListener(SelectPlant);
         btn.onClick.AddListener(SelectPlant);
-    }
 
-    private void OnEnable()
-    {
-        // Subscribe event pause supaya UI langsung update saat pause/resume
-        PauseManager.OnPauseChanged += HandlePauseChanged;
-    }
-
-    private void OnDisable()
-    {
-        PauseManager.OnPauseChanged -= HandlePauseChanged;
+        if (cardImage) originalCardColor = cardImage.color;
+        if (capsuleImage) originalCapsuleColor = capsuleImage.color;
+        if (priceTextVisual) originalPriceColor = priceTextVisual.color;
     }
 
     private void Start()
     {
-        if (gms == null)
-            gms = GameObject.Find("GameManager")?.GetComponent<GameManager>();
+        gms = GameObject.Find("GameManager")?.GetComponent<GameManager>();
 
         ApplyStaticUI();
-        RefreshAllVisuals();
+
+        if (darkOverlay)
+            darkOverlay.gameObject.SetActive(false);
+
+        StartCooldown();
     }
 
     private void Update()
     {
-        // Suns bisa berubah tiap frame, jadi affordability tetap refresh
-        // (tapi pause/resume sudah di-handle event juga)
+        UpdateCooldown();
         ApplyAffordability();
         ApplySelectionVisual();
     }
 
-    private void HandlePauseChanged(bool paused)
-    {
-        // Saat pause/resume: update interactable & visual
-        RefreshAllVisuals();
-    }
+    // =====================================================
+    // COOLDOWN SYSTEM
+    // =====================================================
 
-    private void RefreshAllVisuals()
+    public void StartCooldown()
     {
-        ApplyAffordability();
-        ApplySelectionVisual();
-    }
+        Debug.Log($"[CapsuleSlot] CooldownDuration = {cooldownDuration}");
 
-    private void ApplyStaticUI()
-    {
-        if (icon != null)
+        if (cooldownDuration <= 0f)
         {
-            if (capsuleSprite)
-            {
-                icon.enabled = true;
-                icon.sprite = capsuleSprite;
-            }
-            else
-            {
-                icon.enabled = false;
-            }
-        }
+            isCoolingDown = false;
 
-        if (priceText != null)
-            priceText.text = Price.ToString();
-    }
+            if (cooldownMask)
+                cooldownMask.fillAmount = 0;
 
-    private void ApplyAffordability()
-    {
-        if (gms == null) return;
-
-        bool paused = PauseManager.IsPaused;
-        bool gameOver = WaveManager.isGameOver;
-
-        bool canAfford = gms.suns >= Price;
-        bool canInteract = canAfford && !paused && !gameOver;
-
-        if (btn != null)
-            btn.interactable = canInteract;
-
-        // Visual alpha kalau tidak cukup / paused / gameover
-        if (slotButtonImage != null)
-        {
-            Color c = slotButtonImage.color;
-            c.a = canInteract ? 1f : notEnoughAlpha;
-            slotButtonImage.color = c;
-        }
-    }
-
-    public void SelectPlant()
-    {
-        if (gms == null) return;
-
-        // BLOCK saat pause / game over
-        if (PauseManager.IsPaused) return;
-        if (WaveManager.isGameOver) return;
-
-        if (gms.suns < Price)
-        {
-            Debug.LogWarning($"[CapsuleSlot] Suns tidak cukup untuk memilih {capsuleObject?.name} (butuh {Price}, punya {gms.suns})");
+            Debug.Log($"[CapsuleSlot] cooldown skipped");
             return;
         }
 
-        // Klik ulang slot yang sama = batalkan
-        if (gms.currentCapsule == capsuleObject)
+        isCoolingDown = true;
+        cooldownTimer = cooldownDuration;
+        debugTimer = cooldownDuration;
+
+        if (cooldownMask)
+            cooldownMask.fillAmount = 1f;
+
+        Debug.Log($"[CapsuleSlot] Cooldown START ({cooldownDuration}s)");
+    }
+
+    private void UpdateCooldown()
+    {
+        if (!isCoolingDown)
+            return;
+
+        cooldownTimer -= Time.deltaTime;
+
+        if (cooldownMask)
+            cooldownMask.fillAmount = cooldownTimer / cooldownDuration;
+
+        debugTimer -= Time.deltaTime;
+
+        if (debugTimer <= 0f)
         {
-            gms.CancelSelection();
-            Debug.Log($"[CapsuleSlot] Cancel selection: {capsuleObject?.name}");
-        }
-        else
-        {
-            gms.SelectPlant(capsuleObject, capsuleSprite, Price);
-            Debug.Log($"[CapsuleSlot] Selected: {capsuleObject?.name} (Price: {Price})");
+            float progress =
+                (1f - (cooldownTimer / cooldownDuration)) * 100f;
+
+            Debug.Log(
+                $"[CapsuleSlot] {capsuleObject.name} Cooldown Progress: {progress:F0}% | {cooldownTimer:F1}s left"
+            );
+
+            debugTimer = 1f;
         }
 
-        // visual akan tersync
-        ApplySelectionVisual();
+        if (cooldownTimer <= 0f)
+        {
+            isCoolingDown = false;
+
+            if (cooldownMask)
+                cooldownMask.fillAmount = 0f;
+
+            Debug.Log($"[CapsuleSlot] {capsuleObject.name} Cooldown COMPLETE");
+        }
     }
+
+    public void OnCapsulePlaced()
+    {
+        Debug.Log($"[CapsuleSlot] {capsuleObject.name} placed → restarting cooldown");
+        StartCooldown();
+    }
+
+    // =====================================================
+    // AFFORDABILITY
+    // =====================================================
+
+    private void ApplyAffordability()
+    {
+        if (!gms) return;
+
+        bool canAfford = gms.suns >= Price;
+
+        bool canInteract =
+            canAfford &&
+            !PauseManager.IsPaused &&
+            !WaveManager.isGameOver &&
+            !isCoolingDown;
+
+        btn.interactable = canInteract;
+
+        if (darkOverlay)
+            darkOverlay.gameObject.SetActive(!canAfford);
+    }
+
+    // =====================================================
+    // SELECTION VISUAL
+    // =====================================================
 
     private void ApplySelectionVisual()
     {
-        if (gms == null) return;
+        if (!gms) return;
 
-        bool isThisSelected = (gms.currentCapsule == capsuleObject);
-        float alpha = isThisSelected ? selectedDarkAlpha : 1f;
+        bool isSelected =
+            gms.currentCapsule == capsuleObject;
 
-        if (cardImage != null)
+        bool canAfford =
+            gms.suns >= Price;
+
+        if (isCoolingDown || !canAfford)
         {
-            Color c = cardImage.color;
-            c.a = alpha;
-            cardImage.color = c;
+            RestoreOriginalColor();
+            return;
         }
 
-        if (capsuleImage != null)
-        {
-            Color c = capsuleImage.color;
-            c.a = alpha;
-            capsuleImage.color = c;
-        }
-
-        if (priceTextVisual != null)
-        {
-            Color c = priceTextVisual.color;
-            c.a = alpha;
-            priceTextVisual.color = c;
-        }
+        if (isSelected)
+            SetColor(selectedColor);
+        else
+            RestoreOriginalColor();
     }
 
-    private void OnValidate()
+    private void SetColor(Color color)
     {
-        if (priceText != null)
-            priceText.text = Price.ToString();
+        if (cardImage) cardImage.color = color;
+        if (capsuleImage) capsuleImage.color = color;
+        if (priceTextVisual) priceTextVisual.color = color;
+    }
 
-        if (icon != null)
+    private void RestoreOriginalColor()
+    {
+        if (cardImage) cardImage.color = originalCardColor;
+        if (capsuleImage) capsuleImage.color = originalCapsuleColor;
+        if (priceTextVisual) priceTextVisual.color = originalPriceColor;
+    }
+
+    // =====================================================
+    // STATIC UI
+    // =====================================================
+
+    private void ApplyStaticUI()
+    {
+        if (icon)
         {
-            if (capsuleSprite)
-            {
-                icon.enabled = true;
-                icon.sprite = capsuleSprite;
-            }
-            else
-            {
-                icon.enabled = false;
-            }
+            icon.enabled = capsuleSprite != null;
+            icon.sprite = capsuleSprite;
         }
+
+        if (priceText)
+            priceText.text = Price.ToString();
+    }
+
+    // =====================================================
+    // SELECT
+    // =====================================================
+
+    public void SelectPlant()
+    {
+        if (!gms) return;
+
+        if (PauseManager.IsPaused) return;
+        if (WaveManager.isGameOver) return;
+        if (isCoolingDown) return;
+        if (gms.suns < Price) return;
+
+        if (gms.currentCapsule == capsuleObject)
+            gms.CancelSelection();
+        else
+            gms.SelectPlant(capsuleObject, capsuleSprite, Price);
     }
 }

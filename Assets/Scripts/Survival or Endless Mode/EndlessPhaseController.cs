@@ -37,6 +37,16 @@ public class EndlessPhaseController : MonoBehaviour
     [Header("Objects Active On Play")]
     [SerializeField] private List<GameObject> playActive = new List<GameObject>();
 
+    // =====================================================
+    // NEW (SUNNAH) — SELECT SLOT & PLAY SLOT
+    // =====================================================
+
+    [Header("Objects Active On Select Slot (Sunnah)")]
+    [SerializeField] private List<GameObject> selectSlot = new List<GameObject>();
+
+    [Header("Objects Active On Play Slot (Sunnah)")]
+    [SerializeField] private List<GameObject> playSlot = new List<GameObject>();
+
     private void Start()
     {
         Debug.Log("<color=cyan>[PHASE] Scene START → SELECT phase</color>");
@@ -59,9 +69,6 @@ public class EndlessPhaseController : MonoBehaviour
         if (readyButton != null)
             readyButton.SetReadyEnabled(true);
 
-        // =========================
-        // 🔴 AUDIO: STOP/RESET BGM DI SELECT
-        // =========================
         if (SoundManager.Instance != null)
         {
             SoundManager.Instance.StopBgmLoop();
@@ -88,16 +95,12 @@ public class EndlessPhaseController : MonoBehaviour
         if (ui != null)
             ui.OnPlayPhaseStart();
 
-        // ==================================================
-        // 🔴 AUDIO: BGM DIMULAI DARI AWAL SETIAP MASUK PLAY
-        // ==================================================
         if (SoundManager.Instance != null)
         {
-            SoundManager.Instance.StopBgmLoop();  // reset dulu
-            SoundManager.Instance.PlayBgmLoop();  // mulai loop dari awal
+            SoundManager.Instance.StopBgmLoop();
+            SoundManager.Instance.PlayBgmLoop();
         }
 
-        // original behaviour injection pool
         if (preview != null && waveManager != null)
         {
             var pool = preview.GetSelectedEnemyPool();
@@ -129,9 +132,8 @@ public class EndlessPhaseController : MonoBehaviour
 
         ApplySelectObjects();
 
-        ClearAllTiles();   // original
-
-        ClearAllAtoms();   // tambahan dari request sebelumnya
+        ClearAllTiles();
+        ClearAllAtoms();
 
         if (cardManager != null)
             cardManager.ReEnterSelectPhase();
@@ -151,15 +153,13 @@ public class EndlessPhaseController : MonoBehaviour
         if (ui != null)
             ui.EnterSelectPhase();
 
-        // ============================
-        // 🔴 AUDIO: STOP/RESET BGM DI SELECT
-        // ============================
         if (SoundManager.Instance != null)
             SoundManager.Instance.StopBgmLoop();
     }
 
     private void ApplySelectObjects()
     {
+        // ORIGINAL BEHAVIOUR (TIDAK DIUBAH)
         foreach (var o in selectActive)
         {
             if (!o) continue;
@@ -173,10 +173,32 @@ public class EndlessPhaseController : MonoBehaviour
             o.SetActive(false);
             Debug.Log($"<color=cyan>[PHASE] PLAY OFF → {o.name}</color>");
         }
+
+        // NEW — SELECT SLOT (SUNNAH)
+        if (selectSlot != null)
+        {
+            foreach (var o in selectSlot)
+            {
+                if (!o) continue;
+                o.SetActive(true);
+                Debug.Log($"<color=green>[PHASE] SELECT SLOT ON → {o.name}</color>");
+            }
+        }
+
+        if (playSlot != null)
+        {
+            foreach (var o in playSlot)
+            {
+                if (!o) continue;
+                o.SetActive(false);
+                Debug.Log($"<color=green>[PHASE] PLAY SLOT OFF → {o.name}</color>");
+            }
+        }
     }
 
     private void ApplyPlayObjects()
     {
+        // ORIGINAL BEHAVIOUR (TIDAK DIUBAH)
         foreach (var o in selectActive)
         {
             if (!o) continue;
@@ -189,6 +211,27 @@ public class EndlessPhaseController : MonoBehaviour
             if (!o) continue;
             o.SetActive(true);
             Debug.Log($"<color=yellow>[PHASE] PLAY ON → {o.name}</color>");
+        }
+
+        // NEW — SELECT SLOT (SUNNAH)
+        if (selectSlot != null)
+        {
+            foreach (var o in selectSlot)
+            {
+                if (!o) continue;
+                o.SetActive(false);
+                Debug.Log($"<color=orange>[PHASE] SELECT SLOT OFF → {o.name}</color>");
+            }
+        }
+
+        if (playSlot != null)
+        {
+            foreach (var o in playSlot)
+            {
+                if (!o) continue;
+                o.SetActive(true);
+                Debug.Log($"<color=orange>[PHASE] PLAY SLOT ON → {o.name}</color>");
+            }
         }
     }
 
@@ -243,9 +286,7 @@ public class EndlessPhaseController : MonoBehaviour
         foreach (var t in tiles)
         {
             if (t.currentCapsule != null)
-            {
                 Destroy(t.currentCapsule);
-            }
 
             t.ClearCapsule();
         }
@@ -260,6 +301,6 @@ public class EndlessPhaseController : MonoBehaviour
         foreach (var a in atoms)
             Destroy(a.gameObject);
 
-        Debug.Log("<color=magenta>[PHASE] Semua ATOM (komponen Atom) dihapus (SELECT)</color>");
+        Debug.Log("<color=magenta>[PHASE] Semua ATOM dihapus (SELECT)</color>");
     }
 }

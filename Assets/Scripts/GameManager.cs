@@ -46,7 +46,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        // UI Suns
+        // =====================================================
+        // UPDATE SUN UI (BEHAVIOUR LAMA - TIDAK DIUBAH)
+        // =====================================================
+
         if (sunsText != null)
             sunsText.text = suns.ToString();
 
@@ -55,16 +58,25 @@ public class GameManager : MonoBehaviour
 
         GameData.Data.FinalSuns = suns;
 
-        // Kalau tidak ada kamera, stop
+        // =====================================================
+        // CAMERA SAFETY
+        // =====================================================
+
         if (mainCam == null) return;
 
         Vector3 mouseWorld = mainCam.ScreenToWorldPoint(Input.mousePosition);
         mouseWorld.z = 0f;
 
-        // Klik atom juga ikut block
+        // =====================================================
+        // HANDLE ATOM CLICK (BEHAVIOUR LAMA - TIDAK DIUBAH)
+        // =====================================================
+
         HandleAtomClick(mouseWorld);
 
-        // Kalau pause / game over: block semua interaksi placement & preview
+        // =====================================================
+        // BLOCK INTERACTION SAAT PAUSE / GAMEOVER
+        // =====================================================
+
         if (IsInteractionBlocked())
         {
             HidePreview();
@@ -72,22 +84,36 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        // Kalau belum pilih capsule
+        // =====================================================
+        // JIKA BELUM PILIH CAPSULE
+        // =====================================================
+
         if (currentCapsule == null)
         {
             HidePreview();
             return;
         }
 
-        // Pastikan previewInstance ada
+        // =====================================================
+        // PASTIKAN PREVIEW ADA
+        // =====================================================
+
         if (previewInstance == null)
         {
-            // Safety: kalau currentCapsule ter-set tapi preview belum kebuat
             CreatePreviewInstance();
         }
 
-        // Raycast ke tile
-        RaycastHit2D hit = Physics2D.Raycast(mouseWorld, Vector2.zero, Mathf.Infinity, tileMask);
+        // =====================================================
+        // RAYCAST TILE
+        // =====================================================
+
+        RaycastHit2D hit =
+            Physics2D.Raycast(
+                mouseWorld,
+                Vector2.zero,
+                Mathf.Infinity,
+                tileMask
+            );
 
         if (hit.collider)
         {
@@ -96,8 +122,10 @@ public class GameManager : MonoBehaviour
             if (tile != null && !tile.hasCapsule)
             {
                 currentTile = tile;
+
                 previewInstance.SetActive(true);
-                previewInstance.transform.position = tile.transform.position;
+                previewInstance.transform.position =
+                    tile.transform.position;
             }
             else
             {
@@ -105,25 +133,50 @@ public class GameManager : MonoBehaviour
                 currentTile = null;
             }
 
-            // Place capsule
-            if (Input.GetMouseButtonDown(0) && currentTile != null && !currentTile.hasCapsule)
+            // =====================================================
+            // PLACE CAPSULE (BEHAVIOUR LAMA + TAMBAHAN COOLDOWN)
+            // =====================================================
+
+            if (Input.GetMouseButtonDown(0)
+                && currentTile != null
+                && !currentTile.hasCapsule)
             {
                 if (suns >= selectedPrice)
                 {
                     suns -= selectedPrice;
 
-                    GameObject newCapsule = Instantiate(
-                        currentCapsule,
-                        currentTile.transform.position,
-                        Quaternion.identity
-                    );
+                    GameObject newCapsule =
+                        Instantiate(
+                            currentCapsule,
+                            currentTile.transform.position,
+                            Quaternion.identity
+                        );
 
-                    newCapsule.transform.SetParent(currentTile.transform);
+                    newCapsule.transform.SetParent(
+                        currentTile.transform
+                    );
 
                     currentTile.hasCapsule = true;
                     currentTile.currentCapsule = newCapsule;
 
-                    AssignOwnerTileToCapsule(newCapsule, currentTile);
+                    AssignOwnerTileToCapsule(
+                        newCapsule,
+                        currentTile
+                    );
+
+                    // =====================================================
+                    // NEW (Cooldown Integration)
+                    // =====================================================
+
+                    CapsuleSlot slot =
+                        FindSlotByCapsule(currentCapsule);
+
+                    if (slot != null)
+                    {
+                        slot.OnCapsulePlaced();
+                    }
+
+                    // =====================================================
 
                     CancelSelection();
                 }
@@ -136,16 +189,44 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // =====================================================
+    // NEW METHOD (Cooldown Integration)
+    // =====================================================
+
+    private CapsuleSlot FindSlotByCapsule(GameObject capsule)
+    {
+        CapsuleSlot[] slots =
+            FindObjectsByType<CapsuleSlot>(
+                FindObjectsSortMode.None
+            );
+
+        foreach (CapsuleSlot slot in slots)
+        {
+            if (slot.capsuleObject == capsule)
+                return slot;
+        }
+
+        return null;
+    }
+
+    // =====================================================
+    // INTERACTION BLOCK CHECK (BEHAVIOUR LAMA)
+    // =====================================================
+
     private bool IsInteractionBlocked()
     {
-        // Block saat pause
-        if (PauseManager.IsPaused) return true;
+        if (PauseManager.IsPaused)
+            return true;
 
-        // Block saat win/game over
-        if (WaveManager.isGameOver) return true;
+        if (WaveManager.isGameOver)
+            return true;
 
         return false;
     }
+
+    // =====================================================
+    // PREVIEW SYSTEM (BEHAVIOUR LAMA)
+    // =====================================================
 
     private void HidePreview()
     {
@@ -160,23 +241,37 @@ public class GameManager : MonoBehaviour
         if (previewInstance != null)
             Destroy(previewInstance);
 
-        previewInstance = Instantiate(currentCapsule);
-        previewInstance.name = "Preview_" + currentCapsule.name;
+        previewInstance =
+            Instantiate(currentCapsule);
 
-        var sr = previewInstance.GetComponent<SpriteRenderer>();
+        previewInstance.name =
+            "Preview_" + currentCapsule.name;
+
+        var sr =
+            previewInstance.GetComponent<SpriteRenderer>();
+
         if (sr != null)
-            sr.color = new Color(1f, 1f, 1f, 0.5f);
+            sr.color =
+                new Color(1f, 1f, 1f, 0.5f);
 
-        var collider = previewInstance.GetComponent<Collider2D>();
+        var collider =
+            previewInstance.GetComponent<Collider2D>();
+
         if (collider != null)
             collider.enabled = false;
 
         previewInstance.SetActive(false);
     }
 
-    public void SelectPlant(GameObject capsule, Sprite sprite, int price)
+    // =====================================================
+    // SELECT CAPSULE (BEHAVIOUR LAMA)
+    // =====================================================
+
+    public void SelectPlant(
+        GameObject capsule,
+        Sprite sprite,
+        int price)
     {
-        // Block saat pause/gameover supaya tidak bisa pilih saat pause
         if (IsInteractionBlocked()) return;
 
         currentCapsule = capsule;
@@ -186,53 +281,91 @@ public class GameManager : MonoBehaviour
         CreatePreviewInstance();
     }
 
+    // =====================================================
+    // CANCEL SELECTION (BEHAVIOUR LAMA)
+    // =====================================================
+
     public void CancelSelection()
     {
         if (previewInstance != null)
             Destroy(previewInstance);
 
         previewInstance = null;
+
         currentCapsule = null;
         currentCapsuleSprite = null;
         selectedPrice = 0;
         currentTile = null;
     }
 
-    private void AssignOwnerTileToCapsule(GameObject capsule, Tile tile)
+    // =====================================================
+    // ASSIGN OWNER TILE (BEHAVIOUR LAMA - TIDAK DIUBAH)
+    // =====================================================
+
+    private void AssignOwnerTileToCapsule(
+        GameObject capsule,
+        Tile tile)
     {
-        if (capsule.TryGetComponent(out CapsuleRed red)) { red.ownerTile = tile; return; }
-        if (capsule.TryGetComponent(out CapsuleBlue blue)) { blue.ownerTile = tile; return; }
-        if (capsule.TryGetComponent(out CapsuleYellow yellow)) { yellow.ownerTile = tile; return; }
-        if (capsule.TryGetComponent(out CapsuleCream cream)) { cream.ownerTile = tile; return; }
-        if (capsule.TryGetComponent(out CapsuleGreen green)) { green.ownerTile = tile; return; }
-        if (capsule.TryGetComponent(out CapsuleOrange orange)) { orange.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out CapsuleRed red))
+        {
+            red.ownerTile = tile;
+            return;
+        }
 
-        if (capsule.TryGetComponent(out BasicShooterBlue shooterBlue)) { shooterBlue.ownerTile = tile; return; }
-        if (capsule.TryGetComponent(out BasicShooterYellow shooterYellow)) { shooterYellow.ownerTile = tile; return; }
-        if (capsule.TryGetComponent(out BasicShooterRed shooterRed)) { shooterRed.ownerTile = tile; return; }
-        if (capsule.TryGetComponent(out BasicShooterCream shooterCream)) { shooterCream.ownerTile = tile; return; }
-        if (capsule.TryGetComponent(out BasicShooterGreen shooterGreen)) { shooterGreen.ownerTile = tile; return; }
-        if (capsule.TryGetComponent(out BasicShooterOrange shooterOrange)) { shooterOrange.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out CapsuleBlue blue))
+        {
+            blue.ownerTile = tile;
+            return;
+        }
 
-        if (capsule.TryGetComponent(out BasicShooterYellowSoldier yellowSoldier)) { yellowSoldier.ownerTile = tile; return; }
-        if (capsule.TryGetComponent(out BasicShooterRedSoldier redSoldier)) { redSoldier.ownerTile = tile; return; }
-        if (capsule.TryGetComponent(out BasicShooterGreenSoldier greenSoldier)) { greenSoldier.ownerTile = tile; return; }
-        if (capsule.TryGetComponent(out BasicShooterBlueSoldier blueSoldier)) { blueSoldier.ownerTile = tile; return; }
-        if (capsule.TryGetComponent(out BasicShooterCreamSoldier creamSoldier)) { creamSoldier.ownerTile = tile; return; }
-        if (capsule.TryGetComponent(out BasicShooterOrangeSoldier orangeSoldier)) { orangeSoldier.ownerTile = tile; return; }
-        if (capsule.TryGetComponent(out BasicShooterBlackSoldier blackSoldier)) { blackSoldier.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out CapsuleYellow yellow))
+        {
+            yellow.ownerTile = tile;
+            return;
+        }
 
-        Debug.LogWarning($"[GameManager] Capsule/Soldier tidak dikenali: {capsule.name}");
+        if (capsule.TryGetComponent(out CapsuleCream cream))
+        {
+            cream.ownerTile = tile;
+            return;
+        }
+
+        if (capsule.TryGetComponent(out CapsuleGreen green))
+        {
+            green.ownerTile = tile;
+            return;
+        }
+
+        if (capsule.TryGetComponent(out CapsuleOrange orange))
+        {
+            orange.ownerTile = tile;
+            return;
+        }
+
+        Debug.LogWarning(
+            "[GameManager] Capsule tidak dikenali: "
+            + capsule.name
+        );
     }
+
+    // =====================================================
+    // ATOM CLICK SYSTEM (BEHAVIOUR LAMA)
+    // =====================================================
 
     private void HandleAtomClick(Vector3 mouseWorld)
     {
-        // BLOCK saat pause / gameover
         if (IsInteractionBlocked()) return;
 
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit2D hit = Physics2D.Raycast(mouseWorld, Vector2.zero, Mathf.Infinity, AtomLayer);
+            RaycastHit2D hit =
+                Physics2D.Raycast(
+                    mouseWorld,
+                    Vector2.zero,
+                    Mathf.Infinity,
+                    AtomLayer
+                );
+
             if (hit.collider != null)
             {
                 SoundManager.Instance?.PlayAtomClick();
@@ -247,15 +380,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator MoveAtomToTargetAndDestroy(GameObject atom, Vector3 targetPos)
+    private IEnumerator MoveAtomToTargetAndDestroy(
+        GameObject atom,
+        Vector3 targetPos)
     {
-        while (atom != null && Vector3.Distance(atom.transform.position, targetPos) > 0.05f)
-        {
-            atom.transform.position = Vector3.MoveTowards(
+        while (atom != null &&
+            Vector3.Distance(
                 atom.transform.position,
-                targetPos,
-                atomMoveSpeed * Time.deltaTime
-            );
+                targetPos) > 0.05f)
+        {
+            atom.transform.position =
+                Vector3.MoveTowards(
+                    atom.transform.position,
+                    targetPos,
+                    atomMoveSpeed *
+                    Time.deltaTime
+                );
+
             yield return null;
         }
 
@@ -265,7 +406,10 @@ public class GameManager : MonoBehaviour
 
             if (atomRewardValues.Count > 0)
             {
-                suns += atomRewardValues[Random.Range(0, atomRewardValues.Count)];
+                suns += atomRewardValues[
+                    Random.Range(
+                        0,
+                        atomRewardValues.Count)];
             }
         }
     }

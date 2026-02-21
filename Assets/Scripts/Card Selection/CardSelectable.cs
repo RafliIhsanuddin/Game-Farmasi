@@ -23,7 +23,8 @@ public class CardSelectable : MonoBehaviour
         originalPosition = transform.localPosition;
 
         var cap = GetComponent<CapsuleSlot>();
-        if (cap != null) cap.enabled = false;
+        if (cap != null)
+            cap.enabled = false;
 
         if (btn != null)
             btn.onClick.AddListener(OnClick);
@@ -42,20 +43,18 @@ public class CardSelectable : MonoBehaviour
 
     public void ReturnToSelector()
     {
-        // STATIC PVZ SELECTOR RETURN
         if (selectorParentGO != null)
         {
             transform.SetParent(selectorParentGO.transform);
 
             if (selectorPosGO != null)
-                transform.position = selectorPosGO.transform.position; // pos absolute (UI)
+                transform.position = selectorPosGO.transform.position;
             else
                 transform.localPosition = Vector3.zero;
 
             return;
         }
 
-        // fallback (tidak mengurangi behaviour lama)
         transform.SetParent(originalParent);
         transform.localPosition = originalPosition;
     }
