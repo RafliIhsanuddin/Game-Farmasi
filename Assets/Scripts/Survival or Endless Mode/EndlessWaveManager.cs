@@ -26,10 +26,6 @@ public class EndlessWaveManager : MonoBehaviour
 
     public bool IsGameOver { get; private set; }
 
-    // =====================================================
-    // MAIN CYCLE
-    // =====================================================
-
     public IEnumerator RunSingleCycle()
     {
         totalKills = 0;
@@ -47,95 +43,72 @@ public class EndlessWaveManager : MonoBehaviour
 
         yield return WaitAllEnemiesDead();
 
-        // =====================================================
-        // WAVE 1 START (NO FLAG, NO MUSIC)
-        // =====================================================
-
+        // =========================
+        // WAVE 1
+        // =========================
         yield return RunWave(w1, 1, spawner.StartSinglePerLineWave);
-
         yield return WaitAllEnemiesDead();
 
-        // =====================================================
-        // WAVE 2 WARNING
-        // =====================================================
+        // PRESISI: pastikan UI tepat w1 setelah wave1 benar-benar habis
+        ui.SetKillsExact(w1);
 
+        // =========================
+        // WARNING WAVE 2
+        // =========================
         ui.ShowBigWave(true);
-
         SoundManager.Instance?.PlayBigWaveWarning();
-
         yield return new WaitForSeconds(bigWaveDelay);
-
         ui.ShowBigWave(false);
 
-        // =====================================================
-        // WAVE 2 START
-        // FLAG CHANGE + WAVE START MUSIC SAME FRAME
-        // =====================================================
-
+        // START WAVE 2: flag merah + music bareng
         StartWaveFlagAndMusic(0);
 
+        // =========================
+        // WAVE 2
+        // =========================
         yield return RunWave(w2, 2, spawner.StartGroupedPerLineWave);
-
         yield return WaitAllEnemiesDead();
 
-        // =====================================================
-        // WAVE 3 WARNING
-        // =====================================================
+        // PRESISI: pastikan UI tepat w1+w2 setelah wave2 benar-benar habis
+        ui.SetKillsExact(w1 + w2);
 
+        // =========================
+        // WARNING WAVE 3
+        // =========================
         ui.ShowBigWave(true);
-
         SoundManager.Instance?.PlayBigWaveWarning();
-
         yield return new WaitForSeconds(bigWaveDelay);
-
         ui.ShowBigWave(false);
 
-        // =====================================================
-        // WAVE 3 START
-        // FLAG CHANGE + WAVE START MUSIC SAME FRAME
-        // =====================================================
-
+        // START WAVE 3: flag merah + music bareng
         StartWaveFlagAndMusic(1);
 
+        // =========================
+        // WAVE 3
+        // =========================
         yield return RunWave(w3, 3, spawner.StartGroupedPerLineWave);
-
         yield return WaitAllEnemiesDead();
 
-        difficulty.AdvanceCycle();
+        // PRESISI: pastikan UI 100% di akhir cycle
+        ui.SetKillsExact(w1 + w2 + w3);
 
+        difficulty.AdvanceCycle();
         phase.StartCoroutine(phase.SmoothBackToSelect());
     }
 
-    // =====================================================
-    // FLAG CHANGE + MUSIC START (SAME FRAME)
-    // =====================================================
-
     private void StartWaveFlagAndMusic(int flagIndex)
     {
-        // CHANGE FLAG FIRST
         ui.MarkWaveComplete(flagIndex);
-
-        // PLAY WAVE START MUSIC (SoundManager function name correct)
         SoundManager.Instance?.PlayWaveStartMusic();
     }
 
-    // =====================================================
-    // RUN WAVE
-    // =====================================================
-
-    private IEnumerator RunWave(
-        int count,
-        int waveNumber,
-        System.Action<int> startFunc)
+    private IEnumerator RunWave(int count, int waveNumber, System.Action<int> startFunc)
     {
         spawner.StopAllSpawning();
-
         spawner.SetWaveNumber(waveNumber);
-
         speedScaler?.NotifyWaveStart(waveNumber);
 
         bool spawnDone = false;
-
         spawner.OnWaveSpawnComplete = () => spawnDone = true;
 
         startFunc(count);
@@ -145,13 +118,11 @@ public class EndlessWaveManager : MonoBehaviour
         while (!IsGameOver)
         {
             int alive = spawner.CountAllAlive();
-
             int killedNow = lastAlive - alive;
 
             if (killedNow > 0)
             {
                 totalKills += killedNow;
-
                 ui.AddKills(killedNow);
             }
 
@@ -164,19 +135,11 @@ public class EndlessWaveManager : MonoBehaviour
         }
     }
 
-    // =====================================================
-    // WAIT ALL DEAD
-    // =====================================================
-
     private IEnumerator WaitAllEnemiesDead()
     {
         while (!IsGameOver && spawner.CountAllAlive() > 0)
             yield return new WaitForSeconds(checkInterval);
     }
-
-    // =====================================================
-    // GAME OVER
-    // =====================================================
 
     public void TriggerGameOver()
     {
@@ -185,22 +148,15 @@ public class EndlessWaveManager : MonoBehaviour
         IsGameOver = true;
 
         spawner.StopAllSpawning();
-
         speedScaler?.ResetSpeed();
-
         StopAllCoroutines();
 
         ui.ResetUIForGameOver();
     }
 
-    // =====================================================
-    // RESET
-    // =====================================================
-
     public void ResetEndlessState()
     {
         IsGameOver = false;
-
         difficulty.ResetDifficulty();
     }
 }
