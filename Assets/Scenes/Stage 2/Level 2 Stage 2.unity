@@ -3856,9 +3856,9 @@ MonoBehaviour:
   cardImage: {fileID: 352521644}
   capsuleImage: {fileID: 512469835}
   priceTextVisual: {fileID: 527033322}
-  selectedColor: {r: 0, g: 1, b: 0, a: 1}
+  selectedColor: {r: 0.6666667, g: 1, b: 0.6666667, a: 1}
   darkOverlay: {fileID: 2047652083}
-  cooldownDuration: 5
+  cooldownDuration: 2
   cooldownMask: {fileID: 1704961963}
 --- !u!114 &352521644
 MonoBehaviour:
@@ -7891,7 +7891,7 @@ MonoBehaviour:
   cardImage: {fileID: 931309852}
   capsuleImage: {fileID: 242248204}
   priceTextVisual: {fileID: 1291509288}
-  selectedColor: {r: 0, g: 1, b: 0, a: 1}
+  selectedColor: {r: 0.6666667, g: 1, b: 0.6666667, a: 1}
   darkOverlay: {fileID: 2108108968}
   cooldownDuration: 5
   cooldownMask: {fileID: 1473838891}
@@ -9101,9 +9101,9 @@ MonoBehaviour:
   cardImage: {fileID: 1001062536}
   capsuleImage: {fileID: 885109063}
   priceTextVisual: {fileID: 1952896472}
-  selectedColor: {r: 0, g: 1, b: 0, a: 1}
+  selectedColor: {r: 0.6666667, g: 1, b: 0.6666667, a: 1}
   darkOverlay: {fileID: 1103617561}
-  cooldownDuration: 5
+  cooldownDuration: 3
   cooldownMask: {fileID: 1524390963}
 --- !u!114 &1001062536
 MonoBehaviour:
@@ -10618,7 +10618,7 @@ MonoBehaviour:
   cardImage: {fileID: 1131601146}
   capsuleImage: {fileID: 1314901775}
   priceTextVisual: {fileID: 1414406222}
-  selectedColor: {r: 0, g: 1, b: 0, a: 1}
+  selectedColor: {r: 0.6666667, g: 1, b: 0.6666667, a: 1}
   darkOverlay: {fileID: 197035094}
   cooldownDuration: 5
   cooldownMask: {fileID: 1953936350}
@@ -11877,9 +11877,9 @@ MonoBehaviour:
   cardImage: {fileID: 1277271653}
   capsuleImage: {fileID: 330499592}
   priceTextVisual: {fileID: 556013814}
-  selectedColor: {r: 0, g: 1, b: 0, a: 1}
+  selectedColor: {r: 0.6666667, g: 1, b: 0.6666667, a: 1}
   darkOverlay: {fileID: 5338676764925025593}
-  cooldownDuration: 5
+  cooldownDuration: 4
   cooldownMask: {fileID: 328849140349083028}
 --- !u!114 &1277271653
 MonoBehaviour:
@@ -17423,7 +17423,7 @@ MonoBehaviour:
   cardImage: {fileID: 1758431053}
   capsuleImage: {fileID: 1457544284}
   priceTextVisual: {fileID: 996163396}
-  selectedColor: {r: 0, g: 1, b: 0, a: 1}
+  selectedColor: {r: 0.6666667, g: 1, b: 0.6666667, a: 1}
   darkOverlay: {fileID: 0}
   cooldownDuration: 5
   cooldownMask: {fileID: 0}
@@ -18990,7 +18990,7 @@ MonoBehaviour:
   cardImage: {fileID: 1952776166}
   capsuleImage: {fileID: 1156806616}
   priceTextVisual: {fileID: 1637513195}
-  selectedColor: {r: 0, g: 1, b: 0, a: 1}
+  selectedColor: {r: 0.6666667, g: 1, b: 0.6666667, a: 1}
   darkOverlay: {fileID: 1383638713}
   cooldownDuration: 5
   cooldownMask: {fileID: 1513681078}

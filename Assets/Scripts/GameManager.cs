@@ -306,46 +306,32 @@ public class GameManager : MonoBehaviour
         GameObject capsule,
         Tile tile)
     {
-        if (capsule.TryGetComponent(out CapsuleRed red))
-        {
-            red.ownerTile = tile;
-            return;
-        }
+        // Capsule
+        if (capsule.TryGetComponent(out CapsuleRed red)) { red.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out CapsuleBlue blue)) { blue.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out CapsuleYellow yellow)) { yellow.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out CapsuleCream cream)) { cream.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out CapsuleGreen green)) { green.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out CapsuleOrange orange)) { orange.ownerTile = tile; return; }
 
-        if (capsule.TryGetComponent(out CapsuleBlue blue))
-        {
-            blue.ownerTile = tile;
-            return;
-        }
+        // Basic Shooter
+        if (capsule.TryGetComponent(out BasicShooterBlue shooterBlue)) { shooterBlue.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out BasicShooterYellow shooterYellow)) { shooterYellow.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out BasicShooterRed shooterRed)) { shooterRed.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out BasicShooterCream shooterCream)) { shooterCream.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out BasicShooterGreen shooterGreen)) { shooterGreen.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out BasicShooterOrange shooterOrange)) { shooterOrange.ownerTile = tile; return; }
 
-        if (capsule.TryGetComponent(out CapsuleYellow yellow))
-        {
-            yellow.ownerTile = tile;
-            return;
-        }
+        // Soldier Shooter
+        if (capsule.TryGetComponent(out BasicShooterYellowSoldier yellowSoldier)) { yellowSoldier.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out BasicShooterRedSoldier redSoldier)) { redSoldier.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out BasicShooterGreenSoldier greenSoldier)) { greenSoldier.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out BasicShooterBlueSoldier blueSoldier)) { blueSoldier.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out BasicShooterCreamSoldier creamSoldier)) { creamSoldier.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out BasicShooterOrangeSoldier orangeSoldier)) { orangeSoldier.ownerTile = tile; return; }
+        if (capsule.TryGetComponent(out BasicShooterBlackSoldier blackSoldier)) { blackSoldier.ownerTile = tile; return; }
 
-        if (capsule.TryGetComponent(out CapsuleCream cream))
-        {
-            cream.ownerTile = tile;
-            return;
-        }
-
-        if (capsule.TryGetComponent(out CapsuleGreen green))
-        {
-            green.ownerTile = tile;
-            return;
-        }
-
-        if (capsule.TryGetComponent(out CapsuleOrange orange))
-        {
-            orange.ownerTile = tile;
-            return;
-        }
-
-        Debug.LogWarning(
-            "[GameManager] Capsule tidak dikenali: "
-            + capsule.name
-        );
+        Debug.LogWarning("[GameManager] Capsule/Shooter tidak dikenali: " + capsule.name);
     }
 
     // =====================================================
