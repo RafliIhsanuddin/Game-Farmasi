@@ -1328,7 +1328,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Retry Endless
+  m_text: 'Reset Score
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
   m_sharedMaterial: {fileID: 3866023056381278409, guid: 087cf7f99bbb7214b899e6e08cbaacee, type: 2}
@@ -2844,7 +2846,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1524822096
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2862,7 +2864,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6, y: 328}
+  m_AnchoredPosition: {x: -6, y: 186}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1524822097
@@ -2926,7 +2928,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 291129149}
         m_TargetAssemblyTypeName: HighscoreTable, Assembly-CSharp
-        m_MethodName: ResetLeaderboard
+        m_MethodName: ResetScoresFromButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

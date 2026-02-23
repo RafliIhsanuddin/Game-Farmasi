@@ -17,25 +17,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu/MainMenu.unity
     guid: 80645e1ea1611334d8d5deece8402120
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage 1/Level 1 Stage 1.unity
     guid: 3c35a06cb78064d4cabee603d9d5f576
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage 1/Level 2 Stage 1.unity
     guid: fa5229a45bd7a1c4fa772cf1516cfd1f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage 1/Level 3 Stage 1.unity
     guid: 22ed3c47b25b53d4d9dee2428d0f8302
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage 1/Level 4 Stage 1.unity
     guid: d518ffb485ba84146afab31c2505cd12
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage 1/Level 5 Stage 1.unity
     guid: 5c4b697f50360a14fa0686b5ff833c2e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage 1/Level 6 Stage 1.unity
     guid: 417fde422a51b3a4582e926df6b00a8f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage Selection/Stage 1 Selection.unity
     guid: c3c72cff2976afb43ad5e33252adf428
   - enabled: 1
@@ -44,7 +44,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Stage 2/Level 1 Stage 2.unity
     guid: 705882e6861c4e84181257de8f64b067
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage Selection/Stage 2 Selection.unity
     guid: 7246dd6fd78577b46abeda31551c2b43
   - enabled: 1
@@ -53,31 +53,31 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage Selection/Stage 1 Selection Baru.unity
     guid: 610fde2201946ae41b843aed69beb195
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage 1/Level 1 Stage 1 Trial.unity
     guid: f31d4b0f1c61c7e4ea7b56e5c3b895ef
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage 1/Level 2 Stage 1 Trial.unity
     guid: 700f9cef1bece0249b05e2c2942f3710
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage 1/Level 3 Stage 1 Trial.unity
     guid: f7f7cc173de93394db009bdeb4f1b146
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage 1/Level 4 Stage 1 Trial.unity
     guid: acbe89592aed5664f968bbd3c5e68eb8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage 1/Level 5 Stage 1 Trial.unity
     guid: a3543f1e86f7ee342bacde0675d76494
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage 1/Level 6 Stage 1 Trial.unity
     guid: 3294cfe7020839e48af1d15441c4914b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage Selection/Stage Selection.unity
     guid: ce74e87c6b03fab4ea5c60a3d4cf518c
   - enabled: 1
     path: Assets/Scenes/Stage Selection/Stage Selection Trial.unity
     guid: f39838cc97d0bf440ba6701447b17279
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage Selection/Stage 1 Selection Trial.unity
     guid: 12e238d39d93a7a41a20e9013066b874
   - enabled: 1
@@ -86,7 +86,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Leaderboard/Leaderboard Sample.unity
     guid: 1c66f710b4eef864a9c3cb19316a34e4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Leaderboard/PlayerInputName.unity
     guid: 8a659676dec6156448f0dafe38bfdae8
   - enabled: 1

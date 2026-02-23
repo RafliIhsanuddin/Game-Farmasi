@@ -116,7 +116,27 @@ public class HighscoreTable : MonoBehaviour
         Debug.Log($"[HighscoreTable] ALL SCORE RESET!");
     }
 
-    // ============= FUNGSI BARU =============
+    // =====================================================
+    // FUNGSI UNTUK RESET BUTTON (NON STATIC)
+    // =====================================================
+    public void ResetScoresFromButton()
+    {
+        Debug.Log("[HighscoreTable] ResetScoresFromButton() dipanggil");
+
+        // reset data
+        ResetGlobal();
+
+        // hapus semua entry UI yang sudah ada
+        foreach (Transform child in entryContainer)
+        {
+            if (child != entryTemplate)
+                Destroy(child.gameObject);
+        }
+
+        // reload (akan kosong)
+        LoadAndDisplay();
+    }
+
     public static void DeleteScoresByName(string name)
     {
         string json = PlayerPrefs.GetString(PREF_KEY, "");
