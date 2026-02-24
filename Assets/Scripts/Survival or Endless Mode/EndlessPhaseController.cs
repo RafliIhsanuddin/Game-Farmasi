@@ -56,13 +56,20 @@ public class EndlessPhaseController : MonoBehaviour
     [Tooltip("Jika true, EndlessPhaseController akan memastikan WaveManager.isGameOver tidak nyangkut TRUE saat masuk SELECT/PLAY.")]
     [SerializeField] private bool forceResetWaveManagerGameOver = true;
 
+    // =====================================================
+    // SUNNAH — CACHE GameManager (untuk reset selection per phase)
+    // =====================================================
+
+    private GameManager gms;
+
     private void Start()
     {
         Debug.Log("<color=cyan>[PHASE] Scene START → SELECT phase</color>");
 
-        // =====================================================
+        // SUNNAH cache GameManager (tidak mengubah behaviour lain)
+        gms = FindFirstObjectByType<GameManager>();
+
         // NEW — CHECK & FIX GAMEOVER STATE ON SELECT START
-        // =====================================================
         EnsureWaveManagerNotGameOver("START/SELECT");
 
         SnapCamera(selectCameraX);
@@ -96,9 +103,7 @@ public class EndlessPhaseController : MonoBehaviour
     {
         Debug.Log("<color=orange>[PHASE] StartPlayPhase called</color>");
 
-        // =====================================================
         // NEW — CHECK & FIX GAMEOVER STATE BEFORE MOVING TO PLAY
-        // =====================================================
         EnsureWaveManagerNotGameOver("BEFORE PLAY MOVE");
 
         Debug.Log("<color=grey>[PHASE] Camera SELECT → PLAY moving...</color>");
@@ -108,10 +113,7 @@ public class EndlessPhaseController : MonoBehaviour
 
         ApplyPlayObjects();
 
-        // =====================================================
         // NEW — CHECK & FIX GAMEOVER STATE AFTER PLAY OBJECTS ENABLED
-        // (ini titik yang kamu buktikan jadi TRUE)
-        // =====================================================
         EnsureWaveManagerNotGameOver("AFTER ApplyPlayObjects (PLAY)");
 
         // DEBUG (PLAY MOMENT)
@@ -163,9 +165,7 @@ public class EndlessPhaseController : MonoBehaviour
 
         ApplySelectObjects();
 
-        // =====================================================
         // NEW — CHECK & FIX GAMEOVER STATE WHEN BACK TO SELECT
-        // =====================================================
         EnsureWaveManagerNotGameOver("BACK TO SELECT");
 
         // DEBUG (SELECT MOMENT)
@@ -233,6 +233,26 @@ public class EndlessPhaseController : MonoBehaviour
                 Debug.Log($"<color=green>[PHASE] PLAY SLOT OFF → {o.name}</color>");
             }
         }
+
+        // =====================================================
+        // SUNNAH — FORCE RESTORE CapsuleSlot VISUAL (SELECT PHASE)
+        // =====================================================
+        CapsuleSlot[] slots =
+            Object.FindObjectsByType<CapsuleSlot>(FindObjectsSortMode.None);
+
+        foreach (var slot in slots)
+        {
+            slot.ForceRestoreOriginalColorFromPhase();
+        }
+
+        // =====================================================
+        // SUNNAH — RESET SELECTION DI GameManager (SELECT PHASE)
+        // (pilihan harus kosong saat SELECT)
+        // =====================================================
+        if (gms != null)
+        {
+            gms.ForceResetSelectionFromPhase("SELECT PHASE");
+        }
     }
 
     private void ApplyPlayObjects()
@@ -271,6 +291,15 @@ public class EndlessPhaseController : MonoBehaviour
                 o.SetActive(true);
                 Debug.Log($"<color=orange>[PHASE] PLAY SLOT ON → {o.name}</color>");
             }
+        }
+
+        // =====================================================
+        // SUNNAH — RESET SELECTION DI GameManager (PLAY PHASE)
+        // (sesuai request: masuk PLAY juga tidak ada yang “terklik”)
+        // =====================================================
+        if (gms != null)
+        {
+            gms.ForceResetSelectionFromPhase("PLAY PHASE");
         }
     }
 
@@ -355,8 +384,6 @@ public class EndlessPhaseController : MonoBehaviour
 
     // =====================================================
     // NEW — SAFETY FIX FOR ENDLESS MODE
-    // - Jika WaveManager.isGameOver nyangkut TRUE, reset jadi FALSE
-    // - Dipanggil saat SELECT & PLAY moment
     // =====================================================
     private void EnsureWaveManagerNotGameOver(string context)
     {
@@ -368,10 +395,8 @@ public class EndlessPhaseController : MonoBehaviour
 
         Debug.LogWarning($"<color=red>[PHASE FIX]</color> WaveManager.isGameOver TRUE saat {context}. Mencoba reset ke FALSE agar input tidak mati.");
 
-        // 1) Coba reset langsung via reflection (paling kompatibel kalau isGameOver private/static)
         bool resetSuccess = TryForceSetWaveManagerGameOverFalseByReflection();
 
-        // 2) Kalau gagal, minimal kasih info jelas
         if (!resetSuccess)
         {
             Debug.LogError("<color=red>[PHASE FIX]</color> Gagal reset WaveManager.isGameOver via reflection. " +
@@ -387,11 +412,8 @@ public class EndlessPhaseController : MonoBehaviour
     {
         try
         {
-            // WaveManager.isGameOver di project kamu tampaknya static.
-            // Kita coba cari field bernama "isGameOver" pada type WaveManager.
             var t = typeof(WaveManager);
 
-            // Coba Field (static)
             FieldInfo f =
                 t.GetField("isGameOver", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
 
@@ -401,8 +423,6 @@ public class EndlessPhaseController : MonoBehaviour
                 return true;
             }
 
-            // Kalau ternyata property (jarang untuk static property dengan backing),
-            // kita coba property set (jika ada setter non-public).
             PropertyInfo p =
                 t.GetProperty("isGameOver", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
 

@@ -76,12 +76,7 @@ public class CapsuleSlot : MonoBehaviour
         if (darkOverlay)
             darkOverlay.gameObject.SetActive(false);
 
-        // ORIGINAL BEHAVIOUR
         StartCooldown();
-
-        // =====================================================
-        // SUNNAH INIT — Cari EndlessPhaseController jika ada
-        // =====================================================
 
         endlessPhase = FindFirstObjectByType<EndlessPhaseController>();
 
@@ -106,7 +101,6 @@ public class CapsuleSlot : MonoBehaviour
         ApplyAffordability();
         ApplySelectionVisual();
 
-        // SUNNAH CHECK PLAY PHASE
         CheckPlayPhaseSunnah();
     }
 
@@ -116,11 +110,8 @@ public class CapsuleSlot : MonoBehaviour
 
     private void CheckPlayPhaseSunnah()
     {
-        if (endlessPhase == null)
-            return;
-
-        if (endlessCamera == null)
-            return;
+        if (endlessPhase == null) return;
+        if (endlessCamera == null) return;
 
         float currentX = endlessCamera.position.x;
 
@@ -128,7 +119,6 @@ public class CapsuleSlot : MonoBehaviour
             Mathf.Abs(currentX - lastCameraX) > 0.001f &&
             currentX < lastCameraX;
 
-        // Detect entering play phase
         if (isPlayPhase && !wasInPlayPhase)
         {
             Debug.Log($"<color=orange>[CapsuleSlot] PLAY PHASE detected → Reset cooldown for {capsuleObject.name}</color>");
@@ -269,6 +259,17 @@ public class CapsuleSlot : MonoBehaviour
         if (cardImage) cardImage.color = originalCardColor;
         if (capsuleImage) capsuleImage.color = originalCapsuleColor;
         if (priceTextVisual) priceTextVisual.color = originalPriceColor;
+    }
+
+    // =====================================================
+    // SUNNAH — FORCE RESTORE FROM PHASE
+    // =====================================================
+
+    public void ForceRestoreOriginalColorFromPhase()
+    {
+        RestoreOriginalColor();
+
+        Debug.Log($"<color=cyan>[CapsuleSlot]</color> {capsuleObject.name} RestoreOriginalColor() forced by SELECT phase");
     }
 
     // =====================================================

@@ -22,7 +22,7 @@ public class QuestionMarkManager : MonoBehaviour
     [SerializeField] private GameObject rangerRedCanvas;
     [SerializeField] private GameObject rangerGreenCanvas;
     [SerializeField] private GameObject rangerYellowCanvas;
-    [SerializeField] private GameObject rangerBlackCanvas; // ✅ BLACK (NEW)
+    [SerializeField] private GameObject rangerBlackCanvas;
 
     // ========================
     // ENEMY BIO MODE

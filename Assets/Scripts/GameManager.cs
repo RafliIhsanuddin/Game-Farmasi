@@ -210,6 +210,20 @@ public class GameManager : MonoBehaviour
     }
 
     // =====================================================
+    // SUNNAH — PHASE RESET (TAMBAHAN, TANPA UBAH BEHAVIOUR LAIN)
+    // - Dipanggil oleh EndlessPhaseController saat SELECT & saat masuk PLAY
+    // - Tujuannya: tidak ada card/capsule yang "kepilih" (currentCapsule = null)
+    // =====================================================
+
+    public void ForceResetSelectionFromPhase(string context)
+    {
+        // CancelSelection() adalah behaviour lama yang memang untuk mengosongkan pilihan
+        CancelSelection();
+
+        Debug.Log($"<color=cyan>[GameManager]</color> ForceResetSelectionFromPhase() called by PHASE → {context}");
+    }
+
+    // =====================================================
     // INTERACTION BLOCK CHECK (BEHAVIOUR LAMA)
     // =====================================================
 
@@ -300,6 +314,7 @@ public class GameManager : MonoBehaviour
 
     // =====================================================
     // ASSIGN OWNER TILE (BEHAVIOUR LAMA - TIDAK DIUBAH)
+    // (DILARANG HILANGKAN — DIPERTAHANKAN PERSIS)
     // =====================================================
 
     private void AssignOwnerTileToCapsule(

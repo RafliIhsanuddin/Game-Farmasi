@@ -43651,7 +43651,7 @@ RectTransform:
   m_GameObject: {fileID: 7370723132174973548}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.05120672, y: 0.05120672, z: 0.05120672}
+  m_LocalScale: {x: 0.074568644, y: 0.07151734, z: 0.0739832}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3365335825750916214}
@@ -43659,8 +43659,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -10.599976, y: -8.600006}
-  m_SizeDelta: {x: 654, y: 887}
+  m_AnchoredPosition: {x: -4.4731445, y: -2.2606812}
+  m_SizeDelta: {x: 923, y: 955}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &500124373609242271
 CanvasRenderer:
@@ -43690,7 +43690,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 742804183, guid: 96c5c002b57bc8b40a114bb76db10dd9, type: 3}
+  m_Sprite: {fileID: 683985116831244098, guid: aead8080f2d31dd4d83ccb52ceeaa2bd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -47594,8 +47594,8 @@ MonoBehaviour:
   - targetImage: {fileID: 6121930049905665998}
     targetText: {fileID: 0}
     button: {fileID: 7852409958217903334}
-    normalSprite: {fileID: 742804183, guid: 96c5c002b57bc8b40a114bb76db10dd9, type: 3}
-    hoverSprite: {fileID: 1460058161, guid: 121170e7a02352044991d5cfd7138bdf, type: 3}
+    normalSprite: {fileID: 683985116831244098, guid: aead8080f2d31dd4d83ccb52ceeaa2bd, type: 3}
+    hoverSprite: {fileID: -5472824083296897875, guid: 4383834d84128c4478fa25c2921118ae, type: 3}
     textHoverEnabled: 0
     normalTextColor: {r: 0, g: 0, b: 0, a: 1}
     hoverTextColor: {r: 0, g: 0, b: 0, a: 1}
