@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 57b5be3ed8c79a24187fc3003cada89d
+guid: a223a12cbe7624b4b863c1971c499d28
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9160895090408074634
-    second: buttonpilihlev_0
+      213: 7152389154855321702
+    second: Endless_0
+  - first:
+      213: -6729325980494538334
+    second: Endless_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: buttonpilihlev_0
+      name: Endless_0
       rect:
         serializedVersion: 2
-        x: 179
-        y: 262
-        width: 410
-        height: 115
+        x: 297
+        y: 450
+        width: 949
+        height: 173
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a8da4685c89022f70800000000000000
-      internalID: 9160895090408074634
+      spriteID: 66002869a04624360800000000000000
+      internalID: 7152389154855321702
       vertices: []
       indices: 
       edges: []
@@ -125,7 +128,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 76a50a8b2603e6e48a335610cf7d4221
+    spriteID: 8e5b9030588b7df41bfb053149b2a9fc
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +138,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      buttonpilihlev_0: 9160895090408074634
+      Endless_0: 7152389154855321702
+      Endless_1: -6729325980494538334
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

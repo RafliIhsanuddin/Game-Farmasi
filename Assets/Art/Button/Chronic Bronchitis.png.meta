@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 57b5be3ed8c79a24187fc3003cada89d
+guid: 475d3ff11789a8b47a4c74ff659d476c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9160895090408074634
-    second: buttonpilihlev_0
+      213: -825761130109097234
+    second: Chronic Bronchitis_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: buttonpilihlev_0
+      name: Chronic Bronchitis_0
       rect:
         serializedVersion: 2
-        x: 179
-        y: 262
-        width: 410
-        height: 115
+        x: 358
+        y: 440
+        width: 781
+        height: 174
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a8da4685c89022f70800000000000000
-      internalID: 9160895090408074634
+      spriteID: eeaa58290ae4a84f0800000000000000
+      internalID: -825761130109097234
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 76a50a8b2603e6e48a335610cf7d4221
+    spriteID: 35a410b9a2d5fb94d80eaab535b1e9d6
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      buttonpilihlev_0: 9160895090408074634
+      Chronic Bronchitis_0: -825761130109097234
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
