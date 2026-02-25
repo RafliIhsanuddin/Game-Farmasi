@@ -1186,8 +1186,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1323015813}
   m_HandleRect: {fileID: 1323015812}
   m_Direction: 2
-  m_Value: 0.49999723
-  m_Size: 0.9603727
+  m_Value: 0.49999908
+  m_Size: 0.9603728
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4158,8 +4158,8 @@ MonoBehaviour:
     gonorrhea\r\n\r\n<b>Target Bacteria:</b>\r\nEscherichia coli, Klebsiella pneumoniae,
     Proteus mirabilis, Haemophilus influenzae, Neisseria gonorrhoeae, Salmonella
     typhi\r\n\r\n<b>Adverse Drug Reactions (ADR):</b>\r\nDiarrhea, nausea, vomiting,
-    abdominal pain, skin rash, hypersensitivity reactions\r\n\r\n<b>LINK:</b>\n<link=\"https://www.rxlist.com/suprax-drug.htm\">\n 
-    Click here to see more\n</link>"
+    abdominal pain, skin rash, hypersensitivity reactions\r\n\r\n<b>LINK:</b>\n<link=\"https://www.rxlist.com/suprax-drug.htm\">Click
+    here to see more</link>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -8742,14 +8742,38 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<b>Class:</b> Glycopeptide antibiotic\r\n\r\n<b>Indications:</b>\r\nTreatment
+  m_text: '<b>Class:</b> Glycopeptide antibiotic
+
+    
+
+    <b>Indications:</b>
+
+    Treatment
     of serious Gram-positive bacterial infections, including methicillin-resistant
     Staphylococcus aureus (MRSA), endocarditis, pneumonia, bone and joint infections,
-    and Clostridioides difficile-associated colitis\r\n\r\n<b>Target Bacteria:</b>\r\nStaphylococcus
+    and Clostridioides difficile-associated colitis
+
+    
+
+    <b>Target Bacteria:</b>
+
+    Staphylococcus
     aureus (including MRSA), Streptococcus spp., Enterococcus spp., Clostridioides
-    difficile\r\n\r\n<b>Adverse Drug Reactions (ADR):</b>\r\nNephrotoxicity, ototoxicity,
-    infusion-related reactions (red man syndrome), phlebitis, skin rash\r\n\r\n<b>LINK:</b>\n<link=\"https://www.rxlist.com/vancocin-drug.htm\">\n 
-    Click here to see more\n</link>"
+    difficile
+
+    
+
+    <b>Adverse Drug Reactions (ADR):</b>
+
+    Nephrotoxicity,
+    ototoxicity, infusion-related reactions (red man syndrome), phlebitis, skin rash
+
+    
+
+    <b>LINK:</b>
+
+    <link="https://www.rxlist.com/vancocin-drug.htm">Click
+    here to see more</link>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -9109,7 +9133,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -9.000015}
+  m_AnchoredPosition: {x: 0, y: -9}
   m_SizeDelta: {x: 705, y: 188}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &307976422
@@ -11230,8 +11254,8 @@ MonoBehaviour:
     skin and soft tissue infections, and toxoplasmosis\r\n\r\n<b>Target Bacteria:</b>\r\nEscherichia
     coli, Klebsiella spp., Staphylococcus aureus, Pneumocystis jirovecii, Toxoplasma
     gondii\r\n\r\n<b>Adverse Drug Reactions (ADR):</b>\r\nNausea, vomiting, skin
-    rash, Stevens\u2013Johnson syndrome, bone marrow suppression\r\n\r\n<b>LINK:</b>\r\n<link=\"https://www.rxlist.com/bactrim-drug.htm\">\n 
-    Click here to see more\n</link>"
+    rash, Stevens\u2013Johnson syndrome, bone marrow suppression\r\n\r\n<b>LINK:</b>\r\n<link=\"https://www.rxlist.com/bactrim-drug.htm\">Click
+    here to see more</link>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -14482,7 +14506,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 845035502}
   m_HandleRect: {fileID: 845035501}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 1.0000001
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -16821,8 +16845,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00021362, y: -1164.8186}
-  m_SizeDelta: {x: 1331, y: 2329.637}
+  m_AnchoredPosition: {x: 0.00021362, y: -1610.9868}
+  m_SizeDelta: {x: 1331, y: 3221.9734}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &596951327
 MonoBehaviour:
@@ -18808,8 +18832,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00021362, y: -1122.6876}
-  m_SizeDelta: {x: 1331, y: 2245.375}
+  m_AnchoredPosition: {x: 0.00021362, y: -1535.5261}
+  m_SizeDelta: {x: 1331, y: 3071.0522}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &655641525
 MonoBehaviour:
@@ -23293,7 +23317,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Stage 1 Selection Baru
+          m_StringArgument: Stage 1 Selection
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &844305340
@@ -24719,7 +24743,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 601310208}
   m_HandleRect: {fileID: 601310207}
   m_Direction: 2
-  m_Value: 0.9999999
+  m_Value: 1
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -24797,8 +24821,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00021362, y: -1473.3774}
-  m_SizeDelta: {x: 1331, y: 2946.755}
+  m_AnchoredPosition: {x: 0.00021362, y: -1566.8785}
+  m_SizeDelta: {x: 1331, y: 3133.7573}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &881286562
 MonoBehaviour:
@@ -26936,8 +26960,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00021362, y: -1197.1271}
-  m_SizeDelta: {x: 1331, y: 2394.254}
+  m_AnchoredPosition: {x: 0.00021362, y: -1475.5568}
+  m_SizeDelta: {x: 1331, y: 2951.1133}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &954970016
 MonoBehaviour:
@@ -28551,12 +28575,8 @@ MonoBehaviour:
 
     <b>LINK:</b>
 
-    <link="https://www.rxlist.com/cipro-drug.htm">
-
-    Click
-    here to see more
-
-    </link>'
+    <link="https://www.rxlist.com/cipro-drug.htm">Click
+    here to see more</link>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -31131,8 +31151,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00021362, y: -936.79675}
-  m_SizeDelta: {x: 1331, y: 1873.5933}
+  m_AnchoredPosition: {x: 0.00021362, y: -1780.1536}
+  m_SizeDelta: {x: 1331, y: 3560.3066}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1091695410
 MonoBehaviour:
@@ -34255,8 +34275,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00021362, y: -1054.8881}
-  m_SizeDelta: {x: 1331, y: 2109.776}
+  m_AnchoredPosition: {x: 0.00021362, y: -1779.965}
+  m_SizeDelta: {x: 1331, y: 3559.9297}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1237512912
 MonoBehaviour:
@@ -37474,7 +37494,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 487872134}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.019813547}
+  m_AnchorMin: {x: 0, y: 0.01981356}
   m_AnchorMax: {x: 1, y: 0.9801862}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -39208,7 +39228,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -9.000015}
+  m_AnchoredPosition: {x: 0, y: -9}
   m_SizeDelta: {x: 705, y: 188}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1397445976
@@ -43672,12 +43692,8 @@ MonoBehaviour:
 
     <b>LINK:</b>
 
-    <link="https://www.rxlist.com/zithromax-drug.htm">
-
-    Click
-    here to see more
-
-    </link>'
+    <link="https://www.rxlist.com/zithromax-drug.htm">Click
+    here to see more</link>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
   m_sharedMaterial: {fileID: 6686870808732258026, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -45408,8 +45424,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00021362, y: -1093.53}
-  m_SizeDelta: {x: 1331, y: 2187.06}
+  m_AnchoredPosition: {x: 0.00021362, y: -1429.7407}
+  m_SizeDelta: {x: 1331, y: 2859.4814}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1588628601
 MonoBehaviour:
@@ -47521,7 +47537,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Stage 2 Selection Trial
+          m_StringArgument: Stage 2 Selection
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &1656087481
@@ -48320,9 +48336,7 @@ MonoBehaviour:
 
     <b>LINK:</b>
 
-    <link="https://www.rxlist.com/levaquin-drug.htm">
-
-    Click
+    <link="https://www.rxlist.com/levaquin-drug.htm">Click
     here to see more</link>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -48449,7 +48463,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -9.000015}
+  m_AnchoredPosition: {x: 0, y: -9}
   m_SizeDelta: {x: 705, y: 188}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1690638502
@@ -49461,7 +49475,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 897000166}
   m_HandleRect: {fileID: 897000165}
   m_Direction: 2
-  m_Value: 1.0000001
+  m_Value: 1
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -53413,7 +53427,7 @@ MonoBehaviour:
     pneumoniae, Streptococcus pyogenes, Enterococcus faecalis, Haemophilus influenzae,
     Escherichia coli, Helicobacter pylori\r\n\r\n<b>Adverse Drug Reactions (ADR):</b>\r\nNausea,
     vomiting, diarrhea, skin rash, hypersensitivity reactions, including anaphylaxis
-    (rare)\r\n\r\n<b>LINK:</b>\n\n\r\n<link=\"https://www.rxlist.com/amoxicillin/generic-drug.htm\">Click
+    (rare)\r\n\r\n<b>LINK:</b>\n<link=\"https://www.rxlist.com/amoxicillin/generic-drug.htm\">Click
     here to see more</link>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8f5a22c0014f7d46916b52ece690b42, type: 2}
@@ -60942,7 +60956,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 495844743}
   m_HandleRect: {fileID: 495844742}
   m_Direction: 2
-  m_Value: 1.0000001
+  m_Value: 1
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -61493,7 +61507,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 414147667}
   m_HandleRect: {fileID: 414147666}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 1.0000001
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:

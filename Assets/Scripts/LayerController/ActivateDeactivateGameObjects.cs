@@ -4,27 +4,54 @@ using System.Collections.Generic;
 
 public class ActivateDeactivateGameObjects : MonoBehaviour
 {
-    [Header("Button References")]
-    [SerializeField] private Button activateButton;
-    [SerializeField] private Button deactivateButton;
+    [Header("Activate Buttons (boleh banyak)")]
+    [SerializeField] private List<Button> activateButtons = new List<Button>();
 
-    [Header("Target Objects (boleh kosong)")]
+    [Header("Deactivate Buttons (boleh banyak)")]
+    [SerializeField] private List<Button> deactivateButtons = new List<Button>();
+
+    [Header("Target Objects (1 list saja, boleh kosong / boleh banyak)")]
     [SerializeField] private List<GameObject> targetObjects = new List<GameObject>();
+
+    [Header("Deactivate Blockers (Sunnah, boleh kosong / boleh banyak)")]
+    [SerializeField] private List<GameObject> deactivateBlockers = new List<GameObject>();
 
 
     private void Awake()
     {
-        if (activateButton != null)
-            activateButton.onClick.AddListener(ActivateObjects);
+        RegisterActivateButtons();
+        RegisterDeactivateButtons();
+    }
 
-        if (deactivateButton != null)
-            deactivateButton.onClick.AddListener(DeactivateObjects);
+
+    private void RegisterActivateButtons()
+    {
+        if (activateButtons == null || activateButtons.Count == 0)
+            return;
+
+        foreach (Button btn in activateButtons)
+        {
+            if (btn != null)
+                btn.onClick.AddListener(ActivateObjects);
+        }
+    }
+
+
+    private void RegisterDeactivateButtons()
+    {
+        if (deactivateButtons == null || deactivateButtons.Count == 0)
+            return;
+
+        foreach (Button btn in deactivateButtons)
+        {
+            if (btn != null)
+                btn.onClick.AddListener(DeactivateObjects);
+        }
     }
 
 
     private void ActivateObjects()
     {
-        // Sunnah kosong → langsung return tanpa error / warning
         if (targetObjects == null || targetObjects.Count == 0)
             return;
 
@@ -38,7 +65,10 @@ public class ActivateDeactivateGameObjects : MonoBehaviour
 
     private void DeactivateObjects()
     {
-        // Sunnah kosong → langsung return tanpa error / warning
+        // 🔹 Sunnah: cek blocker, jika ada yang aktif maka abort deactivate
+        if (IsDeactivateBlocked())
+            return;
+
         if (targetObjects == null || targetObjects.Count == 0)
             return;
 
@@ -47,5 +77,21 @@ public class ActivateDeactivateGameObjects : MonoBehaviour
             if (obj != null)
                 obj.SetActive(false);
         }
+    }
+
+
+    // 🔹 Sunnah helper function untuk cek blocker
+    private bool IsDeactivateBlocked()
+    {
+        if (deactivateBlockers == null || deactivateBlockers.Count == 0)
+            return false;
+
+        foreach (GameObject blocker in deactivateBlockers)
+        {
+            if (blocker != null && blocker.activeSelf)
+                return true;
+        }
+
+        return false;
     }
 }

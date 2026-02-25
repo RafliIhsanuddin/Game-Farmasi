@@ -12,19 +12,19 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu/MainMenu.unity
     guid: 80645e1ea1611334d8d5deece8402120
   - enabled: 1
-    path: Assets/Scenes/Stage 2/Level 2 Stage 2.unity
+    path: Assets/Scenes/Stage 2/Level Endless.unity
     guid: 91ae4a5a25587fb4cb2295767bd44d8f
   - enabled: 1
-    path: Assets/Scenes/Stage 2/Level 2 Stage 2.unity
+    path: Assets/Scenes/Stage 2/Level Endless.unity
     guid: 91ae4a5a25587fb4cb2295767bd44d8f
   - enabled: 1
-    path: Assets/Scenes/Stage Selection/Stage 1 Selection Baru.unity
+    path: Assets/Scenes/Stage Selection/Stage 1 Selection.unity
     guid: 610fde2201946ae41b843aed69beb195
   - enabled: 1
-    path: Assets/Scenes/Stage Selection/Stage Selection Trial.unity
+    path: Assets/Scenes/Stage Selection/Stage Selection.unity
     guid: f39838cc97d0bf440ba6701447b17279
   - enabled: 1
-    path: Assets/Scenes/Stage Selection/Stage 2 Selection Trial.unity
+    path: Assets/Scenes/Stage Selection/Stage 2 Selection.unity
     guid: 8f7171c5d55d67c48b55c0464211213b
   - enabled: 1
     path: Assets/Scenes/Leaderboard/Leaderboard Sample.unity
@@ -36,22 +36,22 @@ EditorBuildSettings:
     path: Assets/Scenes/Leaderboard/Leaderboard.unity
     guid: 10f9825afce4561428aef1cf00a0d748
   - enabled: 1
-    path: Assets/Scenes/Stage 1/Level 1 Stage 1 Baru.unity
+    path: Assets/Scenes/Stage 1/Level 1 Stage 1.unity
     guid: ea708b5848abc8243b84e203ca689a65
   - enabled: 1
-    path: Assets/Scenes/Stage 1/Level 2 Stage 1 Baru.unity
+    path: Assets/Scenes/Stage 1/Level 2 Stage 1.unity
     guid: db3a504ed45a7c54da34f5727233c6a8
   - enabled: 1
-    path: Assets/Scenes/Stage 1/Level 4 Stage 1 Baru.unity
+    path: Assets/Scenes/Stage 1/Level 4 Stage 1.unity
     guid: 923bba48fdc1ab541801b44106ccadc4
   - enabled: 1
-    path: Assets/Scenes/Stage 1/Level 3 Stage 1 Baru.unity
+    path: Assets/Scenes/Stage 1/Level 3 Stage 1.unity
     guid: 218a119f7b3499e488edcb8c56e6d257
   - enabled: 1
-    path: Assets/Scenes/Stage 1/Level 5 Stage 1 Baru.unity
+    path: Assets/Scenes/Stage 1/Level 5 Stage 1.unity
     guid: 7f4f6e8dad5a4bc4f9de003613453af3
   - enabled: 1
-    path: Assets/Scenes/Stage 1/Level 6 Stage 1 Baru.unity
+    path: Assets/Scenes/Stage 1/Level 6 Stage 1.unity
     guid: 70e4228f34060744880066151ed5caa1
   - enabled: 1
     path: Assets/Scenes/MainMenu/MainMenu disease.unity

@@ -42,7 +42,7 @@ public class QuestionMarkManager : MonoBehaviour
     [SerializeField] private GameObject enemyPinkPanel;
     [SerializeField] private GameObject enemyOrangePanel;
     [SerializeField] private GameObject enemyYellowPanel;
-    [SerializeField] private GameObject enemyGreenPanel; // ✅ GREEN
+    [SerializeField] private GameObject enemyGreenPanel;
 
     [Header("Enemy Panels - Other")]
     [SerializeField] private GameObject enemyVirusPanel;
@@ -66,7 +66,12 @@ public class QuestionMarkManager : MonoBehaviour
     // ========================
     public void ShowDefault()
     {
-        if (IsBlocked()) return;
+        if (IsBlocked())
+        {
+            Debug.Log("[QuestionMarkManager] ShowDefault blocked because '" 
+                + (blockCanvas != null ? blockCanvas.name : "NULL") + "' is active.");
+            return;
+        }
 
         DisableAllContent();
 
@@ -82,24 +87,33 @@ public class QuestionMarkManager : MonoBehaviour
     // ========================
     public void ShowQuestionMark()
     {
-        if (IsBlocked()) return;
+        if (IsBlocked())
+        {
+            Debug.Log("[QuestionMarkManager] ShowQuestionMark blocked because '" 
+                + (blockCanvas != null ? blockCanvas.name : "NULL") + "' is active.");
+            return;
+        }
 
         DisableAllContent();
 
         canvasDefault?.SetActive(false);
         canvasQuestionMark?.SetActive(true);
-        // ❌ EnemyBioChoose TIDAK AKTIF
 
         Time.timeScale = 0f;
         SoundManager.Instance?.PauseBgm();
     }
 
     // ========================
-    // ENEMY BIO CHOOSE (INI YANG BENAR)
+    // ENEMY BIO CHOOSE
     // ========================
     public void ShowEnemyBioChoose()
     {
-        if (IsBlocked()) return;
+        if (IsBlocked())
+        {
+            Debug.Log("[QuestionMarkManager] ShowEnemyBioChoose blocked because '" 
+                + (blockCanvas != null ? blockCanvas.name : "NULL") + "' is active.");
+            return;
+        }
 
         DisableAllContent();
 
@@ -112,7 +126,12 @@ public class QuestionMarkManager : MonoBehaviour
     // ========================
     public void ShowEnemyBacteriaBioManager()
     {
-        if (IsBlocked()) return;
+        if (IsBlocked())
+        {
+            Debug.Log("[QuestionMarkManager] ShowEnemyBacteriaBioManager blocked because '" 
+                + (blockCanvas != null ? blockCanvas.name : "NULL") + "' is active.");
+            return;
+        }
 
         DisableAllContent();
 
@@ -123,7 +142,12 @@ public class QuestionMarkManager : MonoBehaviour
 
     public void ShowEnemyOtherBioManager()
     {
-        if (IsBlocked()) return;
+        if (IsBlocked())
+        {
+            Debug.Log("[QuestionMarkManager] ShowEnemyOtherBioManager blocked because '" 
+                + (blockCanvas != null ? blockCanvas.name : "NULL") + "' is active.");
+            return;
+        }
 
         DisableAllContent();
 
@@ -137,7 +161,12 @@ public class QuestionMarkManager : MonoBehaviour
     // ========================
     public void ShowEnemy(GameObject enemyPanel)
     {
-        if (IsBlocked()) return;
+        if (IsBlocked())
+        {
+            Debug.Log("[QuestionMarkManager] ShowEnemy blocked because '" 
+                + (blockCanvas != null ? blockCanvas.name : "NULL") + "' is active.");
+            return;
+        }
 
         DisableAllContent();
 
@@ -162,7 +191,12 @@ public class QuestionMarkManager : MonoBehaviour
     // ========================
     public void ShowRanger(GameObject ranger)
     {
-        if (IsBlocked()) return;
+        if (IsBlocked())
+        {
+            Debug.Log("[QuestionMarkManager] ShowRanger blocked because '" 
+                + (blockCanvas != null ? blockCanvas.name : "NULL") + "' is active.");
+            return;
+        }
 
         DisableAllContent();
 
@@ -179,7 +213,7 @@ public class QuestionMarkManager : MonoBehaviour
     public void ShowRangerRed()    => ShowRanger(rangerRedCanvas);
     public void ShowRangerGreen()  => ShowRanger(rangerGreenCanvas);
     public void ShowRangerYellow() => ShowRanger(rangerYellowCanvas);
-    public void ShowRangerBlack()  => ShowRanger(rangerBlackCanvas); // ✅ BLACK (NEW)
+    public void ShowRangerBlack()  => ShowRanger(rangerBlackCanvas);
 
     // ========================
     // DISABLE CONTENT ONLY
@@ -209,11 +243,19 @@ public class QuestionMarkManager : MonoBehaviour
         rangerRedCanvas?.SetActive(false);
         rangerGreenCanvas?.SetActive(false);
         rangerYellowCanvas?.SetActive(false);
-        rangerBlackCanvas?.SetActive(false); // ✅ BLACK (NEW)
+        rangerBlackCanvas?.SetActive(false);
     }
 
     private bool IsBlocked()
     {
-        return blockCanvas != null && blockCanvas.activeSelf;
+        bool blocked = blockCanvas != null && blockCanvas.activeSelf;
+
+        if (blocked)
+        {
+            Debug.Log("[QuestionMarkManager] BLOCKED by GameObject: '" 
+                + blockCanvas.name + "' (activeSelf = TRUE)");
+        }
+
+        return blocked;
     }
 }
