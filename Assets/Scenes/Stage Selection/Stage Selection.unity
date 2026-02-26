@@ -8744,7 +8744,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '<b>Class:</b> Glycopeptide antibiotic
 
-    
+
 
     <b>Indications:</b>
 
@@ -8753,7 +8753,7 @@ MonoBehaviour:
     Staphylococcus aureus (MRSA), endocarditis, pneumonia, bone and joint infections,
     and Clostridioides difficile-associated colitis
 
-    
+
 
     <b>Target Bacteria:</b>
 
@@ -8761,14 +8761,14 @@ MonoBehaviour:
     aureus (including MRSA), Streptococcus spp., Enterococcus spp., Clostridioides
     difficile
 
-    
+
 
     <b>Adverse Drug Reactions (ADR):</b>
 
-    Nephrotoxicity,
-    ototoxicity, infusion-related reactions (red man syndrome), phlebitis, skin rash
+    Nephrotoxicity, ototoxicity,
+    infusion-related reactions (red man syndrome), phlebitis, skin rash
 
-    
+
 
     <b>LINK:</b>
 

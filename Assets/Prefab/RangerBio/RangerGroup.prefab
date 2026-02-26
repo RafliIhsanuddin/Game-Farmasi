@@ -35503,7 +35503,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2301155489907462775}
   m_HandleRect: {fileID: 1114433919515701833}
   m_Direction: 2
-  m_Value: 1.0000001
+  m_Value: 1
   m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -39116,7 +39116,7 @@ MonoBehaviour:
   Black:
     pictureObj: {fileID: 2152322085981958719}
     button: {fileID: 3262740782598018356}
-    name: Black
+    name: Cotrimoxazole
     description: Cotrimoxazole is a coordinated defender that strikes through synergy
       rather than single force. By combining two complementary mechanisms, it blocks
       bacterial survival from multiple directions, leaving enemies with little room
