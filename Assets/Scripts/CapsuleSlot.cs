@@ -67,6 +67,21 @@ public class CapsuleSlot : MonoBehaviour
         if (priceTextVisual) originalPriceColor = priceTextVisual.color;
     }
 
+    // =====================================================
+    // FIX: RESET BUTTON STATE WHEN THIS SCRIPT IS DISABLED
+    // (Prevents "btn.interactable=false" from getting stuck
+    //  when returning to SELECT phase and CapsuleSlot is turned off)
+    // =====================================================
+    private void OnDisable()
+    {
+        if (btn != null)
+            btn.interactable = true;
+
+        // related visual state: avoid leaving dark overlay stuck from PLAY afford check
+        if (darkOverlay)
+            darkOverlay.gameObject.SetActive(false);
+    }
+
     private void Start()
     {
         gms = GameObject.Find("GameManager")?.GetComponent<GameManager>();
